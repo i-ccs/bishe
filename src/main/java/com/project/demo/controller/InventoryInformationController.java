@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import javax.persistence.Query;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.persistence.Query;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;

@@ -9,8 +9,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
