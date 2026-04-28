@@ -29,7 +29,7 @@ public class Article implements Serializable {
     private Integer articleId;
 
 
-    @TableId(value = "title")
+    @TableField(value = "title")
     private String title;
 
     /**
