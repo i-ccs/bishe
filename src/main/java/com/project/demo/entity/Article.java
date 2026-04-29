@@ -49,7 +49,7 @@ public class Article implements Serializable {
      * 点赞数
      */
     @TableField(value = "praise_len")
-    private Integer praise_len;
+    private Integer praiseLen;
 
 
     /**

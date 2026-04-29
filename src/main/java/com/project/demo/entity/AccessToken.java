@@ -41,8 +41,8 @@ public class AccessToken implements Serializable {
     /**
      * 最大寿命：默认2小时
      */
-    @TableField(value = "maxage")
-    private Integer maxage;
+    @TableField(value = "max_age")
+    private Integer maxAge;
 
     /**
      * 创建时间：
@@ -60,6 +60,6 @@ public class AccessToken implements Serializable {
      * 用户信息
      */
     @TableField(value = "user_id")
-    private Integer user_id;
+    private Integer userId;
 
 }

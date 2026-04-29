@@ -4,6 +4,7 @@ import com.project.demo.controller.base.BaseController;
 import com.project.demo.entity.CodeToken;
 import com.project.demo.service.CodeTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.util.StringUtils;
@@ -31,6 +32,9 @@ public class CodeTokenController extends BaseController<CodeToken, CodeTokenServ
     @Autowired
     private JavaMailSender mailSender;
 
+    @Value("${spring.mail.username}")
+    private String fromEmail;
+
     /**
      * 发送验证码到邮箱API
      *
@@ -54,7 +58,7 @@ public class CodeTokenController extends BaseController<CodeToken, CodeTokenServ
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 
             // 设置收件人、发件人、主题和内容
-            helper.setFrom("3216252476@qq.com");  // 替换为你的QQ邮箱地址
+            helper.setFrom(fromEmail);
             helper.setTo(email);
             helper.setSubject("找回密码");
             helper.setText("<h1>验证码为："+code+"</h1>", true);
@@ -93,7 +97,7 @@ public class CodeTokenController extends BaseController<CodeToken, CodeTokenServ
             if (resultList.size() > 0) {
                 CodeToken obj = (CodeToken) resultList.get(0);
                 Date now = new Date();
-                if (obj.getExpire_time().after(now)){
+                if (obj.getExpireTime().after(now)){
                     if (code.equals(obj.getCode())){
                         return success(1);
                     }else {

@@ -51,8 +51,8 @@ public class Comment implements Serializable {
     /**
      * 昵称：
      */
-    @TableField(value = "nickname")
-    private String nickname;
+    @TableField(value = "nick_name")
+    private String nickName;
 
     /**
      * 头像地址：[0,255]

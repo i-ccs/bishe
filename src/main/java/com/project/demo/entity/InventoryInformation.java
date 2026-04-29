@@ -21,51 +21,51 @@ public class InventoryInformation implements Serializable {
 
     // InventoryInformation编号
     @TableId(value = "inventory_information_id", type = IdType.AUTO)
-    private Integer inventory_information_id;
+    private Integer inventoryInformationId;
 
     // 商品编码
-    @TableField(value = "`product_code`")
-    private String product_code;
+    @TableField(value = "product_code")
+    private String productCode;
     // 商品名称
-    @TableField(value = "`product_name`")
-    private String product_name;
+    @TableField(value = "product_name")
+    private String productName;
     // 商品类别
-    @TableField(value = "`product_category`")
-    private String product_category;
+    @TableField(value = "product_category")
+    private String productCategory;
     // 商品品牌
-    @TableField(value = "`product_brand`")
-    private String product_brand;
+    @TableField(value = "product_brand")
+    private String productBrand;
     // 商品库存
-    @TableField(value = "`product_inventory`")
-    private Double product_inventory;
+    @TableField(value = "product_inventory")
+    private Double productInventory;
     // 核对日期
-    @TableField(value = "`check_date`")
-    private String check_date;
+    @TableField(value = "check_date")
+    private String checkDate;
     // 核对数量
-    @TableField(value = "`check_quantity`")
-    private Double check_quantity;
+    @TableField(value = "check_quantity")
+    private Double checkQuantity;
     // 库存情况
-    @TableField(value = "`inventory`")
+    @TableField(value = "inventory")
     private String inventory;
 
     // 来源表
     @TableField(value = "source_table")
-    private String source_table;
+    private String sourceTable;
 
     // 来源ID
     @TableField(value = "source_id")
-    private Integer source_id;
+    private Integer sourceId;
 
     // 来源用户ID
     @TableField(value = "source_user_id")
-    private Integer source_user_id;
+    private Integer sourceUserId;
 
     // 更新时间
     @TableField(value = "update_time")
-    private Timestamp update_time;
+    private Timestamp updateTime;
 
     // 创建时间
     @TableField(value = "create_time")
-    private Timestamp create_time;
+    private Timestamp createTime;
 
 }

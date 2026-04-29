@@ -79,7 +79,7 @@ public class Auth implements Serializable {
     /**
      * 是否可删除：
      */
-    @TableField(value = "del")
+    @TableField(value = "`del`")
     private Integer del;
 
     /**
@@ -127,7 +127,7 @@ public class Auth implements Serializable {
     /**
      * 配置：
      */
-    @TableField(value = "`option`")
+    @TableField(value = "option")
     private String option;
 
     /**

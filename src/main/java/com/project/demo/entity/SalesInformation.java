@@ -21,45 +21,45 @@ public class SalesInformation implements Serializable {
 
     // SalesInformation编号
     @TableId(value = "sales_information_id", type = IdType.AUTO)
-    private Integer sales_information_id;
+    private Integer salesInformationId;
 
     // 商品编码
-    @TableField(value = "`product_code`")
-    private String product_code;
+    @TableField(value = "product_code")
+    private String productCode;
     // 商品名称
-    @TableField(value = "`product_name`")
-    private String product_name;
+    @TableField(value = "product_name")
+    private String productName;
     // 商品类别
-    @TableField(value = "`product_category`")
-    private String product_category;
+    @TableField(value = "product_category")
+    private String productCategory;
     // 商品品牌
-    @TableField(value = "`product_brand`")
-    private String product_brand;
+    @TableField(value = "product_brand")
+    private String productBrand;
     // 商品价格
-    @TableField(value = "`commodity_price`")
-    private Double commodity_price;
+    @TableField(value = "commodity_price")
+    private Double commodityPrice;
     // 销售单号
-    @TableField(value = "`sales_order_number`")
-    private String sales_order_number;
+    @TableField(value = "sales_order_number")
+    private String salesOrderNumber;
     // 注册用户
-    @TableField(value = "`registered_user`")
-    private Integer registered_user;
+    @TableField(value = "registered_user")
+    private Integer registeredUser;
     // 用户姓名
-    @TableField(value = "`user_name`")
-    private String user_name;
+    @TableField(value = "user_name")
+    private String userName;
     // 下单数量
-    @TableField(value = "`order_quantity`")
-    private Double order_quantity;
+    @TableField(value = "order_quantity")
+    private Double orderQuantity;
     // 订单总价
-    @TableField(value = "`total_order_price`")
-    private Double total_order_price;
+    @TableField(value = "total_order_price")
+    private Double totalOrderPrice;
     // 备注信息
-    @TableField(value = "`note_information`")
-    private String note_information;
+    @TableField(value = "note_information")
+    private String noteInformation;
 
     // 支付状态
     @TableField(value = "pay_state")
-    private String pay_state;
+    private String payState;
 
     // 支付类型: 微信、支付宝、网银
     @TableField(value = "pay_type")

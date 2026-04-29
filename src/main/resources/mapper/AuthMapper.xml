@@ -23,12 +23,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="tableNavName"    column="table_nav_name"    />
         <result property="tableNav"    column="table_nav"    />
         <result property="option"    column="option"    />
+        <result property="parent"    column="parent"    />
+        <result property="parentSort"    column="parent_sort"    />
         <result property="createTime"    column="create_time"    />
         <result property="updateTime"    column="update_time"    />
     </resultMap>
 
     <sql id="selectAuthVo">
-        select auth_id, user_group, mod_name, table_name, page_title, path, position, mode, add, del, set, get, field_add, field_set, field_get, table_nav_name, table_nav, option, create_time, update_time from auth
+        select auth_id, user_group, mod_name, table_name, page_title, path, position, mode, add, del, set, get, field_add, field_set, field_get, table_nav_name, table_nav, option,parent,parent_sort, create_time, update_time from auth
     </sql>
 
     <select id="selectAuthList" parameterType="com.project.demo.entity.Auth" resultMap="AuthResult">
@@ -51,6 +53,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="tableNavName != null  and tableNavName != ''"> and table_nav_name like concat('%', #{tableNavName}, '%')</if>
             <if test="tableNav != null  and tableNav != ''"> and table_nav = #{tableNav}</if>
             <if test="option != null  and option != ''"> and option = #{option}</if>
+            <if test="parent != null  and parent != ''"> and parent = #{parent}</if>
+            <if test="parentSort != null  and parentSort != ''"> and parent_sort = #{parentSort}</if>
         </where>
     </select>
 
@@ -79,6 +83,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="tableNavName != null  and tableNavName != ''">table_nav_name,</if>
             <if test="tableNav != null  and tableNav != ''">table_nav,</if>
             <if test="option != null  and option != ''">option,</if>
+            <if test="parent != null  and parent != ''">parent,</if>
+            <if test="parentSort != null  and parentSort != ''">parent_sort,</if>
             <if test="createTime != null ">create_time,</if>
             <if test="updateTime != null ">update_time,</if>
          </trim>
@@ -100,6 +106,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="tableNavName != null  and tableNavName != ''">#{tableNavName},</if>
             <if test="tableNav != null  and tableNav != ''">#{tableNav},</if>
             <if test="option != null  and option != ''">#{option},</if>
+            <if test="parent != null  and parent != ''">#{parent},</if>
+            <if test="parentSort != null  and parentSort != ''">#{parentSort},</if>
             <if test="createTime != null ">#{createTime},</if>
             <if test="updateTime != null ">#{updateTime},</if>
          </trim>
@@ -125,6 +133,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="tableNavName != null  and tableNavName != ''">table_nav_name = #{tableNavName},</if>
             <if test="tableNav != null  and tableNav != ''">table_nav = #{tableNav},</if>
             <if test="option != null  and option != ''">option = #{option},</if>
+            <if test="parent != null  and parent != ''">parent = #{parent},</if>
+            <if test="parentSort != null  and parentSort != ''">parent_sort = #{parentSort},</if>
             <if test="createTime != null ">create_time = #{createTime},</if>
             <if test="updateTime != null ">update_time = #{updateTime},</if>
         </trim>

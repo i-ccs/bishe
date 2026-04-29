@@ -64,14 +64,14 @@ public class User implements Serializable {
     /**
      * 用户名：[0,16]用户登录时所用的账户名称
      */
-    @TableField(value = "username")
-    private String username;
+    @TableField(value = "user_name")
+    private String userName;
 
     /**
      * 昵称：[0,16]
      */
-    @TableField(value = "nickname")
-    private String nickname;
+    @TableField(value = "nick_name")
+    private String nickName;
 
     /**
      * 密码：[0,32]用户登录所需的密码，由6-16位数字或英文组成
@@ -101,9 +101,7 @@ public class User implements Serializable {
      * 针对获取用户信息字段
      */
     @TableField(value = "open_id")
-    private String open_id;
-
-
+    private String openId;
 
     /**
      * 创建时间：
@@ -112,6 +110,9 @@ public class User implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Timestamp createTime;
 
+    /**
+     * 验证码：
+     */
     @TableField(exist = false)
     private String code;
 }
