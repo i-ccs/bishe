@@ -38,34 +38,34 @@
 
 		</el-form>
 				<el-table border stripe :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
-					<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
+					<el-table-column fixed type="selection" tooltip-effect="dark" align="center">
 			</el-table-column>
-				<el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称" 				v-if="$check_field('get','supplier_name')" align="center" min-width="1">
+				<el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称" 				v-if="$check_field('get','supplier_name')" align="center">
 					</el-table-column>
-					<el-table-column prop="suppliers_phone_number" @sort-change="$sortChange" label="供应商电话" 				v-if="$check_field('get','suppliers_phone_number')" align="center" min-width="1">
+					<el-table-column prop="suppliers_phone_number" @sort-change="$sortChange" label="供应商电话" 				v-if="$check_field('get','suppliers_phone_number')" align="center">
 					</el-table-column>
-					<el-table-column prop="merchandise_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','merchandise_category')" align="center" min-width="1">
+					<el-table-column prop="merchandise_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','merchandise_category')" align="center">
 					</el-table-column>
-					<el-table-column prop="comprehensive_evaluation" @sort-change="$sortChange" label="综合评价" 				v-if="$check_field('get','comprehensive_evaluation')" align="center" min-width="1">
+					<el-table-column prop="comprehensive_evaluation" @sort-change="$sortChange" label="综合评价" 				v-if="$check_field('get','comprehensive_evaluation')" align="center">
 					</el-table-column>
-					<el-table-column prop="supply_frequency" @sort-change="$sortChange" label="供应频率" 				v-if="$check_field('get','supply_frequency')" align="center" min-width="1">
+					<el-table-column prop="supply_frequency" @sort-change="$sortChange" label="供应频率" 				v-if="$check_field('get','supply_frequency')" align="center">
 					</el-table-column>
-					<el-table-column prop="supply_products" @sort-change="$sortChange" label="供应产品" 				v-if="$check_field('get','supply_products')" align="center" min-width="1">
+					<el-table-column prop="supply_products" @sort-change="$sortChange" label="供应产品" 				v-if="$check_field('get','supply_products')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_quality" @sort-change="$sortChange" label="产品质量" 				v-if="$check_field('get','product_quality')" align="center" min-width="1">
+					<el-table-column prop="product_quality" @sort-change="$sortChange" label="产品质量" 				v-if="$check_field('get','product_quality')" align="center">
 					</el-table-column>
-					<el-table-column prop="cooperation_situation" @sort-change="$sortChange" label="合作情况" 				v-if="$check_field('get','cooperation_situation')" align="center" min-width="1">
+					<el-table-column prop="cooperation_situation" @sort-change="$sortChange" label="合作情况" 				v-if="$check_field('get','cooperation_situation')" align="center">
 					</el-table-column>
 	
 
 
-            <el-table-column sortable prop="create_time" label="创建时间" align="center" min-width="1">
+            <el-table-column sortable prop="create_time" label="创建时间" align="center">
                 <template slot-scope="scope">
                 	{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
                 </template>
             </el-table-column>
 
-			<el-table-column sortable prop="update_time" label="更新时间" align="center" min-width="1">
+			<el-table-column sortable prop="update_time" label="更新时间" align="center">
                 <template slot-scope="scope">
                 	{{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
                 </template>
@@ -78,7 +78,7 @@
 
 
 			<el-table-column fixed="right" label="操作" v-if="$check_action('/supply_information/table','set') || $check_action('/supply_information/view','set') || $check_action('/supply_information/view','get') 
-						"  align="center" width="120">
+						"  align="center">
 
 
 				<template slot-scope="scope">

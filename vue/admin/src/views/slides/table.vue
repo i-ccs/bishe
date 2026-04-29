@@ -30,11 +30,11 @@
 		<el-table border :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" stripe>
 
 			<!-- 多选按钮 -->
-			<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
+			<el-table-column fixed type="selection" tooltip-effect="dark" align="center">
 			</el-table-column>
 			<!-- /多选按钮 -->
 
-			<el-table-column label="轮播图" prop="img" align="center" min-width="1">
+			<el-table-column label="轮播图" prop="img" align="center">
 				<template slot-scope="scope">
 					<el-image style="height: 100px" :src="scope.row.img">
 						<div slot="error" class="image-slot">
@@ -44,20 +44,20 @@
 				</template>
 			</el-table-column>
 
-			<el-table-column label="标题" prop="title" sortable align="center" min-width="1">
+			<el-table-column label="标题" prop="title" sortable align="center">
 			</el-table-column>
 
-			<!--<el-table-column label="正文" prop="content" align="center" min-width="1">
+			<!--<el-table-column label="正文" prop="content" align="center">
 			</el-table-column>-->
 
-			<el-table-column label="链接" prop="url" align="center" min-width="1">
+			<el-table-column label="链接" prop="url" align="center">
 			</el-table-column>
 
-      <!--<el-table-column label="点击量" prop="hits" sortable align="center" min-width="1">
+      <!--<el-table-column label="点击量" prop="hits" sortable align="center">
       </el-table-column>-->
 
 			<!-- 操作 -->
-			<el-table-column fixed="right" label="操作" align="center" width="120">
+			<el-table-column fixed="right" label="操作" align="center">
 				<template slot-scope="scope">
 					<div class="view_a">
 					<router-link class="e-button el-button--small is-plain el-button--primary"

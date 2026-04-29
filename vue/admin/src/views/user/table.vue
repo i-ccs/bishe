@@ -38,13 +38,13 @@
 		</el-form>
 		<el-table border :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" stripe>
 
-			<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
+			<el-table-column fixed type="selection" tooltip-effect="dark" align="center">
 			</el-table-column>
 
-			<el-table-column fixed prop="nickname" label="昵称" align="center" min-width="1">
+			<el-table-column fixed prop="nickname" label="昵称" align="center">
 			</el-table-column>
 
-			<el-table-column label="头像" align="center" min-width="1">
+			<el-table-column label="头像" align="center">
 				<template slot-scope="scope">
 					<el-avatar :src="$fullUrl(scope.row.avatar)" style="width: 80px;height: 80px;" >
 						<img src="../../../public/img/bg.jpg" />
@@ -52,22 +52,22 @@
 				</template>
 			</el-table-column>
 
-			<el-table-column prop="username" label="用户名" sortable align="center" min-width="1">
+			<el-table-column prop="username" label="用户名" sortable align="center">
 			</el-table-column>
 
-			<el-table-column prop="user_gender" label="性别" sortable align="center" min-width="1">
+			<el-table-column prop="user_gender" label="性别" sortable align="center">
 			</el-table-column>
 
-			<el-table-column prop="account_type" label="账号类型" sortable align="center" min-width="1">
+			<el-table-column prop="account_type" label="账号类型" sortable align="center">
 				<template slot-scope="scope">
 					{{scope.row.account_type || scope.row.user_group}}
 				</template>
 			</el-table-column>
 
-<!--			<el-table-column prop="phone" label="手机号码" sortable align="center" min-width="1">-->
+<!--			<el-table-column prop="phone" label="手机号码" sortable align="center">-->
 <!--			</el-table-column>-->
 
-<!--			<el-table-column prop="phone_state" label="手机认证" sortable align="center" min-width="1">-->
+<!--			<el-table-column prop="phone_state" label="手机认证" sortable align="center">-->
 <!--				<template slot-scope="scope">-->
 <!--          <span v-if="scope.row.phone_state === 0">未认证</span>-->
 <!--          <span v-if="scope.row.phone_state === 1">认证中</span>-->
@@ -75,10 +75,10 @@
 <!--				</template>-->
 <!--			</el-table-column>-->
 
-			<el-table-column prop="email" label="邮箱" sortable align="center" min-width="1">
+			<el-table-column prop="email" label="邮箱" sortable align="center">
 			</el-table-column>
 
-<!--			<el-table-column prop="email_state" label="邮箱状态" sortable align="center" min-width="1">-->
+<!--			<el-table-column prop="email_state" label="邮箱状态" sortable align="center">-->
 <!--				<template slot-scope="scope">-->
 <!--          <span v-if="scope.row.email_state === 0">未认证</span>-->
 <!--          <span v-if="scope.row.email_state === 1">认证中</span>-->
@@ -86,26 +86,26 @@
 <!--				</template>-->
 <!--			</el-table-column>-->
 
-			<el-table-column prop="state" label="状态" sortable align="center" min-width="1">
+			<el-table-column prop="state" label="状态" sortable align="center">
 				<template slot-scope="scope">
 					{{list_state.getVal("text",{"value":scope.row.state})}}
 				</template>
 			</el-table-column>
 
-			<!--<el-table-column prop="login_time" label="上次登录时间" sortable align="center" min-width="1">
+			<!--<el-table-column prop="login_time" label="上次登录时间" sortable align="center">
                 <template slot-scope="scope">
                     {{ $toTime(scope.row["login_time"],"yyyy-MM-dd hh:mm:ss") }}
                 </template>
 			</el-table-column>-->
 
-			<el-table-column sortable prop="create_time" label="创建时间" align="center" min-width="1">
+			<el-table-column sortable prop="create_time" label="创建时间" align="center">
 			    <template slot-scope="scope">
 			        {{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
 			    </template>
 			</el-table-column>
 
 			<!-- 操作 -->
-			<el-table-column fixed="right" label="操作" align="center" width="120">
+			<el-table-column fixed="right" label="操作" align="center">
 				<template slot-scope="scope">
 					<router-link class="el-button el-button--small is-plain el-button--primary"
 						:to="'./view?' + field + '=' + scope.row[field]" size="small">

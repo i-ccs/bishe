@@ -39,13 +39,13 @@
 		</el-form>
 		<el-table border :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" stripe>
 
-			<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
+			<el-table-column fixed type="selection" tooltip-effect="dark" align="center">
 			</el-table-column>
 
-			<el-table-column fixed sortable prop="title" label="标题" align="center" min-width="1">
+			<el-table-column fixed sortable prop="title" label="标题" align="center">
 			</el-table-column>
 
-			<el-table-column prop="img" label="封面图" align="center" min-width="1">
+			<el-table-column prop="img" label="封面图" align="center">
 				<template slot-scope="scope">
 					<el-image
 					    style="width: 100px; height: 100px"
@@ -58,13 +58,13 @@
 				</template>
 			</el-table-column>
 
-			<el-table-column sortable prop="type" label="文章分类" align="center" min-width="1">
+			<el-table-column sortable prop="type" label="文章分类" align="center">
 			</el-table-column>
 
-			<!--<el-table-column sortable prop="hits" label="点击数" align="center" min-width="1">
+			<!--<el-table-column sortable prop="hits" label="点击数" align="center">
 			</el-table-column>
 
-			<el-table-column prop="source" label="来源" align="center" min-width="1">
+			<el-table-column prop="source" label="来源" align="center">
 				<template slot-scope="scope">
 					<a :href="scope.row.url">
 						{{scope.row.source}}
@@ -72,23 +72,23 @@
 				</template>
 			</el-table-column>-->
 
-			<el-table-column prop="tag" label="标签" align="center" min-width="1">
+			<el-table-column prop="tag" label="标签" align="center">
 			</el-table-column>
 
-			<el-table-column sortable prop="create_time" label="创建时间" align="center" min-width="1">
+			<el-table-column sortable prop="create_time" label="创建时间" align="center">
 			    <template slot-scope="scope">
 			        {{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
 			    </template>
 			</el-table-column>
 
-			<el-table-column sortable prop="update_time" label="更新时间" align="center" min-width="1">
+			<el-table-column sortable prop="update_time" label="更新时间" align="center">
 			    <template slot-scope="scope">
 			        {{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
 			    </template>
 			</el-table-column>
 
 			<!-- 操作 -->
-			<el-table-column fixed="right" label="操作" align="center" width="120">
+			<el-table-column fixed="right" label="操作" align="center">
 				<template slot-scope="scope">
 					<div class="view_a">
 					<router-link v-if="$check_action('/article/table','set')" class="e-button el-button--small is-plain el-button--primary"

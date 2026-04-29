@@ -34,21 +34,21 @@
 
 		</el-form>
 				<el-table border stripe :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
-					<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
+					<el-table-column fixed type="selection" tooltip-effect="dark" align="center">
 			</el-table-column>
-				<el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码" 				v-if="$check_field('get','product_code')" align="center" min-width="1">
+				<el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码" 				v-if="$check_field('get','product_code')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称" 				v-if="$check_field('get','product_name')" align="center" min-width="1">
+					<el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称" 				v-if="$check_field('get','product_name')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','product_category')" align="center" min-width="1">
+					<el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','product_category')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌" 				v-if="$check_field('get','product_brand')" align="center" min-width="1">
+					<el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌" 				v-if="$check_field('get','product_brand')" align="center">
 					</el-table-column>
-					<el-table-column prop="merchandise_specifications" @sort-change="$sortChange" label="商品规格" 				v-if="$check_field('get','merchandise_specifications')" align="center" min-width="1">
+					<el-table-column prop="merchandise_specifications" @sort-change="$sortChange" label="商品规格" 				v-if="$check_field('get','merchandise_specifications')" align="center">
 					</el-table-column>
-<!--					<el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存" 				v-if="$check_field('get','product_inventory')" align="center" min-width="1">-->
-<!--					</el-table-column>-->
-					<el-table-column prop="product_images" @sort-change="$sortChange" label="商品图片" 				v-if="$check_field('get','product_images')" align="center" min-width="1">
+					<el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存" 				v-if="$check_field('get','product_inventory')" align="center">
+					</el-table-column>
+					<el-table-column prop="product_images" @sort-change="$sortChange" label="商品图片" 				v-if="$check_field('get','product_images')" align="center">
 						<template slot-scope="scope">
 					<el-image style="width: 100px; height: 100px" :src="$fullUrl(scope.row['product_images'])"
 						:preview-src-list="[$fullUrl(scope.row['product_images'])]">
@@ -58,20 +58,20 @@
 					</el-image>
 				</template>
 					</el-table-column>
-					<el-table-column prop="merchandise_price" @sort-change="$sortChange" label="商品价格" 				v-if="$check_field('get','merchandise_price')" align="center" min-width="1">
+					<el-table-column prop="merchandise_price" @sort-change="$sortChange" label="商品价格" 				v-if="$check_field('get','merchandise_price')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_introduction" @sort-change="$sortChange" label="商品介绍" 				v-if="$check_field('get','product_introduction')" align="center" min-width="1">
+					<el-table-column prop="product_introduction" @sort-change="$sortChange" label="商品介绍" 				v-if="$check_field('get','product_introduction')" align="center">
 					</el-table-column>
 			
 
 
-<!--            <el-table-column sortable prop="create_time" label="创建时间" align="center" min-width="1">
+<!--            <el-table-column sortable prop="create_time" label="创建时间" align="center">
                 <template slot-scope="scope">
                 	{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
                 </template>
             </el-table-column>-->
 
-			<el-table-column sortable prop="update_time" label="更新时间" align="center" min-width="1">
+			<el-table-column sortable prop="update_time" label="更新时间" align="center">
                 <template slot-scope="scope">
                 	{{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
                 </template>
@@ -87,7 +87,7 @@
 						|| $check_action('/sales_information/table','add') || $check_action('/sales_information/view','add') 
 						|| $check_action('/purchasing_information/table','add') || $check_action('/purchasing_information/view','add') 
 						|| $check_action('/inventory_information/table','add') || $check_action('/inventory_information/view','add') 
-						"  align="center" width="120">
+						"  align="center">
 
 
 				<template slot-scope="scope">
