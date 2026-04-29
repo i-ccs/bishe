@@ -177,7 +177,7 @@
 						trigger: 'blur'
 					}],
 					nickname: [{
-						required: true,
+						required: false,
 						message: '请输入昵称',
 						trigger: 'blur'
 					}],
@@ -315,7 +315,7 @@
 
         if(username.length > 16 || username.length < 5){
         	ret = "用户名长度应为5到16个字符之间！";
-		        } else if (!nickname || nickname.length > 12 || nickname.length < 2) {
+		        } else if (nickname && (nickname.length > 12 || nickname.length < 2)) {
           ret = "昵称长度应为2个字符到12个字符之间";
         } else if (email && !email_regular.test(email)) {
           ret = "请输入正确的邮箱地址 例：test@test.com!";
