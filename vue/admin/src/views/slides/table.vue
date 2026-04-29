@@ -1,29 +1,20 @@
 <template>
 	<el-main class="bg table_wrap sides">
 		<el-form label-position="right" :model="query" class="form p_4" label-width="120">
-			<el-row class="rows row1">
+			<el-row class="rows row1" type="flex" justify="center">
 				<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
 					<el-form-item label="标题">
 						<el-input v-model="query.title"></el-input>
 					</el-form-item>
 				</el-col>
 			</el-row>
-			<el-row class="rows row2">
-				<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap">
-					<el-col :xs="24" :sm="12" :lg="12" class="search_btn_1">
-						
-							<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
-							<el-button @click="reset()" class="search_btn_reset">重置</el-button>
-							<el-button v-if="user_group == '管理员' || $check_action('/slides/table','del')" class="float-right search_btn_del" type="danger" @click="delInfo()">删除</el-button>
-							<!-- <router-link v-if="user_group == '管理员' || $check_action('/slides/view')" class="el-button float-right el-button--default el-button--primary search_btn_add"
-								to="./view?"><span>添加</span>
-							</router-link> -->
-							<el-button  v-if="user_group == '管理员' || $check_action('/slides/view')" class="float-right  search_btn_add" @click="$router.push('./view?')">添加</el-button>
-					
-					</el-col>
-					
+			<el-row class="rows row2" type="flex" justify="center">
+				<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap" style="text-align: center;">
+					<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
+					<el-button @click="reset()" class="search_btn_reset">重置</el-button>
+					<el-button v-if="user_group == '管理员' || $check_action('/slides/table','del')" class=" search_btn_del" type="danger" @click="delInfo()">删除</el-button>
+					<el-button v-if="user_group == '管理员' || $check_action('/slides/view')" class="  search_btn_add" @click="$router.push('./view?')">添加</el-button>
 				</el-col>
-
 			</el-row>
 		</el-form>
 
@@ -38,7 +29,7 @@
 				<template slot-scope="scope">
 					<el-image style="height: 100px" :src="scope.row.img">
 						<div slot="error" class="image-slot">
-							<img :src="$fullUrl(scope.row.img)" style="width: 100%;max-height: 90px" />
+							<img :src="$fullUrl(scope.row.img)" style="width: 100%;max-height: 90px">
 						</div>
 					</el-image>
 				</template>
@@ -60,8 +51,7 @@
 			<el-table-column fixed="right" label="操作" align="center">
 				<template slot-scope="scope">
 					<div class="view_a">
-					<router-link class="e-button el-button--small is-plain el-button--primary"
-						:to="'./view?' + field + '=' + scope.row[field]" size="small">
+					<router-link class="e-button el-button--small is-plain el-button--primary" :to="'./view?' + field + '=' + scope.row[field]" size="small">
             			<span>详情</span>
 					</router-link>
 					</div>
@@ -73,8 +63,7 @@
 
 		<!-- 分页器 -->
 		<div class="mt text_center">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.page"
-			 :page-sizes="[7, 10, 30, 100]" :page-size="query.size" layout="total, sizes, prev, pager, next, jumper" :total="count">
+			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.page" :page-sizes="[7, 10, 30, 100]" :page-size="query.size" layout="total, sizes, prev, pager, next, jumper" :total="count">
 			</el-pagination>
 		</div>
 		<!-- /分页器 -->

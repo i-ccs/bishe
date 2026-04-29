@@ -1,7 +1,7 @@
 <template>
 	<el-main class="bg table_wrap comtabel_t">
 		<el-form label-position="right" :model="query" class="form p_4" label-width="120">
-			<el-row class="rows row1">
+			<el-row class="rows row1" type="flex" justify="center">
 
 
 
@@ -16,44 +16,36 @@
 								</el-form-item>
 				</el-col>
 																			</el-row>
-	<el-row class="rows row2">
-
-		<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap search_btns">
-
-				<el-col :xs="24" :sm="10" :lg="8" class="search_btn_1 search_btn_wrap_1 btns">
-
-										<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
-						<el-button @click="reset()" style="margin-right: 74px;" class="search_btn_reset">重置</el-button>
-																		
-
-						<el-button v-if="$check_action('/inventory_information/table','del') || $check_action('/inventory_information/view','del')" class="search_btn_del" type="danger" @click="delInfo()">删除</el-button>
-								
+	<el-row class="rows row2" type="flex" justify="center">
+				<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap" style="text-align: center;">
+					<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
+					<el-button @click="reset()" style="margin-right: 74px;" class="search_btn_reset">重置</el-button>
+					<el-button v-if="$check_action('/inventory_information/table','del') || $check_action('/inventory_information/view','del')" class="search_btn_del" type="danger" @click="delInfo()">删除</el-button>
 				</el-col>
-		</el-col>
-	</el-row >
+			</el-row>
 
 		</el-form>
 				<el-table border stripe :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
 					<el-table-column fixed type="selection" tooltip-effect="dark" align="center">
 			</el-table-column>
-				<el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码" 				v-if="$check_field('get','product_code')" align="center">
+				<el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码" v-if="$check_field('get','product_code')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称" 				v-if="$check_field('get','product_name')" align="center">
+					<el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称" v-if="$check_field('get','product_name')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','product_category')" align="center">
+					<el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别" v-if="$check_field('get','product_category')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌" 				v-if="$check_field('get','product_brand')" align="center">
+					<el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌" v-if="$check_field('get','product_brand')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存" 				v-if="$check_field('get','product_inventory')" align="center">
+					<el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存" v-if="$check_field('get','product_inventory')" align="center">
 					</el-table-column>
-					<el-table-column prop="check_date" @sort-change="$sortChange" label="核对日期" 				v-if="$check_field('get','check_date')" align="center">
+					<el-table-column prop="check_date" @sort-change="$sortChange" label="核对日期" v-if="$check_field('get','check_date')" align="center">
 		                <template slot-scope="scope">
                 	{{ $toTime(scope.row["check_date"],"yyyy-MM-dd") }}
                 </template>
 					</el-table-column>
-					<el-table-column prop="check_quantity" @sort-change="$sortChange" label="核对数量" 				v-if="$check_field('get','check_quantity')" align="center">
+					<el-table-column prop="check_quantity" @sort-change="$sortChange" label="核对数量" v-if="$check_field('get','check_quantity')" align="center">
 					</el-table-column>
-					<el-table-column prop="inventory" @sort-change="$sortChange" label="库存情况" 				v-if="$check_field('get','inventory')" align="center">
+					<el-table-column prop="inventory" @sort-change="$sortChange" label="库存情况" v-if="$check_field('get','inventory')" align="center">
 					</el-table-column>
 	
 
@@ -77,15 +69,12 @@
 
 
 			<el-table-column fixed="right" label="操作" v-if="$check_action('/inventory_information/table','set') || $check_action('/inventory_information/view','set') || $check_action('/inventory_information/view','get') 
-						"  align="center">
+						" align="center">
 
 
 				<template slot-scope="scope">
 					<div class="view_a">
-					<router-link class="e-button el-button--small is-plain el-button--success" style="margin: 5px !important;"
-					v-if="$check_action('/inventory_information/table','set') || $check_action('/inventory_information/view','set') || $check_action('/inventory_information/view','get')"
-						:to="'./view?' + field + '=' + scope.row[field]"
-						 size="small">
+					<router-link class="e-button el-button--small is-plain el-button--success" style="margin: 5px !important;" v-if="$check_action('/inventory_information/table','set') || $check_action('/inventory_information/view','set') || $check_action('/inventory_information/view','get')" :to="'./view?' + field + '=' + scope.row[field]" size="small">
 						<span>详情</span>
 					</router-link>
 				</div>
@@ -96,9 +85,7 @@
 
 		<!-- 分页器 -->
 		<div class="mt text_center">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-				:current-page="query.page" :page-sizes="[7, 10, 30, 100]" :page-size="query.size"
-				layout="total, sizes, prev, pager, next, jumper" :total="count">
+			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.page" :page-sizes="[7, 10, 30, 100]" :page-size="query.size" layout="total, sizes, prev, pager, next, jumper" :total="count">
 			</el-pagination>
 		</div>
 		<!-- /分页器 -->

@@ -16,8 +16,7 @@
 
 					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
 						<el-form-item label="用户名" prop="username">
-							<span v-if="obj.username">{{obj.username}}</span>
-							<el-input v-else v-model="form.username" placeholder="请输入用户名"></el-input>
+							<el-input v-model="form.username" placeholder="请输入用户名" :disabled="obj.username !== '' && obj.username !== undefined"></el-input>
 						</el-form-item>
 					</el-col>
 
@@ -27,7 +26,7 @@
 						</el-form-item>
 					</el-col>
 
-					<el-col v-if="!obj.password" :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
+					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
 						<el-form-item label="密码" prop="password">
 							<el-input type="password" v-model="form.password" placeholder="请输入密码" show-password></el-input>
 						</el-form-item>

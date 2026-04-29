@@ -1,7 +1,7 @@
 <template>
 	<el-main class="bg table_wrap comtabel_t">
 		<el-form label-position="right" :model="query" class="form p_4" label-width="120">
-			<el-row class="rows row1">
+			<el-row class="rows row1" type="flex" justify="center">
 
 
 
@@ -13,48 +13,39 @@
 												<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
 					<el-form-item label="商品类别">
 									<el-select v-model="query.merchandise_category">
-											<el-option v-for="o in list_merchandise_category" :key="o.product_category" :label="o.product_category"
-								:value="o.product_category">
+											<el-option v-for="o in list_merchandise_category" :key="o.product_category" :label="o.product_category" :value="o.product_category">
 							</el-option>
 										</el-select>
 								</el-form-item>
 				</el-col>
 																			</el-row>
-	<el-row class="rows row2">
-
-		<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap search_btns">
-
-				<el-col :xs="24" :sm="10" :lg="8" class="search_btn_1 search_btn_wrap_1 btns">
-
-										<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
-						<el-button @click="reset()" style="margin-right: 74px;" class="search_btn_reset">重置</el-button>
-																		
-
-						<el-button v-if="$check_action('/supply_information/table','del') || $check_action('/supply_information/view','del')" class="search_btn_del" type="danger" @click="delInfo()">删除</el-button>
-								
+	<el-row class="rows row2" type="flex" justify="center">
+				<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap" style="text-align: center;">
+					<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
+					<el-button @click="reset()" style="margin-right: 74px;" class="search_btn_reset">重置</el-button>
+					<el-button v-if="$check_action('/supply_information/table','del') || $check_action('/supply_information/view','del')" class="search_btn_del" type="danger" @click="delInfo()">删除</el-button>
 				</el-col>
-		</el-col>
-	</el-row >
+			</el-row>
 
 		</el-form>
 				<el-table border stripe :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
 					<el-table-column fixed type="selection" tooltip-effect="dark" align="center">
 			</el-table-column>
-				<el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称" 				v-if="$check_field('get','supplier_name')" align="center">
+				<el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称" v-if="$check_field('get','supplier_name')" align="center">
 					</el-table-column>
-					<el-table-column prop="suppliers_phone_number" @sort-change="$sortChange" label="供应商电话" 				v-if="$check_field('get','suppliers_phone_number')" align="center">
+					<el-table-column prop="suppliers_phone_number" @sort-change="$sortChange" label="供应商电话" v-if="$check_field('get','suppliers_phone_number')" align="center">
 					</el-table-column>
-					<el-table-column prop="merchandise_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','merchandise_category')" align="center">
+					<el-table-column prop="merchandise_category" @sort-change="$sortChange" label="商品类别" v-if="$check_field('get','merchandise_category')" align="center">
 					</el-table-column>
-					<el-table-column prop="comprehensive_evaluation" @sort-change="$sortChange" label="综合评价" 				v-if="$check_field('get','comprehensive_evaluation')" align="center">
+					<el-table-column prop="comprehensive_evaluation" @sort-change="$sortChange" label="综合评价" v-if="$check_field('get','comprehensive_evaluation')" align="center">
 					</el-table-column>
-					<el-table-column prop="supply_frequency" @sort-change="$sortChange" label="供应频率" 				v-if="$check_field('get','supply_frequency')" align="center">
+					<el-table-column prop="supply_frequency" @sort-change="$sortChange" label="供应频率" v-if="$check_field('get','supply_frequency')" align="center">
 					</el-table-column>
-					<el-table-column prop="supply_products" @sort-change="$sortChange" label="供应产品" 				v-if="$check_field('get','supply_products')" align="center">
+					<el-table-column prop="supply_products" @sort-change="$sortChange" label="供应产品" v-if="$check_field('get','supply_products')" align="center">
 					</el-table-column>
-					<el-table-column prop="product_quality" @sort-change="$sortChange" label="产品质量" 				v-if="$check_field('get','product_quality')" align="center">
+					<el-table-column prop="product_quality" @sort-change="$sortChange" label="产品质量" v-if="$check_field('get','product_quality')" align="center">
 					</el-table-column>
-					<el-table-column prop="cooperation_situation" @sort-change="$sortChange" label="合作情况" 				v-if="$check_field('get','cooperation_situation')" align="center">
+					<el-table-column prop="cooperation_situation" @sort-change="$sortChange" label="合作情况" v-if="$check_field('get','cooperation_situation')" align="center">
 					</el-table-column>
 	
 
@@ -78,15 +69,12 @@
 
 
 			<el-table-column fixed="right" label="操作" v-if="$check_action('/supply_information/table','set') || $check_action('/supply_information/view','set') || $check_action('/supply_information/view','get') 
-						"  align="center">
+						" align="center">
 
 
 				<template slot-scope="scope">
 					<div class="view_a">
-					<router-link class="e-button el-button--small is-plain el-button--success" style="margin: 5px !important;"
-					v-if="$check_action('/supply_information/table','set') || $check_action('/supply_information/view','set') || $check_action('/supply_information/view','get')"
-						:to="'./view?' + field + '=' + scope.row[field]"
-						 size="small">
+					<router-link class="e-button el-button--small is-plain el-button--success" style="margin: 5px !important;" v-if="$check_action('/supply_information/table','set') || $check_action('/supply_information/view','set') || $check_action('/supply_information/view','get')" :to="'./view?' + field + '=' + scope.row[field]" size="small">
 						<span>详情</span>
 					</router-link>
 				</div>
@@ -97,9 +85,7 @@
 
 		<!-- 分页器 -->
 		<div class="mt text_center">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-				:current-page="query.page" :page-sizes="[7, 10, 30, 100]" :page-size="query.size"
-				layout="total, sizes, prev, pager, next, jumper" :total="count">
+			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.page" :page-sizes="[7, 10, 30, 100]" :page-size="query.size" layout="total, sizes, prev, pager, next, jumper" :total="count">
 			</el-pagination>
 		</div>
 		<!-- /分页器 -->
