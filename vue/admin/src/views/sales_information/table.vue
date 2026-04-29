@@ -43,7 +43,7 @@
 	</el-row >
 
 		</el-form>
-				<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
+				<el-table border stripe :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
 					<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
 			</el-table-column>
 				<el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码" 				v-if="$check_field('get','product_code')" align="center" min-width="1">

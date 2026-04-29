@@ -37,7 +37,7 @@
 	</el-row >
 
 		</el-form>
-				<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
+				<el-table border stripe :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
 					<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
 			</el-table-column>
 				<el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称" 				v-if="$check_field('get','supplier_name')" align="center" min-width="1">
