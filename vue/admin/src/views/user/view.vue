@@ -1,114 +1,76 @@
 <template>
 	<el-main class="bg edit_wrap">
-		<el-form ref="form" :model="form" status-icon :rules="rules" label-width="80px">
+		<el-row type="flex" justify="center">
+			<el-col :xs="24" :sm="24" :lg="16">
+				<el-form ref="form" :model="form" status-icon :rules="rules" label-width="100px">
 
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="头像" prop="avatar">
-					<el-upload class="avatar-uploader" drag accept="image/gif, image/jpeg, image/png, image/jpg"
-						action="" :http-request="uploadimg" :show-file-list="false">
-						<img v-if="form.avatar" :src="$fullUrl(form.avatar)" class="avatar">
-						<i v-else class="el-icon-plus avatar-uploader-icon"></i>
-					</el-upload>
-				</el-form-item>
-			</el-col>
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="用户名" prop="username">
-                    <span v-if="obj.username">{{obj.username}}</span>
-					<el-input v-else v-model="form.username" placeholder="请输入用户名"></el-input>
-				</el-form-item>
-			</el-col>
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="昵称" prop="nickname">
-					<el-input v-model="form.nickname" placeholder="请输入昵称"></el-input>
-				</el-form-item>
-			</el-col>
-
-			<el-col v-if="!obj.password" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="密码" prop="password">
-<!--					<span v-if="obj.password">{{obj.password}}</span>-->
-<!--          <el-input v-else type="password" v-model="form.password" placeholder="请输入密码" show-password></el-input>-->
-          <el-input type="password" v-model="form.password" placeholder="请输入密码" show-password></el-input>
-				</el-form-item>
-			</el-col>
-
-			<!-- <el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="用户组" prop="user_group">
-					<el-select v-model="form.user_group" placeholder="请选择">
-						<el-option v-for="o in user_group" :key="o.name" :label="o.name"
-							:value="o.name">
-						</el-option>
-					</el-select>
-				</el-form-item>
-			</el-col> -->
-
-<!--			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">-->
-<!--				<el-form-item label="手机号码" prop="phone">-->
-<!--					<el-input type="phone" v-model="form.phone" placeholder="请输入手机号码"></el-input>-->
-<!--				</el-form-item>-->
-<!--			</el-col>-->
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="邮箱" prop="email">
-					<el-input type="email" v-model="form.email" placeholder="请输入邮箱"></el-input>
-				</el-form-item>
-			</el-col>
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="账号类型" prop="user_group">
-					<el-select v-model="form.user_group" placeholder="请选择账号类型">
-						<el-option v-for="o in user_group" :key="o.name" :label="o.name" :value="o.name"></el-option>
-					</el-select>
-				</el-form-item>
-			</el-col>
-
-<!--			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">-->
-<!--				<el-form-item label="手机认证" prop="phone_state">-->
-<!--					<el-select v-model="form.phone_state" placeholder="请选择">-->
-<!--						<el-option v-for="group in list_state" :key="group.value" :label="group.name"-->
-<!--							:value="group.value">-->
-<!--						</el-option>-->
-<!--					</el-select>-->
-<!--				</el-form-item>-->
-<!--			</el-col>-->
-
-<!--			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">-->
-<!--				<el-form-item label="邮箱认证" prop="email_state">-->
-<!--					<el-select v-model="form.email_state" placeholder="请选择">-->
-<!--						<el-option v-for="group in list_state" :key="group.value" :label="group.name"-->
-<!--							:value="group.value">-->
-<!--						</el-option>-->
-<!--					</el-select>-->
-<!--				</el-form-item>-->
-<!--			</el-col>-->
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<span></span>
-			</el-col>
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="状态" prop="state">
-					<el-select :disabled="$store.state.user.user_group !== '管理员'" v-model="form.state" placeholder="请选择">
-						<el-option v-for="group in list_user_state" :key="group.value" :label="group.name"
-							:value="group.value">
-						</el-option>
-					</el-select>
-				</el-form-item>
-			</el-col>
-
-			<el-col :xs="24" :sm="24" :lg="24" class="el_form_btn_warp">
-				<el-form-item>
-					<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_1">
-						<el-button style="width: 100%; float: left;" type="primary" @click="submit()">提交</el-button>
+					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
+						<el-form-item label="头像" prop="avatar">
+							<el-upload class="avatar-uploader" drag accept="image/gif, image/jpeg, image/png, image/jpg"
+								action="" :http-request="uploadimg" :show-file-list="false">
+								<img v-if="form.avatar" :src="$fullUrl(form.avatar)" class="avatar">
+								<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+							</el-upload>
+						</el-form-item>
 					</el-col>
-					<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_2">
-						<el-button style="width: 100%; float: right;" @click="cancel()">取消</el-button>
-					</el-col>
-				</el-form-item>
-			</el-col>
 
-		</el-form>
+					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
+						<el-form-item label="用户名" prop="username">
+							<span v-if="obj.username">{{obj.username}}</span>
+							<el-input v-else v-model="form.username" placeholder="请输入用户名"></el-input>
+						</el-form-item>
+					</el-col>
+
+					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
+						<el-form-item label="昵称" prop="nickname">
+							<el-input v-model="form.nickname" placeholder="请输入昵称"></el-input>
+						</el-form-item>
+					</el-col>
+
+					<el-col v-if="!obj.password" :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
+						<el-form-item label="密码" prop="password">
+							<el-input type="password" v-model="form.password" placeholder="请输入密码" show-password></el-input>
+						</el-form-item>
+					</el-col>
+
+					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
+						<el-form-item label="邮箱" prop="email">
+							<el-input type="email" v-model="form.email" placeholder="请输入邮箱"></el-input>
+						</el-form-item>
+					</el-col>
+
+					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
+						<el-form-item label="账号类型" prop="user_group">
+							<el-select v-model="form.user_group" placeholder="请选择账号类型">
+								<el-option v-for="o in user_group" :key="o.name" :label="o.name" :value="o.name"></el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+
+					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
+						<el-form-item label="状态" prop="state">
+							<el-select :disabled="$store.state.user.user_group !== '管理员'" v-model="form.state" placeholder="请选择">
+								<el-option v-for="group in list_user_state" :key="group.value" :label="group.name"
+									:value="group.value">
+								</el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+
+					<el-col :xs="24" :sm="24" :lg="24" class="el_form_btn_warp">
+						<el-form-item>
+							<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_1">
+								<el-button style="width: 100%; float: left;" type="primary" @click="submit()">提交</el-button>
+							</el-col>
+							<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_2">
+								<el-button style="width: 100%; float: right;" @click="cancel()">取消</el-button>
+							</el-col>
+						</el-form-item>
+					</el-col>
+
+				</el-form>
+			</el-col>
+		</el-row>
 	</el-main>
 </template>
 
