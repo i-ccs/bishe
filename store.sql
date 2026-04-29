@@ -11,7 +11,7 @@
  Target Server Version : 80409 (8.4.9)
  File Encoding         : 65001
 
- Date: 29/04/2026 12:34:59
+ Date: 29/04/2026 14:39:50
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `access_token` (
   `token_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '临时访问牌ID',
   `token` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '临时访问牌',
   `info` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci COMMENT '信息',
-  `maxage` int NOT NULL DEFAULT '2' COMMENT '最大寿命：默认2小时',
+  `max_age` int NOT NULL DEFAULT '2' COMMENT '最大寿命：默认2小时',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '用户编号',
@@ -142,7 +142,7 @@ CREATE TABLE `comment` (
   `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '评论人ID',
   `reply_to_id` int unsigned NOT NULL DEFAULT '0' COMMENT '回复评论ID',
   `content` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci COMMENT '内容',
-  `nickname` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '昵称',
+  `nick_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '昵称',
   `avatar` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '头像地址',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
