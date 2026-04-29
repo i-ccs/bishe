@@ -1,12 +1,12 @@
 <template>
-	<div class="diy_home diy_list diy_commodity_information" id="diy_commodity_information_list">
+	<div class="diy_home diy_list diy_merchandise_information" id="diy_merchandise_information_list">
 		<!-- 列表 -->
 		<div class="diy_view_list list list-x">
 					<router-link class="diy_card goods diy_list_box_wrap" v-for="(o, i) in list" :key="i"
-				:to="'/commodity_information/details?commodity_information_id=' + o['commodity_information_id']">
+				:to="'/merchandise_information/details?merchandise_information_id=' + o['merchandise_information_id']">
 										<!-- 图片 -->
 				<div class="diy_list_img_box" v-if="imgList.length" >
-					<div class="diy_row" v-for="(item,index) in imgList" :key="item+index" v-show="$check_field('get',item.name,'/commodity_information/details') && +item.is_img_list">
+					<div class="diy_row" v-for="(item,index) in imgList" :key="item+index" v-show="$check_field('get',item.name,'/merchandise_information/details') && +item.is_img_list">
 						<div class="diy_title diy_list_img_title">
 							<span>{{item.title}}:</span>
 						</div>
@@ -18,7 +18,7 @@
 				<!-- 内容 -->
 				<div class="diy_list_item_box">
 					<div class="diy_list_item_content" v-for="(item,index) in showItemList" :key="item+index">
-						<div class="diy_row" :class="{[item.name]:true}" v-if="$check_field('get',item.name,'/commodity_information/details') && +item.is_img_list">
+						<div class="diy_row" :class="{[item.name]:true}" v-if="$check_field('get',item.name,'/merchandise_information/details') && +item.is_img_list">
 							<div class="diy_title">
 								<span>{{item.title}}:</span>
 							</div>
@@ -40,44 +40,44 @@
 		<div class="diy_view_table">
 			<table class="diy_table">
 				<tr class="diy_row">
-								<th class="diy_title" v-if="$check_field('get','product_name','/commodity_information/list')">
+								<th class="diy_title" v-if="$check_field('get','product_name','/merchandise_information/list')">
 					商品名称
 				</th>
-										<th class="diy_title" v-if="$check_field('get','product_category','/commodity_information/list')">
+										<th class="diy_title" v-if="$check_field('get','product_category','/merchandise_information/list')">
 					商品类别
 				</th>
-										<th class="diy_title" v-if="$check_field('get','product_brand','/commodity_information/list')">
+										<th class="diy_title" v-if="$check_field('get','product_brand','/merchandise_information/list')">
 					商品品牌
 				</th>
-										<th class="diy_title" v-if="$check_field('get','commodity_specifications','/commodity_information/list')">
+										<th class="diy_title" v-if="$check_field('get','merchandise_specifications','/merchandise_information/list')">
 					商品规格
 				</th>
-											<th class="diy_title" v-if="$check_field('get','product_images','/commodity_information/list')">
+											<th class="diy_title" v-if="$check_field('get','product_images','/merchandise_information/list')">
 					商品图片
 				</th>
 										</tr>
 								<tr class="diy_row" v-for="(o,i) in list" :key="o+i" @click="to_detail(o)">
-													<td class="diy_field diy_text" v-if="$check_field('get','product_name','/commodity_information/list')">
+													<td class="diy_field diy_text" v-if="$check_field('get','product_name','/merchandise_information/list')">
 						<span>
 							{{ o["product_name"] }}
 						</span>
 					</td>
-											<td class="diy_field diy_text" v-if="$check_field('get','product_category','/commodity_information/list')">
+											<td class="diy_field diy_text" v-if="$check_field('get','product_category','/merchandise_information/list')">
 						<span>
 							{{ o["product_category"] }}
 						</span>
 					</td>
-											<td class="diy_field diy_text" v-if="$check_field('get','product_brand','/commodity_information/list')">
+											<td class="diy_field diy_text" v-if="$check_field('get','product_brand','/merchandise_information/list')">
 						<span>
 							{{ o["product_brand"] }}
 						</span>
 					</td>
-											<td class="diy_field diy_text" v-if="$check_field('get','commodity_specifications','/commodity_information/list')">
+											<td class="diy_field diy_text" v-if="$check_field('get','merchandise_specifications','/merchandise_information/list')">
 						<span>
-							{{ o["commodity_specifications"] }}
+							{{ o["merchandise_specifications"] }}
 						</span>
 					</td>
-												<td class="diy_field" v-if="$check_field('get','product_images','/commodity_information/list')">
+												<td class="diy_field" v-if="$check_field('get','product_images','/merchandise_information/list')">
 						<img class="diy_img" :src="$fullUrl(o['product_images'])" />
 					</td>
 										</tr>
@@ -89,9 +89,9 @@
                 <div class="slider" ref="slider">
 				                <div  v-for="(o, i) in list" :key="i" class="slide" >
 				                    
-                    <router-link :to="'/commodity_information/details?commodity_information_id=' + o['commodity_information_id']" class="lis_cont">
+                    <router-link :to="'/merchandise_information/details?merchandise_information_id=' + o['merchandise_information_id']" class="lis_cont">
 						                        <div class="diy_list_img_box" v-if="imgList.length" >
-    					        <div class="diy_row" v-for="(item, index) in imgList" :key="item + index" v-show="$check_field('get',item.name,'/commodity_information/details') && +item.is_img_list">
+    					        <div class="diy_row" v-for="(item, index) in imgList" :key="item + index" v-show="$check_field('get',item.name,'/merchandise_information/details') && +item.is_img_list">
     						<div class="diy_title diy_list_img_title">
 							
     						</div>
@@ -104,7 +104,7 @@
                            
                     <div class="context">
                         <div class="diy_list_item_content" v-for="(item,index) in showItemList" :key="item+index">
-						<div class="diy_row" :class="{[item.name]:true}"  v-if="$check_field('get',item.name,'/commodity_information/details') && +item.is_img_list">
+						<div class="diy_row" :class="{[item.name]:true}"  v-if="$check_field('get',item.name,'/merchandise_information/details') && +item.is_img_list">
 							<div class="diy_title">
 								<span>{{item.title}}:</span>
 							</div>
@@ -186,7 +186,7 @@
 								},
 								{
 									title: "商品规格",
-									name: "commodity_specifications",
+									name: "merchandise_specifications",
 									type: "文本",
 									is_img_list: "1"
 								},
@@ -198,7 +198,7 @@
 								},
 								{
 									title: "商品价格",
-									name: "commodity_price",
+									name: "merchandise_price",
 									type: "数字",
 									is_img_list: "0"
 								},
@@ -313,7 +313,7 @@
 
 			},
 			to_detail(v){
-				this.$router.push("/commodity_information/details?commodity_information_id="+v.commodity_information_id)
+				this.$router.push("/merchandise_information/details?merchandise_information_id="+v.merchandise_information_id)
 			},
 			get_user_name(name,id){
 				var obj = null;

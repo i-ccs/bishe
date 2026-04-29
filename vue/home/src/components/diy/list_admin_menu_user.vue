@@ -17,11 +17,11 @@
         <span class="right_span"><b-icon icon="house-fill"></b-icon></span>
       </router-link>
               <router-link
-          to="/commodity_information/table"
+          to="/merchandise_information/table"
           class="menu_item"
-          :class="{ selected: this.$route.path=== '/commodity_information/table'}"
-          v-if="$check_action('/commodity_information/table','get')">
-        <span class="left_span">{{ $page_title("/commodity_information/table") || 商品信息 }}</span>
+          :class="{ selected: this.$route.path=== '/merchandise_information/table'}"
+          v-if="$check_action('/merchandise_information/table','get')">
+        <span class="left_span">{{ $page_title("/merchandise_information/table") || 商品信息 }}</span>
         <span class="right_span"><b-icon icon="house-fill"></b-icon></span>
       </router-link>
               <router-link

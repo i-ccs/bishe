@@ -1,7 +1,7 @@
 package com.project.demo.controller;
 
-import com.project.demo.entity.CommodityInformation;
-import com.project.demo.service.CommodityInformationService;
+import com.project.demo.entity.MerchandiseInformation;
+import com.project.demo.service.MerchandiseInformationService;
 import com.project.demo.controller.base.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,18 +19,18 @@ import java.util.*;
 
 
 /**
- * 商品信息：(CommodityInformation)表控制层
+ * 商品信息：(merchandiseInformation)表控制层
  *
  */
 @RestController
-@RequestMapping("/commodity_information")
-public class CommodityInformationController extends BaseController<CommodityInformation, CommodityInformationService> {
+@RequestMapping("/merchandise_information")
+public class MerchandiseInformationController extends BaseController<MerchandiseInformation, MerchandiseInformationService> {
 
     /**
      * 商品信息对象
      */
     @Autowired
-    public CommodityInformationController(CommodityInformationService service) {
+    public MerchandiseInformationController(MerchandiseInformationService service) {
         setService(service);
     }
 

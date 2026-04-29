@@ -13,7 +13,7 @@
 						<div class="card_addres pl-2">
 							<!-- 商品信息 -->
 							<div><span>商品信息</span></div>
-							<table_commodity_information v-if="$check_action('/commodity_information/table','get')"></table_commodity_information>
+							<table_merchandise_information v-if="$check_action('/merchandise_information/table','get')"></table_merchandise_information>
 						</div>
 					</div>
 				</div>
@@ -25,7 +25,7 @@
 
 <script>
 	import list_admin_menu_user from "@/components/diy/list_admin_menu_user.vue";
-	import table_commodity_information from "../../components/diy/table_commodity_information.vue";
+	import table_merchandise_information from "../../components/diy/table_merchandise_information.vue";
 	export default {
 		data() {
 			return {
@@ -38,7 +38,7 @@
 
 		components: {
 			list_admin_menu_user,
-			table_commodity_information,
+			table_merchandise_information,
 		},
 	};
 </script>

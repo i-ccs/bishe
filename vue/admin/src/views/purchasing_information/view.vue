@@ -30,18 +30,18 @@
 					<div v-else-if="$check_field('get','product_brand')">{{form['product_brand']}}</div>
 											</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','commodity_specifications') || $check_field('add','commodity_specifications') || $check_field('set','commodity_specifications')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-							<el-form-item label="商品规格" prop="commodity_specifications">
-															<el-input id="commodity_specifications" v-model="form['commodity_specifications']" placeholder="请输入商品规格"
-							  v-if="(form['purchasing_information_id'] && $check_field('set','commodity_specifications')) || (!form['purchasing_information_id'] && $check_field('add','commodity_specifications'))" :disabled="disabledObj['commodity_specifications_isDisabled']"></el-input>
-					<div v-else-if="$check_field('get','commodity_specifications')">{{form['commodity_specifications']}}</div>
+								<el-col v-if="$check_field('get','merchandise_specifications') || $check_field('add','merchandise_specifications') || $check_field('set','merchandise_specifications')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+							<el-form-item label="商品规格" prop="merchandise_specifications">
+															<el-input id="merchandise_specifications" v-model="form['merchandise_specifications']" placeholder="请输入商品规格"
+							  v-if="(form['purchasing_information_id'] && $check_field('set','merchandise_specifications')) || (!form['purchasing_information_id'] && $check_field('add','merchandise_specifications'))" :disabled="disabledObj['merchandise_specifications_isDisabled']"></el-input>
+					<div v-else-if="$check_field('get','merchandise_specifications')">{{form['merchandise_specifications']}}</div>
 											</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','commodity_price') || $check_field('add','commodity_price') || $check_field('set','commodity_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-							<el-form-item label="商品价格" prop="commodity_price">
-											<el-input-number id="commodity_price" v-model.number="form['commodity_price']"
-						v-if="(form['purchasing_information_id'] && $check_field('set','commodity_price')) || (!form['purchasing_information_id'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']"></el-input-number>
-					<div v-else-if="$check_field('get','commodity_price')">{{form['commodity_price']}}</div>
+								<el-col v-if="$check_field('get','merchandise_price') || $check_field('add','merchandise_price') || $check_field('set','merchandise_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+							<el-form-item label="商品价格" prop="merchandise_price">
+											<el-input-number id="merchandise_price" v-model.number="form['merchandise_price']"
+						v-if="(form['purchasing_information_id'] && $check_field('set','merchandise_price')) || (!form['purchasing_information_id'] && $check_field('add','merchandise_price'))" :disabled="disabledObj['merchandise_price_isDisabled']"></el-input-number>
+					<div v-else-if="$check_field('get','merchandise_price')">{{form['merchandise_price']}}</div>
 							</el-form-item>
 			</el-col>
 								<el-col v-if="$check_field('get','purchase_order_number') || $check_field('add','purchase_order_number') || $check_field('set','purchase_order_number')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
@@ -142,8 +142,8 @@
 										"product_name":  '', // 商品名称
 										"product_category":  '', // 商品类别
 										"product_brand":  '', // 商品品牌
-										"commodity_specifications":  '', // 商品规格
-										"commodity_price":  0, // 商品价格
+										"merchandise_specifications":  '', // 商品规格
+										"merchandise_price":  0, // 商品价格
 										"purchase_order_number": this.$get_stamp(), // 采购单号
 										"supplier_name":  '', // 供应商名称
 										"purchase_date":  '', // 采购日期
@@ -158,8 +158,8 @@
 										"product_name_isDisabled": false,
 										"product_category_isDisabled": false,
 										"product_brand_isDisabled": false,
-										"commodity_specifications_isDisabled": false,
-					          			"commodity_price_isDisabled": false,
+										"merchandise_specifications_isDisabled": false,
+					          			"merchandise_price_isDisabled": false,
 										"purchase_order_number_isDisabled": false,
 										"supplier_name_isDisabled": false,
 										"purchase_date_isDisabled": false,

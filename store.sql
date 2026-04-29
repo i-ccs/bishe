@@ -155,19 +155,19 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='评论';
 
 -- ----------------------------
--- Table structure for commodity_information
+-- Table structure for merchandise_information
 -- ----------------------------
-DROP TABLE IF EXISTS `commodity_information`;
-CREATE TABLE `commodity_information` (
-  `commodity_information_id` int NOT NULL AUTO_INCREMENT COMMENT '商品信息ID',
+DROP TABLE IF EXISTS `merchandise_information`;
+CREATE TABLE `merchandise_information` (
+  `merchandise_information_id` int NOT NULL AUTO_INCREMENT COMMENT '商品信息ID',
   `product_code` varchar(64) DEFAULT NULL COMMENT '商品编码',
   `product_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
   `product_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
   `product_brand` varchar(64) DEFAULT NULL COMMENT '商品品牌',
-  `commodity_specifications` varchar(64) DEFAULT NULL COMMENT '商品规格',
+  `merchandise_specifications` varchar(64) DEFAULT NULL COMMENT '商品规格',
   `product_inventory` double(8,2) DEFAULT '0.00' COMMENT '商品库存',
   `product_images` varchar(255) DEFAULT NULL COMMENT '商品图片',
-  `commodity_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
+  `merchandise_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
   `product_introduction` text COMMENT '商品介绍',
   `product_details` longtext COMMENT '商品详情',
   `hits` int NOT NULL DEFAULT '0' COMMENT '点击数',
@@ -179,7 +179,7 @@ CREATE TABLE `commodity_information` (
   `inventory_information_limit_times` int NOT NULL DEFAULT '0' COMMENT '库存限制次数',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`commodity_information_id`)
+  PRIMARY KEY (`merchandise_information_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品信息';
 
 -- ----------------------------
@@ -260,8 +260,8 @@ CREATE TABLE `purchasing_information` (
   `product_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
   `product_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
   `product_brand` varchar(64) DEFAULT NULL COMMENT '商品品牌',
-  `commodity_specifications` varchar(64) DEFAULT NULL COMMENT '商品规格',
-  `commodity_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
+  `merchandise_specifications` varchar(64) DEFAULT NULL COMMENT '商品规格',
+  `merchandise_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
   `purchase_order_number` varchar(64) DEFAULT NULL COMMENT '采购单号',
   `supplier_name` varchar(64) DEFAULT NULL COMMENT '供应商名称',
   `purchase_date` date DEFAULT NULL COMMENT '采购日期',
@@ -302,7 +302,7 @@ CREATE TABLE `sales_information` (
   `product_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
   `product_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
   `product_brand` varchar(64) DEFAULT NULL COMMENT '商品品牌',
-  `commodity_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
+  `merchandise_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
   `sales_order_number` varchar(64) DEFAULT NULL COMMENT '销售单号',
   `registered_user` int DEFAULT '0' COMMENT '注册用户',
   `user_name` varchar(64) DEFAULT NULL COMMENT '用户姓名',
@@ -343,7 +343,7 @@ CREATE TABLE `supply_information` (
   `supply_information_id` int NOT NULL AUTO_INCREMENT COMMENT '供应信息ID',
   `supplier_name` varchar(64) DEFAULT NULL COMMENT '供应商名称',
   `suppliers_phone_number` varchar(16) DEFAULT NULL COMMENT '供应商电话',
-  `commodity_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
+  `merchandise_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
   `comprehensive_evaluation` varchar(64) DEFAULT NULL COMMENT '综合评价',
   `supply_frequency` varchar(64) DEFAULT NULL COMMENT '供应频率',
   `supply_products` text COMMENT '供应产品',

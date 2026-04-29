@@ -28,16 +28,16 @@
 				source_table="registered_user"
 			  ></list_result_search>
 												  <list_result_search
-				v-if="$check_action('/commodity_information/list', 'get')"
-				:list="result_commodity_information_product_name"
+				v-if="$check_action('/merchandise_information/list', 'get')"
+				:list="result_merchandise_information_product_name"
 				title="商品信息商品名称"
-				source_table="commodity_information"
+				source_table="merchandise_information"
 			  ></list_result_search>
 								  <list_result_search
-				v-if="$check_action('/commodity_information/list', 'get')"
-				:list="result_commodity_information_product_category"
+				v-if="$check_action('/merchandise_information/list', 'get')"
+				:list="result_merchandise_information_product_category"
 				title="商品信息商品类别"
-				source_table="commodity_information"
+				source_table="merchandise_information"
 			  ></list_result_search>
 																																	  <list_result_search
 				v-if="$check_action('/sales_information/list', 'get')"
@@ -59,7 +59,7 @@
 			  ></list_result_search>
 											  <list_result_search
 				v-if="$check_action('/supply_information/list', 'get')"
-				:list="result_supply_information_commodity_category"
+				:list="result_supply_information_merchandise_category"
 				title="供应信息商品类别"
 				source_table="supply_information"
 			  ></list_result_search>
@@ -109,12 +109,12 @@ export default {
 	  "result_article": [],
 						"result_registered_user_user_name":[],
 								"result_registered_user_user_gender":[],
-												"result_commodity_information_product_name":[],
-								"result_commodity_information_product_category":[],
+												"result_merchandise_information_product_name":[],
+								"result_merchandise_information_product_category":[],
 																																	"result_sales_information_product_name":[],
 								"result_sales_information_product_category":[],
 																																	"result_supply_information_supplier_name":[],
-											"result_supply_information_commodity_category":[],
+											"result_supply_information_merchandise_category":[],
 																											"result_purchasing_information_product_name":[],
 								"result_purchasing_information_product_category":[],
 																																										"result_inventory_information_product_name":[],
@@ -162,26 +162,26 @@ export default {
 										/**
 	 * 获取product_name
 	 */
-	get_commodity_information_product_name(){
-		let url = "~/api/commodity_information/get_list?like=0";
+	get_merchandise_information_product_name(){
+		let url = "~/api/merchandise_information/get_list?like=0";
 				this.$get(url, { page: 1, size: 10, "product_name": this.query.word }, (json) => {
 		  if (json.result) {
-			var result_commodity_information_product_name = json.result.list;
-			result_commodity_information_product_name.map(o => o.title = o['product_name'])
-	  			this.result_commodity_information_product_name = result_commodity_information_product_name
+			var result_merchandise_information_product_name = json.result.list;
+			result_merchandise_information_product_name.map(o => o.title = o['product_name'])
+	  			this.result_merchandise_information_product_name = result_merchandise_information_product_name
 		 	}
 		});
 	},
 						/**
 	 * 获取product_category
 	 */
-	get_commodity_information_product_category(){
-		let url = "~/api/commodity_information/get_list?like=0";
+	get_merchandise_information_product_category(){
+		let url = "~/api/merchandise_information/get_list?like=0";
 				this.$get(url, { page: 1, size: 10, "product_category": this.query.word }, (json) => {
 		  if (json.result) {
-			var result_commodity_information_product_category = json.result.list;
-			result_commodity_information_product_category.map(o => o.title = o['product_category'])
-	  			this.result_commodity_information_product_category = result_commodity_information_product_category
+			var result_merchandise_information_product_category = json.result.list;
+			result_merchandise_information_product_category.map(o => o.title = o['product_category'])
+	  			this.result_merchandise_information_product_category = result_merchandise_information_product_category
 		 	}
 		});
 	},
@@ -225,15 +225,15 @@ export default {
 		});
 	},
 									/**
-	 * 获取commodity_category
+	 * 获取merchandise_category
 	 */
-	get_supply_information_commodity_category(){
+	get_supply_information_merchandise_category(){
 		let url = "~/api/supply_information/get_list?like=0";
-				this.$get(url, { page: 1, size: 10, "commodity_category": this.query.word }, (json) => {
+				this.$get(url, { page: 1, size: 10, "merchandise_category": this.query.word }, (json) => {
 		  if (json.result) {
-			var result_supply_information_commodity_category = json.result.list;
-			result_supply_information_commodity_category.map(o => o.title = o['commodity_category'])
-	  			this.result_supply_information_commodity_category = result_supply_information_commodity_category
+			var result_supply_information_merchandise_category = json.result.list;
+			result_supply_information_merchandise_category.map(o => o.title = o['merchandise_category'])
+	  			this.result_supply_information_merchandise_category = result_supply_information_merchandise_category
 		 	}
 		});
 	},
@@ -299,12 +299,12 @@ export default {
 	this.get_article();
 					this.get_registered_user_user_name();
 							this.get_registered_user_user_gender();
-											this.get_commodity_information_product_name();
-							this.get_commodity_information_product_category();
+											this.get_merchandise_information_product_name();
+							this.get_merchandise_information_product_category();
 																																this.get_sales_information_product_name();
 							this.get_sales_information_product_category();
 																																this.get_supply_information_supplier_name();
-										this.get_supply_information_commodity_category();
+										this.get_supply_information_merchandise_category();
 																										this.get_purchasing_information_product_name();
 							this.get_purchasing_information_product_category();
 																																									this.get_inventory_information_product_name();
@@ -316,12 +316,12 @@ export default {
 	  this.get_article();
 				  this.get_registered_user_user_name();
 						  this.get_registered_user_user_gender();
-										  this.get_commodity_information_product_name();
-						  this.get_commodity_information_product_category();
+										  this.get_merchandise_information_product_name();
+						  this.get_merchandise_information_product_category();
 																															  this.get_sales_information_product_name();
 						  this.get_sales_information_product_category();
 																															  this.get_supply_information_supplier_name();
-									  this.get_supply_information_commodity_category();
+									  this.get_supply_information_merchandise_category();
 																									  this.get_purchasing_information_product_name();
 						  this.get_purchasing_information_product_category();
 																																								  this.get_inventory_information_product_name();

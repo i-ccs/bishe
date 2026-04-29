@@ -12,8 +12,8 @@
 				</el-col>
 												<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
 					<el-form-item label="商品类别">
-									<el-select v-model="query.commodity_category">
-											<el-option v-for="o in list_commodity_category" :key="o.product_category" :label="o.product_category"
+									<el-select v-model="query.merchandise_category">
+											<el-option v-for="o in list_merchandise_category" :key="o.product_category" :label="o.product_category"
 								:value="o.product_category">
 							</el-option>
 										</el-select>
@@ -44,7 +44,7 @@
 					</el-table-column>
 					<el-table-column prop="suppliers_phone_number" @sort-change="$sortChange" label="供应商电话" 				v-if="$check_field('get','suppliers_phone_number')" min-width="200">
 					</el-table-column>
-					<el-table-column prop="commodity_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','commodity_category')" min-width="200">
+					<el-table-column prop="merchandise_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','merchandise_category')" min-width="200">
 					</el-table-column>
 					<el-table-column prop="comprehensive_evaluation" @sort-change="$sortChange" label="综合评价" 				v-if="$check_field('get','comprehensive_evaluation')" min-width="200">
 					</el-table-column>
@@ -141,7 +141,7 @@
 					"size": 7,
 					"page": 1,
 								"supplier_name": "",
-												"commodity_category": "",
+												"merchandise_category": "",
 													"login_time": "",
 					"create_time": "",
 					"orderby": `create_time desc`
@@ -150,7 +150,7 @@
 				// 数据
 				list: [],
 																	// 商品类别列表
-				list_commodity_category: [""],
+				list_merchandise_category: [""],
 																message: '',
 			}
 		},
@@ -170,10 +170,10 @@
 								/**
 			 * 获取商品类别列表
 			 */
-			async get_list_commodity_category() {
-				var json = await this.$get("~/api/commodity_information/get_list?");
+			async get_list_merchandise_category() {
+				var json = await this.$get("~/api/merchandise_information/get_list?");
 				if(json.result){
-					this.list_commodity_category = json.result.list;
+					this.list_merchandise_category = json.result.list;
 				}else if (json.error){
 					console.log(json.error);
 				}
@@ -185,7 +185,7 @@
 																		},
 				created() {
 								// 初始化商品类别列表
-			this.get_list_commodity_category();
+			this.get_list_merchandise_category();
 														}
 	}
 </script>

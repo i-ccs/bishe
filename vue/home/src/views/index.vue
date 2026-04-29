@@ -82,7 +82,7 @@
 		    </div>
 		</div>
 				<!-- 推荐商品信息模块(开始) -->
-		<div class="ins warp model1" v-if="$check_action('/commodity_information/list', 'get')">
+		<div class="ins warp model1" v-if="$check_action('/merchandise_information/list', 'get')">
 		    <!-- 容器 -->
 		    <div class="container">
 		        <div class="row">
@@ -94,20 +94,20 @@
 		                    </div>
 							<div class="text_t"><span></span></div>
 		                    <div class="more_box">
-		                        <router-link to="/commodity_information/list" class="ins_more more">
+		                        <router-link to="/merchandise_information/list" class="ins_more more">
 		                            <span calss="mor">更多</span>
 		                        </router-link>
 		                    </div>
 
 		                </div>
 		                <!-- 商品信息推荐列表组件 -->
-						<div class="list_commodity_information_box" ins_box>
+						<div class="list_merchandise_information_box" ins_box>
 							<div class="Left_box">
 								<span class="i"></span>
 								<span class="i"></span>
 								<span class="i"></span>
                         	</div>
-							<list_commodity_information :list="list_commodity_information" />
+							<list_merchandise_information :list="list_merchandise_information" />
 							<div class="right_box">
 								<span class="i"></span>
 								<span class="i"></span>
@@ -126,7 +126,7 @@
 
 <script>
 	import mixin from "@/mixins/page.js";
-			import list_commodity_information from "@/components/diy/list_commodity_information.vue";
+			import list_merchandise_information from "@/components/diy/list_merchandise_information.vue";
 						import bar_title from "@/components/diy/bar_title.vue";
 	import list_article from "@/components/diy/list_article.vue";
 	import swiper_img from "@/components/diy/swiper_img.vue";
@@ -135,7 +135,7 @@
 	export default {
 		mixins: [mixin],
 		components: {
-					list_commodity_information,
+					list_merchandise_information,
 								bar_title,
 			list_article,
 			swiper_img,
@@ -169,7 +169,7 @@
 					{key: "create_time", label: "发布时间", type: "文本"},
 				],
 				show_list_article: true,
-						list_commodity_information: [],
+						list_merchandise_information: [],
 									list_slide: [],
 				list_menu: [],
 				list_notice: [],
@@ -218,15 +218,15 @@
 			},
 
 					// 获取商品信息列表
-			get_commodity_information() {
-				let url = "~/api/commodity_information/get_list?";
+			get_merchandise_information() {
+				let url = "~/api/merchandise_information/get_list?";
 														let param = {
 									"page": 1,
 					"size": 12
 				}
 								this.$get(url, param, (json) => {
 					if (json.result) {
-						this.list_commodity_information = json.result.list;
+						this.list_merchandise_information = json.result.list;
 					}
 				})
 			},
@@ -319,7 +319,7 @@
 			}
 		},
 		mounted() {
-					this.get_commodity_information();
+					this.get_merchandise_information();
 								this.get_menu();
 			this.get_slides();
 			this.get_article();
@@ -327,11 +327,11 @@
 		},
 		computed: {
 				    list_table_inventory_information() {
-		        var list = this.list_commodity_information;
+		        var list = this.list_merchandise_information;
 		        var list_table = [];
 		        for (let i = 0; i < list.length; i++) {
 		            list_table[i] = {};
-		            this.vm_arr_commodity_information.map((o) => {
+		            this.vm_arr_merchandise_information.map((o) => {
 		                // 第二个中括号是对象的属性
 		                list_table[i][o] = list[i][o] || "";
 		            });

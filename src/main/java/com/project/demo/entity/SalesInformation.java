@@ -36,8 +36,8 @@ public class SalesInformation implements Serializable {
     @TableField(value = "product_brand")
     private String productBrand;
     // 商品价格
-    @TableField(value = "commodity_price")
-    private Double commodityPrice;
+    @TableField(value = "merchandise_price")
+    private Double merchandisePrice;
     // 销售单号
     @TableField(value = "sales_order_number")
     private String salesOrderNumber;

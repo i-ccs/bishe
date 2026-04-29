@@ -30,8 +30,8 @@ public class SupplyInformation implements Serializable {
     @TableField(value = "suppliers_phone_number")
     private String suppliersPhoneNumber;
     // 商品类别
-    @TableField(value = "commodity_category")
-    private String commodityCategory;
+    @TableField(value = "merchandise_category")
+    private String merchandiseCategory;
     // 综合评价
     @TableField(value = "comprehensive_evaluation")
     private String comprehensiveEvaluation;

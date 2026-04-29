@@ -20,8 +20,8 @@
          <el-col :xs="24" :sm="10" :lg="8" class="search_btn_1 search_btn_wrap_1 btns">
                               <el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
                 <el-button @click="reset()" style="margin-right: 74px;" class="search_btn_reset">重置</el-button>
-                                                      <el-button v-if="$check_action('/commodity_information/table','add') || $check_action('/commodity_information/view','add')" @click="$router.push('./view?')" class="add">添加</el-button>
-            <el-button v-if="$check_action('/commodity_information/table','del') || $check_action('/commodity_information/view','del')" class="search_btn_del" type="danger" @click="delInfo()">删除</el-button>
+                                                      <el-button v-if="$check_action('/merchandise_information/table','add') || $check_action('/merchandise_information/view','add')" @click="$router.push('./view?')" class="add">添加</el-button>
+            <el-button v-if="$check_action('/merchandise_information/table','del') || $check_action('/merchandise_information/view','del')" class="search_btn_del" type="danger" @click="delInfo()">删除</el-button>
                         </el-col>
        
         </el-col>
@@ -38,7 +38,7 @@
                                 </el-table-column>
                                               <el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','product_brand')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="commodity_specifications" @sort-change="$sortChange" label="商品规格"                                v-if="$check_field('get','commodity_specifications')" min-width="200">
+                                              <el-table-column prop="merchandise_specifications" @sort-change="$sortChange" label="商品规格"                                v-if="$check_field('get','merchandise_specifications')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存"                                v-if="$check_field('get','product_inventory')" min-width="200">
                                 </el-table-column>
@@ -52,7 +52,7 @@
                       </el-image>
                     </template>
 				                </el-table-column>
-                                              <el-table-column prop="commodity_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','commodity_price')" min-width="200">
+                                              <el-table-column prop="merchandise_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','merchandise_price')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="product_introduction" @sort-change="$sortChange" label="商品介绍"                                v-if="$check_field('get','product_introduction')" min-width="200">
                                 </el-table-column>
@@ -77,7 +77,7 @@
         
         
 
-                <el-table-column fixed="right" label="操作" min-width="120" v-if="$check_action('/commodity_information/table','set') || $check_action('/commodity_information/view','set') || $check_action('/commodity_information/view','get')
+                <el-table-column fixed="right" label="操作" min-width="120" v-if="$check_action('/merchandise_information/table','set') || $check_action('/merchandise_information/view','set') || $check_action('/merchandise_information/view','get')
 												|| $check_action('/sales_information/table','add') || $check_action('/sales_information/view','add')
 						|| $check_action('/purchasing_information/table','add') || $check_action('/purchasing_information/view','add')
 						|| $check_action('/inventory_information/table','add') || $check_action('/inventory_information/view','add')
@@ -86,7 +86,7 @@
 
       <template slot-scope="scope">
         <router-link class="el-button el-button--small is-plain el-button--success" style="margin: 5px !important;"
-                     v-if="$check_action('/commodity_information/table','set') || $check_action('/commodity_information/view','set') || $check_action('/commodity_information/view','get')"
+                     v-if="$check_action('/merchandise_information/table','set') || $check_action('/merchandise_information/view','set') || $check_action('/merchandise_information/view','get')"
                                  :to="'./view?' + field + '=' + scope.row[field]"
                                  size="small">
           <span>详情</span>
@@ -101,8 +101,8 @@
 					                  					                    <el-button class="el-button el-button--small is-plain el-button--default" style="margin: 5px !important;" size="small"  @click="to_table(scope.row,'/inventory_information/view')" v-if="($check_action('/inventory_information/table','add') || $check_action('/inventory_information/view','add')) && !scope.row['inventory_information_limit']">
                       <span>库存</span>
                     </el-button>
-					                                                                                            <router-link v-if="$check_comment('/commodity_information/table')" class="el-button el-button--small is-plain el-button--primary"
-                             :to="'../comment/table?size=10&page=1&source_table=commodity_information&source_field=' + field + '&source_id=' + scope.row[field]" size="small">
+					                                                                                            <router-link v-if="$check_comment('/merchandise_information/table')" class="el-button el-button--small is-plain el-button--primary"
+                             :to="'../comment/table?size=10&page=1&source_table=merchandise_information&source_field=' + field + '&source_id=' + scope.row[field]" size="small">
                   查看评论
                 </router-link>
                                   		  		        </template>
@@ -145,11 +145,11 @@
         // 弹框
         showModal: false,
         // 获取数据地址
-        url_get_list: "~/api/commodity_information/get_list?like=0",
-        url_del: "~/api/commodity_information/del?",
+        url_get_list: "~/api/merchandise_information/get_list?like=0",
+        url_del: "~/api/merchandise_information/del?",
 
         // 字段ID
-        field: "commodity_information_id",
+        field: "merchandise_information_id",
         // 查询
         query: {
           "size": 7,
@@ -179,8 +179,8 @@
 		  	let _this = this
 					  			  	_this.list.map((item) => {
 		  		let param = {
-		  			source_table: "commodity_information",
-		  			source_id: item.commodity_information_id,
+		  			source_table: "merchandise_information",
+		  			source_id: item.merchandise_information_id,
 		  			source_user_id: _this.user.user_id
 		  		};
 		  		if(item.sales_information_limit_times > 0){
@@ -200,8 +200,8 @@
 		  	})
 		  			  	_this.list.map((item) => {
 		  		let param = {
-		  			source_table: "commodity_information",
-		  			source_id: item.commodity_information_id,
+		  			source_table: "merchandise_information",
+		  			source_id: item.merchandise_information_id,
 		  			source_user_id: _this.user.user_id
 		  		};
 		  		if(item.purchasing_information_limit_times > 0){
@@ -221,8 +221,8 @@
 		  	})
 		  			  	_this.list.map((item) => {
 		  		let param = {
-		  			source_table: "commodity_information",
-		  			source_id: item.commodity_information_id,
+		  			source_table: "merchandise_information",
+		  			source_id: item.merchandise_information_id,
 		  			source_user_id: _this.user.user_id
 		  		};
 		  		if(item.inventory_information_limit_times > 0){

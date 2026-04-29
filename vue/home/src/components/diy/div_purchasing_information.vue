@@ -165,12 +165,12 @@
 						},
 						{
 							title: "商品规格",
-							name: "commodity_specifications",
+							name: "merchandise_specifications",
 							type: "文本"
 						},
 						{
 							title: "商品价格",
-							name: "commodity_price",
+							name: "merchandise_price",
 							type: "数字"
 						},
 						{

@@ -30,11 +30,11 @@
 					<div v-else-if="$check_field('get','product_brand')">{{form['product_brand']}}</div>
 											</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','commodity_price') || $check_field('add','commodity_price') || $check_field('set','commodity_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="商品价格" prop="commodity_price">
-								<el-input-number id="commodity_price" v-model.number="form['commodity_price']"
-						v-if="(form['sales_information_id'] && $check_field('set','commodity_price')) || (!form['sales_information_id'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']"></el-input-number>
-					<div v-else-if="$check_field('get','commodity_price')">{{form['commodity_price']}}</div>
+								<el-col v-if="$check_field('get','merchandise_price') || $check_field('add','merchandise_price') || $check_field('set','merchandise_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="商品价格" prop="merchandise_price">
+								<el-input-number id="merchandise_price" v-model.number="form['merchandise_price']"
+						v-if="(form['sales_information_id'] && $check_field('set','merchandise_price')) || (!form['sales_information_id'] && $check_field('add','merchandise_price'))" :disabled="disabledObj['merchandise_price_isDisabled']"></el-input-number>
+					<div v-else-if="$check_field('get','merchandise_price')">{{form['merchandise_price']}}</div>
 							</el-form-item>
 			</el-col>
 								<el-col v-if="$check_field('get','sales_order_number') || $check_field('add','sales_order_number') || $check_field('set','sales_order_number')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
@@ -82,7 +82,7 @@
 			</el-col>
 								<el-col v-if="$check_field('get','total_order_price') || $check_field('add','total_order_price') || $check_field('set','total_order_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="订单总价" prop="total_order_price">
-								{{toFixed(form['commodity_price'] * form['order_quantity'])}}
+								{{toFixed(form['merchandise_price'] * form['order_quantity'])}}
 							</el-form-item>
 			</el-col>
 								<el-col v-if="$check_field('get','note_information') || $check_field('add','note_information') || $check_field('set','note_information')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
@@ -138,7 +138,7 @@
 										"product_name":  '', // 商品名称
 										"product_category":  '', // 商品类别
 										"product_brand":  '', // 商品品牌
-										"commodity_price":  0, // 商品价格
+										"merchandise_price":  0, // 商品价格
 										"sales_order_number": this.$get_stamp(), // 销售单号
 										"registered_user": 0, // 注册用户
 										"user_name":  '', // 用户姓名
@@ -151,7 +151,7 @@
 										"product_name_isDisabled": false,
 										"product_category_isDisabled": false,
 										"product_brand_isDisabled": false,
-					          			"commodity_price_isDisabled": false,
+					          			"merchandise_price_isDisabled": false,
 										"sales_order_number_isDisabled": false,
 										"registered_user_isDisabled": false,
 										"user_name_isDisabled": false,
@@ -272,7 +272,7 @@
 			
 	
 										set_total_order_price(){
-				this.form.total_order_price = parseFloat(this.form.commodity_price) * parseFloat(this.form.order_quantity)
+				this.form.total_order_price = parseFloat(this.form.merchandise_price) * parseFloat(this.form.order_quantity)
 			},
 							// 自动计算精度处理
 		toFixed: function(num){

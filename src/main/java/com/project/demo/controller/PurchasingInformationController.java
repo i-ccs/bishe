@@ -43,7 +43,7 @@ public class PurchasingInformationController extends BaseController<PurchasingIn
         this.addMap(paramMap);
         String sql = "SELECT MAX(purchasing_information_id) AS max FROM "+"`purchasing_information`";
         Integer max = service.selectBaseCount(sql);
-        sql = "UPDATE `commodity_information` INNER JOIN `purchasing_information` ON commodity_information.product_code=purchasing_information.product_code SET commodity_information.product_inventory= commodity_information.product_inventory + purchasing_information.purchase_quantity WHERE purchasing_information.purchasing_information_id="+max;
+        sql = "UPDATE `merchandise_information` INNER JOIN `purchasing_information` ON merchandise_information.product_code=purchasing_information.product_code SET merchandise_information.product_inventory= merchandise_information.product_inventory + purchasing_information.purchase_quantity WHERE purchasing_information.purchasing_information_id="+max;
         service.updateBaseSql(sql);
         return success(1);
     }

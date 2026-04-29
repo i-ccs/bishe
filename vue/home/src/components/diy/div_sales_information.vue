@@ -165,7 +165,7 @@
 						},
 						{
 							title: "商品价格",
-							name: "commodity_price",
+							name: "merchandise_price",
 							type: "数字"
 						},
 						{

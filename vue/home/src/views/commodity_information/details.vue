@@ -1,13 +1,13 @@
 <template>
-	<div class="diy_details page_commodity_information" id="commodity_information_details">
+	<div class="diy_details page_merchandise_information" id="merchandise_information_details">
 
 		<div class='warp_dt_box'>
 		<div class='warp'>
 			<div class='container'>
 				<div class='row'>
 					<div class='col'>
-						<div class='card_commodity_information'>
-							<div_commodity_information :obj="obj"></div_commodity_information>
+						<div class='card_merchandise_information'>
+							<div_merchandise_information :obj="obj"></div_merchandise_information>
 
 
 
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-	import div_commodity_information from "@/components/diy/div_commodity_information.vue";
+	import div_merchandise_information from "@/components/diy/div_merchandise_information.vue";
 	import list_comment from "@/components/diy/list_comment.vue";
 	import bar_title from "@/components/diy/bar_title.vue";
 	import form_editor from "@/components/diy/form_editor.vue";
@@ -82,13 +82,13 @@
 			list_comment,
 			bar_title,
 			form_editor,
-			div_commodity_information
+			div_merchandise_information
 		},
 		data(){
 			return{
-				url_get_obj: "~/api/commodity_information/get_obj?",
+				url_get_obj: "~/api/merchandise_information/get_obj?",
 
-				field: "commodity_information_id",
+				field: "merchandise_information_id",
 
 				obj: {
 					"praise_len": 0,
@@ -99,13 +99,13 @@
 							"product_name": "",
 							"product_category": "",
 							"product_brand": "",
-							"commodity_specifications": "",
+							"merchandise_specifications": "",
 							"product_inventory": 0,
 							"product_images": "",
-							"commodity_price": 0,
+							"merchandise_price": 0,
 							"product_introduction": "",
 							"product_details": "",
-						"commodity_information_id":0,
+						"merchandise_information_id":0,
 				},
 				// 点赞
 				praise: 0,
@@ -115,8 +115,8 @@
 				state_collect: false,
 				list_comment: [],
 				form_comment: {
-					source_table: "commodity_information",
-					source_field: "commodity_information_id",
+					source_table: "merchandise_information",
+					source_field: "merchandise_information_id",
 					source_id: 0,
 					reply_to_id: 0,
 				},
@@ -130,15 +130,15 @@
 			add_hits(obj) {
 				obj["hits"] = obj["hits"] + 1;
 				var hits = obj["hits"];
-				this.$post('~/api/commodity_information/set?commodity_information_id=' + obj["commodity_information_id"], {
+				this.$post('~/api/merchandise_information/set?merchandise_information_id=' + obj["merchandise_information_id"], {
 					hits
 				}, (res) => {
 					if(res.result){
 						console.log("添加访问量状态：" ,res.result);
 						var body = {
-							source_table: "commodity_information",
-							source_field: "commodity_information_id",
-							source_id: this.obj.commodity_information_id,
+							source_table: "merchandise_information",
+							source_field: "merchandise_information_id",
+							source_id: this.obj.merchandise_information_id,
 							user_id: this.$store.state.user.user_id,
 						};
 						this.$post("~/api/hits/add?", body, (res) => {
@@ -163,7 +163,7 @@
 					// 初始化收藏状态
 					this.get_collect(obj);
 					this.get_comment(obj);
-					this.form_comment.source_id = this.obj.commodity_information_id;
+					this.form_comment.source_id = this.obj.merchandise_information_id;
 														}
 			},
 													/**
@@ -174,9 +174,9 @@
 				var user_id = this.user.user_id;
 
 				var query = {
-					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: obj["commodity_information_id"],
+					source_table: "merchandise_information",
+					source_field: "merchandise_information_id",
+					source_id: obj["merchandise_information_id"],
 					user_id
 				};
 
@@ -206,9 +206,9 @@
 				var user_id = this.user.user_id;
 
 				var query = {
-					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: this.obj["commodity_information_id"],
+					source_table: "merchandise_information",
+					source_field: "merchandise_information_id",
+					source_id: this.obj["merchandise_information_id"],
 					user_id
 				};
 
@@ -218,7 +218,7 @@
 					this.$get('~/api/collect/del?', query, (res) => {
 						if(res.result){
 							var collect = _this.obj.collect-1
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/merchandise_information/set?merchandise_information_id=' + _this.obj["merchandise_information_id"], {
 								collect
 							}, (res) => {
 								if(res.result){
@@ -242,7 +242,7 @@
 																							this.$post('~/api/collect/add?', query, (res) => {
 						if (res.result) {
 							var collect = _this.obj.collect+1
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/merchandise_information/set?merchandise_information_id=' + _this.obj["merchandise_information_id"], {
 								collect
 							}, (res) => {
 								if(res.result){
@@ -269,9 +269,9 @@
 				var user_id = this.user.user_id;
 
 				this.$get("~/api/praise/count?", {
-					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: obj["commodity_information_id"]
+					source_table: "merchandise_information",
+					source_field: "merchandise_information_id",
+					source_id: obj["merchandise_information_id"]
 				}, (res) => {
 					if (res.result || res.result === 0) {
 						this.praise = res.result;
@@ -284,9 +284,9 @@
 				});
 
 				this.$get("~/api/praise/count?", {
-					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: obj["commodity_information_id"],
+					source_table: "merchandise_information",
+					source_field: "merchandise_information_id",
+					source_id: obj["merchandise_information_id"],
 					user_id
 				}, (res) => {
 					if (res.result || res.result === 0) {
@@ -307,9 +307,9 @@
 				var user_id = this.user.user_id;
 
 				var query = {
-					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: this.obj["commodity_information_id"],
+					source_table: "merchandise_information",
+					source_field: "merchandise_information_id",
+					source_id: this.obj["merchandise_information_id"],
 					user_id
 				};
 
@@ -321,7 +321,7 @@
 					this.$get('~/api/praise/del?', query, (res) => {
 						if(res.result){
 							var praise_len = _this.obj.praise_len-1
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/merchandise_information/set?merchandise_information_id=' + _this.obj["merchandise_information_id"], {
 								praise_len
 							}, (res) => {
 								if(res.result){
@@ -343,7 +343,7 @@
 					this.$post('~/api/praise/add?', query, (res) => {
 						if (res.result) {
 							var praise_len = _this.obj.praise_len+1
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/merchandise_information/set?merchandise_information_id=' + _this.obj["merchandise_information_id"], {
 								praise_len
 							}, (res) => {
 								if(res.result){
@@ -395,9 +395,9 @@
 				this.$get(
 						"~/api/comment/get_list?",
 						{
-							source_table: "commodity_information",
-							source_field: "commodity_information_id",
-							source_id: this.obj["commodity_information_id"],
+							source_table: "merchandise_information",
+							source_field: "merchandise_information_id",
+							source_id: this.obj["merchandise_information_id"],
 							page,
 							size,
 							reply_to_id: "0",
@@ -428,9 +428,9 @@
 						this.$get(
 								"~/api/comment/get_list?",
 								{
-									source_table: "commodity_information",
-									source_field: "commodity_information_id",
-									source_id: this.obj["commodity_information_id"],
+									source_table: "merchandise_information",
+									source_field: "merchandise_information_id",
+									source_id: this.obj["merchandise_information_id"],
 									orderby: "create_time desc",
 									reply_to_id: obj.comment_id,
 								},

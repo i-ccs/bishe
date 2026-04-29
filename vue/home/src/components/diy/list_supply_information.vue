@@ -130,7 +130,7 @@
 								},
 								{
 									title: "商品类别",
-									name: "commodity_category",
+									name: "merchandise_category",
 									type: "下寻",
 									is_img_list: "0"
 								},

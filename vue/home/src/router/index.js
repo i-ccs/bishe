@@ -119,29 +119,29 @@ const routes = [
 		
 	// 商品信息表格路由
 	{
-		path: '/commodity_information/table',
-		name: '/commodity_information_table',
-		component: () => import('../views/commodity_information/table.vue')
+		path: '/merchandise_information/table',
+		name: '/merchandise_information_table',
+		component: () => import('../views/merchandise_information/table.vue')
 	},
 	// 商品信息详情路由
 	{
-		path: '/commodity_information/view',
-		name: '/commodity_information_view',
-		component: () => import('../views/commodity_information/view.vue')
+		path: '/merchandise_information/view',
+		name: '/merchandise_information_view',
+		component: () => import('../views/merchandise_information/view.vue')
 	},
 	
 		// 商品信息列表路由
 	{
-		path: '/commodity_information/list',
-		name: '/commodity_information_list',
-		component: () => import('../views/commodity_information/list.vue')
+		path: '/merchandise_information/list',
+		name: '/merchandise_information_list',
+		component: () => import('../views/merchandise_information/list.vue')
 	},
 	
 		// 商品信息详情路由
 	{
-		path: '/commodity_information/details',
-		name: '/commodity_information_details',
-		component: () => import('../views/commodity_information/details.vue')
+		path: '/merchandise_information/details',
+		name: '/merchandise_information_details',
+		component: () => import('../views/merchandise_information/details.vue')
 	},
 		
 		

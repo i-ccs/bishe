@@ -1,5 +1,5 @@
 <template>
-	<div class="diy_list page_commodity_information" id="commodity_information_list">
+	<div class="diy_list page_merchandise_information" id="merchandise_information_list">
 		<div class="warp">
 			<div class="container diy_list_container">
 				<div class="diy_list_title">
@@ -49,7 +49,7 @@
 				<div class="row diy_list_box">
 					<div class="col">
 						<!-- 列表 -->
-												<list_commodity_information :list="list" />
+												<list_merchandise_information :list="list" />
 												<!-- /列表 -->
 					</div>
 				</div>
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-	import list_commodity_information from "@/components/diy/list_commodity_information.vue";
+	import list_merchandise_information from "@/components/diy/list_merchandise_information.vue";
 	import diy_pager from "@/components/diy/diy_pager";
 	import mixin from "@/mixins/page.js";
 
@@ -82,11 +82,11 @@
 		mixins: [mixin],
 		components: {
 			diy_pager,
-			list_commodity_information,
+			list_merchandise_information,
 		},
 		data() {
 			return {
-				url_get_list: "~/api/commodity_information/get_list?like=0",
+				url_get_list: "~/api/merchandise_information/get_list?like=0",
 
 				// 查询条件
 				query: {

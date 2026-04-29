@@ -11,17 +11,17 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * 商品信息：(CommodityInformation)表实体类
+ * 商品信息：(merchandiseInformation)表实体类
  *
  */
-@TableName("`commodity_information`")
+@TableName("`merchandise_information`")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class CommodityInformation implements Serializable {
+public class MerchandiseInformation implements Serializable {
 
-    // CommodityInformation编号
-    @TableId(value = "commodity_information_id", type = IdType.AUTO)
-    private Integer commodityInformationId;
+    // merchandiseInformation编号
+    @TableId(value = "merchandise_information_id", type = IdType.AUTO)
+    private Integer merchandiseInformationId;
     // 商品编码
     @TableField(value = "product_code")
     private String productCode;
@@ -35,8 +35,8 @@ public class CommodityInformation implements Serializable {
     @TableField(value = "product_brand")
     private String productBrand;
     // 商品规格
-    @TableField(value = "commodity_specifications")
-    private String commoditySpecifications;
+    @TableField(value = "merchandise_specifications")
+    private String merchandiseSpecifications;
     // 商品库存
     @TableField(value = "product_inventory")
     private Double productInventory;
@@ -44,8 +44,8 @@ public class CommodityInformation implements Serializable {
     @TableField(value = "product_images")
     private String productImages;
     // 商品价格
-    @TableField(value = "commodity_price")
-    private Double commodityPrice;
+    @TableField(value = "merchandise_price")
+    private Double merchandisePrice;
     // 商品介绍
     @TableField(value = "product_introduction")
     private String productIntroduction;

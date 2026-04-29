@@ -43,14 +43,14 @@ public class SalesInformationController extends BaseController<SalesInformation,
         this.addMap(paramMap);
         String sql = "SELECT MAX(sales_information_id) AS max FROM "+"`sales_information`";
         Integer max = service.selectBaseCount(sql);
-        sql = ("SELECT count(*) count FROM `commodity_information` INNER JOIN `sales_information` ON commodity_information.product_code=sales_information.product_code WHERE commodity_information.product_inventory < sales_information.order_quantity AND sales_information.sales_information_id="+max).replaceAll("&#60;","<");
+        sql = ("SELECT count(*) count FROM `merchandise_information` INNER JOIN `sales_information` ON merchandise_information.product_code=sales_information.product_code WHERE merchandise_information.product_inventory < sales_information.order_quantity AND sales_information.sales_information_id="+max).replaceAll("&#60;","<");
         Integer count = service.selectBaseCount(sql);
         if(count>0){
             sql = "delete from "+"sales_information"+" WHERE "+"sales_information_id"+" ="+max;
             service.deleteBaseSql(sql);
             return error(30000,"商品库存不足");
         }
-        sql = "UPDATE `commodity_information` INNER JOIN `sales_information` ON commodity_information.product_code=sales_information.product_code SET commodity_information.product_inventory= commodity_information.product_inventory - sales_information.order_quantity WHERE sales_information.sales_information_id="+max;
+        sql = "UPDATE `merchandise_information` INNER JOIN `sales_information` ON merchandise_information.product_code=sales_information.product_code SET merchandise_information.product_inventory= merchandise_information.product_inventory - sales_information.order_quantity WHERE sales_information.sales_information_id="+max;
         service.updateBaseSql(sql);
         return success(1);
     }

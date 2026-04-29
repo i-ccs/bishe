@@ -17,14 +17,14 @@
 					<div v-else>{{form['suppliers_phone_number']}}</div>
 							</el-form-item>
 			</el-col>
-							<el-col v-if="can_show_field('commodity_category')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-							<el-form-item label="商品类别" prop="commodity_category">
-											<el-select id="commodity_category" v-model="form['commodity_category']"						v-if="can_edit_field('commodity_category')">
-						<el-option v-for="o in list_commodity_category" :key="o['product_category']" :label="o['product_category']"
+							<el-col v-if="can_show_field('merchandise_category')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+							<el-form-item label="商品类别" prop="merchandise_category">
+											<el-select id="merchandise_category" v-model="form['merchandise_category']"						v-if="can_edit_field('merchandise_category')">
+						<el-option v-for="o in list_merchandise_category" :key="o['product_category']" :label="o['product_category']"
 							:value="o['product_category']">
 						</el-option>
 					</el-select>
-					<div v-else>{{form['commodity_category']}}</div>
+					<div v-else>{{form['merchandise_category']}}</div>
 							</el-form-item>
 			</el-col>
 							<el-col v-if="can_show_field('comprehensive_evaluation')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
@@ -107,7 +107,7 @@
 				form: {
 								"supplier_name":  '', // 供应商名称
 										"suppliers_phone_number":  '', // 供应商电话
-										"commodity_category":  '', // 商品类别
+										"merchandise_category":  '', // 商品类别
 										"comprehensive_evaluation":  '', // 综合评价
 										"supply_frequency":  '', // 供应频率
 										"supply_products":  '', // 供应产品
@@ -118,7 +118,7 @@
 				disabledObj:{
 								"supplier_name_isDisabled": false,
 										"suppliers_phone_number_isDisabled": false,
-										"commodity_category_isDisabled": false,
+										"merchandise_category_isDisabled": false,
 										"comprehensive_evaluation_isDisabled": false,
 										"supply_frequency_isDisabled": false,
 										"supply_products_isDisabled": false,
@@ -129,7 +129,7 @@
 	
 			
 									// 商品类别选项列表
-				list_commodity_category: [""],
+				list_merchandise_category: [""],
 	
 			
 			
@@ -161,10 +161,10 @@
 			 * 获取商品类别列表
 			 */
 			
-						async get_list_commodity_category() {
-				var json = await this.$get("~/api/commodity_information/get_list?");
+						async get_list_merchandise_category() {
+				var json = await this.$get("~/api/merchandise_information/get_list?");
 				if(json.result && json.result.list){
-					this.list_commodity_category = json.result.list;
+					this.list_merchandise_category = json.result.list;
 				}
 				else if(json.error){
 					console.error(json.error);
@@ -296,7 +296,7 @@
 
 		},
 		created() {
-								this.get_list_commodity_category();
+								this.get_list_merchandise_category();
 														},
 	}
 </script>

@@ -36,11 +36,11 @@ public class PurchasingInformation implements Serializable {
     @TableField(value = "product_brand")
     private String productBrand;
     // 商品规格
-    @TableField(value = "commodity_specifications")
-    private String commoditySpecifications;
+    @TableField(value = "merchandise_specifications")
+    private String merchandiseSpecifications;
     // 商品价格
-    @TableField(value = "commodity_price")
-    private Double commodityPrice;
+    @TableField(value = "merchandise_price")
+    private Double merchandisePrice;
     // 采购单号
     @TableField(value = "purchase_order_number")
     private String purchaseOrderNumber;

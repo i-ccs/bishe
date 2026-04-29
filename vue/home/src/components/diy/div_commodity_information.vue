@@ -1,11 +1,11 @@
 <template>
-	<div class="diy_details_box diy_div_commodity_information">
+	<div class="diy_details_box diy_div_merchandise_information">
 		<div class="warp diy_warp">
 			<div class="container">
 					<div class="details_title">详情</div>
 				<div class="row row_det">
 						<div v-if="this.$store.state.user.user_id" class="btns_add col-12 col-sm-6">
-							<div v-if="$check_action('/commodity_information/details','set')">
+							<div v-if="$check_action('/merchandise_information/details','set')">
 								<!-- 点赞按钮 -->
 								<div
 										v-if="state_praise"
@@ -20,7 +20,7 @@
 									<span>点赞</span>
 								</div>
 							</div>
-							<div v-if="$check_action('/commodity_information/details','set')">
+							<div v-if="$check_action('/merchandise_information/details','set')">
 								<!-- 收藏按钮 -->
 								<div v-if="state_collect"
 									 class="collect_btn collect_change"
@@ -212,7 +212,7 @@
 						},
 						{
 							title: "商品规格",
-							name: "commodity_specifications",
+							name: "merchandise_specifications",
 							type: "文本"
 						},
 						{
@@ -222,7 +222,7 @@
 						},
 						{
 							title: "商品价格",
-							name: "commodity_price",
+							name: "merchandise_price",
 							type: "数字"
 						},
 				],
@@ -267,9 +267,9 @@
 				var user_id = this.user.user_id;
 
 				var query = {
-					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: this.obj["commodity_information_id"],
+					source_table: "merchandise_information",
+					source_field: "merchandise_information_id",
+					source_id: this.obj["merchandise_information_id"],
 					user_id
 				};
 
@@ -282,7 +282,7 @@
 						if(res.result){
               _this.praiseLen = parseInt(_this.praiseLen)-1;
               var praise_len = _this.praiseLen;
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/merchandise_information/set?merchandise_information_id=' + _this.obj["merchandise_information_id"], {
 								praise_len
 							}, (res) => {
 								if(res.result){
@@ -306,7 +306,7 @@
 						if (res.result) {
               _this.praiseLen = parseInt(_this.praiseLen)+1;
               var praise_len = _this.praiseLen;
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/merchandise_information/set?merchandise_information_id=' + _this.obj["merchandise_information_id"], {
 								praise_len
 							}, (res) => {
 								if(res.result){
@@ -332,9 +332,9 @@
       get_praise() {
         var user_id = this.$store.state.user.user_id;
         this.$get("~/api/praise/count?", {
-          source_table: "commodity_information",
-          source_field: "commodity_information_id",
-          source_id: this.obj.commodity_information_id,
+          source_table: "merchandise_information",
+          source_field: "merchandise_information_id",
+          source_id: this.obj.merchandise_information_id,
           user_id
         }, (res) => {
           if (res.result || res.result === 0) {
@@ -356,9 +356,9 @@
 				var user_id = this.user.user_id;
 
 				var query = {
-					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: this.obj["commodity_information_id"],
+					source_table: "merchandise_information",
+					source_field: "merchandise_information_id",
+					source_id: this.obj["merchandise_information_id"],
 					user_id
 				};
 
@@ -393,20 +393,20 @@
 			},
       check_collect() {
         var user_id = this.$store.state.user.user_id;
-        var commodity_information_id = this.obj.commodity_information_id;
+        var merchandise_information_id = this.obj.merchandise_information_id;
         this.$get('~/api/collect/count?', {
           user_id,
-          source_table: "commodity_information",
-          source_field: "commodity_information_id",
-          source_id: commodity_information_id
+          source_table: "merchandise_information",
+          source_field: "merchandise_information_id",
+          source_id: merchandise_information_id
         }, (res) => {
           this.state_collect = res.result
         });
       },
 			  get_sales_information_limit(){
 	  	let param = {
-	  		source_table: "commodity_information",
-	  		source_id: this.obj.commodity_information_id,
+	  		source_table: "merchandise_information",
+	  		source_id: this.obj.merchandise_information_id,
 	  		source_user_id: this.user.user_id
 	  	};
 	  	if(this.obj.sales_information_limit_times > 0){
@@ -428,8 +428,8 @@
 	  },
 		  get_purchasing_information_limit(){
 	  	let param = {
-	  		source_table: "commodity_information",
-	  		source_id: this.obj.commodity_information_id,
+	  		source_table: "merchandise_information",
+	  		source_id: this.obj.merchandise_information_id,
 	  		source_user_id: this.user.user_id
 	  	};
 	  	if(this.obj.purchasing_information_limit_times > 0){
@@ -451,8 +451,8 @@
 	  },
 		  get_inventory_information_limit(){
 	  	let param = {
-	  		source_table: "commodity_information",
-	  		source_id: this.obj.commodity_information_id,
+	  		source_table: "merchandise_information",
+	  		source_id: this.obj.merchandise_information_id,
 	  		source_user_id: this.user.user_id
 	  	};
 	  	if(this.obj.inventory_information_limit_times > 0){

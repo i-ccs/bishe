@@ -44,9 +44,9 @@
 					</el-table-column>
 					<el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌" 				v-if="$check_field('get','product_brand')" min-width="200">
 					</el-table-column>
-					<el-table-column prop="commodity_specifications" @sort-change="$sortChange" label="商品规格" 				v-if="$check_field('get','commodity_specifications')" min-width="200">
+					<el-table-column prop="merchandise_specifications" @sort-change="$sortChange" label="商品规格" 				v-if="$check_field('get','merchandise_specifications')" min-width="200">
 					</el-table-column>
-					<el-table-column prop="commodity_price" @sort-change="$sortChange" label="商品价格" 				v-if="$check_field('get','commodity_price')" min-width="200">
+					<el-table-column prop="merchandise_price" @sort-change="$sortChange" label="商品价格" 				v-if="$check_field('get','merchandise_price')" min-width="200">
 					</el-table-column>
 					<el-table-column prop="purchase_order_number" @sort-change="$sortChange" label="采购单号" 				v-if="$check_field('get','purchase_order_number')" min-width="200">
 					</el-table-column>
