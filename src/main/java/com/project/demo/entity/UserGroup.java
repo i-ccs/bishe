@@ -1,6 +1,5 @@
 package com.project.demo.entity;
 
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,12 +9,11 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 用户组：用于用户前端身份和鉴权(UserGroup)表实体类
  *
  * @author xxx
- *@since 202X-XX-XX
+ * @since 202X-XX-XX
  */
 @TableName("user_group")
 @Data
@@ -78,5 +76,9 @@ public class UserGroup implements Serializable {
     @TableField(value = "update_time")
     private Timestamp updateTime;
 
+    /**
+     * 来源ID：
+     */
+    @TableField(value = "source_id")
+    private Integer sourceId;
 }
-
