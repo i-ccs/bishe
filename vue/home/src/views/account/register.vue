@@ -45,8 +45,7 @@
 									</b-form-group>
 									</div>
 
-										<!--注册用户-->
-									<form_registered_user v-if="form.user_group === '注册用户'" :form="form_sub"></form_registered_user>
+										
 						
 									
 								</b-form>
@@ -74,14 +73,9 @@
 
 <script>
 	import mixin from "@/mixins/page.js";
-		/* 注册用户 */
-	import form_registered_user from "@/components/diy/form_registered_user";
-						
-	export default {
+		export default {
 		components: {
-				/* 注册用户 */
-			form_registered_user,
-								},
+				},
 
 		mixins: [mixin],
 

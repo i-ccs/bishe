@@ -125,8 +125,6 @@ CREATE TABLE `auth` (
 -- Records of auth
 -- ----------------------------
 BEGIN;
-INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `option`, `create_time`, `update_time`, `parent`, `parent_sort`) VALUES (417, '管理员', '注册用户管理', 'registered_user', '注册用户', '/registered_user/table', NULL, 'list', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-04-27 15:39:30', NULL, 0);
-INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `option`, `create_time`, `update_time`, `parent`, `parent_sort`) VALUES (418, '管理员', '注册用户管理', 'registered_user', '注册用户', '/registered_user/view', NULL, 'view', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-04-27 15:39:33', NULL, 0);
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `option`, `create_time`, `update_time`, `parent`, `parent_sort`) VALUES (421, '管理员', '商品信息', 'merchandise_information', '商品信息', '/merchandise_information/table', NULL, 'list', 1, 1, 1, 1, NULL, 'product_code,product_name,product_category,product_brand,merchandise_specifications,merchandise_price,product_introduction,product_details,product_code,product_name,product_category,product_brand,product_introduction,product_details,product_inventory,product_images,create_time,update_time', 'create_time,update_time,product_name,product_category,product_code,merchandise_specifications,product_inventory,product_images,merchandise_price,product_introduction,merchandiseInformationId,sales_information_limit_times,purchasing_information_limit_times,inventory_information_limit_times', NULL, 0, NULL, '2026-04-27 15:28:13', '2026-04-29 15:14:33', NULL, 0);
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `option`, `create_time`, `update_time`, `parent`, `parent_sort`) VALUES (422, '管理员', '商品信息', 'merchandise_information', '商品信息', '/merchandise_information/view', NULL, 'view', 1, 1, 1, 1, 'product_code,product_name,product_category,product_brand,merchandise_specifications,merchandise_price,product_introduction,product_details,product_code,product_name,product_category,product_brand,product_introduction,product_details,product_inventory,product_images', 'product_code,product_name,product_category,product_brand,merchandise_specifications,merchandise_price,product_introduction,product_details,product_code,product_name,product_category,product_brand,product_introduction,product_details,product_inventory,product_images', 'product_code,product_name,product_category,product_brand,merchandise_specifications,merchandise_price,product_introduction,product_details,product_inventory,product_images', NULL, 0, NULL, '2026-04-27 15:28:13', '2026-04-29 15:25:22', NULL, 0);
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `option`, `create_time`, `update_time`, `parent`, `parent_sort`) VALUES (423, '管理员', '供应信息', 'supply_information', '供应信息', '/supply_information/table', NULL, 'list', 1, 1, 1, 1, '', '1', '', NULL, 0, NULL, '2026-04-27 15:28:13', '2026-04-27 17:36:22', NULL, 0);
@@ -414,29 +412,6 @@ INSERT INTO `purchasing_information` (`purchasing_information_id`, `product_code
 COMMIT;
 
 -- ----------------------------
--- Table structure for registered_user
--- ----------------------------
-DROP TABLE IF EXISTS `registered_user`;
-CREATE TABLE `registered_user` (
-  `registered_user_id` int NOT NULL AUTO_INCREMENT COMMENT '注册用户ID',
-  `user_name` varchar(64) DEFAULT NULL COMMENT '用户姓名',
-  `user_gender` varchar(64) DEFAULT NULL COMMENT '用户性别',
-  `examine_state` varchar(16) NOT NULL DEFAULT '已通过' COMMENT '审核状态',
-  `user_id` int NOT NULL DEFAULT '0' COMMENT '用户ID',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`registered_user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='注册用户';
-
--- ----------------------------
--- Records of registered_user
--- ----------------------------
-BEGIN;
-INSERT INTO `registered_user` (`registered_user_id`, `user_name`, `user_gender`, `examine_state`, `user_id`, `create_time`, `update_time`) VALUES (1, '王明', '男', '已通过', 2, '2025-05-18 11:51:27', '2026-04-29 18:48:43');
-INSERT INTO `registered_user` (`registered_user_id`, `user_name`, `user_gender`, `examine_state`, `user_id`, `create_time`, `update_time`) VALUES (2, '用户姓名2', '女', '已通过', 3, '2025-05-18 11:51:27', '2026-04-27 14:15:38');
-COMMIT;
-
--- ----------------------------
 -- Table structure for sales_information
 -- ----------------------------
 DROP TABLE IF EXISTS `sales_information`;
@@ -448,7 +423,7 @@ CREATE TABLE `sales_information` (
   `product_brand` varchar(64) DEFAULT NULL COMMENT '商品品牌',
   `merchandise_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
   `sales_order_number` varchar(64) DEFAULT NULL COMMENT '销售单号',
-  `registered_user` int DEFAULT '0' COMMENT '注册用户',
+  `user_id` int DEFAULT '0' COMMENT '注册用户',
   `user_name` varchar(64) DEFAULT NULL COMMENT '用户姓名',
   `order_quantity` double(8,2) DEFAULT '0.00' COMMENT '下单数量',
   `total_order_price` double(8,2) DEFAULT '0.00' COMMENT '订单总价',
@@ -467,7 +442,7 @@ CREATE TABLE `sales_information` (
 -- Records of sales_information
 -- ----------------------------
 BEGIN;
-INSERT INTO `sales_information` (`sales_information_id`, `product_code`, `product_name`, `product_category`, `product_brand`, `merchandise_price`, `sales_order_number`, `registered_user`, `user_name`, `order_quantity`, `total_order_price`, `note_information`, `pay_state`, `pay_type`, `create_time`, `update_time`, `source_table`, `source_id`, `source_user_id`) VALUES (13, '1777389744267', '小王子', '书', '进口公司', 3.00, '1777452964751', 2, '李刚', 1.00, 3.00, '', '未支付', '', '2026-04-29 16:56:13', '2026-04-29 16:57:01', 'merchandise_information', 21, 1);
+INSERT INTO `sales_information` (`sales_information_id`, `product_code`, `product_name`, `product_category`, `product_brand`, `merchandise_price`, `sales_order_number`, `user_id`, `user_name`, `order_quantity`, `total_order_price`, `note_information`, `pay_state`, `pay_type`, `create_time`, `update_time`, `source_table`, `source_id`, `source_user_id`) VALUES (13, '1777389744267', '小王子', '书', '进口公司', 3.00, '1777452964751', 2, '李刚', 1.00, 3.00, '', '未支付', '', '2026-04-29 16:56:13', '2026-04-29 16:57:01', 'merchandise_information', 21, 1);
 COMMIT;
 
 -- ----------------------------
@@ -554,6 +529,7 @@ CREATE TABLE `user` (
   `phone` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '手机号码',
   `phone_state` smallint unsigned NOT NULL DEFAULT '0' COMMENT '手机认证：(0未认证|1审核中|2已认证)',
   `user_name` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '用户名',
+  `user_gender` varchar(64) DEFAULT NULL COMMENT '用户性别',
   `nick_name` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT '昵称',
   `password` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '密码',
   `email` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT '邮箱',
@@ -597,7 +573,7 @@ CREATE TABLE `user_group` (
 BEGIN;
 INSERT INTO `user_group` (`group_id`, `display`, `name`, `description`, `source_table`, `source_field`, `source_id`, `register`, `create_time`, `update_time`) VALUES (1, 100, '管理员', NULL, '', '', 0, 0, '2025-05-18 11:51:28', '2025-05-18 11:51:28');
 INSERT INTO `user_group` (`group_id`, `display`, `name`, `description`, `source_table`, `source_field`, `source_id`, `register`, `create_time`, `update_time`) VALUES (2, 100, '游客', NULL, '', '', 0, 0, '2025-05-18 11:51:28', '2025-05-18 11:51:28');
-INSERT INTO `user_group` (`group_id`, `display`, `name`, `description`, `source_table`, `source_field`, `source_id`, `register`, `create_time`, `update_time`) VALUES (3, 100, '注册用户', NULL, 'registered_user', 'registered_user_id', 0, 3, '2025-05-18 11:51:28', '2025-05-18 11:51:28');
+INSERT INTO `user_group` (`group_id`, `display`, `name`, `description`, `source_table`, `source_field`, `source_id`, `register`, `create_time`, `update_time`) VALUES (3, 100, '注册用户', NULL, '', '', 0, 3, '2025-05-18 11:51:28', '2025-05-18 11:51:28');
 INSERT INTO `user_group` (`group_id`, `display`, `name`, `description`, `source_table`, `source_field`, `source_id`, `register`, `create_time`, `update_time`) VALUES (4, 100, '采购员', '', NULL, NULL, 0, 0, '2026-04-29 17:37:17', '2026-04-29 17:37:17');
 COMMIT;
 

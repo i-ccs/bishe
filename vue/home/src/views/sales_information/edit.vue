@@ -75,19 +75,19 @@
 							<span v-else-if="$check_field('get','sales_order_number')">{{ form['sales_order_number'] }}</span>
 						</div>
 										</div>
-							<div v-if="$check_field('set','registered_user') || $check_field('add','registered_user') || $check_field('get','registered_user')" class="form-item col-12 col-md-6">
+							<div v-if="$check_field('set','user_id') || $check_field('add','user_id') || $check_field('get','user_id')" class="form-item col-12 col-md-6">
 						<div class="diy_title">
 							<span>
 								注册用户:
 							</span>
 						</div>
 						<div class="diy_field diy_down">
-							<select id="form_registered_user" :disabled="disabledObj['registered_user_isDisabled']" v-model="form['registered_user']" v-if="(form['registered_user'] && $check_field('set','registered_user')) || (!form['registered_user'] && $check_field('add','registered_user'))" >
-								<option v-for="o in list_user_registered_user" :value="o['user_id']">
+							<select id="form_user_id" :disabled="disabledObj['user_id_isDisabled']" v-model="form['user_id']" v-if="(form['user_id'] && $check_field('set','user_id')) || (!form['user_id'] && $check_field('add','user_id'))" >
+								<option v-for="o in list_user_user_id" :value="o['user_id']">
 									{{o['nickname'] + '-' + o['username']}}
 								</option>
 							</select>
-							<span v-else-if="$check_field('get','registered_user')">{{ get_user_info("registered_user", form['registered_user']) }}</span>
+							<span v-else-if="$check_field('get','user_id')">{{ get_user_info("user_id", form['user_id']) }}</span>
 						</div>
 					</div>
 							<div v-if="$check_field('set','user_name') || $check_field('add','user_name') || $check_field('get','user_name')" class="form-item col-12 col-md-6">
@@ -180,7 +180,7 @@
 							"product_brand": "",
 							"merchandise_price": 0,
 							"sales_order_number": "",
-							"registered_user": 0,
+							"user_id": 0,
 							"user_name": "",
 							"order_quantity": 0,
 							"total_order_price": 0,
@@ -195,7 +195,7 @@
 							"product_brand":  '', // 商品品牌
 							"merchandise_price":  0, // 商品价格
 							"sales_order_number": this.$get_stamp(), // 销售单号
-							"registered_user": 0, // 注册用户
+							"user_id": 0, // 注册用户
 							"user_name":  '', // 用户姓名
 							"order_quantity":  0, // 下单数量
 							"total_order_price": 0, // 订单总价
@@ -211,7 +211,7 @@
 							"product_brand":  '', // 商品品牌
 							"merchandise_price":  0, // 商品价格
 							"sales_order_number": this.$get_stamp(), // 销售单号
-							"registered_user": 0, // 注册用户
+							"user_id": 0, // 注册用户
 							"user_name":  '', // 用户姓名
 							"order_quantity":  0, // 下单数量
 							"total_order_price": 0, // 订单总价
@@ -224,13 +224,13 @@
 							"product_category_isDisabled": false,
 							"product_brand_isDisabled": false,
 									"sales_order_number_isDisabled": false,
-							"registered_user_isDisabled": false,
+							"user_id_isDisabled": false,
 							"user_name_isDisabled": false,
 											"note_information_isDisabled": false,
 					},
 
 																								// 用户列表
-				list_user_registered_user: [],
+				list_user_user_id: [],
 														
 				// ID字段
 				field: "sales_information_id",
@@ -300,16 +300,16 @@
 						/**
 			 * 获取注册用户用户列表
 			 */
-			async get_list_user_registered_user() {
+			async get_list_user_user_id() {
 				var json = await this.$get("~/api/user/get_list?user_group=注册用户");
 				if(json.result && json.result.list){
-					this.list_user_registered_user = json.result.list;
+					this.list_user_user_id = json.result.list;
 				}
 				else if(json.error){
 					console.error(json.error);
 				}
 			},
-					async get_user_session_registered_user(){
+					async get_user_session_user_id(){
 				var _this = this;
 				var json = await this.$get("~/api/user_group/get_obj?name=注册用户");
 				if(json.result && json.result.obj){
@@ -327,13 +327,13 @@
 								for (let key in _this.form) {
 									arrForm.push(key)
 								}
-								_this.form["registered_user"] = user_id
-								_this.disabledObj['registered_user' + '_isDisabled'] = true
+								_this.form["user_id"] = user_id
+								_this.disabledObj['user_id' + '_isDisabled'] = true
 								for (var i=0;i<arr.length;i++){
                   if (arr[i]!=='examine_state' && arr[i]!=='examine_reply') {
                     for (var j = 0; j < arrForm.length; j++) {
                       if (arr[i] === arrForm[j]) {
-                        if (arr[i] !== "registered_user") {
+                        if (arr[i] !== "user_id") {
                           _this.form[arrForm[j]] = res.result.obj[arr[i]]
                           _this.disabledObj[arrForm[j] + '_isDisabled'] = true
                           break;
@@ -370,8 +370,8 @@
 				
 		  		get_user_info(name,id){
 				var obj = null;
-              				  if (name == 'registered_user'){
-					  obj = this.list_user_registered_user.getObj({"user_id":id});
+              				  if (name == 'user_id'){
+					  obj = this.list_user_user_id.getObj({"user_id":id});
 				  }
           				var ret = "";
 				if(obj){
@@ -502,8 +502,8 @@
 
 		},
 		created() {
-																							this.get_user_session_registered_user();
-					this.get_list_user_registered_user();
+																							this.get_user_session_user_id();
+					this.get_list_user_user_id();
 															},
 	}
 </script>

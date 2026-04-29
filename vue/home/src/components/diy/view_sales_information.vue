@@ -44,23 +44,23 @@
 					<div v-else-if="$check_field('get','sales_order_number')">{{form['sales_order_number']}}</div>
 											</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','registered_user') || $check_field('add','registered_user') || $check_field('set','registered_user')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="注册用户" prop="registered_user">
+								<el-col v-if="$check_field('get','user_id') || $check_field('add','user_id') || $check_field('set','user_id')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="注册用户" prop="user_id">
 																		<div v-if="user_group !== '管理员'">
-							{{ get_user_session_registered_user(form['registered_user']) }}
-							<el-select v-if="(form['sales_information_id'] && $check_field('set','registered_user')) || (!form['sales_information_id'] && $check_field('add','registered_user'))" id="registered_user" v-model="form['registered_user']" :disabled="disabledObj['registered_user_isDisabled']">
-								<el-option v-for="o in list_user_registered_user" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
+							{{ get_user_session_user_id(form['user_id']) }}
+							<el-select v-if="(form['sales_information_id'] && $check_field('set','user_id')) || (!form['sales_information_id'] && $check_field('add','user_id'))" id="user_id" v-model="form['user_id']" :disabled="disabledObj['user_id_isDisabled']">
+								<el-option v-for="o in list_user_user_id" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
 										   :value="o['user_id']">
 								</el-option>
 							</el-select>
-							<el-select v-else-if="$check_field('get','registered_user')" id="registered_user" v-model="form['registered_user']" :disabled="true">
-								<el-option v-for="o in list_user_registered_user" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
+							<el-select v-else-if="$check_field('get','user_id')" id="user_id" v-model="form['user_id']" :disabled="true">
+								<el-option v-for="o in list_user_user_id" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
 										   :value="o['user_id']">
 								</el-option>
 							</el-select>
 						</div>
-						<el-select v-else id="registered_user" v-model="form['registered_user']" :disabled="disabledObj['registered_user_isDisabled']">
-							<el-option v-for="o in list_user_registered_user" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
+						<el-select v-else id="user_id" v-model="form['user_id']" :disabled="disabledObj['user_id_isDisabled']">
+							<el-option v-for="o in list_user_user_id" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
 									   :value="o['user_id']">
 							</el-option>
 						</el-select>
@@ -140,7 +140,7 @@
 										"product_brand":  '', // 商品品牌
 										"merchandise_price":  0, // 商品价格
 										"sales_order_number": this.$get_stamp(), // 销售单号
-										"registered_user": 0, // 注册用户
+										"user_id": 0, // 注册用户
 										"user_name":  '', // 用户姓名
 										"order_quantity":  0, // 下单数量
 															"note_information":  '', // 备注信息
@@ -153,7 +153,7 @@
 										"product_brand_isDisabled": false,
 					          			"merchandise_price_isDisabled": false,
 										"sales_order_number_isDisabled": false,
-										"registered_user_isDisabled": false,
+										"user_id_isDisabled": false,
 										"user_name_isDisabled": false,
 					          			"order_quantity_isDisabled": false,
 					          			"total_order_price_isDisabled": false,
@@ -168,9 +168,9 @@
 				
 				
 					// 用户列表
-				list_user_registered_user: [],
+				list_user_user_id: [],
 						// 用户组
-				group_user_registered_user: "",
+				group_user_user_id: "",
 						
 				
 				
@@ -197,10 +197,10 @@
 				/**
 			 * 获取注册用户用户列表
 			 */
-			async get_list_user_registered_user() {
+			async get_list_user_user_id() {
                 var json = await this.$get("~/api/user/get_list?user_group=注册用户");
                 if(json.result && json.result.list){
-                    this.list_user_registered_user = json.result.list;
+                    this.list_user_user_id = json.result.list;
                 }
                 else if(json.error){
                     console.error(json.error);
@@ -209,20 +209,20 @@
 					/**
 			 * 获取注册用户用户组
 			 */
-			async get_group_user_registered_user() {
-							this.form["registered_user"] = this.$store.state.user.user_id;
+			async get_group_user_user_id() {
+							this.form["user_id"] = this.$store.state.user.user_id;
 							var json = await this.$get("~/api/user_group/get_obj?name=注册用户");
 				if(json.result && json.result.obj){
-					this.group_user_registered_user = json.result.obj;
+					this.group_user_user_id = json.result.obj;
 				}
 				else if(json.error){
 					console.error(json.error);
 				}
 			},
-			get_user_session_registered_user(id){
+			get_user_session_user_id(id){
 				var _this = this;
 				var user_id = {"user_id":id}
-				var url = "~/api/"+_this.group_user_registered_user.source_table+"/get_obj?"
+				var url = "~/api/"+_this.group_user_user_id.source_table+"/get_obj?"
 				this.$get(url, user_id, function(res) {
 					if (res.result && res.result.obj) {
 						var arr = []
@@ -233,13 +233,13 @@
 									for (let key in _this.form) {
 							arrForm.push(key)
 						}
-												_this.form["registered_user"] = id
-									_this.disabledObj['registered_user' + '_isDisabled'] = true
+												_this.form["user_id"] = id
+									_this.disabledObj['user_id' + '_isDisabled'] = true
 						for (var i=0;i<arr.length;i++){
 						  if (arr[i]!=='examine_state' && arr[i]!=='examine_reply') {
 							for (var j = 0; j < arrForm.length; j++) {
 							  if (arr[i] === arrForm[j]) {
-								if (arr[i] !== "registered_user") {
+								if (arr[i] !== "user_id") {
 			                      _this.form[arrForm[j]] = res.result.obj[arr[i]]
 			                      _this.disabledObj[arrForm[j] + '_isDisabled'] = true
 								  break;
@@ -253,8 +253,8 @@
 					}
 				});
 			},
-					get_user_registered_user(id){
-				var obj = this.list_user_registered_user.getObj({"user_id":id});
+					get_user_user_id(id){
+				var obj = this.list_user_user_id.getObj({"user_id":id});
 				var ret = "";
 				if(obj){
 					if(obj.nickname){
@@ -418,8 +418,8 @@
 
 		},
 		created() {
-																	this.get_list_user_registered_user();
-					this.get_group_user_registered_user();
+																	this.get_list_user_user_id();
+					this.get_group_user_user_id();
 													},
 	}
 </script>

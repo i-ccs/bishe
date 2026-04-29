@@ -72,6 +72,12 @@ public class User implements Serializable {
     private String userName;
 
     /**
+     * 用户性别：
+     */
+    @TableField(value = "user_gender")
+    private String userGender;
+
+    /**
      * 昵称：[0,16]
      */
     @TableField(value = "nick_name")

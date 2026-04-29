@@ -46,6 +46,9 @@
 			<el-table-column prop="username" label="用户名" sortable width="120">
 			</el-table-column>
 
+			<el-table-column prop="user_gender" label="性别" sortable min-width="100">
+			</el-table-column>
+
 			<el-table-column prop="account_type" label="账号类型" sortable min-width="120">
 				<template slot-scope="scope">
 					{{scope.row.account_type || scope.row.user_group}}
@@ -135,7 +138,7 @@
 					size: 10,
 					page: 1,
 					nickname: "",
-					user_group: "管理员",
+					user_group: "",
 					login_time: "",
 					create_time: ""
 				},
@@ -200,7 +203,7 @@
           size: 10,
           page: 1,
           nickname: "",
-          user_group: "管理员",
+          user_group: "",
           login_time: "",
           create_time: ""
         }

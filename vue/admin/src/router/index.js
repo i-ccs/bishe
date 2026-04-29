@@ -177,24 +177,6 @@ const routes = [
         }
     },
     // 注册用户路由
-    {
-        path: '/registered_user/table',
-        name: 'registered_user_table',
-        component: () => import('../views/registered_user/table.vue'),
-        meta: {
-            index: 0,
-            title: '用户列表'
-        }
-    },
-    {
-        path: '/registered_user/view',
-        name: 'registered_user_view',
-        component: () => import('../views/registered_user/view.vue'),
-        meta: {
-            index: 0,
-            title: '用户详情'
-        }
-    },
     // 商品信息路由
     {
         path: '/merchandise_information/table',

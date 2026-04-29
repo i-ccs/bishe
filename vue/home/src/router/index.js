@@ -100,18 +100,7 @@ const routes = [
 		name: 'notice_details',
 		component: () => import('../views/notice/details.vue')
 	},
-	// 注册用户表格路由
-	{
-		path: '/registered_user/table',
-		name: '/registered_user_table',
-		component: () => import('../views/registered_user/table.vue')
-	},
-	// 注册用户详情路由
-	{
-		path: '/registered_user/view',
-		name: '/registered_user_view',
-		component: () => import('../views/registered_user/view.vue')
-	},
+
 	
 	
 		

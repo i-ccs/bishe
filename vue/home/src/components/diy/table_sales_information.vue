@@ -50,9 +50,9 @@
                                 </el-table-column>
                                               <el-table-column prop="sales_order_number" @sort-change="$sortChange" label="销售单号"                                v-if="$check_field('get','sales_order_number')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="registered_user" @sort-change="$sortChange" label="注册用户"                                v-if="$check_field('get','registered_user')" min-width="200">
+                                              <el-table-column prop="user_id" @sort-change="$sortChange" label="注册用户"                                v-if="$check_field('get','user_id')" min-width="200">
                                       <template slot-scope="scope">
-                      {{ get_user_registered_user(scope.row['registered_user']) }}
+                      {{ get_user_user_id(scope.row['user_id']) }}
                     </template>
                                 </el-table-column>
                                               <el-table-column prop="user_name" @sort-change="$sortChange" label="用户姓名"                                v-if="$check_field('get','user_name')" min-width="200">
@@ -229,7 +229,7 @@
               id:""
             },
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             // 用户列表
-                list_user_registered_user: [],
+                list_user_user_id: [],
                                                                                                                                                                                 		  		  message: '',
       }
     },
@@ -251,7 +251,7 @@
             if(user_group != "管理员"){
                                   let sqlwhere = "(";
                                                                                                                                                                                                                                                                                                                                               if(user_group=="注册用户"){
-                            sqlwhere+= "registered_user = " + this.$store.state.user.user_id + " or ";
+                            sqlwhere+= "user_id = " + this.$store.state.user.user_id + " or ";
                           }
                                                                                                                                                                                                                                               if (sqlwhere.length>1){
                     sqlwhere = sqlwhere.substr(0,sqlwhere.length-4);
@@ -269,18 +269,18 @@
                                                                                                                                                                                                                                   /**
                * 获取注册用户用户列表
                */
-              async get_list_user_registered_user() {
+              async get_list_user_user_id() {
                 var json = await this.$get("~/api/user/get_list?user_group=注册用户");
                 if(json.result && json.result.list){
-                  this.list_user_registered_user = json.result.list;
+                  this.list_user_user_id = json.result.list;
                 }
                 else if(json.error){
                   console.error(json.error);
                 }
               },
 
-              get_user_registered_user(id){
-                var obj = this.list_user_registered_user.getObj({"user_id":id});
+              get_user_user_id(id){
+                var obj = this.list_user_user_id.getObj({"user_id":id});
                 var ret = "";
                 if(obj){
                   ret = obj.nickname+"-"+obj.username;
@@ -328,7 +328,7 @@
 
     },
 	    created() {
-                                                                                                                                                                                                                                                                      this.get_list_user_registered_user();
+                                                                                                                                                                                                                                                                      this.get_list_user_user_id();
                                                                                                                                                                 }
   }
 </script>

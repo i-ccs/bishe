@@ -41,9 +41,9 @@ public class SalesInformation implements Serializable {
     // 销售单号
     @TableField(value = "sales_order_number")
     private String salesOrderNumber;
-    // 注册用户
-    @TableField(value = "registered_user")
-    private Integer registeredUser;
+    // 用户
+    @TableField(value = "user_id")
+    private Integer userId;
     // 用户姓名
     @TableField(value = "user_name")
     private String userName;

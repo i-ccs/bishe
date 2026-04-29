@@ -15,11 +15,9 @@
     </el-menu-item>
 
      <el-submenu index="user"
-                v-show="user_group == '管理员' || $check_group(['/user/table','/user_group/table'
-                                                                        ,'/registered_user/table'
-                                                                                                                                                                                                                                                                                            ])">
+                v-show="user_group == '管理员' || $check_group(['/user/table','/user_group/table'])">
       <template slot="title"><i class="el-icon-s-custom"></i><span ref="customTemplate8">系统用户</span></template>
-                    <el-menu-item index="/registered_user/table" v-show="$check_action('/registered_user/table')" @click="handleButtonClick(8)">
+        <el-menu-item index="/user/table" v-show="$check_action('/user/table')" @click="handleButtonClick(8)">
           <span>用户列表</span></el-menu-item>
         <el-menu-item index="/user_group/table"><span>用户组</span></el-menu-item>
     </el-submenu>
@@ -167,7 +165,6 @@
           		                    		                                site_list.push("purchasing_information")
           		                                site_list.push("inventory_information")
           		                  let list = ["exam", 'evaluation', "article", "article_type", "comment", "notice"];
-                                      list.push("registered_user");
                                                                                                                     for (var i = 0; i < tables.length; i++) {
           var o = tables[i];
           if (o.path.indexOf("/table") !== -1) {

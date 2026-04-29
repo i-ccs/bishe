@@ -175,7 +175,7 @@
 						},
 						{
 							title: "注册用户",
-							name: "registered_user",
+							name: "user_id",
 							type: "UID"
 						},
 						{
@@ -202,17 +202,17 @@
 						},
 				],
 											// 用户列表
-				list_user_registered_user: [],
+				list_user_user_id: [],
 								};
 		},
 		methods: {
 										/**
 			 * 获取注册用户用户列表
 			 */
-			async get_list_user_registered_user() {
+			async get_list_user_user_id() {
 				var json = await this.$get("~/api/user/get_list?user_group=注册用户");
 				if(json.result && json.result.list){
-					this.list_user_registered_user = json.result.list;
+					this.list_user_user_id = json.result.list;
 				}
 				else if(json.error){
 					console.error(json.error);
@@ -220,8 +220,8 @@
 			},
 								get_user_info(name,id){
 				var obj = null;
-											if (name == 'registered_user'){
-					obj = this.list_user_registered_user.getObj({"user_id":id});
+											if (name == 'user_id'){
+					obj = this.list_user_user_id.getObj({"user_id":id});
 				}
 									var ret = "";
 				if(obj){
@@ -238,7 +238,7 @@
 
 	  },
 		created() {
-										this.get_list_user_registered_user();
+										this.get_list_user_user_id();
 					      setTimeout(() => {
       }, 1000);
 		},
