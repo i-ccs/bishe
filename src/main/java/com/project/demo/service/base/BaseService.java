@@ -22,25 +22,25 @@ import java.util.*;
 /**
  */
 @Slf4j
-public class BaseService<E>{
+public class BaseService<E> {
 
     @Autowired
     private BaseMapper<E> baseMapper;
 
-    Class<E> eClass = (Class<E>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    Class<E> eClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
     private final String table = humpToLine(eClass.getSimpleName());
 
     public List selectBaseList(String select) {
-        List<Map<String,Object>> mapList = baseMapper.selectBaseList(select);
+        List<Map<String, Object>> mapList = baseMapper.selectBaseList(select);
         List<E> list = new ArrayList<>();
-        for (Map<String,Object> map:mapList) {
-            list.add(JSON.parseObject(JSON.toJSONString(map),eClass));
+        for (Map<String, Object> map : mapList) {
+            list.add(JSON.parseObject(JSON.toJSONString(map), eClass));
         }
         return list;
     }
-	
-    public List<Map<String,Object>> selectMapBaseList(String select) {
+
+    public List<Map<String, Object>> selectMapBaseList(String select) {
         return baseMapper.selectBaseList(select);
     }
 
@@ -56,286 +56,326 @@ public class BaseService<E>{
         return baseMapper.updateBaseSql(sql);
     }
 
-
-    public void insert(Map<String,Object> body){
-        E entity = JSON.parseObject(JSON.toJSONString(body),eClass);
+    public void insert(Map<String, Object> body) {
+        E entity = JSON.parseObject(JSON.toJSONString(body), eClass);
         baseMapper.insert(entity);
-        log.info("[{}] - 插入操作：{}",entity);
+        log.info("[{}] - 插入操作：{}", entity);
     }
 
     @Transactional
-    public void update(Map<String,String> query,Map<String,String> config,Map<String,Object> body){
+    public void update(Map<String, String> query, Map<String, String> config, Map<String, Object> body) {
         QueryWrapper wrapper = new QueryWrapper<E>();
-        toWhereWrapper(query,"0".equals(config.get(FindConfig.LIKE)),wrapper);
-        E entity = JSON.parseObject(JSON.toJSONString(body),eClass);
-        baseMapper.update(entity,wrapper);
-        log.info("[{}] - 更新操作：{}",entity);
+        toWhereWrapper(query, "0".equals(config.get(FindConfig.LIKE)), wrapper);
+        E entity = JSON.parseObject(JSON.toJSONString(body), eClass);
+        baseMapper.update(entity, wrapper);
+        log.info("[{}] - 更新操作：{}", entity);
     }
 
-    public Map<String,Object> selectToPage(Map<String,String> query,Map<String,String> config){
-        Map<String,Object> map = new HashMap<>();
+    public Map<String, Object> selectToPage(Map<String, String> query, Map<String, String> config) {
+        Map<String, Object> map = new HashMap<>();
         List list = baseMapper.selectBaseList(select(query, config));
-        map.put("list",list);
-        map.put("count",baseMapper.selectBaseCount(count(query,config)));
+        map.put("list", list);
+        map.put("count", baseMapper.selectBaseCount(count(query, config)));
         return map;
     }
 
-    public Map<String,Object> selectToList(Map<String,String> query,Map<String,String> config){
-        Map<String,Object> map = new HashMap<>();
-        List<Map<String,Object>> resultList = baseMapper.selectBaseList(selectGroupCount(query, config));
-        for (Map<String,Object> sub:resultList) {
-            sub.put("0",sub.get("count"));
-            sub.put("1",sub.get(config.get(FindConfig.GROUP_BY)));
+    public Map<String, Object> selectToList(Map<String, String> query, Map<String, String> config) {
+        Map<String, Object> map = new HashMap<>();
+        List<Map<String, Object>> resultList = baseMapper.selectBaseList(selectGroupCount(query, config));
+        for (Map<String, Object> sub : resultList) {
+            sub.put("0", sub.get("count"));
+            sub.put("1", sub.get(config.get(FindConfig.GROUP_BY)));
         }
-        map.put("list",resultList);
+        map.put("list", resultList);
         return map;
     }
 
-    public Integer selectSqlToInteger(String sql){
+    public Integer selectSqlToInteger(String sql) {
         Integer value = baseMapper.selectBaseCount(sql);
         return value;
     }
 
-    public Map<String,Object> selectBarGroup(Map<String,String> query,Map<String,String> config){
-        Map<String,Object> map = new HashMap<>();
-        List<Map<String,Object>> resultList = baseMapper.selectBaseList(barGroup(query, config));
+    public Map<String, Object> selectBarGroup(Map<String, String> query, Map<String, String> config) {
+        Map<String, Object> map = new HashMap<>();
+        List<Map<String, Object>> resultList = baseMapper.selectBaseList(barGroup(query, config));
         List list = new ArrayList();
-        for (Map<String,Object> resultMap:resultList) {
+        for (Map<String, Object> resultMap : resultList) {
             List subList = new ArrayList();
-            for(String key:resultMap.keySet()){//keySet获取map集合key的集合  然后在遍历key即可
+            for (String key : resultMap.keySet()) {// keySet获取map集合key的集合 然后在遍历key即可
                 subList.add(resultMap.get(key));
             }
             list.add(subList);
         }
-        map.put("list",list);
+        map.put("list", list);
         return map;
     }
 
-//    public void barGroup(Map<String,String> query,Map<String,String> config,QueryWrapper wrapper){
-//        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-//            wrapper.select(config.get(FindConfig.GROUP_BY));
-//            if (config.get(FindConfig.FIELD) != null && !"".equals(config.get(FindConfig.FIELD))){
-//                String[] fieldList = config.get(FindConfig.FIELD).split(",");
-//                for (int i=0;i<fieldList.length;i++)
-//                    wrapper.select("SUM("+fieldList[i]+")");
-//            }
-//            toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-//            wrapper.groupBy(config.get(FindConfig.GROUP_BY));
-//        }else {
-//            wrapper.select("SUM("+config.get(FindConfig.GROUP_BY)+")");
-//            toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-//        }
-//        log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
-//    }
+    // public void barGroup(Map<String,String> query,Map<String,String>
+    // config,QueryWrapper wrapper){
+    // if (config.get(FindConfig.GROUP_BY) != null &&
+    // !"".equals(config.get(FindConfig.GROUP_BY))){
+    // wrapper.select(config.get(FindConfig.GROUP_BY));
+    // if (config.get(FindConfig.FIELD) != null &&
+    // !"".equals(config.get(FindConfig.FIELD))){
+    // String[] fieldList = config.get(FindConfig.FIELD).split(",");
+    // for (int i=0;i<fieldList.length;i++)
+    // wrapper.select("SUM("+fieldList[i]+")");
+    // }
+    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
+    // wrapper.groupBy(config.get(FindConfig.GROUP_BY));
+    // }else {
+    // wrapper.select("SUM("+config.get(FindConfig.GROUP_BY)+")");
+    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
+    // }
+    // log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
+    // }
 
-    public String barGroup(Map<String,String> query,Map<String,String> config){
+    public String barGroup(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer(" SELECT ");
-        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
+        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
             sql.append(config.get(FindConfig.GROUP_BY));
-            if (config.get(FindConfig.FIELD) != null && !"".equals(config.get(FindConfig.FIELD))){
+            if (config.get(FindConfig.FIELD) != null && !"".equals(config.get(FindConfig.FIELD))) {
                 String[] fieldList = config.get(FindConfig.FIELD).split(",");
-                for (int i=0;i<fieldList.length;i++)
+                for (int i = 0; i < fieldList.length; i++)
                     sql.append(" ,SUM(").append(fieldList[i]).append(")");
             }
             sql.append(" FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
             sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-        }else {
-            sql.append(" SUM(").append(config.get(FindConfig.GROUP_BY)).append(") FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+        } else {
+            sql.append(" SUM(").append(config.get(FindConfig.GROUP_BY)).append(") FROM ").append("`").append(table)
+                    .append("`");
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
-        log.info("[{}] - 查询操作，sql: {}",table,sql);
+        log.info("[{}] - 查询操作，sql: {}", table, sql);
         return sql.toString();
     }
 
-//    public void selectGroupCount(Map<String,String> query,Map<String,String> config,QueryWrapper wrapper){
-//        wrapper.select("count(*) AS count_value",config.get(FindConfig.GROUP_BY));
-//        toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-//        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-//            wrapper.groupBy(config.get(FindConfig.GROUP_BY));
-//        }
-//        log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
-//    }
+    // public void selectGroupCount(Map<String,String> query,Map<String,String>
+    // config,QueryWrapper wrapper){
+    // wrapper.select("count(*) AS count_value",config.get(FindConfig.GROUP_BY));
+    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
+    // if (config.get(FindConfig.GROUP_BY) != null &&
+    // !"".equals(config.get(FindConfig.GROUP_BY))){
+    // wrapper.groupBy(config.get(FindConfig.GROUP_BY));
+    // }
+    // log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
+    // }
 
-    public String selectGroupCount(Map<String,String> query,Map<String,String> config){
+    public String selectGroupCount(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("select COUNT(*) AS count, ");
         sql.append(config.get(FindConfig.GROUP_BY)).append(" ");
         sql.append("from ").append("`").append(table).append("` ");
-        sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
-        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
+        sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
+        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
             sql.append("group by ").append(config.get(FindConfig.GROUP_BY)).append(" ");
         }
-        log.info("[{}] - 查询操作，sql: {}",table,sql);
+        log.info("[{}] - 查询操作，sql: {}", table, sql);
         return sql.toString();
     }
 
-//    public void select(Map<String,String> query,Map<String,String> config,QueryWrapper wrapper){
-//        wrapper.select(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD)) ? "*" : config.get(FindConfig.FIELD));
-//        toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-//        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-//            wrapper.groupBy(config.get(FindConfig.GROUP_BY));
-//        }
-//        if (config.get(FindConfig.ORDER_BY) != null && !"".equals(config.get(FindConfig.ORDER_BY))){
-//            if (config.get(FindConfig.ORDER_BY).toUpperCase().contains("DESC")){
-//                wrapper.orderByDesc(config.get(FindConfig.ORDER_BY).toUpperCase().replaceAll(" DESC",""));
-//            }else {
-//                wrapper.orderByAsc(config.get(FindConfig.ORDER_BY).toUpperCase().replaceAll(" ASC",""));
-//            }
-//        }
-//        if (config.get(FindConfig.PAGE) != null && !"".equals(config.get(FindConfig.PAGE))){
-//            int page = config.get(FindConfig.PAGE) != null && !"".equals(config.get(FindConfig.PAGE)) ? Integer.parseInt(config.get(FindConfig.PAGE)) : 1;
-//            int limit = config.get(FindConfig.SIZE) != null && !"".equals(config.get(FindConfig.SIZE)) ? Integer.parseInt(config.get(FindConfig.SIZE)) : 10;
-//            wrapper.last("limit "+(page-1)*limit+" , "+limit);
-//        }
-//        log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
-//    }
+    // public void select(Map<String,String> query,Map<String,String>
+    // config,QueryWrapper wrapper){
+    // wrapper.select(config.get(FindConfig.FIELD) == null ||
+    // "".equals(config.get(FindConfig.FIELD)) ? "*" :
+    // config.get(FindConfig.FIELD));
+    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
+    // if (config.get(FindConfig.GROUP_BY) != null &&
+    // !"".equals(config.get(FindConfig.GROUP_BY))){
+    // wrapper.groupBy(config.get(FindConfig.GROUP_BY));
+    // }
+    // if (config.get(FindConfig.ORDER_BY) != null &&
+    // !"".equals(config.get(FindConfig.ORDER_BY))){
+    // if (config.get(FindConfig.ORDER_BY).toUpperCase().contains("DESC")){
+    // wrapper.orderByDesc(config.get(FindConfig.ORDER_BY).toUpperCase().replaceAll("
+    // DESC",""));
+    // }else {
+    // wrapper.orderByAsc(config.get(FindConfig.ORDER_BY).toUpperCase().replaceAll("
+    // ASC",""));
+    // }
+    // }
+    // if (config.get(FindConfig.PAGE) != null &&
+    // !"".equals(config.get(FindConfig.PAGE))){
+    // int page = config.get(FindConfig.PAGE) != null &&
+    // !"".equals(config.get(FindConfig.PAGE)) ?
+    // Integer.parseInt(config.get(FindConfig.PAGE)) : 1;
+    // int limit = config.get(FindConfig.SIZE) != null &&
+    // !"".equals(config.get(FindConfig.SIZE)) ?
+    // Integer.parseInt(config.get(FindConfig.SIZE)) : 10;
+    // wrapper.last("limit "+(page-1)*limit+" , "+limit);
+    // }
+    // log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
+    // }
 
-    public String select(Map<String,String> query,Map<String,String> config){
+    public String select(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("select ");
-        sql.append(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD)) ? "*" : config.get(FindConfig.FIELD)).append(" ");
-        sql.append("from ").append("`").append(table).append("`").append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
-        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
+        sql.append(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD)) ? "*"
+                : config.get(FindConfig.FIELD)).append(" ");
+        sql.append("from ").append("`").append(table).append("`")
+                .append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
+        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
             sql.append("group by ").append(config.get(FindConfig.GROUP_BY)).append(" ");
         }
-        if (config.get(FindConfig.ORDER_BY) != null && !"".equals(config.get(FindConfig.ORDER_BY))){
+        if (config.get(FindConfig.ORDER_BY) != null && !"".equals(config.get(FindConfig.ORDER_BY))) {
             sql.append("order by ").append(config.get(FindConfig.ORDER_BY)).append(" ");
         }
-        if (config.get(FindConfig.PAGE) != null && !"".equals(config.get(FindConfig.PAGE))){
-            int page = config.get(FindConfig.PAGE) != null && !"".equals(config.get(FindConfig.PAGE)) ? Integer.parseInt(config.get(FindConfig.PAGE)) : 1;
-            int limit = config.get(FindConfig.SIZE) != null && !"".equals(config.get(FindConfig.SIZE)) ? Integer.parseInt(config.get(FindConfig.SIZE)) : 10;
-            sql.append(" limit ").append( (page-1)*limit ).append(" , ").append(limit);
+        if (config.get(FindConfig.PAGE) != null && !"".equals(config.get(FindConfig.PAGE))) {
+            int page = config.get(FindConfig.PAGE) != null && !"".equals(config.get(FindConfig.PAGE))
+                    ? Integer.parseInt(config.get(FindConfig.PAGE))
+                    : 1;
+            int limit = config.get(FindConfig.SIZE) != null && !"".equals(config.get(FindConfig.SIZE))
+                    ? Integer.parseInt(config.get(FindConfig.SIZE))
+                    : 10;
+            sql.append(" limit ").append((page - 1) * limit).append(" , ").append(limit);
         }
-        log.info("[{}] - 查询操作，sql: {}",table,sql);
+        log.info("[{}] - 查询操作，sql: {}", table, sql);
         return sql.toString();
     }
 
     @Transactional
-    public void delete(Map<String,String> query,Map<String,String> config){
+    public void delete(Map<String, String> query, Map<String, String> config) {
         QueryWrapper wrapper = new QueryWrapper<E>();
-        toWhereWrapper(query, "0".equals(config.get(FindConfig.GROUP_BY)),wrapper);
+        toWhereWrapper(query, "0".equals(config.get(FindConfig.GROUP_BY)), wrapper);
         baseMapper.delete(wrapper);
-        log.info("[{}] - 删除操作：{}",wrapper.getSqlSelect());
+        log.info("[{}] - 删除操作：{}", wrapper.getSqlSelect());
     }
 
-//    public void count(Map<String,String> query,Map<String,String> config, QueryWrapper wrapper){
-////        log.info("拼接统计函数前");
-//        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-//            wrapper.select(config.get(FindConfig.GROUP_BY));
-//            wrapper.select("COUNT("+config.get(FindConfig.GROUP_BY)+")");
-//            toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-//        }else {
-//            wrapper.select("COUNT(*)");
-//            toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-//        }
-//        log.info("[{}] - 统计操作，sql: {}",wrapper.getSqlSelect());
-//    }
+    // public void count(Map<String,String> query,Map<String,String> config,
+    // QueryWrapper wrapper){
+    //// log.info("拼接统计函数前");
+    // if (config.get(FindConfig.GROUP_BY) != null &&
+    // !"".equals(config.get(FindConfig.GROUP_BY))){
+    // wrapper.select(config.get(FindConfig.GROUP_BY));
+    // wrapper.select("COUNT("+config.get(FindConfig.GROUP_BY)+")");
+    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
+    // }else {
+    // wrapper.select("COUNT(*)");
+    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
+    // }
+    // log.info("[{}] - 统计操作，sql: {}",wrapper.getSqlSelect());
+    // }
 
-    public String count(Map<String,String> query,Map<String,String> config){
+    public String count(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("SELECT ");
-//        log.info("拼接统计函数前");
-        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-            sql.append("COUNT(").append(config.get(FindConfig.GROUP_BY)).append(") FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
-//            sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-        }else {
+        // log.info("拼接统计函数前");
+        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
+            sql.append("COUNT(").append(config.get(FindConfig.GROUP_BY)).append(") FROM ").append("`").append(table)
+                    .append("`");
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
+            // sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
+        } else {
             sql.append("COUNT(*) FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
-        log.info("[{}] - 统计操作，sql: {}",table,sql);
+        log.info("[{}] - 统计操作，sql: {}", table, sql);
         return sql.toString();
     }
 
-//    public Query sum(Map<String,String> query,Map<String,String> config){
-//        StringBuffer sql = new StringBuffer(" SELECT ");
-//        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-//            sql.append(config.get(FindConfig.GROUP_BY)).append(" ,SUM(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table).append("`");
-//            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
-//            sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-//        }else {
-//            sql.append(" SUM(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table).append("`");
-//            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
-//        }
-//        log.info("[{}] - 查询操作，sql: {}",table,sql);
-//        return runCountSql(sql.toString());
-//    }
-//
-//    public Query avg(Map<String,String> query,Map<String,String> config){
-//        StringBuffer sql = new StringBuffer(" SELECT ");
-//        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-//            sql.append(config.get(FindConfig.GROUP_BY)).append(" ,AVG(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table).append("`");
-//            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
-//            sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-//        }else {
-//            sql.append(" AVG(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table).append("`");
-//            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
-//        }
-//        log.info("[{}] - 查询操作，sql: {}",table,sql);
-//        return runCountSql(sql.toString());
-//    }
+    // public Query sum(Map<String,String> query,Map<String,String> config){
+    // StringBuffer sql = new StringBuffer(" SELECT ");
+    // if (config.get(FindConfig.GROUP_BY) != null &&
+    // !"".equals(config.get(FindConfig.GROUP_BY))){
+    // sql.append(config.get(FindConfig.GROUP_BY)).append("
+    // ,SUM(").append(config.get(FindConfig.FIELD)).append(") FROM
+    // ").append("`").append(table).append("`");
+    // sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
+    // sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
+    // }else {
+    // sql.append(" SUM(").append(config.get(FindConfig.FIELD)).append(") FROM
+    // ").append("`").append(table).append("`");
+    // sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
+    // }
+    // log.info("[{}] - 查询操作，sql: {}",table,sql);
+    // return runCountSql(sql.toString());
+    // }
+    //
+    // public Query avg(Map<String,String> query,Map<String,String> config){
+    // StringBuffer sql = new StringBuffer(" SELECT ");
+    // if (config.get(FindConfig.GROUP_BY) != null &&
+    // !"".equals(config.get(FindConfig.GROUP_BY))){
+    // sql.append(config.get(FindConfig.GROUP_BY)).append("
+    // ,AVG(").append(config.get(FindConfig.FIELD)).append(") FROM
+    // ").append("`").append(table).append("`");
+    // sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
+    // sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
+    // }else {
+    // sql.append(" AVG(").append(config.get(FindConfig.FIELD)).append(") FROM
+    // ").append("`").append(table).append("`");
+    // sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
+    // }
+    // log.info("[{}] - 查询操作，sql: {}",table,sql);
+    // return runCountSql(sql.toString());
+    // }
 
-    public String groupCount(Map<String,String> query,Map<String,String> config){
+    public String groupCount(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("SELECT ");
         log.info("拼接统计函数前");
-        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-            sql.append("COUNT(").append(config.get(FindConfig.GROUP_BY)).append(") FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
+            sql.append("COUNT(").append(config.get(FindConfig.GROUP_BY)).append(") FROM ").append("`").append(table)
+                    .append("`");
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
             sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-        }else {
+        } else {
             sql.append("COUNT(*) FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
-        log.info("[{}] - 统计操作，sql: {}",table,sql);
+        log.info("[{}] - 统计操作，sql: {}", table, sql);
         return sql.toString();
     }
 
-    public String sum(Map<String,String> query,Map<String,String> config){
+    public String sum(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer(" SELECT ");
-        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-            sql.append("SUM(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
+            sql.append("SUM(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table)
+                    .append("`");
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
             sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-        }else {
-            sql.append(" SUM(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+        } else {
+            sql.append(" SUM(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table)
+                    .append("`");
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
-        log.info("[{}] - 查询操作，sql: {}",table,sql);
+        log.info("[{}] - 查询操作，sql: {}", table, sql);
         return sql.toString();
     }
 
-    public String avg(Map<String,String> query,Map<String,String> config){
+    public String avg(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer(" SELECT ");
-        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))){
-            sql.append("AVG(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+        if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
+            sql.append("AVG(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table)
+                    .append("`");
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
             sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-        }else {
-            sql.append(" AVG(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table).append("`");
-            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),config.get(FindConfig.SQLHWERE)));
+        } else {
+            sql.append(" AVG(").append(config.get(FindConfig.FIELD)).append(") FROM ").append("`").append(table)
+                    .append("`");
+            sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
-        log.info("[{}] - 查询操作，sql: {}",table,sql);
+        log.info("[{}] - 查询操作，sql: {}", table, sql);
         return sql.toString();
     }
 
-    public void toWhereWrapper(Map<String,String> query, Boolean like, QueryWrapper wrapper) {
+    public void toWhereWrapper(Map<String, String> query, Boolean like, QueryWrapper wrapper) {
         if (query.size() > 0) {
             try {
                 for (Map.Entry<String, String> entry : query.entrySet()) {
                     if (entry.getKey().contains(FindConfig.MIN_)) {
                         String min = humpToLine(entry.getKey()).replace("_min", "");
-                        wrapper.ge(min,URLDecoder.decode(entry.getValue(), "UTF-8"));
+                        wrapper.ge(min, URLDecoder.decode(entry.getValue(), "UTF-8"));
                         continue;
                     }
                     if (entry.getKey().contains(FindConfig.MAX_)) {
                         String max = humpToLine(entry.getKey()).replace("_max", "");
-                        wrapper.le(max,URLDecoder.decode(entry.getValue(), "UTF-8"));
+                        wrapper.le(max, URLDecoder.decode(entry.getValue(), "UTF-8"));
                         continue;
                     }
                     if (like == true) {
-                        if (entry.getValue()!=null)
-                            wrapper.like(humpToLine(entry.getKey()),"%"+URLDecoder.decode(entry.getValue(), "UTF-8")+"%");
+                        if (entry.getValue() != null)
+                            wrapper.like(humpToLine(entry.getKey()),
+                                    "%" + URLDecoder.decode(entry.getValue(), "UTF-8") + "%");
                     } else {
-                        if (entry.getValue()!=null)
-                            wrapper.eq(humpToLine(entry.getKey()),URLDecoder.decode(entry.getValue(), "UTF-8"));
+                        if (entry.getValue() != null)
+                            wrapper.eq(humpToLine(entry.getKey()), URLDecoder.decode(entry.getValue(), "UTF-8"));
                     }
                 }
             } catch (UnsupportedEncodingException e) {
@@ -344,28 +384,32 @@ public class BaseService<E>{
         }
     }
 
-    public String toWhereSql(Map<String,String> query, Boolean like,String sqlwhere) {
+    public String toWhereSql(Map<String, String> query, Boolean like, String sqlwhere) {
         if (query.size() > 0) {
             try {
                 StringBuilder sql = new StringBuilder(" WHERE ");
                 for (Map.Entry<String, String> entry : query.entrySet()) {
                     if (entry.getKey().contains(FindConfig.MIN_)) {
                         String min = humpToLine(entry.getKey()).replace("_min", "");
-                        sql.append("`"+min+"`").append(" >= '").append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("' and ");
+                        sql.append("`" + min + "`").append(" >= '").append(URLDecoder.decode(entry.getValue(), "UTF-8"))
+                                .append("' and ");
                         continue;
                     }
                     if (entry.getKey().contains(FindConfig.MAX_)) {
                         String max = humpToLine(entry.getKey()).replace("_max", "");
-                        sql.append("`"+max+"`").append(" <= '").append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("' and ");
+                        sql.append("`" + max + "`").append(" <= '").append(URLDecoder.decode(entry.getValue(), "UTF-8"))
+                                .append("' and ");
                         continue;
                     }
                     if (like == true) {
-                        sql.append("`"+humpToLine(entry.getKey())+"`").append(" LIKE '%").append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("%'").append(" and ");
+                        sql.append("`" + humpToLine(entry.getKey()) + "`").append(" LIKE '%")
+                                .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("%'").append(" and ");
                     } else {
-                        sql.append("`"+humpToLine(entry.getKey())+"`").append(" = '").append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("'").append(" and ");
+                        sql.append("`" + humpToLine(entry.getKey()) + "`").append(" = '")
+                                .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("'").append(" and ");
                     }
                 }
-                if (sqlwhere!=null && !sqlwhere.trim().equals("")) {
+                if (sqlwhere != null && !sqlwhere.trim().equals("")) {
                     sql.append(sqlwhere).append(" and ");
                 }
                 sql.delete(sql.length() - 4, sql.length());
@@ -374,8 +418,8 @@ public class BaseService<E>{
             } catch (UnsupportedEncodingException e) {
                 log.info("拼接sql 失败：{}", e.getMessage());
             }
-        }else {
-            if (sqlwhere!=null && !sqlwhere.trim().equals("")) {
+        } else {
+            if (sqlwhere != null && !sqlwhere.trim().equals("")) {
                 StringBuilder sql = new StringBuilder(" WHERE ");
                 sql.append(sqlwhere);
                 return sql.toString();
@@ -384,25 +428,25 @@ public class BaseService<E>{
         return "";
     }
 
-    public Map<String,Object> readBody(BufferedReader reader){
+    public Map<String, Object> readBody(BufferedReader reader) {
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder("");
-        try{
+        try {
             br = reader;
             String str;
-            while ((str = br.readLine()) != null){
+            while ((str = br.readLine()) != null) {
                 sb.append(str);
             }
             br.close();
             String json = sb.toString();
             return JSONObject.parseObject(json, Map.class);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally{
-            if (null != br){
-                try{
+        } finally {
+            if (null != br) {
+                try {
                     br.close();
-                }catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -410,7 +454,7 @@ public class BaseService<E>{
         return null;
     }
 
-    public Map<String,String> readQuery(HttpServletRequest request){
+    public Map<String, String> readQuery(HttpServletRequest request) {
         String queryString = request.getQueryString();
         if (queryString != null && !"".equals(queryString)) {
             String[] querys = queryString.split("&");
@@ -429,40 +473,39 @@ public class BaseService<E>{
             map.remove(FindConfig.MIN_);
             map.remove(FindConfig.SQLHWERE);
             return map;
-        }else {
+        } else {
             return new HashMap<>();
         }
     }
 
-    public Map<String,String> readConfig(HttpServletRequest request){
-        Map<String,String> map = new HashMap<>();
-        map.put(FindConfig.PAGE,request.getParameter(FindConfig.PAGE));
-        map.put(FindConfig.SIZE,request.getParameter(FindConfig.SIZE));
-        map.put(FindConfig.LIKE,request.getParameter(FindConfig.LIKE));
-        map.put(FindConfig.ORDER_BY,request.getParameter(FindConfig.ORDER_BY));
-        map.put(FindConfig.FIELD,request.getParameter(FindConfig.FIELD));
-        map.put(FindConfig.GROUP_BY,request.getParameter(FindConfig.GROUP_BY));
-        map.put(FindConfig.MAX_,request.getParameter(FindConfig.MAX_));
-        map.put(FindConfig.MIN_,request.getParameter(FindConfig.MIN_));
-        map.put(FindConfig.SQLHWERE,request.getParameter(FindConfig.SQLHWERE));
+    public Map<String, String> readConfig(HttpServletRequest request) {
+        Map<String, String> map = new HashMap<>();
+        map.put(FindConfig.PAGE, request.getParameter(FindConfig.PAGE));
+        map.put(FindConfig.SIZE, request.getParameter(FindConfig.SIZE));
+        map.put(FindConfig.LIKE, request.getParameter(FindConfig.LIKE));
+        map.put(FindConfig.ORDER_BY, request.getParameter(FindConfig.ORDER_BY));
+        map.put(FindConfig.FIELD, request.getParameter(FindConfig.FIELD));
+        map.put(FindConfig.GROUP_BY, request.getParameter(FindConfig.GROUP_BY));
+        map.put(FindConfig.MAX_, request.getParameter(FindConfig.MAX_));
+        map.put(FindConfig.MIN_, request.getParameter(FindConfig.MIN_));
+        map.put(FindConfig.SQLHWERE, request.getParameter(FindConfig.SQLHWERE));
         return map;
     }
 
     @Transactional
-    public void save(E e){
+    public void save(E e) {
         String s = JSONObject.toJSONString(e);
         Map map = JSONObject.parseObject(s, Map.class);
         insert(map);
     }
 
-    public E findOne(Map<String, String> map){
+    public E findOne(Map<String, String> map) {
         try {
-            return (E)baseMapper.selectBaseOne(select(map, new HashMap<>()));
-        }catch (Exception e){
+            return (E) baseMapper.selectBaseOne(select(map, new HashMap<>()));
+        } catch (Exception e) {
             return null;
         }
     }
-
 
     public String encryption(String plainText) {
         String re_md5 = new String();
@@ -491,7 +534,6 @@ public class BaseService<E>{
         return re_md5;
     }
 
-
     public static String humpToLine(String str) {
         if (str == null) {
             return null;
@@ -499,7 +541,7 @@ public class BaseService<E>{
         // 将驼峰字符串转换成数组
         char[] charArray = str.toCharArray();
         StringBuilder buffer = new StringBuilder();
-        //处理字符串
+        // 处理字符串
         for (int i = 0, l = charArray.length; i < l; i++) {
             if (charArray[i] >= 65 && charArray[i] <= 90) {
                 buffer.append("_").append(charArray[i] += 32);
@@ -508,13 +550,12 @@ public class BaseService<E>{
             }
         }
         String s = buffer.toString();
-        if (s.startsWith("_")){
+        if (s.startsWith("_")) {
             return s.substring(1);
-        }else {
+        } else {
             return s;
         }
     }
-
 
     public JSONObject covertObject(JSONObject object) {
         if (object == null) {
@@ -525,13 +566,13 @@ public class BaseService<E>{
         for (String key : set) {
             Object value = object.get(key);
             if (value instanceof JSONArray) {
-                //数组
+                // 数组
                 value = covertArray(object.getJSONArray(key));
             } else if (value instanceof JSONObject) {
-                //对象
+                // 对象
                 value = covertObject(object.getJSONObject(key));
             }
-            //这个方法自己写的改成下划线
+            // 这个方法自己写的改成下划线
             key = humpToLine(key);
             newObject.put(key, value);
         }
@@ -546,16 +587,15 @@ public class BaseService<E>{
         for (int i = 0; i < array.size(); i++) {
             Object value = array.get(i);
             if (value instanceof JSONArray) {
-                //数组
+                // 数组
                 value = covertArray(array.getJSONArray(i));
             } else if (value instanceof JSONObject) {
-                //对象
+                // 对象
                 value = covertObject(array.getJSONObject(i));
             }
             newArray.add(value);
         }
         return newArray;
     }
-
 
 }

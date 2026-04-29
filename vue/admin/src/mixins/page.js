@@ -229,17 +229,17 @@ export default {
             return ret;
         },
 
-        del_show: function(o, id) {
+        del_show: function (o, id) {
             var _this = this;
-            $.confirm('删除后将无法回复！<br/>是否确定要删除？', function() {
+            $.confirm('删除后将无法回复！<br/>是否确定要删除？', function () {
                 // console.log('确定删除!');
                 var query = {};
                 query[id] = o[id];
-                _this.del(query, function() {
+                _this.del(query, function () {
                     _this.list.del(query);
                     _this.count -= 1;
                 });
-            }, function() {
+            }, function () {
                 // console.log('取消删除!')
             })
         },
@@ -289,13 +289,13 @@ export default {
          */
         batchSet: function batchSet() {
             var _this = this;
-            $.confirm('批量修改数据无法挽回<br/>确定要操作吗?', function() {
+            $.confirm('批量修改数据无法挽回<br/>确定要操作吗?', function () {
                 var q = Object.assign({}, _this.query, _this.query_set);
                 q[_this.field] = _this.selects;
                 delete q.page;
                 delete q.size;
                 delete q.orderby;
-                _this.set(_this.form, q, function(json) {
+                _this.set(_this.form, q, function (json) {
                     if (json.result) {
                         _this.show = false;
                         _this.get();
@@ -374,13 +374,13 @@ export default {
             if (!this.user.user_id) {
                 var token = $.db.get("token");
                 if (token) {
-					// 存储token
+                    // 存储token
                     this.$store.commit("user_set", {
                         token
                     });
-					// 获取登录态
+                    // 获取登录态
                     this.$get_user(() => {
-						// 判断是否登录
+                        // 判断是否登录
                         if (this.oauth.signIn) {
                             if (this.user.user_id) {
                                 // 执行获取权限并存储
@@ -460,7 +460,7 @@ export default {
                 return;
             }
             var _this = this;
-            this.$post(url, value, function(json) {
+            this.$post(url, value, function (json) {
                 _this.events("add_after", json, func);
                 if (json.result) {
                     _this.$toast(json.result.tip, json.result.bl ? 'success' : 'danger');
@@ -483,7 +483,7 @@ export default {
                 return;
             }
             var _this = this;
-            this.$get(url, query, function(json) {
+            this.$get(url, query, function (json) {
                 _this.events("del_after", json, func);
                 if (json.result) {
                     _this.$toast(json.result.tip, json.result.bl ? 'success' : 'danger');
@@ -520,7 +520,7 @@ export default {
             if (!this.query_set || Object.keys(this.query_set).length === 0) {
                 this.query_set = this.query;
             }
-            this.$post(this.toUrl(this.query_set, url), value, function(json, status) {
+            this.$post(this.toUrl(this.query_set, url), value, function (json, status) {
                 _this.events("set_after", json, func);
                 if (json.result) {
                     _this.$toast('更新成功！', 'success');
@@ -561,7 +561,7 @@ export default {
             var url = this.url_get_obj ? this.url_get_obj : this.url;
             if (url) {
                 var _this = this;
-                this.get_obj(query, function() {
+                this.get_obj(query, function () {
                     _this.get_create(query, func);
                 });
             } else {
@@ -600,7 +600,7 @@ export default {
                 return;
             }
             var _this = this;
-            this.$get(this.toUrl(query, url), null, function(json, status) {
+            this.$get(this.toUrl(query, url), null, function (json, status) {
                 var res = json.result;
                 if (res) {
                     var obj;
@@ -662,9 +662,9 @@ export default {
             this.loading = 0;
 
             // history.pushState(null, "", "?" + this.toUrl(this.query));
-			this.$router.replace({query: $.delete(this.query)});
-			
-            this.$get(this.toUrl(query, url), null, function(json, status) {
+            this.$router.replace({ query: $.delete(this.query) });
+
+            this.$get(this.toUrl(query, url), null, function (json, status) {
                 _this.loading = 100;
                 if (_this.clear_list) {
                     _this.list.clear();
@@ -690,6 +690,28 @@ export default {
          * @param {Object} res 响应结果
          */
         get_list_after: function get_list_after(res, func, url) {
+            try {
+                console.log('[DEBUG] get_list_after res:', res);
+                // 如果有结果数组，打印长度
+                if (res && res.result && Array.isArray(res.result.list)) {
+                    console.log('[DEBUG] result.list length:', res.result.list.length);
+                }
+                // 打印当前路由的权限及各字段的 $check_field 评估
+                try {
+                    const path = this.$route && this.$route.path;
+                    const auth = this.$get_power ? this.$get_power(path) : (this.$store && this.$store.state && this.$store.state.web && this.$store.state.web.auth ? this.$store.state.web.auth.find(a => a.path === path) : null);
+                    console.log('[DEBUG] route for get_list_after:', path, 'auth:', auth);
+                    if (auth && auth.field_get) {
+                        auth.field_get.split(',').map(f => f.trim()).forEach(f => {
+                            try { console.log('[DEBUG] $check_field get', f, '=>', this.$check_field('get', f)); } catch (e) { console.log('[DEBUG] $check_field error for', f, e); }
+                        });
+                    }
+                } catch (e) {
+                    console.error('[DEBUG] error printing check_field', e);
+                }
+            } catch (e) {
+                console.error('[DEBUG] get_list_after top error', e);
+            }
             if (func) {
                 func(res, url);
             }
@@ -732,14 +754,14 @@ export default {
             var _this = this;
             if (!this.count) {
                 var qy = {};
-				for(var key in this.query){
-					if (Array.isArray(this.query[key])){
-						qy[key + '_min'] = new Date(this.query[key][0]).toStr('yyyy-MM-dd hh:mm:ss');
-						qy[key + '_max'] = new Date(this.query[key][1]).toStr('yyyy-MM-dd hh:mm:ss');
-					}else{
-						qy[key] = this.query[key]
-					}
-				}
+                for (var key in this.query) {
+                    if (Array.isArray(this.query[key])) {
+                        qy[key + '_min'] = new Date(this.query[key][0]).toStr('yyyy-MM-dd hh:mm:ss');
+                        qy[key + '_max'] = new Date(this.query[key][1]).toStr('yyyy-MM-dd hh:mm:ss');
+                    } else {
+                        qy[key] = this.query[key]
+                    }
+                }
                 this.get_list(qy, func);
             } else {
                 this.get_list(query, func);
@@ -753,7 +775,7 @@ export default {
         next: function next(query, func) {
             console.log("next");
             var _this = this;
-            _this.get_list(query, function(json, url) {
+            _this.get_list(query, function (json, url) {
                 if (json.result) {
                     var list = json.result.list;
                     if (list.length > 0) {
@@ -778,7 +800,7 @@ export default {
         prev: function prev(query, func) {
             console.log("prev");
             var _this = this;
-            this.get_list(query, function(json, url) {
+            this.get_list(query, function (json, url) {
                 if (json.result) {
                     var list = json.result.list;
                     if (list.length > 0) {
@@ -843,22 +865,22 @@ export default {
          * 提交前事件
          * @param {Object} param 提交参数
          */
-        submit_before: function(param) {
-			// 循环参数
-        	for(var key in param){
-				// 错误回调
-        		try{
-        			var value = param[key];
-					// 值判断与值校验
-					console.log("键 ,值 ,类型" ,key ,value ,value instanceof Date);
-        			if(value && value instanceof Date){
-        				param[key] = this.$toTime(value ,"yyyy-MM-dd hh:mm:ss");
-        			}
-        		}
-        		catch(err){
-        			console.log(key ,"转日期错误：" ,err ,"收到请无视!");
-        		}
-        	}
+        submit_before: function (param) {
+            // 循环参数
+            for (var key in param) {
+                // 错误回调
+                try {
+                    var value = param[key];
+                    // 值判断与值校验
+                    console.log("键 ,值 ,类型", key, value, value instanceof Date);
+                    if (value && value instanceof Date) {
+                        param[key] = this.$toTime(value, "yyyy-MM-dd hh:mm:ss");
+                    }
+                }
+                catch (err) {
+                    console.log(key, "转日期错误：", err, "收到请无视!");
+                }
+            }
             return param;
         },
 
@@ -907,18 +929,18 @@ export default {
             // console.log('发送请求前', url);
             if (url) {
                 var _this = this;
-                console.log('发送信息' ,url ,param);
+                console.log('发送信息', url, param);
                 url = this.$toUrl(this.query, url);
-                this.$post(url, param, function(json, status) {
-					console.log("提交结果：" ,json);
+                this.$post(url, param, function (json, status) {
+                    console.log("提交结果：", json);
                     if (json.result) {
                         _this.events("submit_after", json, func);
                     } else if (json.error) {
                         _this.$toast(json.error.message, 'danger');
                     }
-					// else {
-     //                    _this.$toast("服务器连接失败！", "danger");
-     //                }
+                    // else {
+                    //                    _this.$toast("服务器连接失败！", "danger");
+                    //                }
                 });
             }
         },
@@ -929,15 +951,15 @@ export default {
          * @param {Function} func 回调函数
          */
         submit_after: function submit_after(json, func) {
-			this.$toast('提交成功！', 'success');
+            this.$toast('提交成功！', 'success');
             if (func) {
                 func(json);
             }
             let path = this.$route.fullPath
-            let skip_Path  = path.replace('/view','/table')
+            let skip_Path = path.replace('/view', '/table')
 
             this.$router.push(skip_Path);
-           
+
         },
 
         /**
@@ -1002,7 +1024,7 @@ export default {
         init_main: function init_main(query) {
             var _this = this;
             $.push(this.query, query);
-            _this.init_after(function() {
+            _this.init_after(function () {
                 _this.get(_this.query);
             });
         },
@@ -1036,7 +1058,7 @@ export default {
             } else {
                 this.uploading = 0;
                 var _this = this;
-                this.$upload(url, param, function(json, status) {
+                this.$upload(url, param, function (json, status) {
                     _this.uploading = 100;
                     _this.events("upload_after", json, func);
                 });
@@ -1162,7 +1184,7 @@ export default {
             }
             var value = "";
             if (arr_str) {
-                if (typeof(arr_str) == 'string') {
+                if (typeof (arr_str) == 'string') {
                     if (!span) {
                         span = ',';
                     }
@@ -1196,59 +1218,59 @@ export default {
             this.$router.go(-1);
         },
         // 打印
-        printFrame:function printFrame(imgArrs,formArrs){
-			// 遍历表单数据的名称和值  
-			for (let key in this.form) {
-				if (this.form.hasOwnProperty(key)) {
-					formArrs.map(item => {
-						if (item.key == key) {
-							if (item.key == 'seller_customers') {
-								//卖家用户单独处理
-								this.list_user_seller_customers.map(customer => {
-									if (customer.user_id == this.form[key]) {
-										item.value = customer.nickname + "-" + customer.username;
-									}
-								})
-							} else {
-								item.value = this.form[key];
-							}
-						}
-					})
-					// console.log(`名称: ${key}, 值: ${this.form[key]}`);  
-				}
-			}
-			let printStr = `<div>`;
-			imgArrs.map(item => {
-				if (!!item.value) { 
-                    printStr += `<div class='print-line'><div class='print-title'>${item.label}</div><img class='print-img' src="${item.value}" /></div>` 
+        printFrame: function printFrame(imgArrs, formArrs) {
+            // 遍历表单数据的名称和值  
+            for (let key in this.form) {
+                if (this.form.hasOwnProperty(key)) {
+                    formArrs.map(item => {
+                        if (item.key == key) {
+                            if (item.key == 'seller_customers') {
+                                //卖家用户单独处理
+                                this.list_user_seller_customers.map(customer => {
+                                    if (customer.user_id == this.form[key]) {
+                                        item.value = customer.nickname + "-" + customer.username;
+                                    }
+                                })
+                            } else {
+                                item.value = this.form[key];
+                            }
+                        }
+                    })
+                    // console.log(`名称: ${key}, 值: ${this.form[key]}`);  
+                }
+            }
+            let printStr = `<div>`;
+            imgArrs.map(item => {
+                if (!!item.value) {
+                    printStr += `<div class='print-line'><div class='print-title'>${item.label}</div><img class='print-img' src="${item.value}" /></div>`
                 };
-			})
-			formArrs.map(item=>{
-				if(!!item.value){
-					if(item.key != 'cart_content'){
-						printStr+=`<div class='print-line'><div class='print-title'>${item.label}</div><div>${item.value}</div></div>`
-					}
-				}
-			})
-			//正文单独处理
-			if(!!this.form.cart_content){
-				printStr += `<div class='print-line'><div class='print-title'>正文</div><div>${this.form.cart_content}</div></div>`
-			
-			}
-			printStr += `</div>`;
-		
+            })
+            formArrs.map(item => {
+                if (!!item.value) {
+                    if (item.key != 'cart_content') {
+                        printStr += `<div class='print-line'><div class='print-title'>${item.label}</div><div>${item.value}</div></div>`
+                    }
+                }
+            })
+            //正文单独处理
+            if (!!this.form.cart_content) {
+                printStr += `<div class='print-line'><div class='print-title'>正文</div><div>${this.form.cart_content}</div></div>`
+
+            }
+            printStr += `</div>`;
+
 
             const iframe = document.getElementById('printIframe');
-            this.iframeContent=printStr;
+            this.iframeContent = printStr;
             iframe.style.display = 'none';
             document.body.appendChild(iframe);
 
             // 等待iframe加载完成
             iframe.onload = () => {
-            // 将需要打印的内容写入iframe
-            const doc = iframe.contentWindow.document;
-            doc.open();
-            doc.write(`  
+                // 将需要打印的内容写入iframe
+                const doc = iframe.contentWindow.document;
+                doc.open();
+                doc.write(`  
                 <!DOCTYPE html>  
                 <html>  
                 <head>  
@@ -1282,20 +1304,20 @@ export default {
                 </body>  
                 </html>  
             `);
-            doc.close();
+                doc.close();
 
-            // 打印iframe
-            iframe.contentWindow.print();
+                // 打印iframe
+                iframe.contentWindow.print();
 
-            // 可选：移除iframe
-            setTimeout(() => {
-                // 刷新页面
-                location.reload()
-            }, 0);
-        };
+                // 可选：移除iframe
+                setTimeout(() => {
+                    // 刷新页面
+                    location.reload()
+                }, 0);
+            };
 
-        // 设置iframe的src以触发加载
-        iframe.src = 'about:blank';
+            // 设置iframe的src以触发加载
+            iframe.src = 'about:blank';
         },
 
         /**
@@ -1305,10 +1327,10 @@ export default {
         import_db: function import_db(file) {
             if (file) {
                 var _this = this;
-                $.confirm("是否导入 " + file.name, "导入数据", function() {
-                    $.http.upload(_this.url_import, file, function(json) {
+                $.confirm("是否导入 " + file.name, "导入数据", function () {
+                    $.http.upload(_this.url_import, file, function (json) {
                         if (json.result) {
-                            $.confirm(json.result.tip, function() {
+                            $.confirm(json.result.tip, function () {
                                 _this.get();
                             });
                         } else if (json.error) {
@@ -1329,14 +1351,14 @@ export default {
             if (this.selects) {
                 var query = {};
                 query[this.field] = this.selects;
-                this.$get(_this.url_export, query, function(json) {
+                this.$get(_this.url_export, query, function (json) {
                     var res = json.result;
                     if (res && res.bl) {
                         window.location.href = res.url;
                     }
                 });
             } else {
-                this.$get(_this.url_export, this.query, function(json) {
+                this.$get(_this.url_export, this.query, function (json) {
                     var res = json.result;
                     if (res && res.bl) {
                         window.location.href = res.url;
@@ -1351,7 +1373,7 @@ export default {
          * @param {Object} list 数据列表
          * @return {Number} 返回级别
          */
-        opens_has_sub: function(id, list) {
+        opens_has_sub: function (id, list) {
             if (!list) {
                 list = this.list;
             }
@@ -1470,7 +1492,7 @@ export default {
          * 批量删除
          * @param {Object} list 删除对象集
          */
-        async delAll(list ,func) {
+        async delAll(list, func) {
             var bl = true;
             var query = {};
             for (var i = 0; i < list.length; i++) {
@@ -1486,15 +1508,15 @@ export default {
                 }
             }
             if (bl) {
-				if(func){
-					func(list);
-				}else{
-					this.$message({
-					    type: 'success',
-					    message: '删除成功!'
-					});
-					this.get_list()
-				}
+                if (func) {
+                    func(list);
+                } else {
+                    this.$message({
+                        type: 'success',
+                        message: '删除成功!'
+                    });
+                    this.get_list()
+                }
             }
         },
 
@@ -1507,7 +1529,7 @@ export default {
             var _this = this;
             var form = new FormData() // FormData 对象
             form.append('file', file) // 文件对象
-            this.$upload(this.url_upload, form, function(json) {
+            this.$upload(this.url_upload, form, function (json) {
                 if (json.result) {
                     _this.form[key] = json.result.url;
                 } else {
@@ -1515,37 +1537,37 @@ export default {
                 }
             });
         },
-		
-		/**
-		 * 上传多文件
-		 * @param {Object} file 文件对象
-		 * @param {key} 保存键名
-		 */
-		uploadFileMultiple(file, key = "img") {
-			var _this = this;
-			var form = new FormData() // FormData 对象
-			form.append('file', file) // 文件对象
-			this.$upload(this.url_upload, form, function(json) {
-			    if (json.result) {
-					if(_this.form[key].length > 0){
-						_this.form[key].push(json.result.url);
-					}else{
-						_this.form[key] = [json.result.url];
-					}
-			    } else {
-			        _this.$toast('上传失败！');
-			    }
-			});
-		},
-		/**
-		 * 删除多图
-		 * @param {Object} img 数组下标
-		 * @param {key} 保存键名
-		 */
-		delImg(img, key = "img"){
-			var _this = this;
-			_this.form[key].splice(img, 1);
-		},
+
+        /**
+         * 上传多文件
+         * @param {Object} file 文件对象
+         * @param {key} 保存键名
+         */
+        uploadFileMultiple(file, key = "img") {
+            var _this = this;
+            var form = new FormData() // FormData 对象
+            form.append('file', file) // 文件对象
+            this.$upload(this.url_upload, form, function (json) {
+                if (json.result) {
+                    if (_this.form[key].length > 0) {
+                        _this.form[key].push(json.result.url);
+                    } else {
+                        _this.form[key] = [json.result.url];
+                    }
+                } else {
+                    _this.$toast('上传失败！');
+                }
+            });
+        },
+        /**
+         * 删除多图
+         * @param {Object} img 数组下标
+         * @param {key} 保存键名
+         */
+        delImg(img, key = "img") {
+            var _this = this;
+            _this.form[key].splice(img, 1);
+        },
 
         /**
          * 选择更改
@@ -1573,16 +1595,16 @@ export default {
             this.get_list();
         },
 
-		/**
-		 * 跳转表
-		 * @param {Object} form
-		 * @param {Object} url
-		 */
-		to_table(form,url){
-			delete form["examine_state"];
-			$.db.set("form",form);
-			this.$router.push(url);
-		},
+        /**
+         * 跳转表
+         * @param {Object} form
+         * @param {Object} url
+         */
+        to_table(form, url) {
+            delete form["examine_state"];
+            $.db.set("form", form);
+            this.$router.push(url);
+        },
 
         getter(key, url) {
 

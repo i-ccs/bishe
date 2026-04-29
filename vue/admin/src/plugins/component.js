@@ -512,7 +512,12 @@ export default {
 				$check_exam(path, action = "get") {
 					var o = this.$get_power(path);
 					if (o) {
-						var option = JSON.parse(o.option);
+						var option = {};
+						try {
+							option = o.option ? JSON.parse(o.option) : {};
+						} catch (e) {
+							option = {};
+						}
 						if (option[action])
 							return true
 					}
@@ -526,7 +531,12 @@ export default {
 					var path = this.$route.path.replace(/(.*)view/, '$1table');
 					var o = this.$get_power(path);
 					if (o) {
-						var option = JSON.parse(o.option);
+						var option = {};
+						try {
+							option = o.option ? JSON.parse(o.option) : {};
+						} catch (e) {
+							option = {};
+						}
 						if (option.examine)
 							return true
 					}
@@ -540,7 +550,12 @@ export default {
 					var path = this.$route.path;
 					var o = this.$get_power(path);
 					if (o) {
-						var option = JSON.parse(o.option);
+						var option = {};
+						try {
+							option = o.option ? JSON.parse(o.option) : {};
+						} catch (e) {
+							option = {};
+						}
 						if (option.pay)
 							return true
 					}
@@ -553,7 +568,12 @@ export default {
 				$check_figure(path) {
 					var o = this.$get_power(path);
 					if (o) {
-						var option = JSON.parse(o.option);
+						var option = {};
+						try {
+							option = o.option ? JSON.parse(o.option) : {};
+						} catch (e) {
+							option = {};
+						}
 						if (option.figure)
 							return true
 					}
@@ -563,7 +583,12 @@ export default {
 				$check_comment(path) {
 					var o = this.$get_power(path);
 					if (o) {
-						var option = JSON.parse(o.option);
+						var option = {};
+						try {
+							option = o.option ? JSON.parse(o.option) : {};
+						} catch (e) {
+							option = {};
+						}
 						if (option.can_show_comment)
 							return true
 					}
@@ -573,7 +598,12 @@ export default {
 				$check_option(path, op) {
 					var o = this.$get_power(path);
 					if (o) {
-						var option = JSON.parse(o.option);
+						var option = {};
+						try {
+							option = o.option ? JSON.parse(o.option) : {};
+						} catch (e) {
+							option = {};
+						}
 						if (option[op])
 							return true
 					}

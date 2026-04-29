@@ -257,7 +257,20 @@
 
 																						},
 				created() {
-																						}
+										// 临时调试：打印当前路由权限对象（path、get、field_get/filed_get）
+										try {
+											const path = this.$route.path;
+											const auth = this.$get_power ? this.$get_power(path) : (this.$store && this.$store.state && this.$store.state.web && this.$store.state.web.auth ? this.$store.state.web.auth.find(a=>a.path===path) : null);
+											console.log('[DEBUG] commodity_information auth for path:', path, auth);
+											if (auth) {
+												console.log('[DEBUG] auth.get=', auth.get, 'field_get=', auth.field_get, 'fieldGet=', auth.fieldGet, 'filed_get=', auth.filed_get);
+											} else {
+												console.log('[DEBUG] no auth found for path', path, 'store.web.auth=', this.$store && this.$store.state ? this.$store.state.web.auth : null);
+											}
+										} catch (e) {
+											console.error('[DEBUG] error reading auth', e);
+										}
+									},
 	}
 </script>
 
