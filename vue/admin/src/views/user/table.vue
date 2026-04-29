@@ -3,8 +3,17 @@
 		<el-form label-position="right" :model="query" class="form p_4" label-width="120">
 			<el-row class="rows row1">
 				<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
-					<el-form-item label="昵称">
-						<el-input v-model="query.nickname"></el-input>
+					<el-form-item label="用户名">
+						<el-input v-model="query.user_name" placeholder="请输入用户名"></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
+					<el-form-item label="性别">
+						<el-select v-model="query.user_gender" placeholder="请选择性别" clearable>
+							<el-option label="全部" value=""></el-option>
+							<el-option label="男" value="男"></el-option>
+							<el-option label="女" value="女"></el-option>
+						</el-select>
 					</el-form-item>
 				</el-col>
 			</el-row>
@@ -137,7 +146,8 @@
 				query: {
 					size: 10,
 					page: 1,
-					nickname: "",
+					user_name: "",
+					user_gender: "",
 					user_group: "",
 					login_time: "",
 					create_time: ""
@@ -202,7 +212,8 @@
         this.query = {
           size: 10,
           page: 1,
-          nickname: "",
+          user_name: "",
+          user_gender: "",
           user_group: "",
           login_time: "",
           create_time: ""
