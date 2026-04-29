@@ -19,9 +19,8 @@
                                                                         ,'/registered_user/table'
                                                                                                                                                                                                                                                                                             ])">
       <template slot="title"><i class="el-icon-s-custom"></i><span ref="customTemplate8">系统用户</span></template>
-      <el-menu-item index="/user/table" v-show="user_group == '管理员'" @click="handleButtonClick(8)"><span>管理员</span></el-menu-item>
-                                  <el-menu-item index="/registered_user/table" v-show="$check_action('/registered_user/table')" @click="handleButtonClick(8)">
-                <span>注册用户</span></el-menu-item>
+                    <el-menu-item index="/registered_user/table" v-show="$check_action('/registered_user/table')" @click="handleButtonClick(8)">
+          <span>用户列表</span></el-menu-item>
         <el-menu-item index="/user_group/table"><span>用户组</span></el-menu-item>
     </el-submenu>
 	

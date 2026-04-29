@@ -1,6 +1,5 @@
 package com.project.demo.entity;
 
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -11,12 +10,11 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 用户账户：用于保存用户登录信息(User)表实体类
  *
  * @author xxx
- *@since 202X-XX-XX
+ * @since 202X-XX-XX
  */
 @TableName("user")
 @Data
@@ -42,6 +40,12 @@ public class User implements Serializable {
      */
     @TableField(value = "user_group")
     private String userGroup;
+
+    /**
+     * 账号类型：用于前端展示，和 user_group 保持一致
+     */
+    @TableField(exist = false)
+    private String accountType;
 
     /**
      * 上次登录时间：
@@ -96,7 +100,7 @@ public class User implements Serializable {
      */
     @TableField(value = "avatar")
     private String avatar;
-	
+
     /**
      * 针对获取用户信息字段
      */
@@ -107,7 +111,7 @@ public class User implements Serializable {
      * 创建时间：
      */
     @TableField(value = "create_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp createTime;
 
     /**
@@ -116,4 +120,3 @@ public class User implements Serializable {
     @TableField(exist = false)
     private String code;
 }
-

@@ -46,9 +46,9 @@
 			<el-table-column prop="username" label="用户名" sortable width="120">
 			</el-table-column>
 
-			<el-table-column prop="user_group" label="用户组" sortable min-width="120">
+			<el-table-column prop="account_type" label="账号类型" sortable min-width="120">
 				<template slot-scope="scope">
-					{{scope.row.user_group}}
+					{{scope.row.account_type || scope.row.user_group}}
 				</template>
 			</el-table-column>
 

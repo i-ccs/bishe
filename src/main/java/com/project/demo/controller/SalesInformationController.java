@@ -84,22 +84,6 @@ public class SalesInformationController extends BaseController<SalesInformation,
                 + insertedId;
         service.updateBaseSql(updateSql);
 
-        // 插入 inventory_information 日志
-        String productName = paramMap.get("product_name") == null ? ""
-                : paramMap.get("product_name").toString().replace("'", "\\'");
-        String productCategory = paramMap.get("product_category") == null ? ""
-                : paramMap.get("product_category").toString().replace("'", "\\'");
-        String productBrand = paramMap.get("product_brand") == null ? ""
-                : paramMap.get("product_brand").toString().replace("'", "\\'");
-        String checkDate = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
-        String insertInv = "INSERT INTO `inventory_information` (`product_code`,`product_name`,`product_category`,`product_brand`,`product_inventory`,`check_date`,`check_quantity`,`inventory`,`source_table`,`source_id`,`source_user_id`,`create_time`,`update_time`) VALUES ('"
-                + productCode.replace("'", "\\'") + "','" + productName + "','" + productCategory + "','" + productBrand
-                + "'," + newInventory + ", '" + checkDate + "'," + orderQuantity + ", '销售出库', 'sales_information', "
-                + insertedId + ", "
-                + (paramMap.get("source_user_id") == null ? "NULL" : paramMap.get("source_user_id").toString())
-                + ", now(), now())";
-        service.updateBaseSql(insertInv);
-
         return success(1);
     }
 

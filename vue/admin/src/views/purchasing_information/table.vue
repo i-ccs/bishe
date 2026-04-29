@@ -98,6 +98,13 @@
 						 size="small">
 						<span>详情</span>
 					</router-link>
+					<el-button
+						v-if="user_group == '管理员' && scope.row.procurement_status !== '已审批'"
+						class="e-button el-button--small is-plain el-button--warning"
+						style="margin: 5px !important;"
+						@click="approveInfo(scope.row)">
+						<span>审批</span>
+					</el-button>
 				</div>
 				</template>
 			</el-table-column>
@@ -162,6 +169,21 @@
 			}
 		},
 		methods: {
+				async approveInfo(row) {
+					const confirmed = window.confirm('确认审批通过该采购单吗？审批后将自动入库。');
+					if (!confirmed) {
+						return;
+					}
+					const res = await this.$post('~/api/purchasing_information/approve?', {
+						purchasing_information_id: row.purchasing_information_id
+					});
+					if (res && res.error) {
+						this.$toast(res.error.message, 'danger');
+						return;
+					}
+					this.$toast('审批成功', 'success');
+					this.get_list();
+				},
 			// 关闭弹框
 			closeModal(){
 				this.showModal = false;

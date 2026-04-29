@@ -58,6 +58,13 @@ public class BaseService<E> {
         return baseMapper.updateBaseSql(sql);
     }
 
+    private String decodeQueryValue(String value) throws UnsupportedEncodingException {
+        if (value == null || value.isEmpty()) {
+            return null;
+        }
+        return URLDecoder.decode(value, "UTF-8");
+    }
+
     public void insert(Map<String, Object> body) {
         E entity = JSON.parseObject(JSON.toJSONString(body), eClass);
         baseMapper.insert(entity);
@@ -390,23 +397,24 @@ public class BaseService<E> {
         if (query.size() > 0) {
             try {
                 for (Map.Entry<String, String> entry : query.entrySet()) {
+                    String decodedValue = decodeQueryValue(entry.getValue());
+                    if (decodedValue == null) {
+                        continue;
+                    }
                     if (entry.getKey().contains(FindConfig.MIN_)) {
                         String min = humpToLine(entry.getKey()).replace("_min", "");
-                        wrapper.ge(min, URLDecoder.decode(entry.getValue(), "UTF-8"));
+                        wrapper.ge(min, decodedValue);
                         continue;
                     }
                     if (entry.getKey().contains(FindConfig.MAX_)) {
                         String max = humpToLine(entry.getKey()).replace("_max", "");
-                        wrapper.le(max, URLDecoder.decode(entry.getValue(), "UTF-8"));
+                        wrapper.le(max, decodedValue);
                         continue;
                     }
                     if (like == true) {
-                        if (entry.getValue() != null)
-                            wrapper.like(humpToLine(entry.getKey()),
-                                    "%" + URLDecoder.decode(entry.getValue(), "UTF-8") + "%");
+                        wrapper.like(humpToLine(entry.getKey()), "%" + decodedValue + "%");
                     } else {
-                        if (entry.getValue() != null)
-                            wrapper.eq(humpToLine(entry.getKey()), URLDecoder.decode(entry.getValue(), "UTF-8"));
+                        wrapper.eq(humpToLine(entry.getKey()), decodedValue);
                     }
                 }
             } catch (UnsupportedEncodingException e) {
@@ -420,24 +428,28 @@ public class BaseService<E> {
             try {
                 StringBuilder sql = new StringBuilder(" WHERE ");
                 for (Map.Entry<String, String> entry : query.entrySet()) {
+                    String decodedValue = decodeQueryValue(entry.getValue());
+                    if (decodedValue == null) {
+                        continue;
+                    }
                     if (entry.getKey().contains(FindConfig.MIN_)) {
                         String min = humpToLine(entry.getKey()).replace("_min", "");
-                        sql.append("`" + min + "`").append(" >= '").append(URLDecoder.decode(entry.getValue(), "UTF-8"))
+                        sql.append("`" + min + "`").append(" >= '").append(decodedValue)
                                 .append("' and ");
                         continue;
                     }
                     if (entry.getKey().contains(FindConfig.MAX_)) {
                         String max = humpToLine(entry.getKey()).replace("_max", "");
-                        sql.append("`" + max + "`").append(" <= '").append(URLDecoder.decode(entry.getValue(), "UTF-8"))
+                        sql.append("`" + max + "`").append(" <= '").append(decodedValue)
                                 .append("' and ");
                         continue;
                     }
                     if (like == true) {
                         sql.append("`" + humpToLine(entry.getKey()) + "`").append(" LIKE '%")
-                                .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("%'").append(" and ");
+                                .append(decodedValue).append("%'").append(" and ");
                     } else {
                         sql.append("`" + humpToLine(entry.getKey()) + "`").append(" = '")
-                                .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("'").append(" and ");
+                                .append(decodedValue).append("'").append(" and ");
                     }
                 }
                 if (sqlwhere != null && !sqlwhere.trim().equals("")) {

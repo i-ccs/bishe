@@ -10,20 +10,15 @@
 				</el-col>
 
 				<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap">
-					<el-col :xs="24" :sm="12" :lg="12" class="search_btn_1">
-						<el-form-item>
+					<el-col :xs="24" :sm="24" :lg="24" class="search_btn_1 search_btn_2">
+						<el-form-item class="btn_line_group">
 							<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
 							<el-button @click="reset()" class="search_btn_reset">重置</el-button>
-						</el-form-item>
-					</el-col>
-					<el-col :xs="24" :sm="12" :lg="12" class="search_btn_2">
-						<el-form-item>
-							<el-button v-if="user_group == '管理员' || $check_action('/user_group/table','del')" class="float-right search_btn_del" type="danger" @click="delInfo()">删除</el-button>
-							<!-- <router-link v-if="user_group == '管理员' || $check_action('/user_group/view')" class="el-button float-right el-button--default el-button--primary search_btn_add"
+							<el-button v-if="user_group == '管理员' || $check_action('/user_group/table','del')" class="search_btn_del" type="danger" @click="delInfo()">删除</el-button>
+							<!-- <router-link v-if="user_group == '管理员' || $check_action('/user_group/view')" class="el-button el-button--default el-button--primary search_btn_add"
 								to="./view?">添加
 							</router-link> -->
-							<el-button  v-if="user_group == '管理员' || $check_action('/user_group/view')" class="float-right  search_btn_add" @click="$router.push('./view?')">添加</el-button>
-					
+							<el-button v-if="user_group == '管理员' || $check_action('/user_group/view')" class="search_btn_add" @click="$router.push('./view?')">添加</el-button>
 						</el-form-item>
 					</el-col>
 				</el-col>
@@ -118,4 +113,15 @@
 </script>
 
 <style type="text/css">
+	.btn_line_group {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		flex-wrap: wrap;
+	}
+
+	.btn_line_group .search_btn_del,
+	.btn_line_group .search_btn_add {
+		float: none;
+	}
 </style>

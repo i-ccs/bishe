@@ -55,7 +55,7 @@ public class UserController extends BaseController<User, UserService> {
         // 查询用户
         Map<String, String> query = new HashMap<>();
         Map<String, Object> map = JSON.parseObject(JSON.toJSONString(user));
-        query.put("username", user.getUserName());
+        query.put("user_name", user.getUserName());
         List list = service.selectBaseList(service.select(query, new HashMap<>()));
         if (list.size() > 0) {
             return error(30000, "用户已存在");
@@ -90,7 +90,7 @@ public class UserController extends BaseController<User, UserService> {
 
         // 查询用户
         Map<String, String> query = new HashMap<>();
-        query.put("username", username);
+        query.put("user_name", username);
         List list = service.selectBaseList(service.select(query, service.readConfig(request)));
         if (list.size() > 0) {
             User o = (User) list.get(0);
@@ -130,7 +130,7 @@ public class UserController extends BaseController<User, UserService> {
         List resultList = null;
         Map<String, String> map = new HashMap<>();
         if (username != null && "".equals(username) == false) {
-            map.put("username", username);
+            map.put("user_name", username);
             resultList = service.selectBaseList(service.select(map, new HashMap<>()));
         } else if (email != null && "".equals(email) == false) {
             map.put("email", email);

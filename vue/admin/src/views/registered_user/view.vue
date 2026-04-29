@@ -14,8 +14,7 @@
 
 			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="账号" prop="username">
-			        <span v-if="obj.username">{{obj.username}}</span>
-					<el-input v-else v-model="form.username" placeholder="请输入账号"></el-input>
+			        <span>{{ obj.username || form.username || '暂无账号信息' }}</span>
 				</el-form-item>
 			</el-col>
 
@@ -40,11 +39,19 @@
 				</el-form-item>
 			</el-col>
 
+			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="账号类型" prop="user_group">
+					<el-select v-model="form.user_group" placeholder="请选择账号类型">
+						<el-option v-for="o in user_group" :key="o.name" :label="o.name" :value="o.name"></el-option>
+					</el-select>
+				</el-form-item>
+			</el-col>
+
 
 
 			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="状态" prop="state">
-					<el-select :disabled="user_group!=='管理员'" v-model="form.state" placeholder="请选择">
+					<el-select :disabled="$store.state.user.user_group !== '管理员'" v-model="form.state" placeholder="请选择">
 						<el-option v-for="group in list_user_state" :key="group.value" :label="group.name"
 							:value="group.value">
 						</el-option>
@@ -115,7 +122,7 @@
 					avatar: '',
 					// phone: '',
 					email: '',
-						user_group: "注册用户",
+						user_group: "",
 					// phone_state: 0,
 					// email_state: 0,
 					state: 1,
@@ -129,7 +136,7 @@
 					avatar: '',
 					// phone: '',
 					email: '',
-						user_group: "注册用户",
+						user_group: "",
 					// phone_state: 0,
 					// email_state: 0,
 					state: 1,
@@ -171,6 +178,8 @@
 					value: 4,
 					name: "已注销"
 				}],
+
+				user_group: [],
 	
 	
 									// 用户性别选项列表
@@ -229,6 +238,8 @@
 			get_obj_after(json, func){
 				var user = json.result.obj;
 				this.is_password = user.password ? false : true;
+				this.obj.username = user.username;
+				this.form.username = user.username;
 				var user_id = user.user_id;
 				this.$get("~/api/" + this.group_table + "/get_obj?" ,{user_id} ,(res)=>{
 					if(res.result && res.result.obj){
@@ -274,13 +285,17 @@
 
 				// var {username ,password ,nickname ,user_group ,email ,phone} = param;
 				var {username ,password ,nickname ,user_group ,email} = param;
+				if (!username) {
+					username = this.$store.state.user.username || this.obj.username || '';
+					param.username = username;
+				}
 
 				var confirm_password = this.confirm_password;
 
 				console.log("表单校验username ,password ,email ,nickname ,user_group" ,username ,password ,email ,nickname ,user_group);
 
 				if(!username){
-					ret = "账号不能为空";
+					ret = "暂无账号信息，请先登录后再提交";
 				}
 				else if(username.length > 16 || username.length < 5){
 					ret = "账号长度应为5到16个字符之间！";
@@ -291,7 +306,7 @@
 				else if(this.is_password && (password.length > 16 || password.length < 5)){
 					ret = "密码长度应为5到16个字符之间！";
 				}
-				else if(nickname && nickname.length > 12 || nickname.length < 2){
+				else if(!nickname || nickname.length > 12 || nickname.length < 2){
 					ret = "昵称长度应为2个字符到12个字符之间";
 				}
 				else if(email && !email_regular.test(email)){
@@ -301,10 +316,10 @@
 				// 	ret = "请输入正确的手机号码 例：18955552312!";
 				// }
 				else if(!user_group){
-					ret = "请选择用户组!";
+					ret = "请选择账号类型!";
 				}
 
-				var p = {"username": param.username};
+				var p = {"user_name": param.username};
 
 				var form_sub = Object.assign({} ,this.form_sub);
 																														
@@ -326,7 +341,8 @@
 			 */
 			get_register(form){
 				var form_sub = this.form_sub;
-				this.$get("~/api/user/get_obj?",form,(res)=>{
+				var query = form.user_id ? { user_id: form.user_id } : { username: form.username };
+				this.$get("~/api/user/get_obj?",query,(res)=>{
 					console.log("注册表信息res",res);
 					if(res.result && res.result.obj){
 						form_sub.user_id = res.result.obj.user_id;
@@ -408,8 +424,18 @@
 				this.uploadFile(param.file, "avatar");
 			},
 
+			async get_user_group() {
+				var json = await this.$get("~/api/user_group/get_list?");
+				if (json.result && json.result.list) {
+					this.user_group = json.result.list;
+				} else if (json.error) {
+					console.error(json.error);
+				}
+			},
+
 		},
 		created() {
+			this.get_user_group();
 						},
 	}
 </script>

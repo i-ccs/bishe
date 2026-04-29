@@ -11,7 +11,7 @@
  Target Server Version : 80409 (8.4.9)
  File Encoding         : 65001
 
- Date: 29/04/2026 14:39:50
+ Date: 29/04/2026 18:07:54
 */
 
 SET NAMES utf8mb4;
@@ -155,34 +155,6 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='评论';
 
 -- ----------------------------
--- Table structure for merchandise_information
--- ----------------------------
-DROP TABLE IF EXISTS `merchandise_information`;
-CREATE TABLE `merchandise_information` (
-  `merchandise_information_id` int NOT NULL AUTO_INCREMENT COMMENT '商品信息ID',
-  `product_code` varchar(64) DEFAULT NULL COMMENT '商品编码',
-  `product_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
-  `product_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
-  `product_brand` varchar(64) DEFAULT NULL COMMENT '商品品牌',
-  `merchandise_specifications` varchar(64) DEFAULT NULL COMMENT '商品规格',
-  `product_inventory` double(8,2) DEFAULT '0.00' COMMENT '商品库存',
-  `product_images` varchar(255) DEFAULT NULL COMMENT '商品图片',
-  `merchandise_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
-  `product_introduction` text COMMENT '商品介绍',
-  `product_details` longtext COMMENT '商品详情',
-  `hits` int NOT NULL DEFAULT '0' COMMENT '点击数',
-  `praise_len` int NOT NULL DEFAULT '0' COMMENT '点赞数',
-  `collect_len` int NOT NULL DEFAULT '0' COMMENT '收藏数',
-  `comment_len` int NOT NULL DEFAULT '0' COMMENT '评论数',
-  `sales_information_limit_times` int NOT NULL DEFAULT '0' COMMENT '销售限制次数',
-  `purchasing_information_limit_times` int NOT NULL DEFAULT '0' COMMENT '采购限制次数',
-  `inventory_information_limit_times` int NOT NULL DEFAULT '0' COMMENT '库存限制次数',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`merchandise_information_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品信息';
-
--- ----------------------------
 -- Table structure for hits
 -- ----------------------------
 DROP TABLE IF EXISTS `hits`;
@@ -217,7 +189,35 @@ CREATE TABLE `inventory_information` (
   `source_id` int DEFAULT '0' COMMENT '来源ID',
   `source_user_id` int DEFAULT '0' COMMENT '来源用户',
   PRIMARY KEY (`inventory_information_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='库存信息';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='库存信息';
+
+-- ----------------------------
+-- Table structure for merchandise_information
+-- ----------------------------
+DROP TABLE IF EXISTS `merchandise_information`;
+CREATE TABLE `merchandise_information` (
+  `merchandise_information_id` int NOT NULL AUTO_INCREMENT COMMENT '商品信息ID',
+  `product_code` varchar(64) DEFAULT NULL COMMENT '商品编码',
+  `product_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
+  `product_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
+  `product_brand` varchar(64) DEFAULT NULL COMMENT '商品品牌',
+  `merchandise_specifications` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '商品规格',
+  `product_inventory` double(8,2) DEFAULT '0.00' COMMENT '商品库存',
+  `product_images` varchar(255) DEFAULT NULL COMMENT '商品图片',
+  `merchandise_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
+  `product_introduction` text COMMENT '商品介绍',
+  `product_details` longtext COMMENT '商品详情',
+  `hits` int NOT NULL DEFAULT '0' COMMENT '点击数',
+  `praise_len` int NOT NULL DEFAULT '0' COMMENT '点赞数',
+  `collect_len` int NOT NULL DEFAULT '0' COMMENT '收藏数',
+  `comment_len` int NOT NULL DEFAULT '0' COMMENT '评论数',
+  `sales_information_limit_times` int NOT NULL DEFAULT '0' COMMENT '销售限制次数',
+  `purchasing_information_limit_times` int NOT NULL DEFAULT '0' COMMENT '采购限制次数',
+  `inventory_information_limit_times` int NOT NULL DEFAULT '0' COMMENT '库存限制次数',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`merchandise_information_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品信息';
 
 -- ----------------------------
 -- Table structure for notice
@@ -260,7 +260,7 @@ CREATE TABLE `purchasing_information` (
   `product_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
   `product_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
   `product_brand` varchar(64) DEFAULT NULL COMMENT '商品品牌',
-  `merchandise_specifications` varchar(64) DEFAULT NULL COMMENT '商品规格',
+  `merchandise_specifications` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '商品规格',
   `merchandise_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
   `purchase_order_number` varchar(64) DEFAULT NULL COMMENT '采购单号',
   `supplier_name` varchar(64) DEFAULT NULL COMMENT '供应商名称',
@@ -275,7 +275,7 @@ CREATE TABLE `purchasing_information` (
   `source_id` int DEFAULT '0' COMMENT '来源ID',
   `source_user_id` int DEFAULT '0' COMMENT '来源用户',
   PRIMARY KEY (`purchasing_information_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='采购信息';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='采购信息';
 
 -- ----------------------------
 -- Table structure for registered_user
@@ -317,7 +317,7 @@ CREATE TABLE `sales_information` (
   `source_id` int DEFAULT '0' COMMENT '来源ID',
   `source_user_id` int DEFAULT '0' COMMENT '来源用户',
   PRIMARY KEY (`sales_information_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='销售信息';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='销售信息';
 
 -- ----------------------------
 -- Table structure for slides
@@ -343,7 +343,7 @@ CREATE TABLE `supply_information` (
   `supply_information_id` int NOT NULL AUTO_INCREMENT COMMENT '供应信息ID',
   `supplier_name` varchar(64) DEFAULT NULL COMMENT '供应商名称',
   `suppliers_phone_number` varchar(16) DEFAULT NULL COMMENT '供应商电话',
-  `merchandise_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
+  `merchandise_category` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '商品类别',
   `comprehensive_evaluation` varchar(64) DEFAULT NULL COMMENT '综合评价',
   `supply_frequency` varchar(64) DEFAULT NULL COMMENT '供应频率',
   `supply_products` text COMMENT '供应产品',
@@ -381,8 +381,8 @@ CREATE TABLE `user` (
   `login_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上次登录时间',
   `phone` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '手机号码',
   `phone_state` smallint unsigned NOT NULL DEFAULT '0' COMMENT '手机认证：(0未认证|1审核中|2已认证)',
-  `username` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '用户名',
-  `nickname` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT '昵称',
+  `user_name` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '用户名',
+  `nick_name` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT '昵称',
   `password` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '密码',
   `email` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT '邮箱',
   `email_state` smallint unsigned NOT NULL DEFAULT '0' COMMENT '邮箱认证：(0未认证|1审核中|2已认证)',
@@ -408,6 +408,6 @@ CREATE TABLE `user_group` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`group_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户组';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户组';
 
 SET FOREIGN_KEY_CHECKS = 1;

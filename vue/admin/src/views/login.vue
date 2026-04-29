@@ -47,7 +47,8 @@
                     signIn: false
                 },
 				allow_user: [
-					'管理员'
+                    '管理员',
+                    '采购员'
 										],
                 web: this.$store.state.web,
                 form: {

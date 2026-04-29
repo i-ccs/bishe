@@ -183,7 +183,7 @@ const routes = [
         component: () => import('../views/registered_user/table.vue'),
         meta: {
             index: 0,
-            title: '注册用户列表'
+            title: '用户列表'
         }
     },
     {
@@ -192,7 +192,7 @@ const routes = [
         component: () => import('../views/registered_user/view.vue'),
         meta: {
             index: 0,
-            title: '注册用户详情'
+            title: '用户详情'
         }
     },
     // 商品信息路由

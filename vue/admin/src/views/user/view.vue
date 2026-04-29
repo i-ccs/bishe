@@ -55,6 +55,14 @@
 				</el-form-item>
 			</el-col>
 
+			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="账号类型" prop="user_group">
+					<el-select v-model="form.user_group" placeholder="请选择账号类型">
+						<el-option v-for="o in user_group" :key="o.name" :label="o.name" :value="o.name"></el-option>
+					</el-select>
+				</el-form-item>
+			</el-col>
+
 <!--			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">-->
 <!--				<el-form-item label="手机认证" prop="phone_state">-->
 <!--					<el-select v-model="form.phone_state" placeholder="请选择">-->
@@ -81,7 +89,7 @@
 
 			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="状态" prop="state">
-					<el-select v-model="form.state" placeholder="请选择">
+					<el-select :disabled="$store.state.user.user_group !== '管理员'" v-model="form.state" placeholder="请选择">
 						<el-option v-for="group in list_user_state" :key="group.value" :label="group.name"
 							:value="group.value">
 						</el-option>
@@ -144,7 +152,7 @@
 					avatar: '',
 					// phone: '',
 					email: '',
-					user_group: '管理员',
+					user_group: '',
 					// phone_state: 0,
 					// email_state: 0,
 					state: 1
@@ -213,7 +221,9 @@
 				}, {
 					value: 4,
 					name: "已注销"
-				}]
+				}],
+
+				user_group: []
 			}
 		},
 		methods: {
@@ -305,7 +315,7 @@
 
         if(username.length > 16 || username.length < 5){
         	ret = "用户名长度应为5到16个字符之间！";
-        } else if (nickname && nickname.length > 12 || nickname.length < 2) {
+		        } else if (!nickname || nickname.length > 12 || nickname.length < 2) {
           ret = "昵称长度应为2个字符到12个字符之间";
         } else if (email && !email_regular.test(email)) {
           ret = "请输入正确的邮箱地址 例：test@test.com!";
@@ -315,7 +325,7 @@
         // }
         console.log(param.user_id)
         if (!param.user_id){
-          let res = await this.$get("~/api/user/count?", {"username": param.username});
+	          let res = await this.$get("~/api/user/count?", {"user_name": param.username});
           if(res.result){
             ret = "账号已存在!";
           }

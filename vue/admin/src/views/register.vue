@@ -169,7 +169,7 @@
 				else if(password.length > 16 || password.length < 5){
 					ret = "密码长度应为5到16个字符之间！";
 				}
-				else if(nickname && nickname.length > 12 || nickname.length < 2){
+				else if(!nickname || nickname.length > 12 || nickname.length < 2){
 					ret = "昵称长度应为2个字符到12个字符之间";
 				}
 				else if(email && !email_regular.test(email)){
@@ -188,7 +188,7 @@
 				if(!ret && user_group){
 										}
 
-				var p = {"username": param.username};
+				var p = {"user_name": param.username};
 
 				var res = await this.$get("~/api/user/count?" ,p);
 
@@ -220,7 +220,7 @@
 			 */
 			get_register(form ,table){
 				var form_sub = this.form_sub;
-				this.$get("~/api/user/get_obj?",form,(res)=>{
+				this.$get("~/api/user/get_obj?",{username: form.username},(res)=>{
 					console.log("注册表信息res",res);
 					if(res.result && res.result.obj){
 						form_sub.user_id = res.result.obj.user_id;

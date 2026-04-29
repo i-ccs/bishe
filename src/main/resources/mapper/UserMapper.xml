@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="userId"    column="user_id"    />
         <result property="state"    column="state"    />
         <result property="userGroup"    column="user_group"    />
+        <result property="accountType"    column="account_type"    />
         <result property="loginTime"    column="login_time"    />
         <result property="phone"    column="phone"    />
         <result property="phoneState"    column="phone_state"    />
@@ -15,13 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="nickName"    column="nick_name"    />
         <result property="password"    column="password"    />
         <result property="email"    column="email"    />
-        <result property="emailState"    column="email_state"    />
         <result property="avatar"    column="avatar"    />
         <result property="createTime"    column="create_time"    />
     </resultMap>
 
     <sql id="selectUserVo">
-        select user_id, state, user_group, login_time, phone, phone_state, user_name, nick_name, password, email, email_state, avatar, create_time from user
+        select user_id, state, user_group, user_group as account_type, login_time, phone, phone_state, user_name, nick_name, password, email, email_state, avatar, create_time from user
     </sql>
 
     <select id="selectUserList" parameterType="com.project.demo.entity.User" resultMap="UserResult">
