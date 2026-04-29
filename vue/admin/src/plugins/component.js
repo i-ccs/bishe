@@ -28,8 +28,8 @@ export default {
 		Vue.component('page_header', page_header);
 		Vue.component('page_footer', page_footer);
 		Vue.component('page_side', page_side);
-		Vue.component('div_video',div_video);
-		Vue.component('div_audio',div_audio);
+		Vue.component('div_video', div_video);
+		Vue.component('div_audio', div_audio);
 
 		if (optons.host) {
 			host = optons.host;
@@ -41,33 +41,33 @@ export default {
 				return {}
 			},
 			methods: {
-                /**
-                 *  改变时间
-                 */
-                $changeTime(o){
-                    for (var k in o) {
-                        if (k.indexOf('time') !== -1 || k.indexOf('date') !== -1) {
-                            if (typeof(k) == 'string') {
-                                var val = o[k];
-                                if (val || val.indexOf('T') !== -1) {
-                                    var v = new Date(o[k]);
-                                    o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
-                                } else if (/\d+/.test(val)) {
-                                    if (o[k].length == 10) {
-                                        var v = new Date(o[k] * 1000);
-                                        o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
-                                    } else if (o[k].length == 13) {
-                                        var v = new Date(o[k] * 1000);
-                                        o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
-                                    }
-                                } else if (typeof(val) == 'number') {
-                                    var v = new Date(o[k]);
-                                    o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
-                                }
-                            }
-                        }
-                    }
-                },
+				/**
+				 *  改变时间
+				 */
+				$changeTime(o) {
+					for (var k in o) {
+						if (k.indexOf('time') !== -1 || k.indexOf('date') !== -1) {
+							if (typeof (k) == 'string') {
+								var val = o[k];
+								if (val || val.indexOf('T') !== -1) {
+									var v = new Date(o[k]);
+									o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
+								} else if (/\d+/.test(val)) {
+									if (o[k].length == 10) {
+										var v = new Date(o[k] * 1000);
+										o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
+									} else if (o[k].length == 13) {
+										var v = new Date(o[k] * 1000);
+										o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
+									}
+								} else if (typeof (val) == 'number') {
+									var v = new Date(o[k]);
+									o[k] = v.toStr('yyyy-MM-dd hh:mm:ss');
+								}
+							}
+						}
+					}
+				},
 
 				$get_rand(len) {
 					var rand = Math.random();
@@ -96,7 +96,7 @@ export default {
 						anchor.className = "download-js-link";
 						anchor.style.display = "none";
 						document.body.appendChild(anchor);
-						setTimeout(function() {
+						setTimeout(function () {
 							anchor.click();
 							document.body.removeChild(anchor);
 						}, 66);
@@ -111,17 +111,17 @@ export default {
 					var _this = this;
 
 					// 获取用户状态
-					this.$get('~/api/user/state', null, function(json, status) {
+					this.$get('~/api/user/state', null, function (json, status) {
 						if (json.result) {
-                            var user = json.result;
-							if(user.obj){
+							var user = json.result;
+							if (user.obj) {
 								user = user.obj;
 							}
 							// 存储用户信息
 							_this.$store.commit('user_set', user);
 
 							// 获取用户权限
-							_this.$get_auth(user.user_group, function() {
+							_this.$get_auth(user.user_group, function () {
 								// 传入回调函数
 								if (func) {
 									func();
@@ -172,32 +172,32 @@ export default {
 				$toTime(time, format) {
 					var ret = "";
 					console.log("执行【转换时间格式】函数");
-					console.log("源参数" ,time);
-                    if(time){
+					console.log("源参数", time);
+					if (time) {
 						var is_date = time instanceof Date;
-						var is_num = typeof(time) == 'number';
-						console.log("校验类型 date ,number ,string" ,is_date ,is_num ,typeof(time) == 'string');
-						if(is_date){
+						var is_num = typeof (time) == 'number';
+						console.log("校验类型 date ,number ,string", is_date, is_num, typeof (time) == 'string');
+						if (is_date) {
 							ret = time.toStr(format);
-							console.log("源参数:日期型 结果:" ,ret);
+							console.log("源参数:日期型 结果:", ret);
 						}
-                        else if(is_num){
-                            var t = new Date(time);
-                            ret = t.toStr(format);
-							console.log("源参数:数字型" ,ret);
-                        }
-                        else {
+						else if (is_num) {
+							var t = new Date(time);
+							ret = t.toStr(format);
+							console.log("源参数:数字型", ret);
+						}
+						else {
 							let reg = /^(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/;
 							let regExp = new RegExp(reg);
-							if(regExp.test(time)){
+							if (regExp.test(time)) {
 								ret = time;
-							}else {
+							} else {
 								ret = time.toTime().toStr(format);
 							}
-							console.log("源参数:文本型" ,ret);
-                        }
-                    }
-                    return ret;
+							console.log("源参数:文本型", ret);
+						}
+					}
+					return ret;
 				},
 				/**
 				 * @description 过滤数组
@@ -227,7 +227,7 @@ export default {
 					var queryStr = "";
 					for (var key in obj) {
 						var value = obj[key];
-						if (typeof(value) === 'number') {
+						if (typeof (value) === 'number') {
 							if (value > 0) {
 								queryStr += "&" + key + "=" + obj[key];
 							}
@@ -416,7 +416,7 @@ export default {
 				 * @param {Function} func 回调函数
 				 */
 				async $get_auth(user_group = "游客", func) {
-					if(!user_group){
+					if (!user_group) {
 						user_group = "游客";
 					}
 					// 查询权限
@@ -427,15 +427,15 @@ export default {
 						this.$store.commit("set_auth", []);
 
 						// 判断查询结果
-						if(json.result && json.result.list){
+						if (json.result && json.result.list) {
 							// 权限缓存
 							this.$store.commit("set_auth", json.result.list);
 
 							// 如果有回调函数则执行回调函数
-							if(func){
+							if (func) {
 								func();
 							}
-						}else if(json.error){
+						} else if (json.error) {
 							console.error(json.error)
 						}
 					});
@@ -476,7 +476,7 @@ export default {
 				 * @param {String} field 查询的字段
 				 * @param {String} path 路径
 				 */
-				$check_register_field(action, field,path) {
+				$check_register_field(action, field, path) {
 					var o = this.$get_power(path);
 					var auth;
 					if (o && o[action] != 0 && o[action] != false) {
@@ -523,9 +523,9 @@ export default {
 				 * 是否有审核字段的权限
 				 */
 				$check_examine() {
-					var path = this.$route.path.replace(/(.*)view/,'$1table');
+					var path = this.$route.path.replace(/(.*)view/, '$1table');
 					var o = this.$get_power(path);
-					if (o){
+					if (o) {
 						var option = JSON.parse(o.option);
 						if (option.examine)
 							return true
@@ -539,7 +539,7 @@ export default {
 				$check_pay() {
 					var path = this.$route.path;
 					var o = this.$get_power(path);
-					if (o){
+					if (o) {
 						var option = JSON.parse(o.option);
 						if (option.pay)
 							return true
@@ -552,7 +552,7 @@ export default {
 				 */
 				$check_figure(path) {
 					var o = this.$get_power(path);
-					if (o){
+					if (o) {
 						var option = JSON.parse(o.option);
 						if (option.figure)
 							return true
@@ -562,7 +562,7 @@ export default {
 
 				$check_comment(path) {
 					var o = this.$get_power(path);
-					if (o){
+					if (o) {
 						var option = JSON.parse(o.option);
 						if (option.can_show_comment)
 							return true
@@ -570,9 +570,9 @@ export default {
 					return false;
 				},
 
-				$check_option(path,op) {
+				$check_option(path, op) {
 					var o = this.$get_power(path);
-					if (o){
+					if (o) {
 						var option = JSON.parse(o.option);
 						if (option[op])
 							return true
@@ -619,7 +619,7 @@ export default {
 					if (sort.order) {
 						var orderby = "`" + sort.prop + "` " + sort.order.replace("ending", "");
 						this.query.orderby = orderby;
-					}else{
+					} else {
 						this.query.orderby = "";
 					}
 					this.search();

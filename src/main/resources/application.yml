@@ -5,6 +5,8 @@ server:
 spring:
   mvc:
     static-path-pattern: /upload/**
+    async:
+      request-timeout: 30000
   web:
     resources:
       static-locations: file:src/main/resources/static

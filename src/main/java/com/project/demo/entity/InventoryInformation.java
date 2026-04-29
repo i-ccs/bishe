@@ -10,7 +10,6 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 库存信息：(InventoryInformation)表实体类
  *
@@ -49,40 +48,19 @@ public class InventoryInformation implements Serializable {
     @TableField(value = "`inventory`")
     private String inventory;
 
+    // 来源表
+    @TableField(value = "source_table")
+    private String source_table;
 
+    // 来源ID
+    @TableField(value = "source_id")
+    private Integer source_id;
 
+    // 来源用户ID
+    @TableField(value = "source_user_id")
+    private Integer source_user_id;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		// 来源表
-	@TableField(value = "source_table")
-	private String source_table;
-	
-	// 来源ID
-	@TableField(value = "source_id")
-	private Integer source_id;
-	
-	// 来源用户ID
-	@TableField(value = "source_user_id")
-	private Integer source_user_id;
-			
-
-
-	// 更新时间
+    // 更新时间
     @TableField(value = "update_time")
     private Timestamp update_time;
 

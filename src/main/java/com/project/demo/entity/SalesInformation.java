@@ -10,7 +10,6 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 销售信息：(SalesInformation)表实体类
  *
@@ -58,11 +57,6 @@ public class SalesInformation implements Serializable {
     @TableField(value = "`note_information`")
     private String note_information;
 
-
-
-
-
-
     // 支付状态
     @TableField(value = "pay_state")
     private String pay_state;
@@ -71,34 +65,19 @@ public class SalesInformation implements Serializable {
     @TableField(value = "pay_type")
     private String pay_type;
 
+    // 来源表
+    @TableField(value = "source_table")
+    private String source_table;
 
+    // 来源ID
+    @TableField(value = "source_id")
+    private Integer source_id;
 
+    // 来源用户ID
+    @TableField(value = "source_user_id")
+    private Integer source_user_id;
 
-
-
-
-
-
-
-
-
-
-
-				// 来源表
-	@TableField(value = "source_table")
-	private String source_table;
-	
-	// 来源ID
-	@TableField(value = "source_id")
-	private Integer source_id;
-	
-	// 来源用户ID
-	@TableField(value = "source_user_id")
-	private Integer source_user_id;
-	
-
-
-	// 更新时间
+    // 更新时间
     @TableField(value = "update_time")
     private Timestamp update_time;
 

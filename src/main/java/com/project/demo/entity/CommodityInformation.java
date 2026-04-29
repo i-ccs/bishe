@@ -10,7 +10,6 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 商品信息：(CommodityInformation)表实体类
  *
@@ -69,34 +68,17 @@ public class CommodityInformation implements Serializable {
     @TableField(value = "comment_len")
     private Integer comment_len;
 
+    // 销售限制次数
+    @TableField(value = "sales_information_limit_times")
+    private Integer sales_information_limit_times;
+    // 采购限制次数
+    @TableField(value = "purchasing_information_limit_times")
+    private Integer purchasing_information_limit_times;
+    // 库存限制次数
+    @TableField(value = "inventory_information_limit_times")
+    private Integer inventory_information_limit_times;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-		// 销售限制次数
-	@TableField(value = "sales_information_limit_times")
-	private String sales_information_limit_times;
-		// 采购限制次数
-	@TableField(value = "purchasing_information_limit_times")
-	private String purchasing_information_limit_times;
-		// 库存限制次数
-	@TableField(value = "inventory_information_limit_times")
-	private String inventory_information_limit_times;
-	
-			
-
-
-	// 更新时间
+    // 更新时间
     @TableField(value = "update_time")
     private Timestamp update_time;
 

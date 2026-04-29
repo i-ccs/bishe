@@ -10,7 +10,6 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 供应信息：(SupplyInformation)表实体类
  *
@@ -49,29 +48,7 @@ public class SupplyInformation implements Serializable {
     @TableField(value = "`cooperation_situation`")
     private String cooperation_situation;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
-
-
-	// 更新时间
+    // 更新时间
     @TableField(value = "update_time")
     private Timestamp update_time;
 

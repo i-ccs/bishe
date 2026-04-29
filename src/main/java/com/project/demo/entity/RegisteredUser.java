@@ -10,7 +10,6 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 注册用户：(RegisteredUser)表实体类
  *
@@ -31,24 +30,15 @@ public class RegisteredUser implements Serializable {
     @TableField(value = "`user_gender`")
     private String user_gender;
 
+    // 审核状态
+    @TableField(value = "`examine_state`")
+    private String examine_state;
+
     // 用户编号
     @TableField(value = "user_id")
     private Integer userId;
 
-
-
-
-
-
-
-
-
-
-
-			
-
-
-	// 更新时间
+    // 更新时间
     @TableField(value = "update_time")
     private Timestamp update_time;
 
