@@ -33,48 +33,48 @@
 	</el-row >
 
 		</el-form>
-				<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" id="dataTable">
-					<el-table-column fixed type="selection" tooltip-effect="dark" width="55">
+				<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" id="dataTable">
+					<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
 			</el-table-column>
-				<el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码" 				v-if="$check_field('get','product_code')" min-width="200">
+				<el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码" 				v-if="$check_field('get','product_code')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称" 				v-if="$check_field('get','product_name')" min-width="200">
+					<el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称" 				v-if="$check_field('get','product_name')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','product_category')" min-width="200">
+					<el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','product_category')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌" 				v-if="$check_field('get','product_brand')" min-width="200">
+					<el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌" 				v-if="$check_field('get','product_brand')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="merchandise_specifications" @sort-change="$sortChange" label="商品规格" 				v-if="$check_field('get','merchandise_specifications')" min-width="200">
+					<el-table-column prop="merchandise_specifications" @sort-change="$sortChange" label="商品规格" 				v-if="$check_field('get','merchandise_specifications')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="merchandise_price" @sort-change="$sortChange" label="商品价格" 				v-if="$check_field('get','merchandise_price')" min-width="200">
+					<el-table-column prop="merchandise_price" @sort-change="$sortChange" label="商品价格" 				v-if="$check_field('get','merchandise_price')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="purchase_order_number" @sort-change="$sortChange" label="采购单号" 				v-if="$check_field('get','purchase_order_number')" min-width="200">
+					<el-table-column prop="purchase_order_number" @sort-change="$sortChange" label="采购单号" 				v-if="$check_field('get','purchase_order_number')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称" 				v-if="$check_field('get','supplier_name')" min-width="200">
+					<el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称" 				v-if="$check_field('get','supplier_name')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="purchase_date" @sort-change="$sortChange" label="采购日期" 				v-if="$check_field('get','purchase_date')" min-width="200">
+					<el-table-column prop="purchase_date" @sort-change="$sortChange" label="采购日期" 				v-if="$check_field('get','purchase_date')" align="center" min-width="1">
 		                <template slot-scope="scope">
                 	{{ $toTime(scope.row["purchase_date"],"yyyy-MM-dd") }}
                 </template>
 					</el-table-column>
-					<el-table-column prop="purchase_quantity" @sort-change="$sortChange" label="采购数量" 				v-if="$check_field('get','purchase_quantity')" min-width="200">
+					<el-table-column prop="purchase_quantity" @sort-change="$sortChange" label="采购数量" 				v-if="$check_field('get','purchase_quantity')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="purchase_unit_price" @sort-change="$sortChange" label="采购单价" 				v-if="$check_field('get','purchase_unit_price')" min-width="200">
+					<el-table-column prop="purchase_unit_price" @sort-change="$sortChange" label="采购单价" 				v-if="$check_field('get','purchase_unit_price')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="total_purchase_price" @sort-change="$sortChange" label="采购总价" 				v-if="$check_field('get','total_purchase_price')" min-width="200">
+					<el-table-column prop="total_purchase_price" @sort-change="$sortChange" label="采购总价" 				v-if="$check_field('get','total_purchase_price')" align="center" min-width="1">
 					</el-table-column>
-					<el-table-column prop="procurement_status" @sort-change="$sortChange" label="采购情况" 				v-if="$check_field('get','procurement_status')" min-width="200">
+					<el-table-column prop="procurement_status" @sort-change="$sortChange" label="采购情况" 				v-if="$check_field('get','procurement_status')" align="center" min-width="1">
 					</el-table-column>
 	
 
 
-            <el-table-column sortable prop="create_time" label="创建时间" min-width="200">
+            <el-table-column sortable prop="create_time" label="创建时间" align="center" min-width="1">
                 <template slot-scope="scope">
                 	{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
                 </template>
             </el-table-column>
 
-			<el-table-column sortable prop="update_time" label="更新时间" min-width="200">
+			<el-table-column sortable prop="update_time" label="更新时间" align="center" min-width="1">
                 <template slot-scope="scope">
                 	{{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
                 </template>
@@ -86,8 +86,8 @@
 
 
 
-			<el-table-column fixed="right" label="操作" min-width="200" v-if="$check_action('/purchasing_information/table','set') || $check_action('/purchasing_information/view','set') || $check_action('/purchasing_information/view','get') 
-						" >
+			<el-table-column fixed="right" label="操作" v-if="$check_action('/purchasing_information/table','set') || $check_action('/purchasing_information/view','set') || $check_action('/purchasing_information/view','get') 
+						"  align="center" width="120">
 
 
 				<template slot-scope="scope">

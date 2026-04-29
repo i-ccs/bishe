@@ -30,17 +30,17 @@
 			</el-row>
 		</el-form>
 
-		<el-table border :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" stripe>
+		<el-table border :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%; table-layout: fixed;" stripe>
 
 			<!-- 多选按钮 -->
-			<el-table-column fixed type="selection" tooltip-effect="dark" width="55">
+			<el-table-column fixed type="selection" tooltip-effect="dark" align="center" width="55">
 			</el-table-column>
 			<!-- /多选按钮 -->
 
-			<el-table-column sortable fixed label="昵称" prop="nickname" width="200">
+			<el-table-column sortable fixed label="昵称" prop="nickname" align="center" min-width="1">
 			</el-table-column>
 
-			<el-table-column label="头像" prop="avatar" min-width="110">
+			<el-table-column label="头像" prop="avatar" align="center" min-width="1">
 				<template slot-scope="scope">
 					<el-avatar style="width: 80px; height: 80px" :src="$fullUrl(scope.row.avatar)">
 						<div slot="error" class="image-slot">
@@ -50,26 +50,26 @@
 				</template>
 			</el-table-column>
 
-			<el-table-column sortable label="评论人" prop="user_id" min-width="100">
+			<el-table-column sortable label="评论人" prop="user_id" align="center" min-width="1">
 				<template slot-scope="scope">
 					{{list_user.getVal('nickname', {"user_id":scope.row.user_id})}}
 				</template>
 			</el-table-column>
 
-			<el-table-column sortable prop="create_time" label="创建时间" min-width="200">
+			<el-table-column sortable prop="create_time" label="创建时间" align="center" min-width="1">
 			    <template slot-scope="scope">
 			        {{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
 			    </template>
 			</el-table-column>
 
-			<el-table-column sortable prop="update_time" label="更新时间" min-width="200">
+			<el-table-column sortable prop="update_time" label="更新时间" align="center" min-width="1">
 			    <template slot-scope="scope">
 			        {{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
 			    </template>
 			</el-table-column>
 
 			<!-- 操作 -->
-			<el-table-column fixed="right" label="操作" width="250">
+			<el-table-column fixed="right" label="操作" align="center" width="120">
 				<template slot-scope="scope">
 					<div class="view_a">
 					<router-link class="e-button el-button--small is-plain el-button--primary"
