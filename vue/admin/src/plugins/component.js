@@ -499,6 +499,9 @@ export default {
 					if (o && o[action] != 0 && o[action] != false) {
 						auth = o["field_" + action];
 					}
+					if (auth === undefined || auth === null || auth === "") {
+						return true;
+					}
 					if (auth) {
 						return auth.indexOf(field) !== -1;
 					}
