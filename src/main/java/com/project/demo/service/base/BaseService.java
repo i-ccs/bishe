@@ -15,9 +15,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Field;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.util.*;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 /**
  */
@@ -60,6 +62,35 @@ public class BaseService<E> {
         E entity = JSON.parseObject(JSON.toJSONString(body), eClass);
         baseMapper.insert(entity);
         log.info("[{}] - 插入操作：{}", entity);
+    }
+
+    /**
+     * 插入并返回回填的主键 id（如果能找到 `@TableId` 注解的字段或以 "Id" 结尾的字段）
+     */
+    public Integer insertReturnId(Map<String, Object> body) {
+        try {
+            E entity = JSON.parseObject(JSON.toJSONString(body), eClass);
+            baseMapper.insert(entity);
+            Field idField = null;
+            for (Field f : eClass.getDeclaredFields()) {
+                if (f.isAnnotationPresent(TableId.class) || f.getName().toLowerCase().endsWith("id")) {
+                    idField = f;
+                    break;
+                }
+            }
+            if (idField == null) {
+                return null;
+            }
+            idField.setAccessible(true);
+            Object val = idField.get(entity);
+            if (val instanceof Number) {
+                return ((Number) val).intValue();
+            }
+            return null;
+        } catch (Exception e) {
+            log.error("insertReturnId fail: {}", e.getMessage());
+            return null;
+        }
     }
 
     @Transactional

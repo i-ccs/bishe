@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.*;
 
-
 /**
  * 销售信息：(SalesInformation)表控制层
  *
@@ -34,26 +33,74 @@ public class SalesInformationController extends BaseController<SalesInformation,
         setService(service);
     }
 
-
-
     @PostMapping("/add")
     @Transactional
     public Map<String, Object> add(HttpServletRequest request) throws IOException {
-        Map<String,Object> paramMap = service.readBody(request.getReader());
-        this.addMap(paramMap);
-        String sql = "SELECT MAX(sales_information_id) AS max FROM "+"`sales_information`";
-        Integer max = service.selectBaseCount(sql);
-        sql = ("SELECT count(*) count FROM `merchandise_information` INNER JOIN `sales_information` ON merchandise_information.product_code=sales_information.product_code WHERE merchandise_information.product_inventory < sales_information.order_quantity AND sales_information.sales_information_id="+max).replaceAll("&#60;","<");
-        Integer count = service.selectBaseCount(sql);
-        if(count>0){
-            sql = "delete from "+"sales_information"+" WHERE "+"sales_information_id"+" ="+max;
-            service.deleteBaseSql(sql);
-            return error(30000,"商品库存不足");
+        Map<String, Object> paramMap = service.readBody(request.getReader());
+        // 使用回填 id 的插入，避免并发问题
+        Integer insertedId = service.insertReturnId(paramMap);
+        if (insertedId == null) {
+            this.addMap(paramMap);
+            return success(1);
         }
-        sql = "UPDATE `merchandise_information` INNER JOIN `sales_information` ON merchandise_information.product_code=sales_information.product_code SET merchandise_information.product_inventory= merchandise_information.product_inventory - sales_information.order_quantity WHERE sales_information.sales_information_id="+max;
-        service.updateBaseSql(sql);
+
+        // 检查库存是否足够
+        String checkSql = ("SELECT count(*) count FROM `merchandise_information` INNER JOIN `sales_information` ON merchandise_information.product_code=sales_information.product_code WHERE merchandise_information.product_inventory < sales_information.order_quantity AND sales_information.sales_information_id="
+                + insertedId).replaceAll("&#60;", "<");
+        Integer count = service.selectBaseCount(checkSql);
+        if (count > 0) {
+            String delSql = "delete from " + "sales_information" + " WHERE " + "sales_information_id" + " ="
+                    + insertedId;
+            service.deleteBaseSql(delSql);
+            return error(30000, "商品库存不足");
+        }
+
+        // 读取必要字段并更新库存
+        String productCode = paramMap.get("product_code") == null ? "" : paramMap.get("product_code").toString();
+        double orderQuantity = 0.0;
+        try {
+            Object oq = paramMap.get("order_quantity");
+            if (oq instanceof Number)
+                orderQuantity = ((Number) oq).doubleValue();
+            else if (oq != null)
+                orderQuantity = Double.parseDouble(oq.toString());
+        } catch (Exception e) {
+            orderQuantity = 0.0;
+        }
+
+        String selSql = "SELECT product_inventory FROM `merchandise_information` WHERE product_code='"
+                + productCode.replace("'", "\\'") + "'";
+        List<Map<String, Object>> rows = service.selectMapBaseList(selSql);
+        double oldInventory = 0.0;
+        if (rows.size() > 0 && rows.get(0).get("product_inventory") != null) {
+            try {
+                oldInventory = Double.parseDouble(rows.get(0).get("product_inventory").toString());
+            } catch (Exception ignored) {
+            }
+        }
+        double newInventory = oldInventory - orderQuantity;
+
+        String updateSql = "UPDATE `merchandise_information` INNER JOIN `sales_information` ON merchandise_information.product_code=sales_information.product_code SET merchandise_information.product_inventory= merchandise_information.product_inventory - sales_information.order_quantity WHERE sales_information.sales_information_id="
+                + insertedId;
+        service.updateBaseSql(updateSql);
+
+        // 插入 inventory_information 日志
+        String productName = paramMap.get("product_name") == null ? ""
+                : paramMap.get("product_name").toString().replace("'", "\\'");
+        String productCategory = paramMap.get("product_category") == null ? ""
+                : paramMap.get("product_category").toString().replace("'", "\\'");
+        String productBrand = paramMap.get("product_brand") == null ? ""
+                : paramMap.get("product_brand").toString().replace("'", "\\'");
+        String checkDate = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+        String insertInv = "INSERT INTO `inventory_information` (`product_code`,`product_name`,`product_category`,`product_brand`,`product_inventory`,`check_date`,`check_quantity`,`inventory`,`source_table`,`source_id`,`source_user_id`,`create_time`,`update_time`) VALUES ('"
+                + productCode.replace("'", "\\'") + "','" + productName + "','" + productCategory + "','" + productBrand
+                + "'," + newInventory + ", '" + checkDate + "'," + orderQuantity + ", '销售出库', 'sales_information', "
+                + insertedId + ", "
+                + (paramMap.get("source_user_id") == null ? "NULL" : paramMap.get("source_user_id").toString())
+                + ", now(), now())";
+        service.updateBaseSql(insertInv);
+
         return success(1);
     }
-
 
 }
