@@ -29,8 +29,8 @@
 					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
 						<el-form-item label="性别" prop="user_gender">
 							<el-select v-model="form.user_gender" placeholder="请选择性别">
-								<el-option label="男" value="男"></el-option>
-								<el-option label="女" value="女"></el-option>
+								<el-option label="男" :value="1"></el-option>
+								<el-option label="女" :value="0"></el-option>
 							</el-select>
 						</el-form-item>
 					</el-col>

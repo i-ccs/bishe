@@ -714,7 +714,21 @@ export default {
 					} else {
 						callback(new Error('必须是网址格式，例：www.test.com'));
 					}
-				}
+				},
+				/**
+				 * 转换性别
+				 * @param {Number} value 性别值
+				 * @return {String} 性别名称
+				 */
+				$toGender(value) {
+					var ret = "未知";
+					if (value == 1) {
+						ret = "男";
+					} else if (value == 0) {
+						ret = "女";
+					}
+					return ret;
+				},
 
 			},
 		})

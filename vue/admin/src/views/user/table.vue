@@ -11,8 +11,8 @@
 					<el-form-item label="性别">
 						<el-select v-model="query.user_gender" placeholder="请选择性别" clearable="">
 							<el-option label="全部" value=""></el-option>
-							<el-option label="男" value="男"></el-option>
-							<el-option label="女" value="女"></el-option>
+							<el-option label="男" :value="1"></el-option>
+							<el-option label="女" :value="0"></el-option>
 						</el-select>
 					</el-form-item>
 				</el-col>
@@ -46,6 +46,9 @@
 			</el-table-column>
 
 			<el-table-column prop="user_gender" label="性别" sortable align="center">
+				<template slot-scope="scope">
+					{{ $toGender(scope.row.user_gender) }}
+				</template>
 			</el-table-column>
 
 			<el-table-column prop="account_type" label="账号类型" sortable align="center">
