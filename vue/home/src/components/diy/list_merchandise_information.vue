@@ -164,7 +164,7 @@
 									title: "商品编码",
 									name: "product_code",
 									type: "文本",
-									is_img_list: "0"
+									is_img_list: "1"
 								},
 								{
 									title: "商品名称",
@@ -194,13 +194,13 @@
 									title: "商品库存",
 									name: "product_inventory",
 									type: "数字",
-									is_img_list: "0"
+									is_img_list: "1"
 								},
 								{
 									title: "商品价格",
 									name: "merchandise_price",
 									type: "数字",
-									is_img_list: "0"
+									is_img_list: "1"
 								},
 						],
 						richList: [

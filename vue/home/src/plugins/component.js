@@ -615,8 +615,9 @@ export default {
 					var auth;
 					if (o && o[action]) {
 						auth = o["field_" + action];
-					}
-					if (auth) {
+						if (auth === undefined || auth === null || auth === "") {
+							return true;
+						}
 						return auth.indexOf(field) !== -1;
 					}
 					return false;

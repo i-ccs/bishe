@@ -336,7 +336,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from, next) => {
-    let title = "电商平台供应链管理系统-admin";
+    let title = "小智电商供应链管理系统-admin";
     document.title = title;
 })
 
