@@ -182,7 +182,7 @@
         if (this.$store.state.user){
           let avatar = this.$store.state.user.avatar
           this.user_avatar = avatar
-          let u_nickname = this.$store.state.user.nickname
+          let u_nickname = this.$store.state.user.nick_name
           this.user_nickname = u_nickname
         }
       },
@@ -199,7 +199,7 @@
 
           if (dara.user_group === userG) {
            sessionStorage.setItem('avatar',dara.avatar)
-            sessionStorage.setItem('nickname',dara.nickname)
+            sessionStorage.setItem('nick_name',dara.nick_name)
             return
           }
         }
@@ -243,7 +243,7 @@
         this.$get("~/api/user/quit?", {}, (res) => {
           console.log(res);
         })
-        sessionStorage.removeItem('nickname');
+        sessionStorage.removeItem('nick_name');
         sessionStorage.removeItem('avatar');
         sessionStorage.removeItem('user_id');
         location.reload();

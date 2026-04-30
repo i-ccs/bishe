@@ -6,8 +6,8 @@
 					<el-form :model="form" ref="form" label-width="80px" class="form">
 						<h1>注册</h1>
 
-						<el-form-item label="账号" prop="username">
-							<el-input type="text" v-model="form.username" placeholder="请输入账号">
+						<el-form-item label="账号" prop="usr_name">
+							<el-input type="text" v-model="form.usr_name" placeholder="请输入账号">
 							</el-input>
 						</el-form-item>
 
@@ -23,8 +23,8 @@
 							</el-input>
 						</el-form-item>
 
-						<el-form-item label="昵称" prop="nickname">
-							<el-input type="text" v-model="form.nickname" placeholder="请输入昵称">
+						<el-form-item label="昵称" prop="nick_name">
+							<el-input type="text" v-model="form.nick_name" placeholder="请输入昵称">
 							</el-input>
 						</el-form-item>
 
@@ -67,9 +67,9 @@
 				web: this.$store.state.web,
 
 				form: {
-					username: "",
+					usr_name: "",
 					password: "",
-					nickname: "",
+					nick_name: "",
 					email: "",
 					// phone: "",
 					user_group: "",
@@ -152,15 +152,15 @@
 				var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 				// var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
 
-				// var {username ,password ,nickname ,user_group ,email ,phone} = param;
-				var {username ,password ,nickname ,email ,user_group} = param;
+				// var {usr_name ,password ,nick_name ,user_group ,email ,phone} = param;
+				var {usr_name ,password ,nick_name ,email ,user_group} = param;
 
 				var confirm_password = this.confirm_password;
 
-				if(!username){
+				if(!usr_name){
 					ret = "账号不能为空";
 				}
-				else if(username.length > 16 || username.length < 5){
+				else if(usr_name.length > 16 || usr_name.length < 5){
 					ret = "账号长度应为5到16个字符之间！";
 				}
 				else if(!password){
@@ -169,7 +169,7 @@
 				else if(password.length > 16 || password.length < 5){
 					ret = "密码长度应为5到16个字符之间！";
 				}
-				else if(!nickname || nickname.length > 12 || nickname.length < 2){
+				else if(!nick_name || nick_name.length > 12 || nick_name.length < 2){
 					ret = "昵称长度应为2个字符到12个字符之间";
 				}
 				else if(email && !email_regular.test(email)){
@@ -188,7 +188,7 @@
 				if(!ret && user_group){
 										}
 
-				var p = {"user_name": param.username};
+				var p = {"user_name": param.usr_name};
 
 				var res = await this.$get("~/api/user/count?" ,p);
 
@@ -220,7 +220,7 @@
 			 */
 			get_register(form ,table){
 				var form_sub = this.form_sub;
-				this.$get("~/api/user/get_obj?",{username: form.username},(res)=>{
+				this.$get("~/api/user/get_obj?",{usr_name: form.usr_name},(res)=>{
 					console.log("注册表信息res",res);
 					if(res.result && res.result.obj){
 						form_sub.user_id = res.result.obj.user_id;

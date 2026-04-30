@@ -11,7 +11,7 @@
         </div>
         <div class="right_block">
           <div class="top_comment">
-            <div class="nickname">{{ o[vm.nickname] }}</div>
+            <div class="nickname">{{ o[vm.nick_name] }}</div>
             <div class="time_block">
               <div class="time">
                 {{ o[vm.create_time] | formatDate }}
@@ -27,7 +27,7 @@
       </div>
       <div class="list_reply ml-5" v-if="o.list_reply">
         <div class="mb" v-for="(obj, idx) in o.list_reply" :key="idx">
-          <div class="fl"><span class="nickname">{{ obj[vm.nickname] }}</span></div>
+          <div class="fl"><span class="nickname">{{ obj[vm.nick_name] }}</span></div>
           <div class="fr">
 			  <span class="time">{{ obj[vm.create_time] | formatDate }}</span>
 			  <b-button variant="outline" @click="del_reply(obj)" type="text" v-if="user_id === obj.user_id && ($check_action('/comment/list','del') || $check_action('/comment/details','del'))">删除</b-button>
@@ -62,7 +62,7 @@ export default {
       default: function () {
         return {
           avatar: "avatar",
-          nickname: "nickname",
+          nick_name: "nick_name",
           content: "content",
           create_time: "create_time",
         };

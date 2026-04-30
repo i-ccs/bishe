@@ -97,7 +97,7 @@
 			}
 		},
 		created() {
-			this.form.username = this.user.username;
+			this.form.usr_name = this.user.usr_name;
 			this.get_form();
 		}
 	}

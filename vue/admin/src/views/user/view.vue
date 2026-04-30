@@ -15,14 +15,14 @@
 					</el-col>
 
 					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
-						<el-form-item label="用户名" prop="username">
-							<el-input v-model="form.username" placeholder="请输入用户名" :disabled="obj.username !== '' && obj.username !== undefined"></el-input>
+						<el-form-item label="用户名" prop="usr_name">
+							<el-input v-model="form.usr_name" placeholder="请输入用户名" :disabled="obj.usr_name !== '' && obj.usr_name !== undefined"></el-input>
 						</el-form-item>
 					</el-col>
 
 					<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
-						<el-form-item label="昵称" prop="nickname">
-							<el-input v-model="form.nickname" placeholder="请输入昵称"></el-input>
+						<el-form-item label="昵称" prop="nick_name">
+							<el-input v-model="form.nick_name" placeholder="请输入昵称"></el-input>
 						</el-form-item>
 					</el-col>
 
@@ -102,8 +102,8 @@
 
 				obj: {
 					user_id: 0,
-					username: '',
-					nickname: '',
+					usr_name: '',
+					nick_name: '',
 					password: '',
 					avatar: '',
 					// phone: '',
@@ -116,8 +116,8 @@
 
 				form: {
 					user_id: 0,
-          username: '',
-					nickname: '',
+          usr_name: '',
+					nick_name: '',
           password: '',
 					avatar: '',
 					// phone: '',
@@ -129,7 +129,7 @@
 				},
 
 				rules: {
-					username: [{
+					usr_name: [{
 							required: true,
 							message: '请输入用户名',
 							trigger: 'blur'
@@ -146,7 +146,7 @@
 						message: '请输入密码',
 						trigger: 'blur'
 					}],
-					nickname: [{
+					nick_name: [{
 						required: false,
 						message: '请输入昵称',
 						trigger: 'blur'
@@ -281,11 +281,11 @@
         var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         // var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
 
-        var {username, nickname, email, phone} = param;
+        var {usr_name, nick_name, email, phone} = param;
 
-        if(username.length > 16 || username.length < 5){
+        if(usr_name.length > 16 || usr_name.length < 5){
         	ret = "用户名长度应为5到16个字符之间！";
-		        } else if (nickname && (nickname.length > 12 || nickname.length < 2)) {
+		        } else if (nick_name && (nick_name.length > 12 || nick_name.length < 2)) {
           ret = "昵称长度应为2个字符到12个字符之间";
         } else if (email && !email_regular.test(email)) {
           ret = "请输入正确的邮箱地址 例：test@test.com!";
@@ -295,7 +295,7 @@
         // }
         console.log(param.user_id)
         if (!param.user_id){
-	          let res = await this.$get("~/api/user/count?", {"user_name": param.username});
+	          let res = await this.$get("~/api/user/count?", {"user_name": param.usr_name});
           if(res.result){
             ret = "账号已存在!";
           }

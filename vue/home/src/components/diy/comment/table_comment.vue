@@ -4,7 +4,7 @@
 			<el-row class="rows row1">
 				<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
 					<el-form-item label="昵称">
-						<el-input v-model="query.nickname"></el-input>
+						<el-input v-model="query.nick_name"></el-input>
 					</el-form-item>
 				</el-col>
 
@@ -36,7 +36,7 @@
 			</el-table-column>
 			<!-- /多选按钮 -->
 
-			<el-table-column sortable fixed label="昵称" prop="nickname" width="200">
+			<el-table-column sortable fixed label="昵称" prop="nick_name" width="200">
 			</el-table-column>
 
 			<el-table-column label="头像" prop="avatar" min-width="110">
@@ -51,7 +51,7 @@
 
 			<el-table-column sortable label="评论人" prop="user_id" min-width="100">
 				<template slot-scope="scope">
-					{{list_user.getVal('nickname', {"user_id":scope.row.user_id})}}
+					{{list_user.getVal('nick_name', {"user_id":scope.row.user_id})}}
 				</template>
 			</el-table-column>
 			
@@ -135,7 +135,7 @@
 					size: 10,
 					page: 1,
 					content: "",
-					nickname: "",
+					nick_name: "",
 					source_table: "",
 					source_field: "",
 					source_id: 0
@@ -175,7 +175,7 @@
 			reset(){
 				this.query.page = 1;
 				this.query.size = 10;
-				this.query.nickname = "";
+				this.query.nick_name = "";
 				this.query.content = "";
 				this.get_list();
 			}

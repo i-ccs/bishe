@@ -49,18 +49,18 @@
 																		<div v-if="user_group !== '管理员'">
 							{{ get_user_session_user_id(form['user_id']) }}
 							<el-select v-if="(form['sales_information_id'] && $check_field('set','user_id')) || (!form['sales_information_id'] && $check_field('add','user_id'))" id="user_id" v-model="form['user_id']" :disabled="disabledObj['user_id_isDisabled']">
-								<el-option v-for="o in list_user_user_id" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
+								<el-option v-for="o in list_user_user_id" :key="o['usr_name']" :label="o['nick_name'] + '-' + o['usr_name']"
 										   :value="o['user_id']">
 								</el-option>
 							</el-select>
 							<el-select v-else-if="$check_field('get','user_id')" id="user_id" v-model="form['user_id']" :disabled="true">
-								<el-option v-for="o in list_user_user_id" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
+								<el-option v-for="o in list_user_user_id" :key="o['usr_name']" :label="o['nick_name'] + '-' + o['usr_name']"
 										   :value="o['user_id']">
 								</el-option>
 							</el-select>
 						</div>
 						<el-select v-else id="user_id" v-model="form['user_id']" :disabled="disabledObj['user_id_isDisabled']">
-							<el-option v-for="o in list_user_user_id" :key="o['username']" :label="o['nickname'] + '-' + o['username']"
+							<el-option v-for="o in list_user_user_id" :key="o['usr_name']" :label="o['nick_name'] + '-' + o['usr_name']"
 									   :value="o['user_id']">
 							</el-option>
 						</el-select>
@@ -257,10 +257,10 @@
 				var obj = this.list_user_user_id.getObj({"user_id":id});
 				var ret = "";
 				if(obj){
-					if(obj.nickname){
-						ret = obj.nickname;}
+					if(obj.nick_name){
+						ret = obj.nick_name;}
 					else{
-						ret = obj.username;
+						ret = obj.usr_name;
 					}
 				}
 				return ret;

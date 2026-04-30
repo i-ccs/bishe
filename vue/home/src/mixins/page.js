@@ -864,7 +864,7 @@ export default {
 		/**
 		 * 提交创建用户
 		 * @param {String} user_group 用户组
-		 * @param {String} username 用户名
+		 * @param {String} usr_name 用户名
 		 * @param {String} password 密码
 		 * @param {String} userid 用户ID名
 		 */
@@ -873,18 +873,18 @@ export default {
 				if (valid) {
 					var form = this.form;
 					if (form[userKey]) {
-						var username = form[userKey];
+						var usr_name = form[userKey];
 						var password = form[userKey].md5();
 						if (this.form[userid]) {
 							this.submit();
 						} else {
 							await this.$post("~/api/user/add?", {
-								username,
+								usr_name,
 								password,
 								user_group
 							});
 							this.$get("~/api/user/get_obj?", {
-									username,
+									usr_name,
 									user_group
 								},
 								(json) => {

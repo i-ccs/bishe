@@ -6,7 +6,7 @@
       <img :src="$fullUrl($store.state.user.avatar)" alt="avatar">
     </span>
     <span class="hide-username" style="display:none;">
-       {{ $store.state.user.nickname || $store.state.user.username }}
+       {{ $store.state.user.nick_name || $store.state.user.usr_name }}
     </span>
 
     <el-menu-item index="/">

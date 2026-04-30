@@ -53,7 +53,7 @@ export default {
       form = Object.assign(form, {
         user_id: this.user.user_id,
         avatar: this.user.avatar,
-        nickname: this.user.nickname,
+        nick_name: this.user.nick_name,
       });
       if(!form.content){
         this.$toast("输入内容不能为空")

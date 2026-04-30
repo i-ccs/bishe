@@ -46,7 +46,7 @@
 								null,
 								(json) => {
 									if (json.result) {
-										list[i] = json.result.obj.nickname;
+										list[i] = json.result.obj.nick_name;
 									}
 								});
 					}
@@ -57,7 +57,7 @@
 								null,
 								(json) => {
 									if (json.result) {
-										list[i].name = json.result.obj.nickname;
+										list[i].name = json.result.obj.nick_name;
 									}
 								});
 					}

@@ -15,7 +15,7 @@
 									<b-form-group id="input-group-1" label="用户名:" label-for="input-1"
 										:state="validation_username" invalid-feedback="账户名长度为在5-16个字符"
 										valid-feedback="校验通过">
-										<b-form-input id="input-1" v-model="form.username" type="text" placeholder="请输入用户名"
+										<b-form-input id="input-1" v-model="form.usr_name" type="text" placeholder="请输入用户名"
 											trim></b-form-input>
 									</b-form-group>
 
@@ -84,7 +84,7 @@
 		data() {
 			return {
 				form: {
-					username: "",
+					usr_name: "",
 					password: "",
 					email: "",
 					code: "",
@@ -97,7 +97,7 @@
 		onReady() {},
 		methods: {
 			get_code(){
-				if (!this.form.username){
+				if (!this.form.usr_name){
 					this.$toast("用户名不能为空!","error");
 					return
 				}
@@ -111,7 +111,7 @@
 					return
 				}
 				let _this = this;
-				_this.$get('~/api/user/get_obj', {"username": _this.form.username}, function(user_json, status) {
+				_this.$get('~/api/user/get_obj', {"usr_name": _this.form.usr_name}, function(user_json, status) {
 					if (user_json.result && user_json.result.obj) {
 						if (user_json.result.obj.email===_this.form.email) {
 							// 获取用户状态
@@ -185,7 +185,7 @@
 			 * @return {Boolean}
 			 */
 			validation_username() {
-				var length = this.form.username.length;
+				var length = this.form.usr_name.length;
 				if (!length) {
 					return null;
 				}

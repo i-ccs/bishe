@@ -31,7 +31,7 @@
 			<el-table-column fixed type="selection" tooltip-effect="dark" align="center">
 			</el-table-column>
 
-			<el-table-column fixed prop="nickname" label="昵称" align="center">
+			<el-table-column fixed prop="nick_name" label="昵称" align="center">
 			</el-table-column>
 
 			<el-table-column label="头像" align="center">
@@ -42,7 +42,7 @@
 				</template>
 			</el-table-column>
 
-			<el-table-column prop="username" label="用户名" sortable align="center">
+			<el-table-column prop="usr_name" label="用户名" sortable align="center">
 			</el-table-column>
 
 			<el-table-column prop="user_gender" label="性别" sortable align="center">

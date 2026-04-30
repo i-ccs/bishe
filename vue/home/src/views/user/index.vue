@@ -21,7 +21,7 @@
                   />
                 </div>
                 <div class="nickname">
-                  <h4>{{ user.nickname }}</h4>
+                  <h4>{{ user.nick_name }}</h4>
                 </div>
                 <div class="user_group">
                   <span>{{ user.user_group }}</span>

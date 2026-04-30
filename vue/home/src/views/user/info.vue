@@ -30,11 +30,11 @@
 											</div>
 											<div :style="'display:' + display_name + ';'">
 												<span style="font-size: 1.2rem; color: var(--color_grey)">
-													{{ obj.nickname }}
+													{{ obj.nick_name }}
 												</span>
 											</div>
 											<div class="input_nickname" :style="'display:' + display_input + ';'">
-												<input type="text" id="nickname" v-model="form.nickname"
+												<input type="text" id="nickname" v-model="form.nick_name"
 													:focus="focus_input" />
 												<div class="btn_save" @click="save_nickname()">
 													保存
@@ -144,18 +144,18 @@
 			 */
 			save_nickname() {
 				var user_id = this.user.user_id;
-				var nickname = this.form.nickname;
+				var nick_name = this.form.nick_name;
 				this.$post(
 					"~/api/user/set?user_id=" + user_id, {
-						nickname,
+						nick_name,
 					},
 					(res) => {
 						console.log(res);
 						this.focus_input = false;
 						this.display_input = "none";
 						this.display_name = "block";
-						this.user.nickname = nickname;
-						this.obj.nickname = nickname;
+						this.user.nick_name = nick_name;
+						this.obj.nick_name = nick_name;
 					}
 				);
 			},

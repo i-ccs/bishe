@@ -24,13 +24,13 @@
                         </el-form-item>
                     </el-col>
                     <el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-                        <el-form-item label="用户名" prop="username">
-                            {{obj.username}}
+                        <el-form-item label="用户名" prop="usr_name">
+                            {{obj.usr_name}}
                         </el-form-item>
                     </el-col>
                     <el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-                        <el-form-item prop="nickname" label="昵称">
-                            <el-input v-model="form.nickname" :minlength="0" :maxlength="16" placeholder="" />
+                        <el-form-item prop="nick_name" label="昵称">
+                            <el-input v-model="form.nick_name" :minlength="0" :maxlength="16" placeholder="" />
                         </el-form-item>
                     </el-col>
 
@@ -102,10 +102,10 @@
                 // 表单
                 form: {
                     user_id: this.$store.state.user.user_id,
-                    username: "",
+                    usr_name: "",
                     // phone: "",
                     email: "",
-                    nickname: "",
+                    nick_name: "",
                     avatar: ""
                 },
 
@@ -125,7 +125,7 @@
 
                 // 校验规则
                 rules: {
-                    nickname: [{
+                    nick_name: [{
                             required: true,
                             message: '昵称不能为空！',
                             trigger: 'blur'
@@ -164,10 +164,10 @@
                 var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 // var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
 
-                // var {nickname, email, phone} = param;
-                var {nickname, email} = param;
+                // var {nick_name, email, phone} = param;
+                var {nick_name, email} = param;
 
-	                if (!nickname || nickname.length > 12 || nickname.length < 2) {
+	                if (!nick_name || nick_name.length > 12 || nick_name.length < 2) {
                   ret = "昵称长度应为2个字符到12个字符之间";
                 } else if (email && !email_regular.test(email)) {
                   ret = "请输入正确的邮箱地址 例：test@test.com!";

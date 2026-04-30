@@ -3,7 +3,7 @@ export default {
     return {
       "user_id": 0,
       "token": "",
-      "username": "",
+      "usr_name": "",
       "referee_id": 0,
       "vip": 0,
       "gm": 0,
@@ -17,7 +17,7 @@ export default {
       "user_group": "",
       "user_admin": "",
       "signature": "",
-      "nickname": "",
+      "nick_name": "",
       "avatar": "/img/avatar.png",
       "invite_code": "",
       "friends": "",
@@ -35,7 +35,7 @@ export default {
     },
     quit(state) {
       state.token = null;
-      state.username = null;
+      state.usr_name = null;
 	  state.auth = null;
       $.db.del("token");
     }

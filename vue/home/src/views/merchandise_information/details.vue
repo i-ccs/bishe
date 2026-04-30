@@ -452,7 +452,7 @@
 				var respondent = "";
 				this.list_comment.map((o) => {
 					if (o.comment_id === reply_to_id) {
-						respondent = o.nickname;
+						respondent = o.nick_name;
 					}
 				});
 				return respondent;
