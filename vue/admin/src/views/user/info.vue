@@ -24,8 +24,8 @@
                         </el-form-item>
                     </el-col>
                     <el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-                        <el-form-item label="用户名" prop="usr_name">
-                            {{obj.usr_name}}
+                        <el-form-item label="用户名" prop="user_name">
+                            {{obj.user_name}}
                         </el-form-item>
                     </el-col>
                     <el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
@@ -102,7 +102,7 @@
                 // 表单
                 form: {
                     user_id: this.$store.state.user.user_id,
-                    usr_name: "",
+                    user_name: "",
                     // phone: "",
                     email: "",
                     nick_name: "",

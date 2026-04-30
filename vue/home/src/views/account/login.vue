@@ -11,7 +11,7 @@
 									<b-form-group id="input-group-1" label="用户名:" label-for="input-1"
 										:state="validation_username" invalid-feedback="账户名长度为在5-16个字符"
 										valid-feedback="校验通过">
-										<b-form-input id="input-1" v-model="form.usr_name" type="text" placeholder="请输入用户名"
+										<b-form-input id="input-1" v-model="form.user_name" type="text" placeholder="请输入用户名"
 											trim></b-form-input>
 									</b-form-group>
 
@@ -66,7 +66,7 @@
 						,"注册用户"
 										],
 				form: {
-					usr_name: "",
+					user_name: "",
 					password: "",
 				},
 			};
@@ -121,7 +121,7 @@
 			 * 验证用户名
 			 */
 			validation_username() {
-				var length = this.form.usr_name.length;
+				var length = this.form.user_name.length;
 				if (!length) {
 					return null;
 				}

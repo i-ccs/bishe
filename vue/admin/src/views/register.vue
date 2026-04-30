@@ -6,8 +6,8 @@
 					<el-form :model="form" ref="form" label-width="80px" class="form">
 						<h1>注册</h1>
 
-						<el-form-item label="账号" prop="usr_name">
-							<el-input type="text" v-model="form.usr_name" placeholder="请输入账号">
+						<el-form-item label="账号" prop="user_name">
+							<el-input type="text" v-model="form.user_name" placeholder="请输入账号">
 							</el-input>
 						</el-form-item>
 
@@ -67,7 +67,7 @@
 				web: this.$store.state.web,
 
 				form: {
-					usr_name: "",
+					user_name: "",
 					password: "",
 					nick_name: "",
 					email: "",
@@ -152,15 +152,15 @@
 				var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 				// var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
 
-				// var {usr_name ,password ,nick_name ,user_group ,email ,phone} = param;
-				var {usr_name ,password ,nick_name ,email ,user_group} = param;
+				// var {user_name ,password ,nick_name ,user_group ,email ,phone} = param;
+				var {user_name ,password ,nick_name ,email ,user_group} = param;
 
 				var confirm_password = this.confirm_password;
 
-				if(!usr_name){
+				if(!user_name){
 					ret = "账号不能为空";
 				}
-				else if(usr_name.length > 16 || usr_name.length < 5){
+				else if(user_name.length > 16 || user_name.length < 5){
 					ret = "账号长度应为5到16个字符之间！";
 				}
 				else if(!password){
@@ -188,7 +188,7 @@
 				if(!ret && user_group){
 										}
 
-				var p = {"user_name": param.usr_name};
+				var p = {"user_name": param.user_name};
 
 				var res = await this.$get("~/api/user/count?" ,p);
 
@@ -220,7 +220,7 @@
 			 */
 			get_register(form ,table){
 				var form_sub = this.form_sub;
-				this.$get("~/api/user/get_obj?",{usr_name: form.usr_name},(res)=>{
+				this.$get("~/api/user/get_obj?",{user_name: form.user_name},(res)=>{
 					console.log("注册表信息res",res);
 					if(res.result && res.result.obj){
 						form_sub.user_id = res.result.obj.user_id;

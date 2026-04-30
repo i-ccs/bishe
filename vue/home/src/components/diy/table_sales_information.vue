@@ -283,12 +283,12 @@
                 var obj = this.list_user_user_id.getObj({"user_id":id});
                 var ret = "";
                 if(obj){
-                  ret = obj.nick_name+"-"+obj.usr_name;
+                  ret = obj.nick_name+"-"+obj.user_name;
                   // if(obj.nick_name){
                   // 	ret = obj.nick_name;
                   // }
                   // else{
-                  // 	ret = obj.usr_name;
+                  // 	ret = obj.user_name;
                   // }
                 }
                 return ret;

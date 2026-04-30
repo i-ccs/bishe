@@ -42,7 +42,7 @@
 				</template>
 			</el-table-column>
 
-			<el-table-column prop="usr_name" label="用户名" sortable align="center">
+			<el-table-column prop="user_name" label="用户名" sortable align="center">
 			</el-table-column>
 
 			<el-table-column prop="user_gender" label="性别" sortable align="center">

@@ -116,7 +116,7 @@ public class UserController extends BaseController<User, UserService> {
     public Map<String, Object> login(@RequestBody Map<String, String> data, HttpServletRequest httpServletRequest) {
         log.info("[执行登录接口]");
 
-        String username = data.get("username");
+        String username = data.get("user_name") != null ? data.get("user_name") : data.get("username");
         String email = data.get("email");
         String phone = data.get("phone");
         String password = data.get("password");
@@ -185,11 +185,23 @@ public class UserController extends BaseController<User, UserService> {
             Duration duration = Duration.ofSeconds(7200L);
             redisTemplate.opsForValue().set(accessToken.getToken(), accessToken, duration);
 
-            // 返回用户信息
-            JSONObject user = JSONObject.parseObject(JSONObject.toJSONString(byUsername));
-            user.put("token", accessToken.getToken());
-            JSONObject ret = new JSONObject();
-            ret.put("obj", user);
+            // 返回用户信息（直接放入Map，让Spring Jackson以SNAKE_CASE序列化）
+            Map<String, Object> userMap = new java.util.LinkedHashMap<>();
+            userMap.put("user_id", byUsername.getUserId());
+            userMap.put("state", byUsername.getState());
+            userMap.put("user_group", byUsername.getUserGroup());
+            userMap.put("login_time", byUsername.getLoginTime());
+            userMap.put("phone", byUsername.getPhone());
+            userMap.put("phone_state", byUsername.getPhoneState());
+            userMap.put("user_name", byUsername.getUserName());
+            userMap.put("user_gender", byUsername.getUserGender());
+            userMap.put("nick_name", byUsername.getNickName());
+            userMap.put("email", byUsername.getEmail());
+            userMap.put("email_state", byUsername.getEmailState());
+            userMap.put("avatar", byUsername.getAvatar());
+            userMap.put("token", accessToken.getToken());
+            Map<String, Object> ret = new HashMap<>();
+            ret.put("obj", userMap);
             return success(ret);
         } else {
             return error(30000, "账号或密码不正确");
@@ -251,9 +263,22 @@ public class UserController extends BaseController<User, UserService> {
         // 根据用户ID获取
         List resultList = service.selectBaseList(service.select(query, service.readConfig(request)));
         if (resultList.size() > 0) {
-            JSONObject user = JSONObject.parseObject(JSONObject.toJSONString(resultList.get(0)));
-            user.put("token", token);
-            ret.put("obj", user);
+            Map<String, Object> userMap = new java.util.LinkedHashMap<>();
+            User u = (User) resultList.get(0);
+            userMap.put("user_id", u.getUserId());
+            userMap.put("state", u.getState());
+            userMap.put("user_group", u.getUserGroup());
+            userMap.put("login_time", u.getLoginTime());
+            userMap.put("phone", u.getPhone());
+            userMap.put("phone_state", u.getPhoneState());
+            userMap.put("user_name", u.getUserName());
+            userMap.put("user_gender", u.getUserGender());
+            userMap.put("nick_name", u.getNickName());
+            userMap.put("email", u.getEmail());
+            userMap.put("email_state", u.getEmailState());
+            userMap.put("avatar", u.getAvatar());
+            userMap.put("token", token);
+            ret.put("obj", userMap);
             return success(ret);
         } else {
             return error(10000, "用户未登录!");
