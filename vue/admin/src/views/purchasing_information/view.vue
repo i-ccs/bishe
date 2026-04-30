@@ -108,7 +108,7 @@
 	
 		</el-row>
 			<el-col :xs="24" :sm="12" :lg="8" class="el_form_btn_warp">
-				<el-form-item v-if="$check_action('/purchasing_information/view','set') || $check_action('/purchasing_information/view','add')">
+				<el-form-item v-if="$check_action('/purchasing_information/view','set') || $check_action('/purchasing_information/view','add') || $check_action('/purchasing_information/table','set') || $check_action('/purchasing_information/table','add')">
 					<el-button type="primary" @click="submit()">提交</el-button>
 					<el-button @click="cancel()">取消</el-button>
 				</el-form-item>
