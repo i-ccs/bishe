@@ -16,12 +16,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="nickName"    column="nick_name"    />
         <result property="password"    column="password"    />
         <result property="email"    column="email"    />
+        <result property="gender"    column="gender"    />
         <result property="avatar"    column="avatar"    />
         <result property="createTime"    column="create_time"    />
     </resultMap>
 
     <sql id="selectUserVo">
-        select user_id, state, user_group, user_group as account_type, login_time, phone, phone_state, user_name, nick_name, password, email, email_state, avatar, create_time from user
+        select user_id, state, user_group, user_group as account_type, login_time, phone, phone_state, user_name, nick_name, password, email, email_state, gender, avatar, create_time from user
     </sql>
 
     <select id="selectUserList" parameterType="com.project.demo.entity.User" resultMap="UserResult">
@@ -37,6 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="password != null  and password != ''"> and password = #{password}</if>
             <if test="email != null  and email != ''"> and email = #{email}</if>
             <if test="emailState != null "> and email_state = #{emailState}</if>
+            <if test="gender != null "> and gender = #{gender}</if>
             <if test="avatar != null  and avatar != ''"> and avatar = #{avatar}</if>
         </where>
     </select>
@@ -59,6 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="password != null  and password != ''">password,</if>
             <if test="email != null  and email != ''">email,</if>
             <if test="emailState != null ">email_state,</if>
+            <if test="gender != null ">gender,</if>
             <if test="avatar != null  and avatar != ''">avatar,</if>
             <if test="createTime != null ">create_time,</if>
          </trim>
@@ -73,6 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="password != null  and password != ''">#{password},</if>
             <if test="email != null  and email != ''">#{email},</if>
             <if test="emailState != null ">#{emailState},</if>
+            <if test="gender != null ">#{gender},</if>
             <if test="avatar != null  and avatar != ''">#{avatar},</if>
             <if test="createTime != null ">#{createTime},</if>
          </trim>
@@ -91,6 +95,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="password != null  and password != ''">password = #{password},</if>
             <if test="email != null  and email != ''">email = #{email},</if>
             <if test="emailState != null ">email_state = #{emailState},</if>
+            <if test="gender != null ">gender = #{gender},</if>
             <if test="avatar != null  and avatar != ''">avatar = #{avatar},</if>
             <if test="createTime != null ">create_time = #{createTime},</if>
         </trim>

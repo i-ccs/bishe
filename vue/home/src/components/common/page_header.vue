@@ -86,6 +86,11 @@
                             {{"行业资讯" || "新闻通知"}}
                           </router-link>
                         </li>
+                        <li class="nav_li">
+                          <router-link to="/merchandise_information/list" class="nav_a">
+                            商品信息
+                          </router-link>
+                        </li>
                                                                                                                                   <li v-if="nav_top && i < top_max" v-for="(o,i) in nav_top" v-bind:key="i" class="nav_li">
                       <router-link :to="o.path" class="nav_a">
                         {{o.page_title}}

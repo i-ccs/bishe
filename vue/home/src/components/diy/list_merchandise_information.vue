@@ -6,8 +6,8 @@
 				:to="'/merchandise_information/details?merchandise_information_id=' + o['merchandise_information_id']">
 										<!-- 图片 -->
 				<div class="diy_list_img_box" v-if="imgList.length" >
-					<div class="diy_row" v-for="(item,index) in imgList" :key="item+index" v-show="$check_field('get',item.name,'/merchandise_information/details') && +item.is_img_list">
-						<div class="diy_title diy_list_img_title">
+					<div class="diy_row" v-for="(item, index) in imgList" :key="item + index" v-show="$check_field('get',item.name,'/merchandise_information/details') && +item.is_img_list">
+						<div class="diy_title">
 							<span>{{item.title}}:</span>
 						</div>
 						<div class="diy_field diy_img">

@@ -285,7 +285,11 @@ export default {
 						}else if (url.indexOf("~/") === 0) {
 							url_new = url.replace('~/', host);
 						}else if (url.indexOf("/") === 0) {
-							url_new = url.replace('/', host);
+							// 如果路径以 /upload/ 开头但缺少 /api 前缀，则加上
+							if (url.indexOf("/upload/") === 0 && url.indexOf("/api/") !== 0) {
+								url = "/api" + url;
+							}
+							url_new = host.replace(/\/$/, '') + url;
 						}else if (url.indexOf("~") === 0) {
 							url_new = url.replace('~', '');
 						} else {
