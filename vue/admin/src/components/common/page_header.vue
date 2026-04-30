@@ -108,7 +108,7 @@
 
 <style scoped="scoped">
 	header {
-		background-color: rgb(84, 92, 100);
+		background-color: #909399;
 		border-bottom: var(--color_border);
 		color: #fff;
 	}

@@ -1,6 +1,6 @@
 <template>
   <el-menu class="side el-menu-vertical-demo" default-active="/" @open="handleOpen" @close="handleClose"
-           background-color="#545c64" text-color="#fff" active-text-color="#38f" :collapse="isCollapse" :router="true">
+           background-color="#303133" text-color="#fff" active-text-color="#38f" :collapse="isCollapse" :router="true">
 
     <span class="hide-avatar" style="display: none;">
       <img :src="$fullUrl($store.state.user.avatar)" alt="avatar">
@@ -212,7 +212,7 @@
 
   .side {
     float: left;
-    background: #545c64;
+    background: #303133;
     color: #fff;
     overflow-y: scroll;
     height: 100vh;
