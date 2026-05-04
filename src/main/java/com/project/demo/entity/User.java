@@ -1,6 +1,5 @@
 package com.project.demo.entity;
 
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -11,12 +10,11 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 用户账户：用于保存用户登录信息(User)表实体类
  *
  * @author xxx
- *@since 202X-XX-XX
+ * @since 202X-XX-XX
  */
 @TableName("user")
 @Data
@@ -64,14 +62,14 @@ public class User implements Serializable {
     /**
      * 用户名：[0,16]用户登录时所用的账户名称
      */
-    @TableField(value = "username")
-    private String username;
+    @TableField(value = "user_name")
+    private String userName;
 
     /**
      * 昵称：[0,16]
      */
-    @TableField(value = "nickname")
-    private String nickname;
+    @TableField(value = "nick_name")
+    private String nickName;
 
     /**
      * 密码：[0,32]用户登录所需的密码，由6-16位数字或英文组成
@@ -96,23 +94,20 @@ public class User implements Serializable {
      */
     @TableField(value = "avatar")
     private String avatar;
-	
+
     /**
      * 针对获取用户信息字段
      */
     @TableField(value = "open_id")
     private String open_id;
 
-
-
     /**
      * 创建时间：
      */
     @TableField(value = "create_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp createTime;
 
     @TableField(exist = false)
     private String code;
 }
-

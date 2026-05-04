@@ -1,6 +1,5 @@
 package com.project.demo.entity;
 
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,7 +9,6 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-
 
 /**
  * 邮箱验证码(CodeToken)表实体类
@@ -26,7 +24,7 @@ public class CodeToken implements Serializable {
      * 邮箱验证码ID
      */
     @TableId(value = "code_token_id", type = IdType.AUTO)
-    private Integer code_token_id;
+    private Integer codeTokenId;
 
     /**
      * 临时访问牌
@@ -44,7 +42,7 @@ public class CodeToken implements Serializable {
      * 失效时间
      */
     @TableField(value = "expire_time")
-    private Timestamp expire_time;
+    private Timestamp expireTime;
 
     /**
      * 创建时间：

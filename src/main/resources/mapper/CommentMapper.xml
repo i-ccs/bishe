@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="userId"    column="user_id"    />
         <result property="replyToId"    column="reply_to_id"    />
         <result property="content"    column="content"    />
-        <result property="nickname"    column="nickname"    />
+        <result property="nickName"    column="nick_name"    />
         <result property="avatar"    column="avatar"    />
         <result property="createTime"    column="create_time"    />
         <result property="updateTime"    column="update_time"    />
@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectCommentVo">
-        select comment_id, user_id, reply_to_id, content, nickname, avatar, create_time, update_time, source_table, source_field, source_id from comment
+        select comment_id, user_id, reply_to_id, content, nick_name, avatar, create_time, update_time, source_table, source_field, source_id from comment
     </sql>
 
     <select id="selectCommentList" parameterType="com.project.demo.entity.Comment" resultMap="CommentResult">
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="userId != null "> and user_id = #{userId}</if>
             <if test="replyToId != null "> and reply_to_id = #{replyToId}</if>
             <if test="content != null  and content != ''"> and content = #{content}</if>
-            <if test="nickname != null  and nickname != ''"> and nickname like concat('%', #{nickname}, '%')</if>
+            <if test="nickName != null  and nickName != ''"> and nick_name like concat('%', #{nickName}, '%')</if>
             <if test="avatar != null  and avatar != ''"> and avatar = #{avatar}</if>
             <if test="sourceTable != null  and sourceTable != ''"> and source_table = #{sourceTable}</if>
             <if test="sourceField != null  and sourceField != ''"> and source_field = #{sourceField}</if>
@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="userId != null ">user_id,</if>
             <if test="replyToId != null ">reply_to_id,</if>
             <if test="content != null  and content != ''">content,</if>
-            <if test="nickname != null  and nickname != ''">nickname,</if>
+            <if test="nickName != null  and nickName != ''">nick_name,</if>
             <if test="avatar != null  and avatar != ''">avatar,</if>
             <if test="createTime != null ">create_time,</if>
             <if test="updateTime != null ">update_time,</if>
@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="userId != null ">#{userId},</if>
             <if test="replyToId != null ">#{replyToId},</if>
             <if test="content != null  and content != ''">#{content},</if>
-            <if test="nickname != null  and nickname != ''">#{nickname},</if>
+            <if test="nickName != null  and nickName != ''">#{nickName},</if>
             <if test="avatar != null  and avatar != ''">#{avatar},</if>
             <if test="createTime != null ">#{createTime},</if>
             <if test="updateTime != null ">#{updateTime},</if>
@@ -75,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="userId != null ">user_id = #{userId},</if>
             <if test="replyToId != null ">reply_to_id = #{replyToId},</if>
             <if test="content != null  and content != ''">content = #{content},</if>
-            <if test="nickname != null  and nickname != ''">nickname = #{nickname},</if>
+            <if test="nickName != null  and nickName != ''">nick_name = #{nickName},</if>
             <if test="avatar != null  and avatar != ''">avatar = #{avatar},</if>
             <if test="createTime != null ">create_time = #{createTime},</if>
             <if test="updateTime != null ">update_time = #{updateTime},</if>

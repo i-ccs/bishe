@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="title"    column="title"    />
         <result property="type"    column="type"    />
         <result property="hits"    column="hits"    />
-        <result property="praise_len"    column="praise_len"    />
+        <result property="praiseLen"    column="praise_len"    />
         <result property="createTime"    column="create_time"    />
         <result property="updateTime"    column="update_time"    />
         <result property="source"    column="source"    />

@@ -1,6 +1,5 @@
 package com.project.demo.entity;
 
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,12 +9,11 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 /**
  * 评论：(Comment)表实体类
  *
  * @author xxx
- *@since 202X-XX-XX
+ * @since 202X-XX-XX
  */
 @TableName("comment")
 @Data
@@ -51,8 +49,8 @@ public class Comment implements Serializable {
     /**
      * 昵称：
      */
-    @TableField(value = "nickname")
-    private String nickname;
+    @TableField(value = "nick_name")
+    private String nickName;
 
     /**
      * 头像地址：[0,255]
@@ -91,4 +89,3 @@ public class Comment implements Serializable {
     private Integer sourceId;
 
 }
-

@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="loginTime"    column="login_time"    />
         <result property="phone"    column="phone"    />
         <result property="phoneState"    column="phone_state"    />
-        <result property="username"    column="username"    />
-        <result property="nickname"    column="nickname"    />
+        <result property="userName"    column="user_name"    />
+        <result property="nickName"    column="nick_name"    />
         <result property="password"    column="password"    />
         <result property="email"    column="email"    />
         <result property="emailState"    column="email_state"    />
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectUserVo">
-        select user_id, state, user_group, login_time, phone, phone_state, username, nickname, password, email, email_state, avatar, create_time from user
+        select user_id, state, user_group, login_time, phone, phone_state, user_name, nick_name, password, email, email_state, avatar, create_time from user
     </sql>
 
     <select id="selectUserList" parameterType="com.project.demo.entity.User" resultMap="UserResult">
@@ -32,8 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="loginTime != null "> and login_time = #{loginTime}</if>
             <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
             <if test="phoneState != null "> and phone_state = #{phoneState}</if>
-            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
-            <if test="nickname != null  and nickname != ''"> and nickname like concat('%', #{nickname}, '%')</if>
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+            <if test="nickName != null  and nickName != ''"> and nick_name like concat('%', #{nickName}, '%')</if>
             <if test="password != null  and password != ''"> and password = #{password}</if>
             <if test="email != null  and email != ''"> and email = #{email}</if>
             <if test="emailState != null "> and email_state = #{emailState}</if>
@@ -54,8 +54,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="loginTime != null ">login_time,</if>
             <if test="phone != null  and phone != ''">phone,</if>
             <if test="phoneState != null ">phone_state,</if>
-            <if test="username != null  and username != ''">username,</if>
-            <if test="nickname != null  and nickname != ''">nickname,</if>
+            <if test="userName != null  and userName != ''">user_name,</if>
+            <if test="nickName != null  and nickName != ''">nick_name,</if>
             <if test="password != null  and password != ''">password,</if>
             <if test="email != null  and email != ''">email,</if>
             <if test="emailState != null ">email_state,</if>
@@ -68,8 +68,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="loginTime != null ">#{loginTime},</if>
             <if test="phone != null  and phone != ''">#{phone},</if>
             <if test="phoneState != null ">#{phoneState},</if>
-            <if test="username != null  and username != ''">#{username},</if>
-            <if test="nickname != null  and nickname != ''">#{nickname},</if>
+            <if test="userName != null  and userName != ''">#{userName},</if>
+            <if test="nickName != null  and nickName != ''">#{nickName},</if>
             <if test="password != null  and password != ''">#{password},</if>
             <if test="email != null  and email != ''">#{email},</if>
             <if test="emailState != null ">#{emailState},</if>
@@ -86,8 +86,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="loginTime != null ">login_time = #{loginTime},</if>
             <if test="phone != null  and phone != ''">phone = #{phone},</if>
             <if test="phoneState != null ">phone_state = #{phoneState},</if>
-            <if test="username != null  and username != ''">username = #{username},</if>
-            <if test="nickname != null  and nickname != ''">nickname = #{nickname},</if>
+            <if test="userName != null  and userName != ''">user_name = #{userName},</if>
+            <if test="nickName != null  and nickName != ''">nick_name = #{nickName},</if>
             <if test="password != null  and password != ''">password = #{password},</if>
             <if test="email != null  and email != ''">email = #{email},</if>
             <if test="emailState != null ">email_state = #{emailState},</if>

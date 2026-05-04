@@ -1,6 +1,5 @@
 package com.project.demo.entity;
 
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -9,7 +8,6 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-
 
 /**
  * 临时访问牌(AccessToken)表实体类
@@ -37,8 +35,8 @@ public class AccessToken implements Serializable {
     /**
      * 最大寿命：默认2小时
      */
-    @TableField(value = "maxage")
-    private Integer maxage;
+    @TableField(value = "max_age")
+    private Integer maxAge;
 
     /**
      * 创建时间：
