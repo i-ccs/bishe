@@ -2,6 +2,7 @@ package com.project.demo.controller;
 
 import com.project.demo.entity.RegisteredUser;
 import com.project.demo.service.RegisteredUserService;
+import com.project.demo.service.UserService;
 import com.project.demo.controller.base.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,9 @@ import java.util.*;
 @RequestMapping("/registered_user")
 public class RegisteredUserController extends BaseController<RegisteredUser, RegisteredUserService> {
 
+    @Autowired
+    private UserService userService;
+
     /**
      * 注册用户对象
      */
@@ -34,7 +38,14 @@ public class RegisteredUserController extends BaseController<RegisteredUser, Reg
         setService(service);
     }
 
-
+    @RequestMapping("/get_list")
+    public Map<String, Object> getList(HttpServletRequest request) {
+        Map<String, String> query = service.readQuery(request);
+        Map<String, String> config = service.readConfig(request);
+        query.put("user_group", "注册用户");
+        config.put("like", "0");
+        return success(userService.selectToPage(query, config));
+    }
 
     @PostMapping("/add")
     @Transactional

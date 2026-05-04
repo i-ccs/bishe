@@ -4,8 +4,8 @@
 			<el-form label-position="top" :model="query" class="premium-search-form">
 				<el-row :gutter="20">
 					<el-col :xs="24" :sm="12" :lg="6">
-						<el-form-item label="用户姓名">
-							<el-input v-model="query.user_name" placeholder="搜索真实姓名" prefix-icon="el-icon-user"></el-input>
+						<el-form-item label="用户名">
+							<el-input v-model="query.user_name" placeholder="搜索用户名" prefix-icon="el-icon-user"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
@@ -36,10 +36,10 @@
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
 				<el-table-column fixed type="selection" width="55" align="center"></el-table-column>
-				<el-table-column prop="user_id" label="ID" width="80" align="center"></el-table-column>
+				<el-table-column prop="user_id" label="用户ID" width="80" align="center"></el-table-column>
 				<el-table-column prop="nick_name" label="昵称" min-width="120" align="center"></el-table-column>
 				<el-table-column prop="user_name" label="用户名" min-width="120" align="center"></el-table-column>
-				<el-table-column prop="user_gender" label="性别" width="80" align="center">
+				<el-table-column prop="user_gender" label="用户性别" width="100" align="center">
 					<template slot-scope="scope">
 						<el-tag :type="scope.row.user_gender === '男' ? '' : 'danger'" size="mini">
 							{{ scope.row.user_gender }}
@@ -55,7 +55,7 @@
 
 				<el-table-column fixed="right" label="操作" width="100" align="center">
 					<template slot-scope="scope">
-						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?user_id=' + scope.row['user_id']">详情</router-link>
+						<router-link class="el-button el-button--primary el-button--mini is-plain" :to="'./view?user_id=' + scope.row['user_id']">详情</router-link>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -76,14 +76,14 @@
 		data() {
 			return {
 				showModal: false,
-				url_get_list: "~/api/user/get_list?like=0",
+				url_get_list: "~/api/user/get_list?like=0&sqlwhere=user_group='注册用户'",
 				url_del: "~/api/user/del?",
 				field: "user_id",
 				query: { "size": 7, "page": 1, "user_name": "", "user_gender": "", "user_group": "注册用户", "orderby": `create_time desc` },
 				list: [],
 				list_user_gender: [
-					{ text: '男', value: 0 },
-					{ text: '女', value: 1 }
+					{ text: '男', value: '男' },
+					{ text: '女', value: '女' }
 				],
 				message: '',
 			}
