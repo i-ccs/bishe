@@ -418,6 +418,29 @@
 	padding-left: 25px !important;
 }
 
+.list_article_box, .list_commodity_information_box {
+	max-height: 450px;
+	overflow-y: auto;
+	padding-right: 5px;
+}
+
+/* Custom Scrollbar for Premium Feel */
+.list_article_box::-webkit-scrollbar, 
+.list_commodity_information_box::-webkit-scrollbar {
+	width: 4px;
+}
+
+.list_article_box::-webkit-scrollbar-thumb, 
+.list_commodity_information_box::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+
+.list_article_box::-webkit-scrollbar-track, 
+.list_commodity_information_box::-webkit-scrollbar-track {
+	background: transparent;
+}
+
 .products-column >>> .diy_view_list {
 	display: flex !important;
 	flex-wrap: wrap !important;
