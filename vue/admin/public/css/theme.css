@@ -1,4 +1,3 @@
-
 .tip,
 .desc,
 .description {
@@ -26,7 +25,8 @@
 	color: var(--color_default);
 }
 
-.mm_card, .card {
+.mm_card,
+.card {
 	background: #fff;
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	box-shadow: 0 0.25rem 0.5rem 0 rgba(7, 17, 27, 0.1);
@@ -90,13 +90,16 @@ nav a:active {
 }
 
 .mm_side .mm_warp {
-	color: var(--color_white);
-	background: var(--bg_black);
+	/* 侧边栏：灰白背景，深色文字，使用 !important 提高优先级 */
+	color: var(--color_base) !important;
+	background: var(--bg_grey) !important;
+	border-right: 1px solid var(--color_border) !important;
 }
 
 .mm_page>header .mm_warp {
-	background: var(--bg_black);
-	color: var(--color_white);
+	/* 顶部：中灰背景，白色文字 */
+	background: var(--color_grey) !important;
+	color: var(--color_white) !important;
 }
 
 .mm_page>footer .mm_warp {
@@ -175,11 +178,13 @@ ol.mm_list li:nth-child(3)::before {
 	color: var(--color_white);
 	border-color: var(--color_red);
 }
+
 .bg_orange {
 	background: var(--color_orange) !important;
 	color: var(--color_white);
 	border-color: var(--color_orange);
 }
+
 .bg_error {
 	background: var(--color_error) !important;
 	color: var(--color_white);
@@ -319,7 +324,7 @@ ol.mm_list li:nth-child(3)::before {
 	border-color: var(--color_info) !important;
 }
 
-/* ��ť */
+/* ��ť */
 .btn_default-x {
 	color: var(--color_default);
 	border-color: var(--color_default);

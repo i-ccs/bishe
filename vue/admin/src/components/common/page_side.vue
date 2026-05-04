@@ -1,6 +1,7 @@
 <template>
   <el-menu class="side el-menu-vertical-demo" default-active="/" @open="handleOpen" @close="handleClose"
-           background-color="#545c64" text-color="#fff" active-text-color="#38f" :collapse="isCollapse" :router="true">
+           active-text-color="#38f" :collapse="isCollapse" :router="true"
+           style="background: var(--bg_grey) !important; color: var(--color_base) !important;">
 
     <span class="hide-avatar" style="display: none;">
       <img :src="$fullUrl($store.state.user.avatar)" alt="avatar">
@@ -216,8 +217,9 @@
 
   .side {
     float: left;
-    background: #545c64;
-    color: #fff;
+    /* 侧边栏使用灰白背景，文字使用深色以提高可读性 */
+    background: var(--bg_grey) !important;
+    color: var(--color_base) !important;
     overflow-y: scroll;
     height: 100vh;
   }

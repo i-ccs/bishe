@@ -1,5 +1,5 @@
 <template>
-	<header>
+	<header style="background: var(--color_grey) !important; color: #fff !important;">
 		<div class="warp">
 			<el-row>
 				<el-col :span="24">
@@ -108,8 +108,9 @@
 
 <style scoped="scoped">
 	header {
-		background-color: rgb(84, 92, 100);
-		border-bottom: var(--color_border);
+		/* 顶部使用中灰色背景，文字白色 */
+		background-color: var(--color_grey) !important;
+		border-bottom: 1px solid var(--color_border);
 		color: #fff;
 	}
 
