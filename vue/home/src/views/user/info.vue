@@ -11,8 +11,8 @@
 						</div>
 					</div>
 				-->
-					<div class="col-12 col-md-9">
-						<div class="card_info pl-2">
+					<div class="col-12">
+						<div class="card_info">
 							<!-- 个人资料 -->
 							<div class="div_info">
 								<h4 class="uc-title">个人资料</h4>
@@ -271,8 +271,10 @@
 	.card_info {
 		background: #fff;
 		border-radius: 16px;
-		padding: 2rem !important;
+		padding: 3rem !important;
 		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+		max-width: 800px;
+		margin: 0 auto;
 	}
 
 	.uc-title {
@@ -418,5 +420,19 @@
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
+	}
+
+	.uc-actions {
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid #f0f4f8;
+		display: flex !important;
+		gap: 1.5rem;
+		justify-content: center !important;
+	}
+
+	.btn-save-all {
+		padding: 0.6rem 3rem;
+		font-weight: 600;
 	}
 </style>
