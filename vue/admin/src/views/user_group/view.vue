@@ -31,7 +31,7 @@
 				</el-row>
 
 				<div class="premium-actions">
-					<template v-if="(form['group_id'] && $check_action('/user_group/view','set')) || (!form['group_id'] && $check_action('/user_group/view','add'))">
+					<template v-if="user_group == '管理员' || (form['group_id'] && $check_action('/user_group/view','set')) || (!form['group_id'] && $check_action('/user_group/view','add'))">
 						<el-button type="primary" class="premium-btn-submit" @click="submit()" icon="el-icon-check">提交保存</el-button>
 						<el-button class="premium-btn-cancel" @click="cancel()" icon="el-icon-close">取消</el-button>
 					</template>
