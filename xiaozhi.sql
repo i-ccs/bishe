@@ -28,7 +28,7 @@ CREATE TABLE `access_token` (
   `max_age` int NOT NULL DEFAULT '2' COMMENT '最大寿命：默认2小时',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '用户编号',
+  `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
   PRIMARY KEY (`token_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='登陆访问时长';
 
@@ -181,7 +181,7 @@ CREATE TABLE `banner` (
   `content` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '内容',
   `url` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '链接',
   `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '轮播图',
-  `views` int unsigned NOT NULL DEFAULT '0' COMMENT '点击量',
+  `views` int unsigned NOT NULL DEFAULT '0' COMMENT '点击数',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`banner_id`) USING BTREE
@@ -366,7 +366,7 @@ COMMIT;
 DROP TABLE IF EXISTS `praise`;
 CREATE TABLE `praise` (
   `praise_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '点赞ID',
-  `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '点赞人',
+  `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '点赞人ID',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `source_table` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源表',
@@ -600,7 +600,7 @@ COMMIT;
 DROP TABLE IF EXISTS `views`;
 CREATE TABLE `views` (
   `views_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '点赞ID',
-  `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '点赞人',
+  `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '点赞人ID',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `source_table` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源表',
