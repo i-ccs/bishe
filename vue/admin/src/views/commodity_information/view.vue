@@ -55,7 +55,7 @@
 					<el-image v-else-if="$check_field('get','product_images')" style="width: 100px; height: 100px"
 						:src="$fullUrl(form['product_images'])" :preview-src-list="[$fullUrl(form['product_images'])]">
 						<div slot="error" class="image-slot">
-							<img src="../../../public/img/error.png" style="width: 90px; height: 90px" />
+							<img src="/img/error.png" style="width: 90px; height: 90px" />
 						</div>
 					</el-image>
 							</el-form-item>

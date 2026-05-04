@@ -138,7 +138,7 @@
 							<el-image style="width: 100%;" :src="require('../../../public/wx.png')"
 									  :preview-src-list="[require('../../../public/wx.png')]">
 								<div slot="error" class="image-slot">
-									<img src="../../../public/img/error.png" style="width: 90px; height: 90px" />
+									<img src="/img/error.png" style="width: 90px; height: 90px" />
 								</div>
 							</el-image>
 						</div>
@@ -153,7 +153,7 @@
 							<el-image style="width: 100%;" :src="require('../../../public/alipay.png')"
 									  :preview-src-list="[require('../../../public/alipay.png')]">
 								<div slot="error" class="image-slot">
-									<img src="../../../public/img/error.png" style="width: 90px; height: 90px" />
+									<img src="/img/error.png" style="width: 90px; height: 90px" />
 								</div>
 							</el-image>
 						</div>

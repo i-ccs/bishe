@@ -52,7 +52,7 @@
 					    :src="$fullUrl(scope.row.img)"
 					    :preview-src-list="[$fullUrl(scope.row.img)]">
 						<div slot="error" class="image-slot">
-						  <img src="../../../public/img/error.png" style="width: 90px; height: 90px" />
+						  <img src="/img/error.png" style="width: 90px; height: 90px" />
 						</div>
 					  </el-image>
 				</template>

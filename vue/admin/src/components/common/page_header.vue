@@ -18,7 +18,7 @@
 							<div class="el-dropdown-link" style="margin-right: 2rem;">
 								<el-avatar style="margin-top: 0.25rem; width: 2.3rem; overflow: hidden;"
 									:src="$fullUrl(user.avatar)">
-									<img style="width: 2.3rem; overflow: hidden" src="../../../public/img/error.png" />
+									<img style="width: 2.3rem; overflow: hidden" src="/img/error.png" />
 								</el-avatar>
 								<span style="margin-left: 0.5rem; position: relative;top: -0.75rem;">{{ user.nickname || user.username }}</span>
 							</div>
