@@ -159,9 +159,16 @@
         height: 100vh;
         padding: .5rem;
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background: url(../../public/img/bg.jpg) no-repeat;
         background-size: 100% 100%;
         color: #fff;
+    }
+
+    .sign_in .warp {
+        width: 100%;
     }
  
     .sign_in h1,
@@ -182,7 +189,7 @@
         box-sizing: border-box;
         padding: 1rem 3rem;
         margin: auto;
-        margin-top: 17rem;
+        margin-top: 0;
         width: 100%;
         max-width: 32rem!important;
         box-shadow: 0 0 0 1px hsla(240, 0%, 100%, .3) inset,
