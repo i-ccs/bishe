@@ -111,14 +111,14 @@ CREATE TABLE `auth` (
   `field_set` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '修改字段',
   `field_get` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '查询字段',
   `table_nav_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '跨表导航名称',
-  `table_nav` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否跨表操作',
-  `parent` varchar(64) DEFAULT NULL COMMENT '父级模块名',
-  `parent_sort` int DEFAULT '0' COMMENT '父级排序',
+  `table_nav` tinyint(1) NOT NULL DEFAULT '0' COMMENT '跨表导航',
+  `parent` varchar(64) DEFAULT NULL COMMENT '父级菜单',
+  `parent_sort` int DEFAULT '0' COMMENT '父级菜单排序',
   `option` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '配置',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`auth_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=465 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='定制授权';
+) ENGINE=InnoDB AUTO_INCREMENT=465 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户权限管理';
 
 -- ----------------------------
 -- Records of auth
@@ -424,10 +424,10 @@ COMMIT;
 DROP TABLE IF EXISTS `registered_user`;
 CREATE TABLE `registered_user` (
   `registered_user_id` int NOT NULL AUTO_INCREMENT COMMENT '注册用户ID',
-  `user_id` int DEFAULT '0',
+  `user_id` int DEFAULT '0' COMMENT '用户ID',
   `user_name` varchar(64) DEFAULT NULL COMMENT '用户姓名',
-  `user_gender` int DEFAULT NULL,
-  `state` int DEFAULT '1',
+  `user_gender` int DEFAULT NULL COMMENT '用户性别',
+  `state` int DEFAULT '1' COMMENT '状态',
   `examine_state` varchar(16) NOT NULL DEFAULT '已通过' COMMENT '审核状态',
   `is_delete` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '是否删除：0未删除，1已删除',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
