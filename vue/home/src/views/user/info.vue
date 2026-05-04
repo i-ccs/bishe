@@ -21,7 +21,7 @@
 									<!-- 基础信息 -->
 									<div class="uc-info-section">
 										<div class="figure_avatar">
-											<span>头像：</span>
+											<span class="uc-label">头像：</span>
 											<div class="change_avatar_box">
 												<b-img class="user_avator"
 													:src="obj.avatar ? $fullUrl(obj.avatar) : '/img/default.png'" alt=""
@@ -278,12 +278,15 @@
 		margin-bottom: 2rem;
 		padding-bottom: 1rem;
 		border-bottom: 1px solid #f0f4f8;
+		text-align: center;
 	}
 
 	.uc-info-sections {
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
+		max-width: 600px;
+		margin: 0 auto;
 	}
 
 	.uc-info-section {
@@ -291,12 +294,17 @@
 		background: #f8fbff;
 		border-radius: 12px;
 		border: 1px solid #eef4fa;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.uc-info-row {
 		display: flex;
 		align-items: center;
 		margin-bottom: 1rem;
+		width: 100%;
+		justify-content: center;
 	}
 
 	.uc-info-row:last-child {
@@ -304,14 +312,18 @@
 	}
 
 	.uc-label {
-		width: 100px;
+		width: 120px;
 		color: #64748b;
 		font-size: 14px;
+		text-align: right;
+		margin-right: 15px;
 	}
 
 	.uc-value {
 		color: #1e293b;
 		font-weight: 500;
+		flex: 1;
+		text-align: left;
 	}
 
 	.uc-edit-box {
@@ -319,14 +331,15 @@
 		align-items: center;
 		gap: 10px;
 		flex: 1;
+		justify-content: flex-start;
 	}
 
 	.uc-input {
 		border: 1px solid #cbd5e1;
 		border-radius: 6px;
-		padding: 4px 12px;
+		padding: 6px 12px;
 		font-size: 14px;
-		width: 200px;
+		width: 260px;
 		transition: border-color 0.2s;
 	}
 
@@ -338,21 +351,25 @@
 	.uc-select {
 		border: 1px solid #cbd5e1;
 		border-radius: 6px;
-		padding: 4px 12px;
+		padding: 6px 12px;
 		font-size: 14px;
 		background: #fff;
+		width: 260px;
 	}
 
 	.figure_avatar {
 		display: flex;
 		align-items: center;
 		margin-bottom: 1.5rem;
+		width: 100%;
+		justify-content: center;
 	}
 
 	.change_avatar_box {
 		display: flex;
 		align-items: center;
 		gap: 20px;
+		flex: 1;
 	}
 
 	.upload_btn_wrap {
@@ -375,11 +392,12 @@
 		padding-top: 2rem;
 		border-top: 1px solid #f0f4f8;
 		display: flex;
-		gap: 1rem;
+		gap: 1.5rem;
+		justify-content: center;
 	}
 
 	.btn-save-all {
-		padding: 0.6rem 2.5rem;
+		padding: 0.6rem 3rem;
 		font-weight: 600;
 	}
 </style>
