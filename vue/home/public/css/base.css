@@ -1,0 +1,42 @@
+﻿.ql-align-center{
+	width: auto !important;
+	text-align: center;
+}
+.ql-align-right{
+	text-align: right;
+}
+.ql-indent-1 {
+    padding-left: 0px !important;
+    text-indent: 1em !important;
+}
+.ql-indent-2 {
+    padding-left: 0px !important;
+    text-indent: 2em !important;
+}
+.ql-indent-3 {
+    padding-left: 0px !important;
+    text-indent: 3em !important;
+}
+.ql-indent-4 {
+    padding-left: 0px !important;
+    text-indent: 4em !important;
+}
+.ql-indent-5 {
+    padding-left: 0px !important;
+    text-indent: 5em !important;
+}
+.ql-indent-6 {
+    padding-left: 0px !important;
+    text-indent: 6em !important;
+}
+.ql-indent-7 {
+    padding-left: 0px !important;
+    text-indent: 7em !important;
+}
+.ql-indent-8 {
+    padding-left: 0px !important;
+    text-indent: 8em !important;
+}
+.hot_goods .list_goods_hot .list .goods{
+	width: 20%;
+}
