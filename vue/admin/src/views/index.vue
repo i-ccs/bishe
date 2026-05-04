@@ -176,7 +176,8 @@
 				const processRes = (res, key) => {
 					if (res.result && res.result.list) {
 						res.result.list.forEach(o => {
-							const category = o[1];
+							let category = o[1];
+							if (!category) category = '未知商品';
 							const count = o[0];
 							if (!categoryMap[category]) {
 								categoryMap[category] = { sales: 0, inventory: 0, purchasing: 0 };

@@ -90,9 +90,9 @@
 							<div class="section-title">个人资料</div>
 							<el-row :gutter="20">
 								<el-col v-if="$check_field('get','user_name') || $check_field('add','user_name') || $check_field('set','user_name')" :span="12" :xs="24">
-									<el-form-item label="用户姓名" prop="user_name">
-										<el-input id="user_name" v-model="form_sub['user_name']" placeholder="请输入用户姓名" prefix-icon="el-icon-info"
-											v-if="(form_sub['registered_user_id'] && $check_field('set','user_name')) || (!form_sub['registered_user_id'] && $check_field('add','user_name'))"></el-input>
+									<el-form-item label="用户名" prop="user_name">
+										<el-input id="user_name" v-model="form_sub['user_name']" placeholder="请输入用户名" prefix-icon="el-icon-info"
+											v-if="user_group === '管理员' || (form_sub['registered_user_id'] && $check_field('set','user_name')) || (!form_sub['registered_user_id'] && $check_field('add','user_name'))" :disabled="disabledObj['user_name_isDisabled']"></el-input>
 										<div v-else-if="$check_field('get','user_name')" class="readonly-field">
 											<span>{{ form_sub['user_name'] }}</span>
 										</div>

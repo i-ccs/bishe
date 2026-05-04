@@ -39,7 +39,6 @@
 				<el-table-column prop="user_id" label="ID" width="80" align="center"></el-table-column>
 				<el-table-column prop="nick_name" label="昵称" min-width="120" align="center"></el-table-column>
 				<el-table-column prop="user_name" label="用户名" min-width="120" align="center"></el-table-column>
-				<el-table-column prop="user_name" label="姓名" v-if="$check_field('get','user_name')" min-width="120" align="center"></el-table-column>
 				<el-table-column prop="user_gender" label="性别" v-if="$check_field('get','user_gender')" width="80" align="center">
 					<template slot-scope="scope">
 						<el-tag :type="scope.row.user_gender === 0 ? '' : 'danger'" size="mini">

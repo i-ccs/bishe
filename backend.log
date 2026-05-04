@@ -1,0 +1,79 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.5.RELEASE)
+
+2026-05-05 00:26:11.122 [main] INFO  com.project.demo.Application - Starting Application v1.0-SNAPSHOT on debian with PID 123304 (/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar started by yuan in /home/yuan/Desktop/bishe-main)
+2026-05-05 00:26:11.133 [main] INFO  com.project.demo.Application - No active profile set, falling back to default profiles: default
+2026-05-05 00:26:11.771 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-05-05 00:26:11.772 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-05 00:26:11.797 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15ms. Found 0 JPA repository interfaces.
+2026-05-05 00:26:11.955 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-05-05 00:26:11.956 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-05 00:26:11.978 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12ms. Found 0 Redis repository interfaces.
+2026-05-05 00:26:12.900 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 5000 (http)
+2026-05-05 00:26:12.913 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-5000"]
+2026-05-05 00:26:12.914 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-05 00:26:12.916 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+2026-05-05 00:26:12.971 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-05-05 00:26:12.971 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1762 ms
+2026-05-05 00:26:13.017 [main] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-05-05 00:26:13.154 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-05-05 00:26:13.435 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-05 00:26:13.515 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.12.Final
+2026-05-05 00:26:13.650 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2026-05-05 00:26:13.833 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2026-05-05 00:26:14.045 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-05-05 00:26:14.052 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+Registered plugin: 'com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor@26e412ef'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/UploadMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/AnnouncementMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/AuthMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/BaseMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/UserGroupMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/PraiseMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/UserMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/CategoryMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/CollectMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/BannerMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/ViewsMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/ArticleMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/CommentMapper.xml]'
+Parsed mapper file: 'URL [jar:file:/home/yuan/Desktop/bishe-main/target/project-spring_boot-1.0-SNAPSHOT.jar!/BOOT-INF/classes!/mapper/AccessTokenMapper.xml]'
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.4.3.1 
+2026-05-05 00:26:15.664 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-05 00:26:15.896 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2026-05-05 00:26:16.249 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-5000"]
+2026-05-05 00:26:16.257 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-5000"]
+2026-05-05 00:26:16.257 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2026-05-05 00:26:16.269 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-5000"]
+2026-05-05 00:26:16.269 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-5000"]
+2026-05-05 00:26:16.271 [main] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-05-05 00:26:16.272 [main] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 5000 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 5000 or configure this application to listen on another port.
+
+2026-05-05 00:26:16.274 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2026-05-05 00:26:16.290 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-05 00:26:16.291 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-05-05 00:26:16.294 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

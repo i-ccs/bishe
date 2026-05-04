@@ -24,13 +24,13 @@ public class SalesInformation implements Serializable {
     @TableField(value = "`product_code`")
     private String productCode;
     // 商品名称
-    @TableField(value = "`product_name`")
+    @TableField(exist = false)
     private String productName;
     // 商品类别
-    @TableField(value = "`product_category`")
+    @TableField(exist = false)
     private String productCategory;
     // 商品品牌
-    @TableField(value = "`product_brand`")
+    @TableField(exist = false)
     private String productBrand;
     // 商品价格
     @TableField(value = "`commodity_price`")
