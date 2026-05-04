@@ -23,8 +23,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `access_token`;
 CREATE TABLE `access_token` (
   `token_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '临时访问牌ID',
-  `token` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '临时访问牌',
-  `info` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci COMMENT '信息',
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '临时访问牌',
+  `info` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '信息',
   `maxage` int NOT NULL DEFAULT '2' COMMENT '最大寿命：默认2小时',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -141,8 +141,8 @@ INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_tit
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (14, '管理员', '资源', 'article', '文章资讯', '/article/view', NULL, 'view', 1, 1, 1, 1, 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:49:53');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (15, '管理员', '资讯分类', 'article_type', '资讯分类', '/article_type/table', NULL, 'list', 1, 1, 1, 1, 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 15:09:07');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (16, '管理员', '资讯分类', 'article_type', '资讯分类', '/article_type/view', NULL, 'view', 1, 1, 1, 1, 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 15:09:10');
-INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (17, '管理员', '评论', 'comment', '评论列表', '/comment/table', NULL, 'list', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:40:23');
-INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (18, '管理员', '评论', 'comment', '评论详情', '/comment/view', NULL, 'view', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:40:24');
+INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (17, '管理员', '评论', 'comment', '评论列表', '/comment/table', NULL, 'list', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:40:23');
+INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (18, '管理员', '评论', 'comment', '评论详情', '/comment/view', NULL, 'view', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:40:24');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (19, '管理员', '系统公告', 'notice', '公告列表', '/notice/table', NULL, 'list', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 15:09:18');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (20, '管理员', '系统公告', 'notice', '公告详情', '/notice/view', NULL, 'view', 1, 1, 1, 1, NULL, NULL, NULL, NULL, 0, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 15:09:20');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (21, '注册用户', '行业资讯', 'article', '资讯详情', '/article/details', NULL, 'view', 1, 1, 1, 1, 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', NULL, 0, NULL, 0, NULL, '2026-04-27 17:06:06', '2026-05-03 15:09:22');
@@ -153,10 +153,10 @@ INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_tit
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (26, '注册用户', '商品信息', 'commodity_information', '商品信息', '/commodity_information/view', NULL, 'view', 0, 0, 0, 1, 'ommodity_information_id,commodity_price,commodity_specifications,create_time,hits,inventory_information_limit_times,praise_len,product_brand,product_category,product_code,product_details,product_images,product_introduction,product_inventory,product_name,purchasing_information_limit_times,sales_information_limit_times,update_time,collect_len,comment_len', 'ommodity_information_id,commodity_price,commodity_specifications,create_time,hits,inventory_information_limit_times,praise_len,product_brand,product_category,product_code,product_details,product_images,product_introduction,product_inventory,product_name,purchasing_information_limit_times,sales_information_limit_times,update_time,collect_len,comment_len', 'ommodity_information_id,commodity_price,commodity_specifications,create_time,hits,inventory_information_limit_times,praise_len,product_brand,product_category,product_code,product_details,product_images,product_introduction,product_inventory,product_name,purchasing_information_limit_times,sales_information_limit_times,update_time,collect_len,comment_len', 'sales_information,purchasing_information,inventory_information,purchasing_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 15:09:33');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (27, '注册用户', '销售信息', 'sales_information', '销售信息', '/sales_information/table', NULL, 'list', 1, 0, 1, 1, 'sales_information_id, product_code, product_name, product_category, product_brand, commodity_price, sales_order_number, registered_user, user_name, order_quantity, total_order_price, note_information, pay_state, pay_type, create_time, update_time, source_table, source_id, source_user_id', 'sales_information_id, product_code, product_name, product_category, product_brand, commodity_price, sales_order_number, registered_user, user_name, order_quantity, total_order_price, note_information, pay_state, pay_type, create_time, update_time, source_table, source_id, source_user_id', 'sales_information_id, product_code, product_name, product_category, product_brand, commodity_price, sales_order_number, registered_user, user_name, order_quantity, total_order_price, note_information, pay_state, pay_type, create_time, update_time, source_table, source_id, source_user_id', NULL, 0, NULL, 0, '{\"pay\": true}\n', '2026-04-27 15:28:13', '2026-05-03 15:48:43');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (28, '注册用户', '销售信息', 'sales_information', '销售信息', '/sales_information/view', NULL, 'view', 1, 0, 1, 1, 'sales_information_id, product_code, product_name, product_category, product_brand, commodity_price, sales_order_number, registered_user, user_name, order_quantity, total_order_price, note_information, pay_state, pay_type, create_time, update_time, source_table, source_id, source_user_id', 'sales_information_id, product_code, product_name, product_category, product_brand, commodity_price, sales_order_number, registered_user, user_name, order_quantity, total_order_price, note_information, pay_state, pay_type, create_time, update_time, source_table, source_id, source_user_id', 'sales_information_id, product_code, product_name, product_category, product_brand, commodity_price, sales_order_number, registered_user, user_name, order_quantity, total_order_price, note_information, pay_state, pay_type, create_time, update_time, source_table, source_id, source_user_id', NULL, 0, NULL, 0, '{\"pay\": true}\n', '2026-04-27 15:28:13', '2026-05-03 16:17:27');
-INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (29, '注册用户', '评论', 'comment', '评论列表', '/comment/table', NULL, 'list', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'commodity_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:30:23');
-INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (30, '注册用户', '评论', 'comment', '评论详情', '/comment/view', NULL, 'view', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'commodity_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:03:20');
-INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (31, '注册用户', '评论', 'comment', '评论列表', '/comment/list', NULL, 'list', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'commodity_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:30:23');
-INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (32, '管理员', '评论', 'comment', '评论列表', '/comment/list', NULL, 'list', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nickname,avatar,create_time,update_time,source_table,source_field,source_id', 'commodity_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:40:01');
+INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (29, '注册用户', '评论', 'comment', '评论列表', '/comment/table', NULL, 'list', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'commodity_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:30:23');
+INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (30, '注册用户', '评论', 'comment', '评论详情', '/comment/view', NULL, 'view', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'commodity_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:03:20');
+INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (31, '注册用户', '评论', 'comment', '评论列表', '/comment/list', NULL, 'list', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'commodity_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:30:23');
+INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (32, '管理员', '评论', 'comment', '评论列表', '/comment/list', NULL, 'list', 1, 1, 1, 1, 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'comment_id,user_id,reply_to_id,content,nick_name,avatar,create_time,update_time,source_table,source_field,source_id', 'commodity_information', 1, NULL, 0, NULL, '2026-04-27 15:28:13', '2026-05-03 17:40:01');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (33, '管理员', '行业资讯', 'article', '资讯详情', '/article/details', NULL, 'view', 1, 1, 1, 1, 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', NULL, 0, NULL, 0, NULL, '2026-04-27 17:06:06', '2026-05-03 17:50:58');
 INSERT INTO `auth` (`auth_id`, `user_group`, `mod_name`, `table_name`, `page_title`, `path`, `position`, `mode`, `add`, `del`, `set`, `get`, `field_add`, `field_set`, `field_get`, `table_nav_name`, `table_nav`, `parent`, `parent_sort`, `option`, `create_time`, `update_time`) VALUES (34, '管理员', '行业资讯', 'article', '资讯详情', '/article/list', NULL, 'view', 1, 1, 1, 1, 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, descriptionarticle_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', 'article_id, title, type, hits, praise_len, create_time, update_time, source, url, tag, content, img, description', NULL, 0, NULL, 0, NULL, '2026-04-27 17:22:30', '2026-05-03 17:51:04');
 COMMIT;
@@ -188,11 +188,11 @@ DROP TABLE IF EXISTS `collect`;
 CREATE TABLE `collect` (
   `collect_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '收藏ID',
   `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '收藏人ID',
-  `source_table` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源表',
-  `source_field` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源字段',
+  `source_table` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源表',
+  `source_field` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源字段',
   `source_id` int unsigned NOT NULL DEFAULT '0' COMMENT '来源ID',
-  `title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '标题',
-  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '封面',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '标题',
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '封面',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`collect_id`) USING BTREE,
@@ -215,13 +215,13 @@ CREATE TABLE `comment` (
   `comment_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '评论ID',
   `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '评论人ID',
   `reply_to_id` int unsigned NOT NULL DEFAULT '0' COMMENT '回复评论ID',
-  `content` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci COMMENT '内容',
-  `nickname` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '昵称',
-  `avatar` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '头像地址',
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '内容',
+  `nick_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '昵称',
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '头像地址',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `source_table` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源表',
-  `source_field` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源字段',
+  `source_table` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源表',
+  `source_field` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源字段',
   `source_id` int unsigned NOT NULL DEFAULT '0' COMMENT '来源ID',
   PRIMARY KEY (`comment_id`) USING BTREE,
   KEY `user_id` (`user_id`),
@@ -232,8 +232,8 @@ CREATE TABLE `comment` (
 -- Records of comment
 -- ----------------------------
 BEGIN;
-INSERT INTO `comment` (`comment_id`, `user_id`, `reply_to_id`, `content`, `nickname`, `avatar`, `create_time`, `update_time`, `source_table`, `source_field`, `source_id`) VALUES (1, 2, 0, '<p>好</p>', 'yonghu1', '/api/upload/default_avatar.jpg', '2026-05-03 17:26:01', '2026-05-03 17:26:01', 'commodity_information', 'commodity_information_id', 21);
-INSERT INTO `comment` (`comment_id`, `user_id`, `reply_to_id`, `content`, `nickname`, `avatar`, `create_time`, `update_time`, `source_table`, `source_field`, `source_id`) VALUES (2, 1, 0, '<p>用</p>', 'admin', '/api/upload/admin_avatar.jpg', '2026-05-03 17:51:17', '2026-05-03 17:51:17', 'article', 'article_id', 7);
+INSERT INTO `comment` (`comment_id`, `user_id`, `reply_to_id`, `content`, `nick_name`, `avatar`, `create_time`, `update_time`, `source_table`, `source_field`, `source_id`) VALUES (1, 2, 0, '<p>好</p>', 'yonghu1', '/api/upload/default_avatar.jpg', '2026-05-03 17:26:01', '2026-05-03 17:26:01', 'commodity_information', 'commodity_information_id', 21);
+INSERT INTO `comment` (`comment_id`, `user_id`, `reply_to_id`, `content`, `nick_name`, `avatar`, `create_time`, `update_time`, `source_table`, `source_field`, `source_id`) VALUES (2, 1, 0, '<p>用</p>', 'admin', '/api/upload/admin_avatar.jpg', '2026-05-03 17:51:17', '2026-05-03 17:51:17', 'article', 'article_id', 7);
 COMMIT;
 
 -- ----------------------------
@@ -280,8 +280,8 @@ CREATE TABLE `hits` (
   `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '点赞人',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `source_table` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源表',
-  `source_field` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源字段',
+  `source_table` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源表',
+  `source_field` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源字段',
   `source_id` int unsigned NOT NULL DEFAULT '0' COMMENT '来源ID',
   PRIMARY KEY (`hits_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户点击';
@@ -358,8 +358,8 @@ COMMIT;
 DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice` (
   `notice_id` mediumint unsigned NOT NULL AUTO_INCREMENT COMMENT '公告ID',
-  `title` varchar(125) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '标题',
-  `content` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci COMMENT '正文',
+  `title` varchar(125) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '标题',
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '正文',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`notice_id`) USING BTREE
@@ -384,8 +384,8 @@ CREATE TABLE `praise` (
   `user_id` int unsigned NOT NULL DEFAULT '0' COMMENT '点赞人',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `source_table` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源表',
-  `source_field` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源字段',
+  `source_table` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源表',
+  `source_field` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源字段',
   `source_id` int unsigned NOT NULL DEFAULT '0' COMMENT '来源ID',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '点赞状态:1为点赞，0已取消',
   PRIMARY KEY (`praise_id`) USING BTREE,
@@ -500,10 +500,10 @@ COMMIT;
 DROP TABLE IF EXISTS `slides`;
 CREATE TABLE `slides` (
   `slides_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '轮播图ID',
-  `title` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '标题',
-  `content` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '内容',
-  `url` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '链接',
-  `img` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '轮播图',
+  `title` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '标题',
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '内容',
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '链接',
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '轮播图',
   `hits` int unsigned NOT NULL DEFAULT '0' COMMENT '点击量',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -549,13 +549,13 @@ COMMIT;
 DROP TABLE IF EXISTS `upload`;
 CREATE TABLE `upload` (
   `upload_id` int NOT NULL AUTO_INCREMENT COMMENT '上传ID',
-  `name` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '文件名',
-  `path` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '访问路径',
-  `file` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '文件路径',
-  `display` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '显示顺序',
+  `name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件名',
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '访问路径',
+  `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件路径',
+  `display` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '显示顺序',
   `father_id` int DEFAULT '0' COMMENT '父级ID',
-  `dir` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '文件夹',
-  `type` varchar(32) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '文件类型',
+  `dir` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件夹',
+  `type` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件类型',
   PRIMARY KEY (`upload_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='文件上传';
 
@@ -573,17 +573,17 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `state` smallint unsigned NOT NULL DEFAULT '1' COMMENT '账户状态：(1可用|2异常|3已冻结|4已注销)',
-  `user_group` varchar(32) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '所在用户组',
+  `user_group` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '所在用户组',
   `login_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上次登录时间',
-  `phone` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '手机号码',
+  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '手机号码',
   `phone_state` smallint unsigned NOT NULL DEFAULT '0' COMMENT '手机认证：(0未认证|1审核中|2已认证)',
-  `username` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '用户名',
-  `nickname` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT '昵称',
-  `password` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '密码',
-  `email` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT '邮箱',
+  `user_name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '用户名',
+  `nick_name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '昵称',
+  `password` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码',
+  `email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '' COMMENT '邮箱',
   `email_state` smallint unsigned NOT NULL DEFAULT '0' COMMENT '邮箱认证：(0未认证|1审核中|2已认证)',
-  `avatar` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '头像地址',
-  `open_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '针对获取用户信息字段',
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '头像地址',
+  `open_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '针对获取用户信息字段',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='用户账户';
@@ -592,9 +592,9 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `username`, `nickname`, `password`, `email`, `email_state`, `avatar`, `open_id`, `create_time`) VALUES (1, 1, '管理员', '2026-04-23 11:23:36', NULL, 0, 'admin', 'admin', 'asd123', '', 0, '/api/upload/admin_avatar.jpg', NULL, '2025-04-30 17:35:13');
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `username`, `nickname`, `password`, `email`, `email_state`, `avatar`, `open_id`, `create_time`) VALUES (2, 1, '注册用户', '2026-04-27 15:20:01', NULL, 0, 'yonghu1', 'yonghu1', 'asd123', '', 0, '/api/upload/default_avatar.jpg', NULL, '2026-04-23 11:23:36');
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `username`, `nickname`, `password`, `email`, `email_state`, `avatar`, `open_id`, `create_time`) VALUES (3, 1, '注册用户', '2026-04-23 11:23:36', NULL, 0, 'yonghu2', 'yonghu2', 'asd123', '', 0, '/api/upload/default_avatar.jpg', NULL, '2026-04-23 11:23:36');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `create_time`) VALUES (1, 1, '管理员', '2026-04-23 11:23:36', NULL, 0, 'admin', 'admin', 'asd123', '', 0, '/api/upload/admin_avatar.jpg', NULL, '2025-04-30 17:35:13');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `create_time`) VALUES (2, 1, '注册用户', '2026-04-27 15:20:01', NULL, 0, 'yonghu1', 'yonghu1', 'asd123', '', 0, '/api/upload/default_avatar.jpg', NULL, '2026-04-23 11:23:36');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `create_time`) VALUES (3, 1, '注册用户', '2026-04-23 11:23:36', NULL, 0, 'yonghu2', 'yonghu2', 'asd123', '', 0, '/api/upload/default_avatar.jpg', NULL, '2026-04-23 11:23:36');
 COMMIT;
 
 -- ----------------------------
@@ -604,10 +604,10 @@ DROP TABLE IF EXISTS `user_group`;
 CREATE TABLE `user_group` (
   `group_id` mediumint unsigned NOT NULL AUTO_INCREMENT COMMENT '用户组ID',
   `display` smallint unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序',
-  `name` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '' COMMENT '名称',
-  `description` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '描述',
-  `source_table` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源表',
-  `source_field` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '来源字段',
+  `name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '名称',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '描述',
+  `source_table` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源表',
+  `source_field` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '来源字段',
   `source_id` int unsigned NOT NULL DEFAULT '0' COMMENT '来源ID',
   `register` smallint unsigned DEFAULT '0' COMMENT '注册位置',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

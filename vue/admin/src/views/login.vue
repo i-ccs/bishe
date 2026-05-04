@@ -97,10 +97,10 @@
                 // } else if (/1[0-9]{10}/.test(account)) {
                 //     form.phone = account;
                 // } else {
-                //     form.username = account;
+                //     form.user_name = account;
                 // }
  
-                form.username = account;
+                form.user_name = account;
  
                     const bool = this.$refs.child.sublim();
                     if(!this.form.account){

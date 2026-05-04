@@ -11,7 +11,7 @@
 				<el-row :gutter="20" v-if="query.reply_to_id">
 					<el-col :xs="24" :sm="12">
 						<el-form-item label="被回复人">
-							<div class="premium-readonly-field">{{reply_obj.nickname}}</div>
+							<div class="premium-readonly-field">{{reply_obj.nick_name}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="24">
@@ -35,8 +35,8 @@
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="16" v-if="!query.reply_to_id">
-						<el-form-item label="用户昵称" prop="nickname">
-							<el-input v-model="form.nickname" placeholder="请输入昵称" prefix-icon="el-icon-user"></el-input>
+						<el-form-item label="用户昵称" prop="nick_name">
+							<el-input v-model="form.nick_name" placeholder="请输入昵称" prefix-icon="el-icon-user"></el-input>
 						</el-form-item>
 					</el-col>
 					
@@ -73,7 +73,7 @@
 					content: "",
 					reply_to_id: 0
 				},
-				reply_obj: { nickname: "", content: "" }
+				reply_obj: { nick_name: "", content: "" }
 			}
 		},
 		methods: {
@@ -92,7 +92,7 @@
 					var user = this.user;
 					form.reply_to_id = param.reply_to_id || 0;
 					form.avatar = user.avatar;
-					form.nickname = user.nickname;
+					form.nick_name = user.nick_name;
 				}
 				return param;
 			}

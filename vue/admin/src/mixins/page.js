@@ -1206,7 +1206,7 @@ export default {
 								//卖家用户单独处理
 								this.list_user_seller_customers.map(customer => {
 									if (customer.user_id == this.form[key]) {
-										item.value = customer.nickname + "-" + customer.username;
+										item.value = customer.nick_name + "-" + customer.user_name;
 									}
 								})
 							} else {

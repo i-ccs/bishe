@@ -116,7 +116,7 @@ public class UserController extends BaseController<User, UserService> {
     public Map<String, Object> login(@RequestBody Map<String, String> data, HttpServletRequest httpServletRequest) {
         log.info("[执行登录接口]");
 
-        String username = data.get("username");
+        String username = data.get("user_name");
         String email = data.get("email");
         String phone = data.get("phone");
         String password = data.get("password");
@@ -130,7 +130,7 @@ public class UserController extends BaseController<User, UserService> {
         List resultList = null;
         Map<String, String> map = new HashMap<>();
         if (username != null && "".equals(username) == false) {
-            map.put("username", username);
+            map.put("user_name", username);
             resultList = service.selectBaseList(service.select(map, new HashMap<>()));
         } else if (email != null && "".equals(email) == false) {
             map.put("email", email);

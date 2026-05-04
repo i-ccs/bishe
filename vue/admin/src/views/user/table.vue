@@ -5,7 +5,7 @@
 				<el-row :gutter="20">
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="用户昵称">
-							<el-input v-model="query.nickname" placeholder="请输入昵称搜索" prefix-icon="el-icon-search"></el-input>
+							<el-input v-model="query.nick_name" placeholder="请输入昵称搜索" prefix-icon="el-icon-search"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
@@ -35,8 +35,8 @@
 						</el-avatar>
 					</template>
 				</el-table-column>
-				<el-table-column align="center" prop="nickname" label="昵称" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="username" label="用户名" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="nick_name" label="昵称" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="user_name" label="用户名" min-width="120"></el-table-column>
 				<el-table-column align="center" prop="user_group" label="用户组" min-width="120">
 					<template slot-scope="scope">
 						<el-tag size="small">{{scope.row.user_group}}</el-tag>
@@ -82,7 +82,7 @@
 				query: {
 					size: 10,
 					page: 1,
-					nickname: "",
+					nick_name: "",
 					user_group: "管理员",
 					orderby: `create_time desc`
 				},
@@ -97,7 +97,7 @@
 				if(json.result){ this.list_user_group = json.result.list; }
 			},
 			reset() {
-				this.query = { size: 10, page: 1, nickname: "", user_group: "管理员", orderby: `create_time desc` };
+				this.query = { size: 10, page: 1, nick_name: "", user_group: "管理员", orderby: `create_time desc` };
 				this.get_list();
 			}
 		},

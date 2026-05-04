@@ -22,7 +22,7 @@
 											<input type="file" ref="avatarInput" @change="changeAvatar($event.target.files)" style="display: none" accept="image/*" />
 										</div>
 								<div class="uc-hero-info">
-									<h2 class="uc-name">{{ userInfo.nickname || userInfo.username || '用户' }}</h2>
+									<h2 class="uc-name">{{ userInfo.nick_name || userInfo.user_name || '用户' }}</h2>
 									<div class="uc-meta-row">
 										<span class="uc-badge" v-if="userInfo.user_gender !== null && userInfo.user_gender !== undefined">
 											{{ userInfo.user_gender === 0 ? '男' : '女' }}

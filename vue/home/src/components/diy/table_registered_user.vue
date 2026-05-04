@@ -36,9 +36,9 @@
             </el-table-column>
         		  <el-table-column fixed prop="user_id" label="用户ID" width="80">
 		  </el-table-column>
-          <el-table-column prop="username" label="用户名" width="120">
+          <el-table-column prop="user_name" label="用户名" width="120">
           </el-table-column>
-                        <el-table-column fixed prop="nickname" label="昵称">
+                        <el-table-column fixed prop="nick_name" label="昵称">
                     </el-table-column>
                                                   <el-table-column prop="user_name" @sort-change="$sortChange" label="用户姓名"                                v-if="$check_field('get','user_name')" min-width="200">
                                 </el-table-column>
@@ -209,10 +209,10 @@
                 user_id
               }, (json) => {
                 if (json.result.obj){
-                  _this.$delete(_this.list[i],'username');
-                  _this.$set(_this.list[i],'username',json.result.obj.username);
-                  _this.$delete(_this.list[i],'nickname');
-                  _this.$set(_this.list[i],'nickname',json.result.obj.nickname);
+                  _this.$delete(_this.list[i],'user_name');
+                  _this.$set(_this.list[i],'user_name',json.result.obj.user_name);
+                  _this.$delete(_this.list[i],'nick_name');
+                  _this.$set(_this.list[i],'nick_name',json.result.obj.nick_name);
 						                }
               });
             }

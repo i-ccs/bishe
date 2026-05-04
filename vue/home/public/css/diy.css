@@ -103,8 +103,8 @@
   color: var(--one) !important;
 }
 
-#app .page_order .card_order .goods_list .item_goods .middle_info .title, #app .page_order .card_goods_list .list_order .goods_list .item_goods .middle_info .description, .page_user .user_right_box .list_collect .item_collect .collect_box .right_block .top_comment .title, .diy_list .diy_list_container .diy_list_box .diy_view_list .diy_list_box_wrap .diy_list_item_box .diy_row .diy_text, .diy_list .diy_list_box_wrap .diy_list_item_content .diy_row .diy_text, .diy_list .goods .diy_list_item_content .diy_row .diy_text, .diy_list .diy_list_box_wrap .diy_list_item_content .diy_row .diy_title, .diy_list .goods .diy_list_item_content .diy_row .diy_title, .page_message .card_message .list_message .item_message .left_block .user_info .nickname, .page_message .card_message .list_message .item_message .col-md-3 .user_info .nickname, .page_article .div_article .title, .page_notice .notice_list .notice_block .notice_title, .page_forum .container .row .card_forum_list .list_forum .item_forum .right_block .bottom .time, .page_forum .container .row .card_forum_list .list_forum .item_forum .right_block .top, #app .page_order .card_goods_list .list_order .goods_list .item_goods .middle_info .title, .page_cart .warp .container .card .cart_block .list_cart .item_cart .cart_body .right_info .title, .page_goods .card_aside .list .goods .goods_nav .good_bottom .title, .page_goods .page_goods_list_hot .list .goods .goods_nav .good_bottom .title, .page_goods .page_goods_list_wrap .page_goods_list_base .card_goods_list .list_goods .goods .doc a .title, .page_root .product .list_goods .goods .doc a .title,
- .page_root .product .list_goods .lis_cont .title, .comment_box .list_comment .item_comment_box .right_block .top_comment .nickname {
+#app .page_order .card_order .goods_list .item_goods .middle_info .title, #app .page_order .card_goods_list .list_order .goods_list .item_goods .middle_info .description, .page_user .user_right_box .list_collect .item_collect .collect_box .right_block .top_comment .title, .diy_list .diy_list_container .diy_list_box .diy_view_list .diy_list_box_wrap .diy_list_item_box .diy_row .diy_text, .diy_list .diy_list_box_wrap .diy_list_item_content .diy_row .diy_text, .diy_list .goods .diy_list_item_content .diy_row .diy_text, .diy_list .diy_list_box_wrap .diy_list_item_content .diy_row .diy_title, .diy_list .goods .diy_list_item_content .diy_row .diy_title, .page_message .card_message .list_message .item_message .left_block .user_info .nick_name, .page_message .card_message .list_message .item_message .col-md-3 .user_info .nick_name, .page_article .div_article .title, .page_notice .notice_list .notice_block .notice_title, .page_forum .container .row .card_forum_list .list_forum .item_forum .right_block .bottom .time, .page_forum .container .row .card_forum_list .list_forum .item_forum .right_block .top, #app .page_order .card_goods_list .list_order .goods_list .item_goods .middle_info .title, .page_cart .warp .container .card .cart_block .list_cart .item_cart .cart_body .right_info .title, .page_goods .card_aside .list .goods .goods_nav .good_bottom .title, .page_goods .page_goods_list_hot .list .goods .goods_nav .good_bottom .title, .page_goods .page_goods_list_wrap .page_goods_list_base .card_goods_list .list_goods .goods .doc a .title, .page_root .product .list_goods .goods .doc a .title,
+ .page_root .product .list_goods .lis_cont .title, .comment_box .list_comment .item_comment_box .right_block .top_comment .nick_name {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -2737,11 +2737,11 @@ table .btn {
   min-width: 15rem;
 }
 
-.th_username {
+.th_user_name {
   min-width: 10rem;
 }
 
-.th_nickname {
+.th_nick_name {
   min-width: 10rem;
 }
 
@@ -3917,7 +3917,7 @@ select option {
   justify-content: flex-start;
   margin-bottom: 18px;
 }
-.comment_box .list_comment .item_comment_box .right_block .top_comment .nickname {
+.comment_box .list_comment .item_comment_box .right_block .top_comment .nick_name {
   font-family: Helvetica Neue, Arial, "sans-serif";
   margin-right: 20px;
   margin-bottom: 10px;
@@ -6658,7 +6658,7 @@ select option {
   left: 20px;
   line-height: 50px;
 }
-.page_message .card_message .list_message .item_message .left_block .user_info .nickname, .page_message .card_message .list_message .item_message .col-md-3 .user_info .nickname {
+.page_message .card_message .list_message .item_message .left_block .user_info .nick_name, .page_message .card_message .list_message .item_message .col-md-3 .user_info .nick_name {
   width: 95px;
   text-align: left;
   margin: 0;
@@ -9044,13 +9044,13 @@ select option {
   margin: 0 auto;
   border-radius: 50%;
 }
-.page_user .user_bg.col-md-9 .card_default .user_block .nickname {
+.page_user .user_bg.col-md-9 .card_default .user_block .nick_name {
   position: relative;
   padding: 0 30px;
   text-align: center;
   z-index: 1;
 }
-.page_user .user_bg.col-md-9 .card_default .user_block .nickname:before {
+.page_user .user_bg.col-md-9 .card_default .user_block .nick_name:before {
   content: "用户:";
   display: inline-block;
   vertical-align: top;
@@ -9058,7 +9058,7 @@ select option {
   font-size: 16px;
   color: #1a2535;
 }
-.page_user .user_bg.col-md-9 .card_default .user_block .nickname h4 {
+.page_user .user_bg.col-md-9 .card_default .user_block .nick_name h4 {
   display: inline-block;
   font-size: 16px;
   color: #5e6671;
@@ -9166,29 +9166,29 @@ select option {
   border-radius: 50%;
   border: 4px solid var(--one);
 }
-.page_user .card_info .div_info .content_msg .nickname {
+.page_user .card_info .div_info .content_msg .nick_name {
   position: relative;
   z-index: 1;
 }
-.page_user .card_info .div_info .content_msg .nickname > div {
+.page_user .card_info .div_info .content_msg .nick_name > div {
   font-size: 16px !important;
 }
-.page_user .card_info .div_info .content_msg .nickname > div:first-child {
+.page_user .card_info .div_info .content_msg .nick_name > div:first-child {
   color: #8a929b;
 }
-.page_user .card_info .div_info .content_msg .nickname > div span {
+.page_user .card_info .div_info .content_msg .nick_name > div span {
   font-size: 16px !important;
   color: #1a2535 !important;
 }
-.page_user .card_info .div_info .content_msg .nickname .input_nickname input {
+.page_user .card_info .div_info .content_msg .nick_name .input_nick_name input {
   margin-right: 10px;
 }
-.page_user .card_info .div_info .content_msg .nickname .input_nickname .btn_save {
+.page_user .card_info .div_info .content_msg .nick_name .input_nick_name .btn_save {
   border-color: #041126;
   color: #041126;
   line-height: 0px;
 }
-.page_user .card_info .div_info .content_msg .nickname .input_nickname .btn_save:hover {
+.page_user .card_info .div_info .content_msg .nick_name .input_nick_name .btn_save:hover {
   background: #041126;
   color: #fff;
   cursor: pointer;
@@ -9204,13 +9204,13 @@ select option {
   margin-right: 20px;
   margin-left: 0px !important;
 }
-.page_user .card_info .div_info .right_msg .change_nickname_box {
+.page_user .card_info .div_info .right_msg .change_nick_name_box {
   margin: 0;
 }
-.page_user .card_info .div_info .right_msg .change_avatar_box .right_wrap, .page_user .card_info .div_info .right_msg .change_nickname_box .right_wrap {
+.page_user .card_info .div_info .right_msg .change_avatar_box .right_wrap, .page_user .card_info .div_info .right_msg .change_nick_name_box .right_wrap {
   display: none;
 }
-.page_user .card_info .div_info .right_msg .change_avatar_box .change_avatar, .page_user .card_info .div_info .right_msg .change_nickname_box .change_nickname {
+.page_user .card_info .div_info .right_msg .change_avatar_box .change_avatar, .page_user .card_info .div_info .right_msg .change_nick_name_box .change_nick_name {
   border: 1px solid #041126;
   color: #041126;
   font-size: 16px;

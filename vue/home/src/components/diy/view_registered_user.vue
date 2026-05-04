@@ -13,9 +13,9 @@
 			</el-col>
 
 			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="账号" prop="username">
-			        <span v-if="obj.username">{{obj.username}}</span>
-					<el-input v-else v-model="form.username" placeholder="请输入账号"></el-input>
+				<el-form-item label="账号" prop="user_name">
+			        <span v-if="obj.user_name">{{obj.user_name}}</span>
+					<el-input v-else v-model="form.user_name" placeholder="请输入账号"></el-input>
 				</el-form-item>
 			</el-col>
 
@@ -28,8 +28,8 @@
 			</el-col>
 
 			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="昵称" prop="nickname">
-					<el-input v-model="form.nickname" placeholder="请输入昵称"></el-input>
+				<el-form-item label="昵称" prop="nick_name">
+					<el-input v-model="form.nick_name" placeholder="请输入昵称"></el-input>
 				</el-form-item>
 			</el-col>
 
@@ -107,8 +107,8 @@
 
 				obj: {
 					user_id: 0,
-					username: '',
-					nickname: '',
+					user_name: '',
+					nick_name: '',
 					password: '',
 					avatar: '',
 					// phone: '',
@@ -121,8 +121,8 @@
 
 				form: {
 					user_id: 0,
-				    username: '',
-					nickname: '',
+				    user_name: '',
+					nick_name: '',
 				    password: '',
 					avatar: '',
 					// phone: '',
@@ -273,17 +273,17 @@
 				var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 				// var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
 
-				// var {username ,password ,nickname ,user_group ,email ,phone} = param;
-				var {username ,password ,nickname ,user_group ,email} = param;
+				// var {user_name ,password ,nick_name ,user_group ,email ,phone} = param;
+				var {user_name ,password ,nick_name ,user_group ,email} = param;
 
 				var confirm_password = this.confirm_password;
 
-				console.log("表单校验username ,password ,email ,nickname ,user_group" ,username ,password ,email ,nickname ,user_group);
+				console.log("表单校验user_name ,password ,email ,nick_name ,user_group" ,user_name ,password ,email ,nick_name ,user_group);
 
-				if(!username){
+				if(!user_name){
 					ret = "账号不能为空";
 				}
-				else if(username.length > 16 || username.length < 5){
+				else if(user_name.length > 16 || user_name.length < 5){
 					ret = "账号长度应为5到16个字符之间！";
 				}
 				else if(!password){
@@ -292,7 +292,7 @@
 				else if(this.is_password && (password.length > 16 || password.length < 5)){
 					ret = "密码长度应为5到16个字符之间！";
 				}
-				else if(nickname && nickname.length > 12 || nickname.length < 2){
+				else if(nick_name && nick_name.length > 12 || nick_name.length < 2){
 					ret = "昵称长度应为2个字符到12个字符之间";
 				}
 				else if(email && !email_regular.test(email)){
@@ -305,7 +305,7 @@
 					ret = "请选择用户组!";
 				}
 
-				var p = {"username": param.username};
+				var p = {"user_name": param.user_name};
 
 				var form_sub = Object.assign({} ,this.form_sub);
 																														

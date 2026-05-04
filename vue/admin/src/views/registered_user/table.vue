@@ -37,8 +37,8 @@
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
 				<el-table-column fixed type="selection" width="55" align="center"></el-table-column>
 				<el-table-column prop="user_id" label="ID" width="80" align="center"></el-table-column>
-				<el-table-column prop="nickname" label="昵称" min-width="120" align="center"></el-table-column>
-				<el-table-column prop="username" label="用户名" min-width="120" align="center"></el-table-column>
+				<el-table-column prop="nick_name" label="昵称" min-width="120" align="center"></el-table-column>
+				<el-table-column prop="user_name" label="用户名" min-width="120" align="center"></el-table-column>
 				<el-table-column prop="user_name" label="姓名" v-if="$check_field('get','user_name')" min-width="120" align="center"></el-table-column>
 				<el-table-column prop="user_gender" label="性别" v-if="$check_field('get','user_gender')" width="80" align="center">
 					<template slot-scope="scope">
@@ -106,8 +106,8 @@
 				for (let item of this.list){
 					this.$get("~/api/user/get_obj?", { user_id: item.user_id }, (json) => {
 						if (json.result && json.result.obj){
-							this.$set(item, 'username', json.result.obj.username);
-							this.$set(item, 'nickname', json.result.obj.nickname);
+							this.$set(item, 'user_name', json.result.obj.user_name);
+							this.$set(item, 'nick_name', json.result.obj.nick_name);
 						}
 					});
 				}

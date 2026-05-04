@@ -5,7 +5,7 @@
 				<!-- Welcome Banner -->
 				<div class="premium-welcome">
 					<div class="welcome-text">
-						<h2>{{ greeting }}，{{ $store.state.user.nickname || $store.state.user.username }}</h2>
+						<h2>{{ greeting }}，{{ $store.state.user.nick_name || $store.state.user.user_name }}</h2>
 						<p>欢迎回到小智电商供应链管理系统。今天是 {{ currentDate }}，祝您生活愉快！</p>
 					</div>
 					<div class="welcome-img">
@@ -307,7 +307,7 @@
 				myChart.setOption(option);
 				this.charts.push(myChart);
 			},
-			async get_nickname(list, flag) {
+			async get_nick_name(list, flag) {
 				if (flag) {
 					for (let i = 0; i < list.length; i++) {
 						await this.$get(
@@ -315,7 +315,7 @@
 								null,
 								(json) => {
 									if (json.result) {
-										list[i] = json.result.obj.nickname;
+										list[i] = json.result.obj.nick_name;
 									}
 								});
 					}
@@ -326,7 +326,7 @@
 								null,
 								(json) => {
 									if (json.result) {
-										list[i].name = json.result.obj.nickname;
+										list[i].name = json.result.obj.nick_name;
 									}
 								});
 					}

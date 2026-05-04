@@ -40,7 +40,7 @@ export default {
 					// 上级ID
 					fid: 'fid',
 					// 用户名
-					username: 'username',
+					user_name: 'user_name',
 					// 用户id
 					user_id: 'user_id',
 					// 图片

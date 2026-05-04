@@ -9,9 +9,9 @@
 							<div class="form_box">
 								<b-form class="forms">
 									<b-form-group id="input-group-1" label="用户名:" label-for="input-1"
-										:state="validation_username" invalid-feedback="账户名长度为在5-16个字符"
+										:state="validation_user_name" invalid-feedback="账户名长度为在5-16个字符"
 										valid-feedback="校验通过">
-										<b-form-input id="input-1" v-model="form.username" type="text" placeholder="请输入用户名"
+										<b-form-input id="input-1" v-model="form.user_name" type="text" placeholder="请输入用户名"
 											trim></b-form-input>
 									</b-form-group>
 
@@ -66,7 +66,7 @@
 						,"注册用户"
 										],
 				form: {
-					username: "",
+					user_name: "",
 					password: "",
 				},
 			};
@@ -74,14 +74,14 @@
 		methods: {
 			submit() {
 				var _this = this;
-				// var condition = this.validation_username && this.validation_password;
+				// var condition = this.validation_user_name && this.validation_password;
 				// if (!condition) {
 				// 	return this.$message.warning("输入不合法");
 				// }
 				// 极验开始
 
 						const bool = this.$refs.child.sublim();
-						if(!this.validation_username){
+						if(!this.validation_user_name){
 						return this.$message.warning("请输入正确账号")
 					}else if(!this.validation_password){
 						return this.$message.warning("请输入正确密码")
@@ -120,8 +120,8 @@
 			/**
 			 * 验证用户名
 			 */
-			validation_username() {
-				var length = this.form.username.length;
+			validation_user_name() {
+				var length = this.form.user_name.length;
 				if (!length) {
 					return null;
 				}

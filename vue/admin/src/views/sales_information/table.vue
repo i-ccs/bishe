@@ -160,7 +160,7 @@
 			},
 			get_user_registered_user(id){
 				var obj = this.list_user_registered_user.getObj({"user_id":id});
-				return obj ? (obj.nickname + " (" + obj.username + ")") : id;
+				return obj ? (obj.nick_name + " (" + obj.user_name + ")") : id;
 			},
 			openPayModal(v){
 				this.pay_obj.id = v.sales_information_id

@@ -5,7 +5,7 @@
 				<el-row :gutter="20">
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="评论人昵称">
-							<el-input v-model="query.nickname" placeholder="输入昵称搜索" prefix-icon="el-icon-user"></el-input>
+							<el-input v-model="query.nick_name" placeholder="输入昵称搜索" prefix-icon="el-icon-user"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
@@ -34,7 +34,7 @@
 				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
 				<el-table-column align="center" label="用户" width="120">
 					<template slot-scope="scope">
-						<span>{{scope.row.nickname}}</span>
+						<span>{{scope.row.nick_name}}</span>
 					</template>
 				</el-table-column>
 				<el-table-column align="center" prop="content" label="评论内容" min-width="250" show-overflow-tooltip>
@@ -74,7 +74,7 @@
 				url_get_list: "~/api/comment/get_list?like=0",
 				url_del: "~/api/comment/del?",
 				field:"comment_id",
-				query: { size: 10, page: 1, content: "", nickname: "", source_table: "", source_field: "", source_id: 0, orderby: `create_time desc` },
+				query: { size: 10, page: 1, content: "", nick_name: "", source_table: "", source_field: "", source_id: 0, orderby: `create_time desc` },
 				list: [],
 				list_user: []
 			}
@@ -85,7 +85,7 @@
 				if(json.result){ this.list_user = json.result.list; }
 			},
 			resetSearch(){
-				this.query.page = 1; this.query.nickname = ""; this.query.content = "";
+				this.query.page = 1; this.query.nick_name = ""; this.query.content = "";
 				this.get_list();
 			},
 			viewReplies(row){

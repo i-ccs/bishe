@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.side .hide-username {
+.side .hide-user_name {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1012,7 +1012,7 @@ header .el-dropdown-link .el-avatar img {
   object-fit: cover;
 }
 
-.side .hide-username {
+.side .hide-user_name {
   position: relative;
   vertical-align: top;
   margin-top: 25px;
@@ -1035,7 +1035,7 @@ header .el-dropdown-link .el-avatar img {
   height: 32px;
 }
 
-.side.el-menu--collapse .hide-username {
+.side.el-menu--collapse .hide-user_name {
   display: none !important;
 }
 

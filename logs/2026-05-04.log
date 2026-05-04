@@ -1,0 +1,17 @@
+[2026-05-04 19:19:34] [notice] [insert] insert: {"title":"网站公告","notice_id":0,"content":"<p>te</p>"}
+[2026-05-04 19:20:43] [notice] [delete] delete: {"notice_id":"1"}
+[2026-05-04 19:23:03] [notice] [update] update: {"title":"网站公告","notice_id":5,"content":"<p>✅ 平台提供以下核心服务：</p><ul><li>商品管理：类目维护、SKU管理、多仓库存同步</li><li>订单协同：订单自动分发、状态追踪、异常预警</li><li>供应链金融：账期管理、对账结算、电子发票</li><li>物流对接：主流快递/仓储系统API直连、运单智能匹配</li><li>数据分析：经营报表、库存周转、履约时效可视化</li><li>权限管理：多角色账号体系、操作日志审计</li></ul><p>❌ 以下情形不属于平台服务保障范围：</p><ul><li>用户未按操作规范导致的业务异常</li><li>第三方系统（如快递、支付、ERP）故障引发的链路中断</li><li>因用户网络环境、设备兼容性问题造成的访问异常</li><li>不可抗力（如自然灾害、政策调整、黑客攻击）导致的服务暂停</li></ul><p><br></p>"}
+[2026-05-04 19:23:58] [notice] [insert] insert: {"title":"网站介绍","notice_id":0,"content":"<p><span style=\"color: rgb(140, 141, 155);\">小智电商供应链管理平台是一款专为电商企业、品牌商家及供应链服务商打造的一站式智能协同系统。</span></p><p><span style=\"color: rgb(140, 141, 155);\">通过「订单+库存+物流+财务」全链路数字化整合，帮助客户实现供应链可视、可控、可优化，降本增效，敏捷响应市场变化</span></p>"}
+[2026-05-04 19:24:04] [notice] [delete] delete: {"notice_id":"4"}
+[2026-05-04 19:24:32] [notice] [update] update: {"title":"网站介绍","notice_id":6,"content":"<p><span style=\"color: rgb(140, 141, 155);\">小智电商供应链管理平台是一款专为电商企业、品牌商家及供应链服务商打造的一站式智能协同系统。</span></p><p><span style=\"color: rgb(140, 141, 155);\">通过「订单+库存+物流+财务」全链路数字化整合，帮助客户实现供应链可视、可控、可优化，降本增效，敏捷响应市场变化</span></p><h2><span class=\"ql-cursor\">﻿</span>适用客户群体</h2><p>✅ 电商品牌方：多平台开店、多仓发货，需统一管控供应链</p><p>✅ 代运营/TP服务商：为多个品牌提供供应链托管服务</p><p>✅ 批发分销商：上下游协同复杂，需高效订单流转与对账</p><p>✅ 跨境卖家：涉及海外仓、报关、多币种结算等复杂场景</p><p>✅ 制造业转型电商：从生产到零售的端到端供应链数字化</p>"}
+[2026-05-04 19:26:00] [notice] [insert] insert: {"title":"关于我们","notice_id":0,"content":"<h2>公司简介</h2><p>小智电商供应链管理平台（Xiaozhi Supply Chain Platform）成立于<span style=\"background-color: rgb(239, 238, 255); color: rgb(97, 92, 237); font-size: 11.05px;\">202X年</span>，是一家专注于电商供应链数字化服务的高新技术企业。</p><p>我们立足<span style=\"background-color: rgb(239, 238, 255); color: rgb(97, 92, 237); font-size: 11.05px;\">[城市/总部所在地]</span>，服务辐射全国及东南亚、欧美等跨境市场，致力于为电商品牌、零售企业、供应链服务商提供端到端的智能协同解决方案。</p><ul><li><br></li></ul><p><br></p>"}
+[2026-05-04 19:26:05] [notice] [delete] delete: {"notice_id":"2"}
+[2026-05-04 19:28:40] [notice] [insert] insert: {"title":"联系方式","notice_id":0,"content":"<p> 系统使用/技术故障</p><p>客服热线 / 工单系统</p><p>400-xxx-xxxx</p><p> 按2转技术支持</p><p>工作日 9:00-18:00</p>"}
+[2026-05-04 19:28:46] [notice] [delete] delete: {"notice_id":"3"}
+[2026-05-04 19:29:05] [article] [delete] delete: {"article_id":"7"}
+[2026-05-04 19:30:58] [registered_user] [delete] delete: {"registered_user_id":"1"}
+[2026-05-04 19:30:58] [registered_user] [delete] delete: {"registered_user_id":"2"}
+[2026-05-04 19:30:58] [user] [delete] delete: {"user_id":"2"}
+[2026-05-04 19:30:58] [user] [delete] delete: {"user_id":"3"}
+[2026-05-04 19:31:19] [user] [insert] insert: {"password":"asd123","nickName":"","avatar":"/api/upload/1777796551.png","state":1,"userName":"flsde","userGroup":"注册用户","userId":0,"email":""}
+[2026-05-04 19:31:19] [registered_user] [insert] insert: {"user_id":5,"user_name":"admin","user_gender":0,"registered_user_id":0}

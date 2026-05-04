@@ -84,7 +84,7 @@
 						<div class="diy_field diy_down">
 							<select id="form_registered_user" :disabled="disabledObj['registered_user_isDisabled']" v-model="form['registered_user']" v-if="(form['registered_user'] && $check_field('set','registered_user')) || (!form['registered_user'] && $check_field('add','registered_user'))" >
 								<option v-for="o in list_user_registered_user" :value="o['user_id']">
-									{{o['nickname'] + '-' + o['username']}}
+									{{o['nick_name'] + '-' + o['user_name']}}
 								</option>
 							</select>
 							<span v-else-if="$check_field('get','registered_user')">{{ get_user_info("registered_user", form['registered_user']) }}</span>
@@ -375,7 +375,7 @@
 				  }
           				var ret = "";
 				if(obj){
-				  ret = obj.nickname+"-"+obj.username;
+				  ret = obj.nick_name+"-"+obj.user_name;
 				}
 				return ret;
 			},

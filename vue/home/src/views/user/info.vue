@@ -38,18 +38,18 @@
 
 										<div class="uc-info-row">
 											<div class="uc-label">账号：</div>
-											<div class="uc-value">{{ obj.username }}</div>
+											<div class="uc-value">{{ obj.user_name }}</div>
 										</div>
 
 										<div class="uc-info-row">
 											<div class="uc-label">昵称：</div>
 											<div class="uc-edit-box">
-												<input v-if="display_input === 'flex'" type="text" v-model="form.nickname" class="uc-input" />
-												<span v-else class="uc-value">{{ obj.nickname }}</span>
+												<input v-if="display_input === 'flex'" type="text" v-model="form.nick_name" class="uc-input" />
+												<span v-else class="uc-value">{{ obj.nick_name }}</span>
 												<b-button size="sm" variant="link" @click="display_input = display_input === 'flex' ? 'none' : 'flex'">
 													{{ display_input === 'flex' ? '取消' : '修改' }}
 												</b-button>
-												<b-button v-if="display_input === 'flex'" size="sm" variant="primary" @click="save_nickname()">保存</b-button>
+												<b-button v-if="display_input === 'flex'" size="sm" variant="primary" @click="save_nick_name()">保存</b-button>
 											</div>
 										</div>
 									</div>
@@ -179,7 +179,7 @@
 			/**
 			 * 跳出修改昵称输入框
 			 */
-			change_nickname() {
+			change_nick_name() {
 				this.display_input = "flex";
 				this.display_name = "none";
 				this.focus_input = true;
@@ -187,20 +187,20 @@
 			/**
 			 * 保存昵称修改
 			 */
-			save_nickname() {
+			save_nick_name() {
 				var user_id = this.user.user_id;
-				var nickname = this.form.nickname;
+				var nick_name = this.form.nick_name;
 				this.$post(
 					"~/api/user/set?user_id=" + user_id, {
-						nickname,
+						nick_name,
 					},
 					(res) => {
 						console.log(res);
 						this.focus_input = false;
 						this.display_input = "none";
 						this.display_name = "block";
-						this.user.nickname = nickname;
-						this.obj.nickname = nickname;
+						this.user.nick_name = nick_name;
+						this.obj.nick_name = nick_name;
 					}
 				);
 			},
@@ -210,9 +210,9 @@
 			async save_all() {
 				const user_id = this.user.user_id;
 				
-				// 1. 保存主表信息 (nickname, phone, email)
+				// 1. 保存主表信息 (nick_name, phone, email)
 				const user_res = await this.$post("~/api/user/set?user_id=" + user_id, {
-					nickname: this.obj.nickname,
+					nick_name: this.obj.nick_name,
 					phone: this.obj.phone,
 					email: this.obj.email
 				});

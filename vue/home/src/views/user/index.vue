@@ -20,8 +20,8 @@
                     :src="user.avatar ? $fullUrl(user.avatar) : '../../../public/img/default.png'"
                   />
                 </div>
-                <div class="nickname">
-                  <h4>{{ user.nickname }}</h4>
+                <div class="nick_name">
+                  <h4>{{ user.nick_name }}</h4>
                 </div>
                 <div class="user_group">
                   <span>{{ user.user_group }}</span>
@@ -104,7 +104,7 @@ export default {
 .img_block img {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 8px rgba(0, 0, 0, 0.04);
 }
-.nickname {
+.nick_name {
   color: var(--color_black);
 }
 .user_group {

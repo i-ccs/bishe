@@ -23,8 +23,8 @@
 								<div class="avatar-tip">建议尺寸 200x200px，支持 JPG, PNG, GIF</div>
 							</el-form-item>
 							
-							<div class="profile-summary" v-if="form.username">
-								<h2 class="user-name">{{ form.nickname || form.username }}</h2>
+							<div class="profile-summary" v-if="form.user_name">
+								<h2 class="user-name">{{ form.nick_name || form.user_name }}</h2>
 								<el-tag size="small" type="primary" effect="plain" class="group-tag">{{ form.user_group }}</el-tag>
 								<div class="status-indicator">
 									<span class="status-dot" :class="'status-' + form.state"></span>
@@ -39,18 +39,18 @@
 						<div class="section-title">账户基本信息</div>
 						<el-row :gutter="20">
 							<el-col :span="12" :xs="24">
-								<el-form-item label="用户名" prop="username">
-									<el-input v-if="!obj.username" v-model="form.username" placeholder="请输入用户名" prefix-icon="el-icon-user"></el-input>
+								<el-form-item label="用户名" prop="user_name">
+									<el-input v-if="!obj.user_name" v-model="form.user_name" placeholder="请输入用户名" prefix-icon="el-icon-user"></el-input>
 									<div v-else class="readonly-field">
 										<i class="el-icon-user"></i>
-										<span>{{ obj.username }}</span>
+										<span>{{ obj.user_name }}</span>
 									</div>
 								</el-form-item>
 							</el-col>
 							
 							<el-col :span="12" :xs="24">
-								<el-form-item label="昵称" prop="nickname">
-									<el-input v-model="form.nickname" placeholder="请输入昵称" prefix-icon="el-icon-postcard"></el-input>
+								<el-form-item label="昵称" prop="nick_name">
+									<el-input v-model="form.nick_name" placeholder="请输入昵称" prefix-icon="el-icon-postcard"></el-input>
 								</el-form-item>
 							</el-col>
 						</el-row>
@@ -116,8 +116,8 @@
 
 				obj: {
 					user_id: 0,
-					username: '',
-					nickname: '',
+					user_name: '',
+					nick_name: '',
 					password: '',
 					avatar: '',
 					email: '',
@@ -127,8 +127,8 @@
 
 				form: {
 					user_id: 0,
-          username: '',
-					nickname: '',
+          user_name: '',
+					nick_name: '',
           password: '',
 					avatar: '',
 					email: '',
@@ -137,7 +137,7 @@
 				},
 
 				rules: {
-					username: [{
+					user_name: [{
 							required: true,
 							message: '请输入用户名',
 							trigger: 'blur'
@@ -154,7 +154,7 @@
 						message: '请输入密码',
 						trigger: 'blur'
 					}],
-					nickname: [{
+					nick_name: [{
 						required: true,
 						message: '请输入昵称',
 						trigger: 'blur'
@@ -230,17 +230,17 @@
       async submit_check(param) {
         var ret = null;
         var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        var {username, nickname, email} = param;
+        var {user_name, nick_name, email} = param;
 
-        if(username.length > 16 || username.length < 5){
+        if(user_name.length > 16 || user_name.length < 5){
         	ret = "用户名长度应为5到16个字符之间！";
-        } else if (nickname && (nickname.length > 12 || nickname.length < 2)) {
+        } else if (nick_name && (nick_name.length > 12 || nick_name.length < 2)) {
           ret = "昵称长度应为2个字符到12个字符之间";
         } else if (email && !email_regular.test(email)) {
           ret = "请输入正确的邮箱地址 例：test@test.com!";
         }
         if (!param.user_id){
-          let res = await this.$get("~/api/user/count?", {"username": param.username});
+          let res = await this.$get("~/api/user/count?", {"user_name": param.user_name});
           if(res.result){
             ret = "账号已存在!";
           }

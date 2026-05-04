@@ -20,7 +20,7 @@
 									:src="$fullUrl(user.avatar)">
 									<img style="width: 2.3rem; overflow: hidden" src="/img/error.png" />
 								</el-avatar>
-								<span style="margin-left: 0.5rem; position: relative;top: -0.75rem;">{{ user.nickname || user.username }}</span>
+								<span style="margin-left: 0.5rem; position: relative;top: -0.75rem;">{{ user.nick_name || user.user_name }}</span>
 							</div>
 							<el-dropdown-menu slot="dropdown">
 								<el-dropdown-item command="/user/info">个人信息</el-dropdown-item>

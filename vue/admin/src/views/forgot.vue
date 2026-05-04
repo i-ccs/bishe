@@ -6,8 +6,8 @@
           <el-form :model="form" ref="form" label-width="80px" class="form">
             <h1>忘记密码</h1>
 
-            <el-form-item label="用户名" prop="username">
-              <el-input v-model="form.username" placeholder="请输入用户名"></el-input>
+            <el-form-item label="用户名" prop="user_name">
+              <el-input v-model="form.user_name" placeholder="请输入用户名"></el-input>
             </el-form-item>
 
             <el-form-item label="邮箱" prop="email">
@@ -60,7 +60,7 @@
         },
 
         form: {
-          username: "",
+          user_name: "",
           phone: "",
           email: "",
           password: "",
@@ -70,7 +70,7 @@
     },
     methods: {
       send() {
-        if (!this.form.username) {
+        if (!this.form.user_name) {
           this.$toast("用户名不能为空!", "error");
           return
         }
@@ -84,7 +84,7 @@
           return
         }
         let _this = this;
-        _this.$get('~/api/user/get_obj', {"username": _this.form.username}, function (user_json, status) {
+        _this.$get('~/api/user/get_obj', {"user_name": _this.form.user_name}, function (user_json, status) {
           if (user_json.result && user_json.result.obj) {
             if (user_json.result.obj.email === _this.form.email) {
               // 获取用户状态
@@ -117,9 +117,9 @@
 
         var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        var {username, email, password, code} = param;
+        var {user_name, email, password, code} = param;
 
-        if (!username) {
+        if (!user_name) {
           msg = "用户名不能为空!";
         } else if (!email) {
           msg = "邮箱不能为空!"

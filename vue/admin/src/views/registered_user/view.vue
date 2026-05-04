@@ -22,8 +22,8 @@
 								</el-upload>
 							</el-form-item>
 							
-							<div class="profile-summary" v-if="form.username">
-								<h2 class="user-name">{{ form.nickname || form.username }}</h2>
+							<div class="profile-summary" v-if="form.user_name">
+								<h2 class="user-name">{{ form.nick_name || form.user_name }}</h2>
 								<el-tag size="small" type="success" effect="plain" class="group-tag">{{ form.user_group }}</el-tag>
 								<div class="status-indicator">
 									<span class="status-dot" :class="'status-' + form.state"></span>
@@ -39,18 +39,18 @@
 							<div class="section-title">账号信息</div>
 							<el-row :gutter="20">
 								<el-col :span="12" :xs="24">
-									<el-form-item label="账号" prop="username">
-										<el-input v-if="!obj.username" v-model="form.username" placeholder="请输入账号" prefix-icon="el-icon-user"></el-input>
+									<el-form-item label="账号" prop="user_name">
+										<el-input v-if="!obj.user_name" v-model="form.user_name" placeholder="请输入账号" prefix-icon="el-icon-user"></el-input>
 										<div v-else class="readonly-field">
 											<i class="el-icon-user"></i>
-											<span>{{ obj.username }}</span>
+											<span>{{ obj.user_name }}</span>
 										</div>
 									</el-form-item>
 								</el-col>
 								
 								<el-col :span="12" :xs="24">
-									<el-form-item label="昵称" prop="nickname">
-										<el-input v-model="form.nickname" placeholder="请输入昵称" prefix-icon="el-icon-postcard"></el-input>
+									<el-form-item label="昵称" prop="nick_name">
+										<el-input v-model="form.nick_name" placeholder="请输入昵称" prefix-icon="el-icon-postcard"></el-input>
 									</el-form-item>
 								</el-col>
 							</el-row>
@@ -149,8 +149,8 @@
 
 				obj: {
 					user_id: 0,
-					username: '',
-					nickname: '',
+					user_name: '',
+					nick_name: '',
 					password: '',
 					avatar: '',
 					email: '',
@@ -160,8 +160,8 @@
 
 				form: {
 					user_id: 0,
-				    username: '',
-					nickname: '',
+				    user_name: '',
+					nick_name: '',
 				    password: '',
 					avatar: '',
 					email: '',
@@ -278,16 +278,16 @@
 			async submit_check(param){
 				var ret = null;
 				var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				var {username ,password ,nickname ,user_group ,email} = param;
-				if(!username){
+				var {user_name ,password ,nick_name ,user_group ,email} = param;
+				if(!user_name){
 					ret = "账号不能为空";
-				} else if(username.length > 16 || username.length < 5){
+				} else if(user_name.length > 16 || user_name.length < 5){
 					ret = "账号长度应为5到16个字符之间！";
 				} else if(!password){
 					ret = "密码不能为空!";
 				} else if(this.is_password && (password.length > 16 || password.length < 5)){
 					ret = "密码长度应为5到16个字符之间！";
-				} else if(nickname && (nickname.length > 12 || nickname.length < 2)){
+				} else if(nick_name && (nick_name.length > 12 || nick_name.length < 2)){
 					ret = "昵称长度应为2个字符到12个字符之间";
 				} else if(email && !email_regular.test(email)){
 					ret = "请输入正确的邮箱地址 例：test@test.com!";

@@ -505,7 +505,7 @@
 			case "email":
 				bl = /^\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}$/gi.test(value);
 				break;
-			case "username":
+			case "user_name":
 				bl = /^[a-z0-9A-Z_]+$/.test(value)
 				break;
 			case "password":

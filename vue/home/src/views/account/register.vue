@@ -14,7 +14,7 @@
 								<b-form class="forms">
 									<div class="diy_forms">
 									<b-form-group id="input-group-1" label="账号:" label-for="input-1">
-										<b-form-input id="input-1" v-model="form.username" type="text" placeholder="请输入账号"
+										<b-form-input id="input-1" v-model="form.user_name" type="text" placeholder="请输入账号"
 											trim></b-form-input>
 									</b-form-group>
 
@@ -29,7 +29,7 @@
 									</b-form-group>
 
 									<b-form-group id="input-group-4" label="昵称:" label-for="input-4">
-										<b-form-input id="input-4" v-model="form.nickname" type="text" placeholder="2个字符到12个字符"
+										<b-form-input id="input-4" v-model="form.nick_name" type="text" placeholder="2个字符到12个字符"
 											trim></b-form-input>
 									</b-form-group>
 
@@ -89,9 +89,9 @@
 			return {
 				url_submit: "~/api/user/register?",
 				form: {
-					username: "",
+					user_name: "",
 					password: "",
-					nickname: "",
+					nick_name: "",
 					email: "",
 					// phone: "",
 					user_group: "",
@@ -182,17 +182,17 @@
 				var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 				// var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
 
-				// var {username ,password ,nickname ,user_group ,email ,phone} = param;
-				var {username ,password ,nickname ,user_group ,email} = param;
+				// var {user_name ,password ,nick_name ,user_group ,email ,phone} = param;
+				var {user_name ,password ,nick_name ,user_group ,email} = param;
 
 				var confirm_password = this.confirm_password;
 
-				console.log("表单校验username ,password ,email ,nickname ,user_group" ,username ,password ,email ,nickname ,user_group);
+				console.log("表单校验user_name ,password ,email ,nick_name ,user_group" ,user_name ,password ,email ,nick_name ,user_group);
 
-				if(!username){
+				if(!user_name){
 					ret = "账号不能为空";
 				}
-				else if(username.length > 16 || username.length < 5){
+				else if(user_name.length > 16 || user_name.length < 5){
 					ret = "账号长度应为5到16个字符之间！";
 				}
 				else if(!password){
@@ -201,7 +201,7 @@
 				else if(password.length > 16 || password.length < 5){
 					ret = "密码长度应为5到16个字符之间！";
 				}
-				else if(nickname && nickname.length > 12 || nickname.length < 2){
+				else if(nick_name && nick_name.length > 12 || nick_name.length < 2){
 					ret = "昵称长度应为2个字符到12个字符之间";
 				}
 				else if(email && !email_regular.test(email)){
@@ -224,7 +224,7 @@
 																}
 										}
 
-				var p = {"username": param.username};
+				var p = {"user_name": param.user_name};
 
 				if(!ret){
 					var res = await this.$get("~/api/user/count?" ,p);

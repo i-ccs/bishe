@@ -61,7 +61,7 @@
 					<el-col v-if="$check_field('get','registered_user') || $check_field('add','registered_user') || $check_field('set','registered_user')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="下单用户" prop="registered_user">
 							<el-select v-if="user_group === '管理员'" id="registered_user" v-model="form['registered_user']" style="width: 100%" :disabled="disabledObj['registered_user_isDisabled']">
-								<el-option v-for="o in list_user_registered_user" :key="o['username']" :label="o['nickname'] + ' (' + o['username'] + ')'" :value="o['user_id']"></el-option>
+								<el-option v-for="o in list_user_registered_user" :key="o['user_name']" :label="o['nick_name'] + ' (' + o['user_name'] + ')'" :value="o['user_id']"></el-option>
 							</el-select>
 							<div v-else class="premium-readonly-field">{{ get_user_registered_user(form['registered_user']) }}</div>
 						</el-form-item>
@@ -211,7 +211,7 @@
 				var obj = this.list_user_registered_user.getObj({"user_id":id});
 				var ret = "";
 				if(obj){
-					ret = obj.nickname || obj.username;
+					ret = obj.nick_name || obj.user_name;
 				}
 				return ret;
 			},

@@ -41,7 +41,7 @@
                         <div class="img_box" >
                           <img class="user_img" style="width: 40px;" :src="$fullUrl(user_avatar)" alt="">
                         </div>
-                        <div class="own_text" >{{ user_nickname }}    <span class="caret" v-bind:style="{transform: 'rotate('+ angle2 +'deg)'}"/> </div>
+                        <div class="own_text" >{{ user_nick_name }}    <span class="caret" v-bind:style="{transform: 'rotate('+ angle2 +'deg)'}"/> </div>
                       </div>
 
                     </div>
@@ -168,7 +168,7 @@
         search_val: "",
         logo: "",
 
-        user_nickname:'',
+        user_nick_name:'',
         user_avatar:''
       };
     },
@@ -182,8 +182,8 @@
         if (this.$store.state.user){
           let avatar = this.$store.state.user.avatar
           this.user_avatar = avatar
-          let u_nickname = this.$store.state.user.nickname
-          this.user_nickname = u_nickname
+          let u_nick_name = this.$store.state.user.nick_name
+          this.user_nick_name = u_nick_name
         }
       },
 
@@ -199,7 +199,7 @@
 
           if (dara.user_group === userG) {
            sessionStorage.setItem('avatar',dara.avatar)
-            sessionStorage.setItem('nickname',dara.nickname)
+            sessionStorage.setItem('nick_name',dara.nick_name)
             return
           }
         }
@@ -243,7 +243,7 @@
         this.$get("~/api/user/quit?", {}, (res) => {
           console.log(res);
         })
-        sessionStorage.removeItem('nickname');
+        sessionStorage.removeItem('nick_name');
         sessionStorage.removeItem('avatar');
         sessionStorage.removeItem('user_id');
         location.reload();
