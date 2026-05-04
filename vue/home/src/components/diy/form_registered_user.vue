@@ -4,7 +4,7 @@
 			<b-form-input id="user_name" v-model="form['user_name']" type="text" placeholder="请输入用户姓名" trim ></b-form-input>
 		</b-form-group>
 				<b-form-group v-if="$check_register_field('add','user_gender','/registered_user/view')" id="user_gender" label="用户性别" label-for="user_gender">
-			<b-form-select id="user_gender" v-model="form['user_gender']" :options="getDropList(list_user_gender)"></b-form-select>
+			<b-form-select id="user_gender" v-model="form['user_gender']" :options="list_user_gender"></b-form-select>
 		</b-form-group>
 		</div>
 </template>
@@ -31,7 +31,10 @@
 		data(){
 			return {
 				url_upload: "~/api/registered_user/upload?",
-					        list_user_gender: "男,女",
+					        list_user_gender: [
+								{ value: 0, text: '男' },
+								{ value: 1, text: '女' }
+							],
 							}
 		},
 		methods: {

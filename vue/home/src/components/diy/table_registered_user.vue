@@ -12,8 +12,8 @@
                                                                       <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="用户性别">
                                                       <el-select v-model="query.user_gender">
-                                                                  <el-option v-for="o in list_user_gender" :key="o" :label="o"
-                                             :value="o">
+                                                                  <el-option v-for="o in list_user_gender" :key="o.value" :label="o.text"
+                                             :value="o.value">
                                   </el-option>
                                                             </el-select>
                                                 </el-form-item>
@@ -43,6 +43,9 @@
                                                   <el-table-column prop="user_name" @sort-change="$sortChange" label="用户姓名"                                v-if="$check_field('get','user_name')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="user_gender" @sort-change="$sortChange" label="用户性别"                                v-if="$check_field('get','user_gender')" min-width="200">
+                                                <template slot-scope="scope">
+                                                  {{ scope.row.user_gender === 0 ? '男' : '女' }}
+                                                </template>
                                 </el-table-column>
                     				        
         
@@ -135,7 +138,10 @@
                   // 数据
         list: [],
                                                                                                                                                                       // 用户性别列表
-                list_user_gender: ['男','女'],
+                list_user_gender: [
+                  { text: '男', value: 0 },
+                  { text: '女', value: 1 }
+                ],
                                       		  		  message: '',
       }
     },

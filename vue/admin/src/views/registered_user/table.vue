@@ -12,7 +12,7 @@
 						<el-form-item label="用户性别">
 							<el-select v-model="query.user_gender" style="width: 100%">
 								<el-option value="">全部</el-option>
-								<el-option v-for="o in list_user_gender" :key="o" :label="o" :value="o"></el-option>
+								<el-option v-for="o in list_user_gender" :key="o.value" :label="o.text" :value="o.value"></el-option>
 							</el-select>
 						</el-form-item>
 					</el-col>
@@ -42,7 +42,9 @@
 				<el-table-column prop="user_name" label="姓名" v-if="$check_field('get','user_name')" min-width="120" align="center"></el-table-column>
 				<el-table-column prop="user_gender" label="性别" v-if="$check_field('get','user_gender')" width="80" align="center">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.user_gender === '男' ? '' : 'danger'" size="mini">{{scope.row.user_gender}}</el-tag>
+						<el-tag :type="scope.row.user_gender === 0 ? '' : 'danger'" size="mini">
+							{{ scope.row.user_gender === 0 ? '男' : '女' }}
+						</el-tag>
 					</template>
 				</el-table-column>
 				<el-table-column prop="create_time" label="创建时间" min-width="160" align="center">
@@ -80,7 +82,10 @@
 				field: "registered_user_id",
 				query: { "size": 7, "page": 1, "user_name": "", "user_gender": "", "orderby": `create_time desc` },
 				list: [],
-				list_user_gender: ['男','女'],
+				list_user_gender: [
+					{ text: '男', value: 0 },
+					{ text: '女', value: 1 }
+				],
 				message: '',
 			}
 		},

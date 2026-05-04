@@ -103,11 +103,11 @@
 									<el-form-item label="用户性别" prop="user_gender">
 										<el-select id="user_gender" v-model="form_sub['user_gender']" style="width: 100%"
 											v-if="(form_sub['registered_user_id'] && $check_field('set','user_gender')) || (!form_sub['registered_user_id'] && $check_field('add','user_gender'))">
-											<el-option v-for="o in list_user_gender" :key="o" :label="o" :value="o">
+											<el-option v-for="o in list_user_gender" :key="o.value" :label="o.text" :value="o.value">
 											</el-option>
 										</el-select>
 										<div v-else-if="$check_field('get','user_gender')" class="readonly-field">
-											<span>{{ form_sub['user_gender'] }}</span>
+											<span>{{ list_user_gender.find(o => o.value === form_sub['user_gender'])?.text || form_sub['user_gender'] }}</span>
 										</div>
 									</el-form-item>
 								</el-col>
@@ -205,7 +205,10 @@
 					value: 4,
 					name: "已注销"
 				}],
-				list_user_gender: ['男','女'],
+				list_user_gender: [
+					{ text: '男', value: 0 },
+					{ text: '女', value: 1 }
+				],
 			}
 		},
 		methods: {

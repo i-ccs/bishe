@@ -20,7 +20,9 @@
 								<div class="uc-hero-info">
 									<h2 class="uc-name">{{ userInfo.nickname || userInfo.username || '用户' }}</h2>
 									<div class="uc-meta-row">
-										<span class="uc-badge" v-if="userInfo.user_gender">{{ userInfo.user_gender }}</span>
+										<span class="uc-badge" v-if="userInfo.user_gender !== null && userInfo.user_gender !== undefined">
+											{{ userInfo.user_gender === 0 ? '男' : '女' }}
+										</span>
 										<span class="uc-meta-item" v-if="userInfo.email">
 											<i class="uc-icon">✉</i> {{ userInfo.email }}
 										</span>

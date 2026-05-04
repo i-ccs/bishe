@@ -29,7 +29,7 @@ public class RegisteredUser implements Serializable {
     private String user_name;
     // 用户性别
     @TableField(value = "`user_gender`")
-    private String user_gender;
+    private Integer user_gender;
 
     // 用户编号
     @TableField(value = "user_id")

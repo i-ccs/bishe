@@ -154,7 +154,7 @@ export default {
 				this.$get(url, { page: 1, size: 10, "user_gender": this.query.word }, (json) => {
 		  if (json.result) {
 			var result_registered_user_user_gender = json.result.list;
-			result_registered_user_user_gender.map(o => o.title = o['user_gender'])
+			result_registered_user_user_gender.map(o => o.title = o['user_gender'] === 0 ? '男' : '女')
 	  			this.result_registered_user_user_gender = result_registered_user_user_gender
 		 	}
 		});

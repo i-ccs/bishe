@@ -442,7 +442,7 @@ DROP TABLE IF EXISTS `registered_user`;
 CREATE TABLE `registered_user` (
   `registered_user_id` int NOT NULL AUTO_INCREMENT COMMENT '注册用户ID',
   `user_name` varchar(64) DEFAULT NULL COMMENT '用户姓名',
-  `user_gender` varchar(64) DEFAULT NULL COMMENT '用户性别',
+  `user_gender` int DEFAULT NULL COMMENT '用户性别',
   `examine_state` varchar(16) NOT NULL DEFAULT '已通过' COMMENT '审核状态',
   `user_id` int NOT NULL DEFAULT '0' COMMENT '用户ID',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -454,8 +454,8 @@ CREATE TABLE `registered_user` (
 -- Records of registered_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `registered_user` (`registered_user_id`, `user_name`, `user_gender`, `examine_state`, `user_id`, `create_time`, `update_time`) VALUES (1, '用户姓名1', '男', '已通过', 2, '2025-05-18 11:51:27', '2026-04-27 14:15:30');
-INSERT INTO `registered_user` (`registered_user_id`, `user_name`, `user_gender`, `examine_state`, `user_id`, `create_time`, `update_time`) VALUES (2, '用户姓名2', '女', '已通过', 3, '2025-05-18 11:51:27', '2026-04-27 14:15:38');
+INSERT INTO `registered_user` (`registered_user_id`, `user_name`, `user_gender`, `examine_state`, `user_id`, `create_time`, `update_time`) VALUES (1, '用户姓名1', 0, '已通过', 2, '2025-05-18 11:51:27', '2026-04-27 14:15:30');
+INSERT INTO `registered_user` (`registered_user_id`, `user_name`, `user_gender`, `examine_state`, `user_id`, `create_time`, `update_time`) VALUES (2, '用户姓名2', 1, '已通过', 3, '2025-05-18 11:51:27', '2026-04-27 14:15:38');
 COMMIT;
 
 -- ----------------------------
