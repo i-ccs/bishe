@@ -59,7 +59,7 @@
 						</div>
 								<!-- 数字 -->
 						<div class="diy_field diy_number">
-							<input type="number" id="form_commodity_price" v-model.number="form['commodity_price']" placeholder="请输入商品价格" v-if="(form['commodity_price'] && $check_field('set','commodity_price')) || (!form['commodity_price'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']" />
+							<input type="number" id="form_commodity_price" v-model.number="form['commodity_price']" placeholder="请输入商品价格" v-if="(form['commodity_price'] && $check_field('set','commodity_price')) || (!form['commodity_price'] && $check_field('add','commodity_price'))" :disabled="user_group !== '管理员'" />
 							<span v-else-if="$check_field('get','commodity_price')">{{ form['commodity_price'] }}</span>
 						</div>
 							</div>
@@ -82,7 +82,7 @@
 							</span>
 						</div>
 						<div class="diy_field diy_down">
-							<select id="form_registered_user" :disabled="disabledObj['registered_user_isDisabled']" v-model="form['registered_user']" v-if="(form['registered_user'] && $check_field('set','registered_user')) || (!form['registered_user'] && $check_field('add','registered_user'))" >
+							<select id="form_registered_user" :disabled="user_group !== '管理员'" v-model="form['registered_user']" v-if="(form['registered_user'] && $check_field('set','registered_user')) || (!form['registered_user'] && $check_field('add','registered_user'))" >
 								<option v-for="o in list_user_registered_user" :value="o['user_id']">
 									{{o['nick_name'] + '-' + o['user_name']}}
 								</option>
@@ -502,9 +502,9 @@
 
 		},
 		created() {
-																							this.get_user_session_registered_user();
-					this.get_list_user_registered_user();
-															},
+			this.get_list_user_registered_user();
+			this.get_user_session_registered_user();
+		},
 	}
 </script>
 

@@ -33,7 +33,7 @@
 								<el-col v-if="$check_field('get','commodity_price') || $check_field('add','commodity_price') || $check_field('set','commodity_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="商品价格" prop="commodity_price">
 								<el-input-number id="commodity_price" v-model.number="form['commodity_price']"
-						v-if="(form['sales_information_id'] && $check_field('set','commodity_price')) || (!form['sales_information_id'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']"></el-input-number>
+						v-if="(form['sales_information_id'] && $check_field('set','commodity_price')) || (!form['sales_information_id'] && $check_field('add','commodity_price'))" :disabled="user_group !== '管理员'"></el-input-number>
 					<div v-else-if="$check_field('get','commodity_price')">{{form['commodity_price']}}</div>
 							</el-form-item>
 			</el-col>
@@ -47,8 +47,7 @@
 								<el-col v-if="$check_field('get','registered_user') || $check_field('add','registered_user') || $check_field('set','registered_user')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="注册用户" prop="registered_user">
 																		<div v-if="user_group !== '管理员'">
-							{{ get_user_session_registered_user(form['registered_user']) }}
-							<el-select v-if="(form['sales_information_id'] && $check_field('set','registered_user')) || (!form['sales_information_id'] && $check_field('add','registered_user'))" id="registered_user" v-model="form['registered_user']" :disabled="disabledObj['registered_user_isDisabled']">
+							<el-select v-if="(form['sales_information_id'] && $check_field('set','registered_user')) || (!form['sales_information_id'] && $check_field('add','registered_user'))" id="registered_user" v-model="form['registered_user']" :disabled="true">
 								<el-option v-for="o in list_user_registered_user" :key="o['user_name']" :label="o['nick_name'] + '-' + o['user_name']"
 										   :value="o['user_id']">
 								</el-option>
@@ -418,9 +417,12 @@
 
 		},
 		created() {
-																	this.get_list_user_registered_user();
-					this.get_group_user_registered_user();
-													},
+			this.get_list_user_registered_user();
+			this.get_group_user_registered_user();
+			if (this.user_group !== '管理员') {
+				this.get_user_session_registered_user(this.$store.state.user.user_id);
+			}
+		},
 	}
 </script>
 
