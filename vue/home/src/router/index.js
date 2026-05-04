@@ -29,7 +29,7 @@ const routes = [
 		name: 'register',
 		component: () => import('../views/account/register.vue')
 	},
-		// 媒体图片
+	// 媒体图片
 	{
 		path: '/media/image',
 		name: 'media_image',
@@ -85,7 +85,7 @@ const routes = [
 		component: () => import('../views/comment/view.vue')
 	},
 
-	
+
 
 
 
@@ -112,11 +112,11 @@ const routes = [
 		name: '/registered_user_view',
 		component: () => import('../views/registered_user/view.vue')
 	},
-	
-	
-		
-		
-		
+
+
+
+
+
 	// 商品信息表格路由
 	{
 		path: '/commodity_information/table',
@@ -129,23 +129,23 @@ const routes = [
 		name: '/commodity_information_view',
 		component: () => import('../views/commodity_information/view.vue')
 	},
-	
-		// 商品信息列表路由
+
+	// 商品信息列表路由
 	{
 		path: '/commodity_information/list',
 		name: '/commodity_information_list',
 		component: () => import('../views/commodity_information/list.vue')
 	},
-	
-		// 商品信息详情路由
+
+	// 商品信息详情路由
 	{
 		path: '/commodity_information/details',
 		name: '/commodity_information_details',
 		component: () => import('../views/commodity_information/details.vue')
 	},
-		
-		
-		
+
+
+
 	// 销售信息表格路由
 	{
 		path: '/sales_information/table',
@@ -158,17 +158,17 @@ const routes = [
 		name: '/sales_information_view',
 		component: () => import('../views/sales_information/view.vue')
 	},
-		// 销售信息添加路由
+	// 销售信息添加路由
 	{
 		path: '/sales_information/edit',
 		name: '/sales_information_edit',
 		component: () => import('../views/sales_information/edit.vue')
 	},
-	
-	
-		
-		
-		
+
+
+
+
+
 	// 供应信息表格路由
 	{
 		path: '/supply_information/table',
@@ -181,11 +181,11 @@ const routes = [
 		name: '/supply_information_view',
 		component: () => import('../views/supply_information/view.vue')
 	},
-	
-	
-		
-		
-		
+
+
+
+
+
 	// 采购信息表格路由
 	{
 		path: '/purchasing_information/table',
@@ -198,11 +198,11 @@ const routes = [
 		name: '/purchasing_information_view',
 		component: () => import('../views/purchasing_information/view.vue')
 	},
-	
-	
-		
-		
-		
+
+
+
+
+
 	// 库存信息表格路由
 	{
 		path: '/inventory_information/table',
@@ -215,11 +215,11 @@ const routes = [
 		name: '/inventory_information_view',
 		component: () => import('../views/inventory_information/view.vue')
 	},
-	
-	
-		
-		
-		
+
+
+
+
+
 
 	// 用户路由
 	{
@@ -261,14 +261,14 @@ const router = new VueRouter({
 })
 
 router.afterEach((to, from, next) => {
-	let title = "电商平台供应链管理系统-home";
+	let title = "小智电商供应链管理系统-home";
 	document.title = title;
-	document.logo = "电商平台供应链管理系统"
+	document.logo = "小智电商供应链管理系统"
 })
 
 router.beforeEach((to, from, next) => {
-  window.scrollTo(0, 0);
-  next();
+	window.scrollTo(0, 0);
+	next();
 });
 
 export default router

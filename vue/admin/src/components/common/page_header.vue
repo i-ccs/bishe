@@ -9,7 +9,7 @@
 						</a>
 						<Borde/>
 					</div>
-          <div class="action_center">欢迎使用电商平台供应链管理系统</div>
+          <div class="action_center">小智电商供应链管理系统</div>
 					<div class="action_right">
 					<div class="timess">
 							<div>{{ currentDateTime }}</div>
