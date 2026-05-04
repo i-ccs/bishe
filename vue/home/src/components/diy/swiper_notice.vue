@@ -1,21 +1,17 @@
 <template>
-    <b-carousel
-      id="carousel-1"
-      v-model="slide"
-      :interval="4000"
-      img-height="200"
-      background="#FFF"
-    >
-      <b-carousel-slide v-for="(o, i) in list" :key="i">
-        <template #img>
-		  <router-link class="swiper_notice" :to="'/notice/details?notice_id='+o.notice_id">
-			  <p class="title">{{o.title}}</p>
-			  <p class="content" v-html="o.content">
-			  </p>
-			</router-link>
-        </template>
-      </b-carousel-slide>
-    </b-carousel>
+    <div class="vertical-notice-container" :style="{height: '300px'}">
+      <div class="notice-list-wrapper" :class="{animate: list.length > 1}">
+        <div v-for="(o, i) in list" :key="i" class="notice-item">
+          <router-link class="swiper_notice" :to="'/notice/details?notice_id='+o.notice_id">
+            <p class="title">{{o.title}}</p>
+            <div class="notice-content-wrapper">
+              <p class="content" v-html="o.content"></p>
+            </div>
+          </router-link>
+        </div>
+        <!-- Duplicate first item for seamless loop if needed, but simple scroll is better for now -->
+      </div>
+    </div>
 </template>
 
 
@@ -57,40 +53,59 @@ export default {
 
 <style scoped>
 
-  .title {
-    padding: 0.65rem 0;
-    height: 2.5rem;
-    margin: 0 1.5rem;
-    font-size: 1.2rem;
-    font-weight: bold;
+  .vertical-notice-container {
+    width: 100%;
     overflow: hidden;
-    text-overflow:ellipsis;
-    white-space: nowrap;
+    position: relative;
+    background: #fff;
+  }
+
+  .notice-list-wrapper {
+    position: relative;
+    top: 0;
+  }
+
+  .notice-list-wrapper.animate {
+    animation: verticalScroll 20s linear infinite;
+  }
+
+  .notice-list-wrapper.animate:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes verticalScroll {
+    0% { top: 0; }
+    100% { top: -100%; }
+  }
+
+  .notice-item {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f8fafc;
+  }
+
+  .swiper_notice {
+    display: block;
+    text-decoration: none !important;
+  }
+
+  .title {
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--portal-text-main);
+  }
+
+  .notice-content-wrapper {
+    position: relative;
+    padding: 0 20px 15px 20px;
   }
 
   .content {
-    color: #6a737d;
-    padding: 0.5rem 1.5rem;
+    color: var(--portal-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
     text-align: left;
-    height: 12.25rem;
-    font-size: 1rem;
-    overflow: hidden;
-  }
-
-  .content:before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 2rem;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(255,255,255,.6);
-  }
-
-  .content >>> p {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    /*-webkit-line-clamp: 3;*/
-    overflow: hidden;
+    margin: 0;
   }
 </style>

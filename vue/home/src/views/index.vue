@@ -13,9 +13,47 @@
 						</div>
 					</div>
 				</div>
-				<!-- Notice Row -->
-				<div class="row justify-content-center mt-4">
-					<div class="col-lg-8 col-12">
+			</div>
+		</div>
+
+		<!-- Main Content Section (News & Products) -->
+		<div class="home-section content_row">
+			<div class="container">
+				<!-- Top Row: News & Products -->
+				<el-row>
+					<el-col :span="24">
+						<el-card class="unified-content-card">
+							<el-row :gutter="40">
+								<el-col :lg="12" :md="12" :sm="24">
+									<div class="content-column news-column">
+										<div class="section-header mini">
+											<div class="title">行业资讯</div>
+											<router-link to="/article/list" class="more-link">更多 <i class="el-icon-arrow-right"></i></router-link>
+										</div>
+										<div class="list_article_box">
+											<list_article v-if="show_list_article" :list="list_article" />
+										</div>
+									</div>
+								</el-col>
+								<el-col :lg="12" :md="12" :sm="24">
+									<div class="content-column products-column" v-if="$check_action('/commodity_information/list', 'get')">
+										<div class="section-header mini">
+											<div class="title">商品信息推荐</div>
+											<router-link to="/commodity_information/list" class="more-link">更多 <i class="el-icon-arrow-right"></i></router-link>
+										</div>
+										<div class="list_commodity_information_box">
+											<list_commodity_information :list="list_commodity_information" />
+										</div>
+									</div>
+								</el-col>
+							</el-row>
+						</el-card>
+					</el-col>
+				</el-row>
+
+				<!-- Bottom Row: Notice -->
+				<el-row class="mt-4">
+					<el-col :span="24">
 						<div class="card_notice premium-notice-card wide-notice">
 							<div class="notice_header">
 								<span class="notice_title_text">最新公告</span>
@@ -25,42 +63,8 @@
 								<swiper_notice :list="list_notice"/>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Main Content Section (News & Products) -->
-		<div class="home-section">
-			<div class="container">
-				<el-card class="unified-content-card">
-					<el-row :gutter="40">
-						<!-- Left: Industry News -->
-						<el-col :lg="12" :md="12" :sm="24">
-							<div class="content-column news-column">
-								<div class="section-header mini">
-									<div class="title">行业资讯</div>
-									<router-link to="/article/list" class="more-link">更多 <i class="el-icon-arrow-right"></i></router-link>
-								</div>
-								<div class="list_article_box">
-									<list_article v-if="show_list_article" :list="list_article" />
-								</div>
-							</div>
-						</el-col>
-						<!-- Right: Featured Products -->
-						<el-col :lg="12" :md="12" :sm="24">
-							<div class="content-column products-column" v-if="$check_action('/commodity_information/list', 'get')">
-								<div class="section-header mini">
-									<div class="title">商品信息推荐</div>
-									<router-link to="/commodity_information/list" class="more-link">更多 <i class="el-icon-arrow-right"></i></router-link>
-								</div>
-								<div class="list_commodity_information_box">
-									<list_commodity_information :list="list_commodity_information" />
-								</div>
-							</div>
-						</el-col>
-					</el-row>
-				</el-card>
+					</el-col>
+				</el-row>
 			</div>
 		</div>
 	</div>
@@ -332,14 +336,13 @@
 
 .wide-notice {
 	width: 100% !important;
-	height: 120px !important;
-	flex-direction: row !important;
+	height: 350px !important;
 }
 
 .wide-notice .notice_header {
-	width: 150px;
-	border-bottom: none;
-	border-right: 1px solid #f1f5f9;
+	width: 100%;
+	border-bottom: 1px solid #f1f5f9;
+	border-right: none;
 }
 
 .wide-notice .notice_body {
@@ -373,19 +376,68 @@
 	overflow: hidden;
 }
 
+.content_row .el-row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.content_row .el-col {
+	display: flex;
+}
+
+.h-100 {
+	height: 100%;
+	width: 100%;
+}
+
 .unified-content-card {
 	border-radius: var(--portal-radius) !important;
 	border: 1px solid #f1f5f9 !important;
 	box-shadow: var(--portal-shadow) !important;
+	height: 100%;
+}
+
+.unified-content-card >>> .el-card__body {
+	padding: 20px !important;
+	height: 100%;
 }
 
 .content-column {
-	padding: 10px 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.news-column {
+	border-right: 1px solid #f1f5f9;
+	padding-right: 20px !important;
+}
+
+.products-column {
+	padding-left: 10px !important;
+}
+
+.premium-notice-card {
+	background: #fff;
+	border-radius: var(--portal-radius);
+	box-shadow: var(--portal-shadow);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border: 1px solid #f1f5f9;
+	width: 100%;
+}
+
+.vertical-notice {
+	flex: 1;
+	padding: 15px;
+	overflow: hidden;
 }
 
 .section-header.mini {
 	margin-bottom: 20px;
 	padding-bottom: 10px;
+	flex-shrink: 0;
 }
 
 .section-header.mini .title {
