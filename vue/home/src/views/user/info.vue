@@ -21,14 +21,17 @@
 									<!-- 基础信息 -->
 									<div class="uc-info-section">
 										<div class="figure_avatar">
-											<span class="uc-label">头像：</span>
-											<div class="change_avatar_box">
-												<b-img class="user_avator"
-													:src="obj.avatar ? $fullUrl(obj.avatar) : '/img/default.png'" alt=""
-													style="width: 4rem; height: 4rem; border-radius: 50%;" />
+											<div class="change_avatar_box" @click="$refs.avatarInput.click()">
+												<div class="uc-avatar-wrap">
+													<b-img class="user_avator"
+														:src="obj.avatar ? $fullUrl(obj.avatar) : '/img/default.png'" alt="" />
+													<div class="uc-avatar-overlay">
+														<i class="uc-icon">📷</i>
+													</div>
+												</div>
 												<div class="upload_btn_wrap">
-													<input type="file" @change="change_avatar($event.target.files)" id="input_file" />
-													<b-button size="sm" variant="outline-primary" class="ml-2">修改头像</b-button>
+													<input type="file" ref="avatarInput" @change="change_avatar($event.target.files)" style="display: none" accept="image/*" />
+													<b-button size="sm" variant="outline-primary">点击图片修改头像</b-button>
 												</div>
 											</div>
 										</div>
@@ -365,39 +368,55 @@
 		justify-content: center;
 	}
 
-	.change_avatar_box {
-		display: flex;
-		align-items: center;
-		gap: 20px;
-		flex: 1;
-	}
-
-	.upload_btn_wrap {
+	.uc-avatar-wrap {
 		position: relative;
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		overflow: hidden;
+		cursor: pointer;
+		border: 3px solid #fff;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+		transition: transform 0.3s;
 	}
 
-	.upload_btn_wrap #input_file {
+	.uc-avatar-wrap:hover {
+		transform: scale(1.05);
+	}
+
+	.user_avator {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.uc-avatar-overlay {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		opacity: 0;
-		cursor: pointer;
-		z-index: 1;
-	}
-
-	.uc-actions {
-		margin-top: 3rem;
-		padding-top: 2rem;
-		border-top: 1px solid #f0f4f8;
+		background: rgba(0,0,0,0.4);
 		display: flex;
-		gap: 1.5rem;
+		align-items: center;
 		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.3s;
 	}
 
-	.btn-save-all {
-		padding: 0.6rem 3rem;
-		font-weight: 600;
+	.uc-avatar-wrap:hover .uc-avatar-overlay {
+		opacity: 1;
+	}
+
+	.uc-icon {
+		color: #fff;
+		font-size: 20px;
+		font-style: normal;
+	}
+
+	.upload_btn_wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
 	}
 </style>
