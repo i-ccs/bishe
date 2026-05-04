@@ -167,22 +167,32 @@
 				this.get_views_source_data();
 			},
 			async get_combined_business_data() {
-				const sales_res = await this.$get("~/api/sales_information/list_group?groupby=product_category");
-				const inventory_res = await this.$get("~/api/inventory_information/list_group?groupby=product_category");
-				const purchasing_res = await this.$get("~/api/purchasing_information/list_group?groupby=product_category");
+				let pastDays = [];
+				for (let i = 14; i >= 0; i--) {
+					let d = new Date();
+					d.setDate(d.getDate() - i);
+					let month = (d.getMonth() + 1).toString().padStart(2, '0');
+					let day = d.getDate().toString().padStart(2, '0');
+					pastDays.push(`${d.getFullYear()}-${month}-${day}`);
+				}
+				let create_time_min = pastDays[0] + ' 00:00:00';
+				
+				const sales_res = await this.$get("~/api/sales_information/list_group?groupby=DATE(create_time)&create_time_min=" + create_time_min);
+				const inventory_res = await this.$get("~/api/inventory_information/list_group?groupby=DATE(create_time)&create_time_min=" + create_time_min);
+				const purchasing_res = await this.$get("~/api/purchasing_information/list_group?groupby=DATE(create_time)&create_time_min=" + create_time_min);
 
-				const categoryMap = {};
+				const dateMap = {};
+				pastDays.forEach(date => {
+					dateMap[date] = { sales: 0, inventory: 0, purchasing: 0 };
+				});
 
 				const processRes = (res, key) => {
 					if (res.result && res.result.list) {
 						res.result.list.forEach(o => {
-							let category = o[1];
-							if (!category) category = '未知商品';
-							const count = o[0];
-							if (!categoryMap[category]) {
-								categoryMap[category] = { sales: 0, inventory: 0, purchasing: 0 };
+							const date = o[1];
+							if (date && dateMap[date]) {
+								dateMap[date][key] = o[0];
 							}
-							categoryMap[category][key] = count;
 						});
 					}
 				};
@@ -191,12 +201,11 @@
 				processRes(inventory_res, 'inventory');
 				processRes(purchasing_res, 'purchasing');
 
-				const categories = Object.keys(categoryMap);
-				const salesData = categories.map(c => categoryMap[c].sales);
-				const inventoryData = categories.map(c => categoryMap[c].inventory);
-				const purchasingData = categories.map(c => categoryMap[c].purchasing);
+				const salesData = pastDays.map(d => dateMap[d].sales);
+				const inventoryData = pastDays.map(d => dateMap[d].inventory);
+				const purchasingData = pastDays.map(d => dateMap[d].purchasing);
 
-				this.render_line_chart("chart_combined_business", "业务指标对比", categories, [
+				this.render_line_chart("chart_combined_business", "业务指标对比", pastDays, [
 					{ name: '销售', data: salesData, color: '#409eff' },
 					{ name: '库存', data: inventoryData, color: '#e6a23c' },
 					{ name: '采购', data: purchasingData, color: '#67c23a' }

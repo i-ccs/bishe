@@ -105,11 +105,15 @@ public class SalesInformationService extends BaseService<SalesInformation> {
     public String selectGroupCount(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("select COUNT(*) AS count, ");
         String groupBy = config.get(FindConfig.GROUP_BY);
-        String selectGroupBy = "a." + groupBy;
+        String selectGroupBy = groupBy;
         if (groupBy.equals("product_name") || groupBy.equals("product_category") || groupBy.equals("product_brand")) {
             selectGroupBy = "b." + groupBy;
+        } else if (groupBy.equals("DATE(create_time)")) {
+            selectGroupBy = "DATE(a.create_time)";
+        } else if (!groupBy.contains("(")) {
+            selectGroupBy = "a." + groupBy;
         }
-        sql.append(selectGroupBy).append(" as ").append(groupBy).append(" ");
+        sql.append(selectGroupBy).append(" as `").append(groupBy).append("` ");
         sql.append("from `sales_information` a ");
         sql.append("left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
