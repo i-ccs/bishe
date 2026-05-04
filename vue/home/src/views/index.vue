@@ -24,18 +24,8 @@
 					<el-col :span="24">
 						<el-card class="unified-content-card">
 							<el-row :gutter="40">
-								<el-col :lg="12" :md="12" :sm="24">
-									<div class="content-column news-column">
-										<div class="section-header mini">
-											<div class="title">行业资讯</div>
-											<router-link to="/article/list" class="more-link">更多 <i class="el-icon-arrow-right"></i></router-link>
-										</div>
-										<div class="list_article_box">
-											<list_article v-if="show_list_article" :list="list_article" />
-										</div>
-									</div>
-								</el-col>
-								<el-col :lg="12" :md="12" :sm="24">
+								<!-- Left: Featured Products (3/5) -->
+								<el-col :lg="14" :md="14" :sm="24">
 									<div class="content-column products-column" v-if="$check_action('/commodity_information/list', 'get')">
 										<div class="section-header mini">
 											<div class="title">商品信息推荐</div>
@@ -43,6 +33,18 @@
 										</div>
 										<div class="list_commodity_information_box">
 											<list_commodity_information :list="list_commodity_information" />
+										</div>
+									</div>
+								</el-col>
+								<!-- Right: Industry News (2/5) -->
+								<el-col :lg="10" :md="10" :sm="24">
+									<div class="content-column news-column">
+										<div class="section-header mini">
+											<div class="title">行业资讯</div>
+											<router-link to="/article/list" class="more-link">更多 <i class="el-icon-arrow-right"></i></router-link>
+										</div>
+										<div class="list_article_box">
+											<list_article v-if="show_list_article" :list="list_article" />
 										</div>
 									</div>
 								</el-col>
@@ -408,13 +410,13 @@
 	flex-direction: column;
 }
 
-.news-column {
+.products-column {
 	border-right: 1px solid #f1f5f9;
-	padding-right: 20px !important;
+	padding-right: 30px !important;
 }
 
-.products-column {
-	padding-left: 10px !important;
+.news-column {
+	padding-left: 20px !important;
 }
 
 .premium-notice-card {
