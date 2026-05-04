@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <!-- 日志存储路径 -->
+        <Property name="LOG_PATH">./logs</Property>
+        <!-- 日志输出格式 -->
+        <Property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- 控制台输出 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${PATTERN}"/>
+        </Console>
+
+        <!-- 系统运行日志 (按天滚动) -->
+        <RollingFile name="RollingFile" fileName="${LOG_PATH}/sys_info.log"
+                     filePattern="${LOG_PATH}/sys_info-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+
+        <!-- 操作记录日志 (专门用于记录业务操作，对应 LogAspect) -->
+        <RollingFile name="OperationLog" fileName="${LOG_PATH}/operation.log"
+                     filePattern="${LOG_PATH}/operation-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+
+        <!-- 错误日志 (仅记录 ERROR 及以上级别) -->
+        <RollingFile name="ErrorLog" fileName="${LOG_PATH}/error.log"
+                     filePattern="${LOG_PATH}/error-%d{yyyy-MM-dd}.log">
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- 业务操作日志记录器 (additivity="false" 表示不重复输出到 root) -->
+        <Logger name="com.project.demo.aspect.LogAspect" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="OperationLog"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="ErrorLog"/>
+        </Root>
+    </Loggers>
+</Configuration>
