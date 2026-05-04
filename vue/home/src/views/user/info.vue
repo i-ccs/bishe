@@ -15,41 +15,83 @@
 						<div class="card_info pl-2">
 							<!-- 个人资料 -->
 							<div class="div_info">
-								<span> 个人资料 </span>
-								<div class="content_msg">
-									<div class="left_msg">
+								<h4 class="uc-title">个人资料</h4>
+								
+								<div class="uc-info-sections">
+									<!-- 基础信息 -->
+									<div class="uc-info-section">
 										<div class="figure_avatar">
 											<span>头像：</span>
-											<b-img class="user_avator"
-												:src="obj.avatar ? $fullUrl(obj.avatar) : '../../../public/img/default.png'" alt=""
-												style="width: 3rem; height: 3rem" />
-										</div>
-										<div class="nickname">
-											<div>
-												<span>昵称：</span>
-											</div>
-											<div :style="'display:' + display_name + ';'">
-												<span style="font-size: 1.2rem; color: var(--color_grey)">
-													{{ obj.nickname }}
-												</span>
-											</div>
-											<div class="input_nickname" :style="'display:' + display_input + ';'">
-												<input type="text" id="nickname" v-model="form.nickname"
-													:focus="focus_input" />
-												<div class="btn_save" @click="save_nickname()">
-													保存
+											<div class="change_avatar_box">
+												<b-img class="user_avator"
+													:src="obj.avatar ? $fullUrl(obj.avatar) : '/img/default.png'" alt=""
+													style="width: 4rem; height: 4rem; border-radius: 50%;" />
+												<div class="upload_btn_wrap">
+													<input type="file" @change="change_avatar($event.target.files)" id="input_file" />
+													<b-button size="sm" variant="outline-primary" class="ml-2">修改头像</b-button>
 												</div>
+											</div>
+										</div>
+
+										<div class="uc-info-row">
+											<div class="uc-label">账号：</div>
+											<div class="uc-value">{{ obj.username }}</div>
+										</div>
+
+										<div class="uc-info-row">
+											<div class="uc-label">昵称：</div>
+											<div class="uc-edit-box">
+												<input v-if="display_input === 'flex'" type="text" v-model="form.nickname" class="uc-input" />
+												<span v-else class="uc-value">{{ obj.nickname }}</span>
+												<b-button size="sm" variant="link" @click="display_input = display_input === 'flex' ? 'none' : 'flex'">
+													{{ display_input === 'flex' ? '取消' : '修改' }}
+												</b-button>
+												<b-button v-if="display_input === 'flex'" size="sm" variant="primary" @click="save_nickname()">保存</b-button>
+											</div>
+										</div>
+									</div>
+
+									<!-- 注册详细信息 -->
+									<div class="uc-info-section" v-if="source_table">
+										<div class="uc-info-row">
+											<div class="uc-label">用户姓名：</div>
+											<div class="uc-edit-box">
+												<input v-model="form_sub.user_name" class="uc-input" placeholder="请输入真实姓名" />
+											</div>
+										</div>
+
+										<div class="uc-info-row">
+											<div class="uc-label">用户性别：</div>
+											<div class="uc-edit-box">
+												<select v-model="form_sub.user_gender" class="uc-select">
+													<option :value="0">男</option>
+													<option :value="1">女</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<!-- 账户信息 -->
+									<div class="uc-info-section">
+										<div class="uc-info-row">
+											<div class="uc-label">手机号码：</div>
+											<div class="uc-edit-box">
+												<input v-model="obj.phone" class="uc-input" placeholder="请输入手机号" />
+											</div>
+										</div>
+
+										<div class="uc-info-row">
+											<div class="uc-label">邮箱地址：</div>
+											<div class="uc-edit-box">
+												<input v-model="obj.email" class="uc-input" placeholder="请输入邮箱" />
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="right_msg">
-									<b-button class="Change_password" @click="$router.push('/user/password')">
-										<span>修改密码</span>
-									</b-button>
-									<b-button class="Change_password" v-if="source_table && ($check_action(source_table_check_url,'get') || $check_action(source_table_check_url,'set'))" @click="$router.push(source_table_url)">
-										<span>修改资料</span>
-									</b-button>
+
+								<div class="uc-actions">
+									<b-button variant="primary" class="btn-save-all" @click="save_all()">保存所有修改</b-button>
+									<b-button variant="outline-secondary" @click="$router.push('/user/password')">修改密码</b-button>
 								</div>
 							</div>
 						</div>
@@ -159,19 +201,54 @@
 					}
 				);
 			},
+			/**
+			 * 保存所有修改
+			 */
+			async save_all() {
+				const user_id = this.user.user_id;
+				
+				// 1. 保存主表信息 (nickname, phone, email)
+				const user_res = await this.$post("~/api/user/set?user_id=" + user_id, {
+					nickname: this.obj.nickname,
+					phone: this.obj.phone,
+					email: this.obj.email
+				});
+
+				// 2. 保存子表信息 (user_name, user_gender)
+				if (this.source_table && this.form_sub[this.source_table + '_id']) {
+					const sub_res = await this.$post(
+						"~/api/" + this.source_table + "/set?" + this.source_table + "_id=" + this.form_sub[this.source_table + '_id'],
+						this.form_sub
+					);
+					if (sub_res.result) {
+						this.$toast("资料修改成功!", "success");
+					}
+				} else if (user_res.result) {
+					this.$toast("账号信息修改成功!", "success");
+				}
+				
+				// 同步更新store
+				this.$store.commit('user_set', Object.assign({}, this.user, this.obj));
+			},
 			get_obj_before(params) {
 				params.user_id = this.$store.state.user.user_id;
 				return params
 			},
 			async get_obj_after(json, func){
 				let user_group = this.$store.state.user.user_group;
-				var json = await this.$get("~/api/user_group/get_obj?name="+user_group);
-				if(json.result && json.result.obj){
-					if (json.result.obj.source_table) {
-						this.source_table = json.result.obj.source_table
+				var json_group = await this.$get("~/api/user_group/get_obj?name="+user_group);
+				if(json_group.result && json_group.result.obj){
+					if (json_group.result.obj.source_table) {
+						this.source_table = json_group.result.obj.source_table
 						this.source_table_name = user_group
 						this.source_table_check_url = "/"+this.source_table +"/view";
-						this.source_table_url = this.source_table_check_url+"?user_id=" +this.form.user_id
+						this.source_table_url = this.source_table_check_url+"?user_id=" +this.user.user_id;
+						
+						// 获取子表数据
+						const sub_res = await this.$get("~/api/" + this.source_table + "/get_obj?user_id=" + this.user.user_id);
+						if (sub_res.result && sub_res.result.obj) {
+							this.form_sub = sub_res.result.obj;
+						}
 					}
 				}
 			}
@@ -185,73 +262,124 @@
 <style scoped>
 	.container {
 		min-height: 800px;
+		padding-top: 2rem;
 	}
 
-	.content_msg {
-		justify-content: space-between;
+	.card_info {
+		background: #fff;
+		border-radius: 16px;
+		padding: 2rem !important;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+	}
+
+	.uc-title {
+		color: #1a2740;
+		font-weight: 700;
+		margin-bottom: 2rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid #f0f4f8;
+	}
+
+	.uc-info-sections {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.uc-info-section {
+		padding: 1.5rem;
+		background: #f8fbff;
+		border-radius: 12px;
+		border: 1px solid #eef4fa;
+	}
+
+	.uc-info-row {
+		display: flex;
 		align-items: center;
-		margin-bottom: 30px;
-		/* border-bottom: 1px solid var(--color_default_h);
-        margin-right: 5px; */
+		margin-bottom: 1rem;
+	}
+
+	.uc-info-row:last-child {
+		margin-bottom: 0;
+	}
+
+	.uc-label {
+		width: 100px;
+		color: #64748b;
+		font-size: 14px;
+	}
+
+	.uc-value {
+		color: #1e293b;
+		font-weight: 500;
+	}
+
+	.uc-edit-box {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		flex: 1;
+	}
+
+	.uc-input {
+		border: 1px solid #cbd5e1;
+		border-radius: 6px;
+		padding: 4px 12px;
+		font-size: 14px;
+		width: 200px;
+		transition: border-color 0.2s;
+	}
+
+	.uc-input:focus {
+		outline: none;
+		border-color: #1a6fa8;
+	}
+
+	.uc-select {
+		border: 1px solid #cbd5e1;
+		border-radius: 6px;
+		padding: 4px 12px;
+		font-size: 14px;
+		background: #fff;
 	}
 
 	.figure_avatar {
-		padding: 5px;
-		height: 60px;
-		line-height: 60px;
-	}
-
-	.nickname {
 		display: flex;
-		padding: 5px;
-		line-height: 30px;
+		align-items: center;
+		margin-bottom: 1.5rem;
 	}
 
-	.input_nickname .btn_save {
-		width: 4rem;
-		text-align: center;
-		height: 31px;
-		line-height: 31px;
-		border: 1px solid var(--color_grey);
-		border-radius: 5px;
-		margin-right: 4px;
+	.change_avatar_box {
+		display: flex;
+		align-items: center;
+		gap: 20px;
 	}
 
-	.btn_save:hover {
-		background-color: var(--color_success);
-		border: none;
-		color: white;
-	}
-
-	.right_msg {
-		margin: auto;
-	}
-
-	.right_msg .change_avatar_box {
-		cursor: pointer;
+	.upload_btn_wrap {
 		position: relative;
-		display: flex;
-		margin-left: 5px;
 	}
 
-	.right_wrap {
-		margin: 0 10px;
-	}
-
-	.right_msg .change_avatar_box #input_file {
-		cursor: pointer;
+	.upload_btn_wrap #input_file {
 		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
 		opacity: 0;
-		z-index: 1000;
-		font-size: 0;
+		cursor: pointer;
+		z-index: 1;
 	}
 
-	.change_nickname_box {
-		margin-top: 10px;
-		cursor: pointer;
+	.uc-actions {
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 1px solid #f0f4f8;
 		display: flex;
-		margin-left: 5px;
+		gap: 1rem;
+	}
+
+	.btn-save-all {
+		padding: 0.6rem 2.5rem;
+		font-weight: 600;
 	}
 </style>

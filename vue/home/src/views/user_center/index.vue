@@ -13,7 +13,7 @@
 
 							<!-- 用户信息卡片 -->
 							<div class="uc-hero">
-								<div class="uc-avatar-wrap">
+										<div class="uc-avatar-wrap">
 									<img :src="avatarUrl" class="uc-avatar" @error="onAvatarError" />
 									<span class="uc-online-dot"></span>
 								</div>
