@@ -272,6 +272,7 @@ CREATE TABLE `commodity_information` (
   `inventory_information_limit_times` int NOT NULL DEFAULT '0' COMMENT '库存限制次数',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `is_delete` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '是否删除：0未删除，1已删除',
   PRIMARY KEY (`commodity_information_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品信息';
 
@@ -563,6 +564,7 @@ CREATE TABLE `supply_information` (
   `cooperation_situation` text COMMENT '合作情况',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `is_delete` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '是否删除：0未删除，1已删除',
   PRIMARY KEY (`supply_information_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='供应信息';
 
