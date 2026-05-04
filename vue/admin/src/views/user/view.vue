@@ -1,106 +1,98 @@
 <template>
 	<el-main class="bg edit_wrap">
-		<el-form ref="form" :model="form" status-icon :rules="rules" label-width="80px">
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="头像" prop="avatar">
-					<el-upload class="avatar-uploader" drag accept="image/gif, image/jpeg, image/png, image/jpg"
-						action="" :http-request="uploadimg" :show-file-list="false">
-						<img v-if="form.avatar" :src="$fullUrl(form.avatar)" class="avatar">
-						<i v-else class="el-icon-plus avatar-uploader-icon"></i>
-					</el-upload>
-				</el-form-item>
-			</el-col>
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="用户名" prop="username">
-                    <span v-if="obj.username">{{obj.username}}</span>
-					<el-input v-else v-model="form.username" placeholder="请输入用户名"></el-input>
-				</el-form-item>
-			</el-col>
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="昵称" prop="nickname">
-					<el-input v-model="form.nickname" placeholder="请输入昵称"></el-input>
-				</el-form-item>
-			</el-col>
-
-			<el-col v-if="!obj.password" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="密码" prop="password">
-<!--					<span v-if="obj.password">{{obj.password}}</span>-->
-<!--          <el-input v-else type="password" v-model="form.password" placeholder="请输入密码" show-password></el-input>-->
-          <el-input type="password" v-model="form.password" placeholder="请输入密码" show-password></el-input>
-				</el-form-item>
-			</el-col>
-
-			<!-- <el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="用户组" prop="user_group">
-					<el-select v-model="form.user_group" placeholder="请选择">
-						<el-option v-for="o in user_group" :key="o.name" :label="o.name"
-							:value="o.name">
-						</el-option>
-					</el-select>
-				</el-form-item>
-			</el-col> -->
-
-<!--			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">-->
-<!--				<el-form-item label="手机号码" prop="phone">-->
-<!--					<el-input type="phone" v-model="form.phone" placeholder="请输入手机号码"></el-input>-->
-<!--				</el-form-item>-->
-<!--			</el-col>-->
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="邮箱" prop="email">
-					<el-input type="email" v-model="form.email" placeholder="请输入邮箱"></el-input>
-				</el-form-item>
-			</el-col>
-
-<!--			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">-->
-<!--				<el-form-item label="手机认证" prop="phone_state">-->
-<!--					<el-select v-model="form.phone_state" placeholder="请选择">-->
-<!--						<el-option v-for="group in list_state" :key="group.value" :label="group.name"-->
-<!--							:value="group.value">-->
-<!--						</el-option>-->
-<!--					</el-select>-->
-<!--				</el-form-item>-->
-<!--			</el-col>-->
-
-<!--			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">-->
-<!--				<el-form-item label="邮箱认证" prop="email_state">-->
-<!--					<el-select v-model="form.email_state" placeholder="请选择">-->
-<!--						<el-option v-for="group in list_state" :key="group.value" :label="group.name"-->
-<!--							:value="group.value">-->
-<!--						</el-option>-->
-<!--					</el-select>-->
-<!--				</el-form-item>-->
-<!--			</el-col>-->
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<span></span>
-			</el-col>
-
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="状态" prop="state">
-					<el-select v-model="form.state" placeholder="请选择">
-						<el-option v-for="group in list_user_state" :key="group.value" :label="group.name"
-							:value="group.value">
-						</el-option>
-					</el-select>
-				</el-form-item>
-			</el-col>
-
-			<el-col :xs="24" :sm="24" :lg="24" class="el_form_btn_warp">
-				<el-form-item>
-					<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_1">
-						<el-button style="width: 100%; float: left;" type="primary" @click="submit()">提交</el-button>
+		<el-card class="profile-card" shadow="never">
+			<div slot="header" class="card-header">
+				<span class="header-title">用户信息设置</span>
+				<span class="header-subtitle">查看并更新您的账户详情</span>
+			</div>
+			
+			<el-form ref="form" :model="form" status-icon :rules="rules" label-width="100px" label-position="top">
+				<el-row :gutter="40">
+					<!-- 左侧：头像上传 -->
+					<el-col :xs="24" :sm="24" :lg="8" class="profile-side">
+						<div class="avatar-section">
+							<el-form-item label="用户头像" prop="avatar">
+								<el-upload class="avatar-uploader" drag accept="image/gif, image/jpeg, image/png, image/jpg"
+									action="" :http-request="uploadimg" :show-file-list="false">
+									<img v-if="form.avatar" :src="$fullUrl(form.avatar)" class="avatar">
+									<div v-else class="upload-placeholder">
+										<i class="el-icon-plus avatar-uploader-icon"></i>
+										<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+									</div>
+								</el-upload>
+								<div class="avatar-tip">建议尺寸 200x200px，支持 JPG, PNG, GIF</div>
+							</el-form-item>
+							
+							<div class="profile-summary" v-if="form.username">
+								<h2 class="user-name">{{ form.nickname || form.username }}</h2>
+								<el-tag size="small" type="primary" effect="plain" class="group-tag">{{ form.user_group }}</el-tag>
+								<div class="status-indicator">
+									<span class="status-dot" :class="'status-' + form.state"></span>
+									<span class="status-text">{{ list_user_state.find(i => i.value === form.state)?.name }}</span>
+								</div>
+							</div>
+						</div>
 					</el-col>
-					<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_2">
-						<el-button style="width: 100%; float: right;" @click="cancel()">取消</el-button>
-					</el-col>
-				</el-form-item>
-			</el-col>
 
-		</el-form>
+					<!-- 右侧：基本信息 -->
+					<el-col :xs="24" :sm="24" :lg="16" class="profile-main">
+						<div class="section-title">账户基本信息</div>
+						<el-row :gutter="20">
+							<el-col :span="12" :xs="24">
+								<el-form-item label="用户名" prop="username">
+									<el-input v-if="!obj.username" v-model="form.username" placeholder="请输入用户名" prefix-icon="el-icon-user"></el-input>
+									<div v-else class="readonly-field">
+										<i class="el-icon-user"></i>
+										<span>{{ obj.username }}</span>
+									</div>
+								</el-form-item>
+							</el-col>
+							
+							<el-col :span="12" :xs="24">
+								<el-form-item label="昵称" prop="nickname">
+									<el-input v-model="form.nickname" placeholder="请输入昵称" prefix-icon="el-icon-postcard"></el-input>
+								</el-form-item>
+							</el-col>
+						</el-row>
+
+						<el-row :gutter="20">
+							<el-col :span="12" :xs="24">
+								<el-form-item label="邮箱地址" prop="email">
+									<el-input v-model="form.email" placeholder="请输入邮箱" prefix-icon="el-icon-message"></el-input>
+								</el-form-item>
+							</el-col>
+							
+							<el-col :span="12" :xs="24">
+								<el-form-item label="账户状态" prop="state">
+									<el-select v-model="form.state" placeholder="请选择" style="width: 100%">
+										<el-option v-for="group in list_user_state" :key="group.value" :label="group.name"
+											:value="group.value">
+											<span class="option-item">
+												<span class="status-dot" :class="'status-' + group.value"></span>
+												{{ group.name }}
+											</span>
+										</el-option>
+									</el-select>
+								</el-form-item>
+							</el-col>
+						</el-row>
+
+						<el-row :gutter="20" v-if="!obj.password">
+							<el-col :span="24">
+								<el-form-item label="设置密码" prop="password">
+									<el-input type="password" v-model="form.password" placeholder="请输入密码" show-password prefix-icon="el-icon-lock"></el-input>
+								</el-form-item>
+							</el-col>
+						</el-row>
+
+						<div class="form-actions">
+							<el-button type="primary" class="btn-submit" @click="submit()" icon="el-icon-check">保存更改</el-button>
+							<el-button class="btn-cancel" @click="cancel()" icon="el-icon-close">取消</el-button>
+						</div>
+					</el-col>
+				</el-row>
+			</el-form>
+		</el-card>
 	</el-main>
 </template>
 
@@ -128,11 +120,8 @@
 					nickname: '',
 					password: '',
 					avatar: '',
-					// phone: '',
 					email: '',
 					user_group: '管理员',
-					// phone_state: 0,
-					// email_state: 0,
 					state: 1
 				},
 
@@ -142,11 +131,8 @@
 					nickname: '',
           password: '',
 					avatar: '',
-					// phone: '',
 					email: '',
 					user_group: '管理员',
-					// phone_state: 0,
-					// email_state: 0,
 					state: 1
 				},
 
@@ -178,10 +164,6 @@
 						message: '最少要分配一个权限',
 						trigger: 'blur'
 					}],
-					// phone: [{
-					// 	validator: this.$is_phone,
-					// 	trigger: 'blur'
-					// }],
 					email: [{
 						validator: this.$is_email,
 						trigger: 'blur'
@@ -217,33 +199,6 @@
 			}
 		},
 		methods: {
-
-
-
-			/**
-			 * 验证手机号
-			 * @param {Object} rule
-			 * @param {Object} value 验证值
-			 * @param {Object} callback 返回函数
-			 */
-			// is_phone(rule, value, callback) {
-			// 	if (!value) {
-			// 		callback();
-			// 	} else if (/^\D+$/.test(value)) {
-			// 		callback(new Error('手机号必须是数字型'));
-			// 	} else if (value.length > 13 || value.length < 8) {
-			// 		callback(new Error('手机号长度必须大于8 并且小于 13!'));
-			// 	} else {
-			// 		callback();
-			// 	}
-			// },
-
-			/**
-			 * 验证邮箱
-			 * @param {Object} rule
-			 * @param {Object} value 验证值
-			 * @param {Object} callback 返回函数
-			 */
 			is_email(rule, value, callback) {
 				if (!value || /^\w+@\w+\.\w+$/.test(value)) {
 					callback();
@@ -252,68 +207,38 @@
 				}
 			},
 
-			/**
-			 * 上传成功时返回地址
-			 * @param {Object} res
-			 * @param {Object} file
-			 */
 			handleAvatarSuccess(res, file) {
-				console.log("返回地址");
 				this.avatar = URL.createObjectURL(file.raw);
 			},
 
-			/**
-			 * 判断图片类型和大小
-			 * @param {Object} file
-			 * @return {Boolen} 符合条件时返回true, 不符合条件时返回false
-			 */
 			beforeAvatarUpload(file) {
-				console.log("判断")
 				const isLt2M = file.size / 1024 / 1024 < 2;
-
-				if (!isJPG) {
-					this.$message.error('上传头像图片只能是 JPG 格式!');
-				} else if (!isLt2M) {
+				if (!isLt2M) {
 					this.$message.error('上传头像图片大小不能超过 2MB!');
 				}
 				return isLt2M;
 			},
 
-			/**
-			 * 获取用户组
-			 */
 			async get_user_group() {
 				var json = await this.$get("~/api/user_group/get_list?");
-                console.log(json);
 				this.user_group = json.result.list;
 			},
 
-			/**
-			 * 上传文件
-			 * @param {Object} param
-			 */
 			uploadimg(param) {
 				this.uploadFile(param.file, "avatar");
 			},
       async submit_check(param) {
         var ret = null;
-
         var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        // var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
-
-        var {username, nickname, email, phone} = param;
+        var {username, nickname, email} = param;
 
         if(username.length > 16 || username.length < 5){
         	ret = "用户名长度应为5到16个字符之间！";
-        } else if (nickname && nickname.length > 12 || nickname.length < 2) {
+        } else if (nickname && (nickname.length > 12 || nickname.length < 2)) {
           ret = "昵称长度应为2个字符到12个字符之间";
         } else if (email && !email_regular.test(email)) {
           ret = "请输入正确的邮箱地址 例：test@test.com!";
         }
-        // else if (phone && !phone_regular.test(phone)) {
-        //   ret = "请输入正确的手机号码 例：18955552312!";
-        // }
-        console.log(param.user_id)
         if (!param.user_id){
           let res = await this.$get("~/api/user/count?", {"username": param.username});
           if(res.result){
@@ -343,31 +268,219 @@
 	}
 </script>
 
-<style>
-	.avatar-uploader .el-upload {
-		border: 1px dashed #d9d9d9;
-		border-radius: 6px;
+<style scoped>
+	.edit_wrap {
+		padding: 20px;
+		background-color: #f5f7fa;
+		min-height: calc(100vh - 60px);
+	}
+
+	.profile-card {
+		max-width: 1000px;
+		margin: 0 auto;
+		border-radius: 12px;
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+		border: none;
+	}
+
+	.card-header {
+		padding: 10px 0;
+	}
+
+	.header-title {
+		font-size: 20px;
+		font-weight: 600;
+		color: #303133;
+		display: block;
+	}
+
+	.header-subtitle {
+		font-size: 13px;
+		color: #909399;
+		margin-top: 5px;
+		display: block;
+	}
+
+	.profile-side {
+		border-right: 1px solid #ebeef5;
+		padding-bottom: 20px;
+	}
+
+	.avatar-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 20px;
+	}
+
+	.avatar-uploader {
+		width: 180px;
+		height: 180px;
+		margin-bottom: 20px;
+	}
+
+	.avatar-uploader >>> .el-upload {
+		border: 2px dashed #dcdfe6;
+		border-radius: 50%;
 		cursor: pointer;
 		position: relative;
 		overflow: hidden;
+		transition: all 0.3s;
+		width: 100%;
+		height: 100%;
 	}
 
-	.avatar-uploader .el-upload:hover {
+	.avatar-uploader >>> .el-upload:hover {
 		border-color: #409EFF;
+		background-color: rgba(64, 158, 255, 0.02);
 	}
 
-	.avatar-uploader-icon {
-		font-size: 28px;
-		color: #8c939d;
-		width: 178px;
-		height: 178px;
-		line-height: 178px;
-		text-align: center;
+	.avatar-uploader >>> .el-upload-dragger {
+		width: 100%;
+		height: 100%;
+		border: none;
+		background: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.avatar {
-		width: 178px;
-		height: 178px;
-		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 50%;
+	}
+
+	.upload-placeholder {
+		color: #909399;
+	}
+
+	.avatar-uploader-icon {
+		font-size: 32px;
+		margin-bottom: 10px;
+	}
+
+	.avatar-tip {
+		font-size: 12px;
+		color: #909399;
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	.profile-summary {
+		text-align: center;
+		margin-top: 20px;
+	}
+
+	.user-name {
+		margin: 0 0 10px 0;
+		font-size: 22px;
+		color: #303133;
+	}
+
+	.group-tag {
+		margin-bottom: 15px;
+	}
+
+	.status-indicator {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		margin-top: 10px;
+	}
+
+	.status-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		display: inline-block;
+	}
+
+	.status-1 { background-color: #67C23A; } /* 可用 */
+	.status-2 { background-color: #E6A23C; } /* 异常 */
+	.status-3 { background-color: #F56C6C; } /* 冻结 */
+	.status-4 { background-color: #909399; } /* 注销 */
+
+	.status-text {
+		font-size: 14px;
+		color: #606266;
+	}
+
+	.profile-main {
+		padding-left: 20px !important;
+	}
+
+	.section-title {
+		font-size: 16px;
+		font-weight: 600;
+		color: #303133;
+		margin-bottom: 25px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #f0f2f5;
+		position: relative;
+	}
+
+	.section-title::after {
+		content: "";
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		width: 40px;
+		height: 2px;
+		background: #409EFF;
+	}
+
+	.readonly-field {
+		background-color: #f5f7fa;
+		border: 1px solid #e4e7ed;
+		border-radius: 4px;
+		padding: 0 15px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		color: #606266;
+		gap: 10px;
+	}
+
+	.readonly-field i {
+		color: #909399;
+	}
+
+	.option-item {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.form-actions {
+		margin-top: 40px;
+		padding-top: 20px;
+		border-top: 1px solid #f0f2f5;
+		display: flex;
+		gap: 15px;
+	}
+
+	.btn-submit {
+		padding: 12px 30px;
+		font-weight: 500;
+		box-shadow: 0 4px 12px rgba(64, 158, 255, 0.3);
+	}
+
+	.btn-cancel {
+		padding: 12px 30px;
+	}
+
+	@media (max-width: 992px) {
+		.profile-side {
+			border-right: none;
+			border-bottom: 1px solid #ebeef5;
+			margin-bottom: 30px;
+		}
+		.profile-main {
+			padding-left: 0 !important;
+		}
 	}
 </style>

@@ -1,82 +1,79 @@
 <template>
 	<el-main class="bg edit_wrap notice">
-		<el-form ref="form" :model="form" status-icon label-width="80px">
-			<el-row class="row_e">
-				<el-col :xs="24" :sm="12" :lg="12" class="el_form_item_warp">
-				<el-form-item label="标题" prop="title">
-					<el-input v-model="form.title" placeholder="请输入标题"></el-input>
-				</el-form-item>
-			</el-col>
+		<el-card class="premium-view-card" shadow="never">
+			<div slot="header" class="premium-header">
+				<span class="premium-title">{{ form.notice_id ? '编辑公告' : '发布公告' }}</span>
+				<span class="premium-subtitle">发布系统通知、活动提醒或维护公告</span>
+			</div>
 
-			<el-col :xs="24" :sm="24" :lg="24" class="el_form_editor_warp">
-				<el-form-item label="正文" prop="content">
-					<quill-editor v-model="form.content">
-					</quill-editor>
-				</el-form-item>
-			</el-col>
-			</el-row>
-			
-
-			<el-col :xs="24" :sm="24" :lg="24" class="el_form_btn_warp">
-				<el-form-item>
-					<el-col v-if="(form['notice_id'] && $check_action('/notice/view','set')) || (!form['notice_id'] && $check_action('/notice/view','add'))" :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_1">
-						<el-button style="width: 100%; float: left;" type="primary" @click="submit()">提交</el-button>
+			<el-form ref="form" :model="form" status-icon label-width="80px" label-position="top">
+				<div class="premium-section-title">公告内容</div>
+				<el-row :gutter="20">
+					<el-col :xs="24" :sm="24" :lg="24">
+						<el-form-item label="公告标题" prop="title">
+							<el-input v-model="form.title" placeholder="请输入公告标题" prefix-icon="el-icon-notification"></el-input>
+						</el-form-item>
 					</el-col>
-					<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_2">
-						<el-button style="width: 100%; float: right;" @click="cancel()">取消</el-button>
+					<el-col :xs="24" :sm="24" :lg="24">
+						<el-form-item label="正文详情" prop="content">
+							<quill-editor v-model="form.content" class="premium-editor"></quill-editor>
+						</el-form-item>
 					</el-col>
-				</el-form-item>
-			</el-col>
+				</el-row>
 
-		</el-form>
+				<div class="premium-actions">
+					<template v-if="(form['notice_id'] && $check_action('/notice/view','set')) || (!form['notice_id'] && $check_action('/notice/view','add'))">
+						<el-button type="primary" class="premium-btn-submit" @click="submit()" icon="el-icon-check">立即发布</el-button>
+						<el-button class="premium-btn-cancel" @click="cancel()" icon="el-icon-close">取消</el-button>
+					</template>
+					<el-button v-else class="premium-btn-cancel" @click="cancel()" icon="el-icon-back">返回</el-button>
+				</div>
+			</el-form>
+		</el-card>
 	</el-main>
 </template>
 
 <script>
 	import mixin from "@/mixins/page.js";
-
 	export default {
 		mixins: [mixin],
 		data() {
 			return {
-
 				"title": "notice",
 				field: "notice_id",
-
 				url_add: "~/api/notice/add?",
 				url_set: "~/api/notice/set?",
 				url_get_obj: "~/api/notice/get_obj?",
-
-				query: {
-					notice_id: 0
-				},
-
+				query: { notice_id: 0 },
 				form: {
 					notice_id: 0,
 					title: "",
 					content: ""
 				},
-
 			}
 		},
 		methods: {
 			submit_check(params) {
-				var msg = "";
 				if (params.title === "") {
-					msg = "标题不能为空";
-					return msg;
+					return "标题不能为空";
 				}
 				if (params.content === "") {
-					msg = "内容不能为空";
-					return msg;
+					return "内容不能为空";
 				}
+				return null;
 			},
-		},
-		created() {
-
 		}
 	}
 </script>
 
-<style>
+<style scoped>
+	.premium-editor >>> .ql-container {
+		min-height: 400px;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+	}
+	.premium-editor >>> .ql-toolbar {
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+	}
 </style>
