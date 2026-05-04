@@ -1,0 +1,16 @@
+2026-05-04 21:53:32.270 [http-nio-5000-exec-5] INFO  com.project.demo.aspect.LogAspect - [user] [insert] insert: {"password":"asd123","nickName":"","avatar":"/api/upload/default_avatar.jpg","state":1,"userName":"ewfwwe","userGroup":"注册用户","userId":0,"email":""}
+2026-05-04 21:53:32.309 [http-nio-5000-exec-10] INFO  com.project.demo.aspect.LogAspect - [registered_user] [insert] insert: {"user_id":6,"user_name":"admin","user_gender":0,"registered_user_id":0}
+2026-05-04 21:53:43.326 [http-nio-5000-exec-5] INFO  com.project.demo.aspect.LogAspect - [registered_user] [delete] delete: {"registered_user_id":"4"}
+2026-05-04 21:53:43.345 [http-nio-5000-exec-9] INFO  com.project.demo.aspect.LogAspect - [user] [delete] delete: {"user_id":"5"}
+2026-05-04 21:55:35.227 [http-nio-5000-exec-7] INFO  com.project.demo.aspect.LogAspect - [user] [insert] insert: {"password":"asd123","nickName":"","avatar":"/api/upload/default_avatar.jpg","state":1,"userName":"wwwsd","userGroup":"注册用户","userId":0,"email":""}
+2026-05-04 21:55:35.249 [http-nio-5000-exec-8] INFO  com.project.demo.aspect.LogAspect - [registered_user] [insert] insert: {"user_id":7,"user_name":"admin","user_gender":0,"registered_user_id":0}
+2026-05-04 21:55:47.650 [http-nio-5000-exec-6] INFO  com.project.demo.aspect.LogAspect - [user] [update] update: {"password":"asd123","user_group":"注册用户","user_id":7,"user_name":"wwwsd","nick_name":"","avatar":"/api/upload/default_avatar.jpg","state":1,"email":""}
+2026-05-04 21:55:47.685 [http-nio-5000-exec-9] INFO  com.project.demo.aspect.LogAspect - [registered_user] [update] update: {"examine_state":"已通过","user_id":7,"user_name":"fwe","user_gender":0,"registered_user_id":6,"is_delete":0}
+2026-05-04 21:57:19.870 [http-nio-5000-exec-5] INFO  com.project.demo.aspect.LogAspect - [registered_user] [delete] delete: {"registered_user_id":"5"}
+2026-05-04 21:57:19.918 [http-nio-5000-exec-2] INFO  com.project.demo.aspect.LogAspect - [user] [delete] delete: {"user_id":"6"}
+2026-05-04 22:11:21.178 [http-nio-5000-exec-1] INFO  com.project.demo.aspect.LogAspect - [user] [insert] insert: {"password":"asd123","nickName":"","avatar":"/api/upload/default_avatar.jpg","state":1,"userName":"vergeg","userGroup":"注册用户","userId":0,"email":""}
+2026-05-04 22:11:21.252 [http-nio-5000-exec-5] INFO  com.project.demo.aspect.LogAspect - [registered_user] [insert] insert: {"user_id":8,"user_name":"wfweew","user_gender":0,"registered_user_id":0}
+2026-05-04 22:25:47.138 [http-nio-5000-exec-2] INFO  com.project.demo.aspect.LogAspect - [registered_user] [delete] delete: {"registered_user_id":"6"}
+2026-05-04 22:25:47.158 [http-nio-5000-exec-8] INFO  com.project.demo.aspect.LogAspect - [user] [delete] delete: {"user_id":"7"}
+2026-05-04 22:26:32.215 [http-nio-5000-exec-2] INFO  com.project.demo.aspect.LogAspect - [user] [insert] insert: {"password":"asd123","user_group":"管理员","user_id":0,"user_name":"fevee","nick_name":"","avatar":"","state":1,"email":""}
+2026-05-04 22:27:04.611 [http-nio-5000-exec-6] INFO  com.project.demo.aspect.LogAspect - [user] [delete] delete: {"user_id":"9"}

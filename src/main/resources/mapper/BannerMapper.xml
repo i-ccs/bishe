@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.demo.dao.BannerMapper">
+
+    <resultMap type="com.project.demo.entity.Banner" id="BannerResult">
+        <result property="bannerId"    column="banner_id"    />
+        <result property="title"    column="title"    />
+        <result property="content"    column="content"    />
+        <result property="url"    column="url"    />
+        <result property="img"    column="img"    />
+        <result property="views"    column="views"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectBannerVo">
+        select banner_id, title, content, url, img, views, create_time, update_time from banner
+    </sql>
+
+    <select id="selectBannerList" parameterType="com.project.demo.entity.Banner" resultMap="BannerResult">
+        <include refid="selectBannerVo"/>
+        <where>
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="url != null  and url != ''"> and url = #{url}</if>
+            <if test="img != null  and img != ''"> and img = #{img}</if>
+            <if test="views != null "> and views = #{views}</if>
+        </where>
+    </select>
+
+    <select id="selectBannerById" parameterType="Integer" resultMap="BannerResult">
+        <include refid="selectBannerVo"/>
+        where banner_id = #{bannerId}
+    </select>
+
+    <insert id="insertBanner" parameterType="com.project.demo.entity.Banner" useGeneratedKeys="true" keyProperty="bannerId">
+        insert into banner
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null  and title != ''">title,</if>
+            <if test="content != null  and content != ''">content,</if>
+            <if test="url != null  and url != ''">url,</if>
+            <if test="img != null  and img != ''">img,</if>
+            <if test="views != null ">views,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateTime != null ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null  and title != ''">#{title},</if>
+            <if test="content != null  and content != ''">#{content},</if>
+            <if test="url != null  and url != ''">#{url},</if>
+            <if test="img != null  and img != ''">#{img},</if>
+            <if test="views != null ">#{views},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateBanner" parameterType="com.project.demo.entity.Banner">
+        update banner
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null  and title != ''">title = #{title},</if>
+            <if test="content != null  and content != ''">content = #{content},</if>
+            <if test="url != null  and url != ''">url = #{url},</if>
+            <if test="img != null  and img != ''">img = #{img},</if>
+            <if test="views != null ">views = #{views},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+        </trim>
+        where banner_id = #{bannerId}
+    </update>
+
+    <delete id="deleteBannerById" parameterType="Integer">
+        delete from banner where banner_id = #{bannerId}
+    </delete>
+
+    <delete id="deleteBannerByIds" parameterType="String">
+        delete from banner where banner_id in
+        <foreach item="bannerId" collection="array" open="(" separator="," close=")">
+            #{bannerId}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -139,7 +139,7 @@
 		data() {
 			return {
 				praiseLen: this.obj["praise_len"],
-				hitsLen: this.obj["hits"],
+				viewsLen: this.obj["views"],
 				imgList: [
 				],
 				itemList: [
@@ -247,7 +247,7 @@
 				deep: true,
 				handler(newVal){
 					this.praiseLen = this.obj["praise_len"]
-					this.hitsLen = this.obj["hits"]
+					this.viewsLen = this.obj["views"]
 																			}
 			},
 		},

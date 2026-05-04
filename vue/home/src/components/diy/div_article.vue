@@ -15,7 +15,7 @@
                         <span>点赞数：{{ obj[vm.praise_len] }}</span>
                     </div>
                     <div class="see">
-                        <span>点击数：{{ obj[vm.hits] }}</span>
+                        <span>点击数：{{ obj[vm.views] }}</span>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                         description: "description",
                         content: "content",
                         create_time: "create_time",
-                        hits: "hits",
+                        views: "views",
                         praise_len: "praise_len",
                     };
                 },

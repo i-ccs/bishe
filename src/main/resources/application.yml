@@ -59,4 +59,9 @@ mybatis-plus:
     lazy-loading-enabled: true
     aggressive-lazy-loading: false
     use-generated-keys: true
+  global-config:
+    db-config:
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 

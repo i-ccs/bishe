@@ -1,10 +1,10 @@
 <template>
-    <div class="vertical-notice-container" :style="{height: '200px'}">
-      <div class="notice-list-wrapper" :class="{animate: list.length > 1}">
-        <div v-for="(o, i) in list" :key="i" class="notice-item">
-          <router-link class="swiper_notice" :to="'/notice/details?notice_id='+o.notice_id">
+    <div class="vertical-announcement-container" :style="{height: '200px'}">
+      <div class="announcement-list-wrapper" :class="{animate: list.length > 1}">
+        <div v-for="(o, i) in list" :key="i" class="announcement-item">
+          <router-link class="swiper_announcement" :to="'/announcement/details?announcement_id='+o.announcement_id">
             <p class="title">{{o.title}}</p>
-            <div class="notice-content-wrapper">
+            <div class="announcement-content-wrapper">
               <p class="content" v-html="o.content"></p>
             </div>
           </router-link>
@@ -25,23 +25,23 @@ export default {
 </script>
 
 <style scoped>
-  .vertical-notice-container {
+  .vertical-announcement-container {
     width: 100%;
     overflow: hidden;
     position: relative;
     background: transparent;
   }
 
-  .notice-list-wrapper {
+  .announcement-list-wrapper {
     position: relative;
     top: 0;
   }
 
-  .notice-list-wrapper.animate {
+  .announcement-list-wrapper.animate {
     animation: verticalScroll 25s linear infinite;
   }
 
-  .notice-list-wrapper.animate:hover {
+  .announcement-list-wrapper.animate:hover {
     animation-play-state: paused;
   }
 
@@ -50,12 +50,12 @@ export default {
     100% { transform: translateY(-50%); }
   }
 
-  .notice-item {
+  .announcement-item {
     padding: 15px 0;
     border-bottom: 1px dashed rgba(0,0,0,0.05);
   }
 
-  .swiper_notice {
+  .swiper_announcement {
     display: block;
     text-decoration: none !important;
   }
@@ -71,7 +71,7 @@ export default {
     text-overflow: ellipsis;
   }
 
-  .notice-content-wrapper {
+  .announcement-content-wrapper {
     position: relative;
     padding: 0 20px 15px 20px;
   }

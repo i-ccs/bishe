@@ -77,7 +77,7 @@
                       					  
 					  
                                               <li class="nav_li">
-                          <router-link to="/notice/list" class="nav_a">
+                          <router-link to="/announcement/list" class="nav_a">
                               公告信息
                           </router-link>
                         </li>

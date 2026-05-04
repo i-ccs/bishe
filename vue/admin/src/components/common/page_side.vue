@@ -59,9 +59,9 @@
 	</el-submenu>
 
               <el-submenu index="web"
-                    v-show="user_group == '管理员' || $check_group(['/nav/table','/link/table','/slides/table','/ad/table'])">
+                    v-show="user_group == '管理员' || $check_group(['/nav/table','/link/table','/banner/table','/ad/table'])">
           <template slot="title"><i class="el-icon-picture-outline"></i><span ref="customTemplate1">系统管理</span></template>
-                      <el-menu-item v-show="user_group == '管理员' || $check_action('/slides/table')" index="/slides/table" @click="handleButtonClick(1)">
+                      <el-menu-item v-show="user_group == '管理员' || $check_action('/banner/table')" index="/banner/table" @click="handleButtonClick(1)">
             <span>轮播图管理</span>
           </el-menu-item>
                         
@@ -71,27 +71,27 @@
 
     
               <el-submenu index="notic"
-                    v-show="$check_group(['/notice/table'])">
+                    v-show="$check_group(['/announcement/table'])">
           <template slot="title"><i class="el-icon-warning-outline"></i><span ref="customTemplate2">公告信息管理</span>
           </template>
-          <el-menu-item v-show="$check_action('/notice/table')" index="/notice/table" @click="handleButtonClick(2)">
+          <el-menu-item v-show="$check_action('/announcement/table')" index="/announcement/table" @click="handleButtonClick(2)">
             <span>公告信息</span>
           </el-menu-item>
         </el-submenu>
       
 
                             <el-submenu index="news"
-                        v-show="$check_group(['/article/table','/article_type/table','/exam/table','/evaluation/table'])">
+                        v-show="$check_group(['/article/table','/category/table','/exam/table','/evaluation/table'])">
               <template slot="title"><i class="el-icon-s-opportunity"></i><span ref="customTemplate3">资源管理</span></template>
 
                                   <el-menu-item v-show="$check_action('/article/table')" index="/article/table" @click="handleButtonClick(3)">
                     <!-- <span>文章</span> -->
                     <span>{{$page_title("/article/table") || "文章"}}</span>
                   </el-menu-item>
-                  <el-menu-item v-show="$check_action('/article_type/table')"
-                                index="/article_type/table" @click="handleButtonClick(3)">
+                  <el-menu-item v-show="$check_action('/category/table')"
+                                index="/category/table" @click="handleButtonClick(3)">
                     <!-- <span>文章类型</span> -->
-                    <span>{{$page_title("/article_type/table") || "文章分类"}}</span>
+                    <span>{{$page_title("/category/table") || "文章分类"}}</span>
                   </el-menu-item>
                                 				            </el-submenu>
                             
@@ -168,7 +168,7 @@
                   		                    		                                site_list.push("sales_information")
           		                    		                                site_list.push("purchasing_information")
           		                                site_list.push("inventory_information")
-          		                  let list = ["exam", 'evaluation', "article", "article_type", "comment", "notice"];
+          		                  let list = ["exam", 'evaluation', "article", "category", "comment", "announcement"];
                                       list.push("registered_user");
                                                                                                                     for (var i = 0; i < tables.length; i++) {
           var o = tables[i];

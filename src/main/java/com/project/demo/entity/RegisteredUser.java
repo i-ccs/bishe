@@ -1,10 +1,7 @@
 package com.project.demo.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -33,6 +30,15 @@ public class RegisteredUser implements Serializable {
     // 用户编号
     @TableField(value = "user_id")
     private Integer userId;
+
+    // 审核状态
+    @TableField(value = "examine_state")
+    private String examineState;
+
+    // 是否删除
+    @TableLogic
+    @TableField(value = "is_delete")
+    private Integer isDelete;
 
     // 更新时间
     @TableField(value = "update_time")

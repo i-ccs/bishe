@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectUserVo">
-        select user_id, state, user_group, login_time, phone, phone_state, user_name, nick_name, password, email, email_state, avatar, create_time from user
+        select user_id, state, user_group, login_time, phone, phone_state, user_name, nick_name, password, email, email_state, avatar, is_delete, create_time from user
     </sql>
 
     <select id="selectUserList" parameterType="com.project.demo.entity.User" resultMap="UserResult">
@@ -38,12 +38,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="email != null  and email != ''"> and email = #{email}</if>
             <if test="emailState != null "> and email_state = #{emailState}</if>
             <if test="avatar != null  and avatar != ''"> and avatar = #{avatar}</if>
+            and is_delete = 0
         </where>
     </select>
 
     <select id="selectUserById" parameterType="Integer" resultMap="UserResult">
         <include refid="selectUserVo"/>
-        where user_id = #{userId}
+        where user_id = #{userId} and is_delete = 0
     </select>
 
     <insert id="insertUser" parameterType="com.project.demo.entity.User" useGeneratedKeys="true" keyProperty="userId">
@@ -97,16 +98,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where user_id = #{userId}
     </update>
 
-    <delete id="deleteUserById" parameterType="Integer">
-        delete from user where user_id = #{userId}
-    </delete>
+    <update id="deleteUserById" parameterType="Integer">
+        update user set is_delete = 1 where user_id = #{userId}
+    </update>
 
-    <delete id="deleteUserByIds" parameterType="String">
-        delete from user where user_id in
+    <update id="deleteUserByIds" parameterType="String">
+        update user set is_delete = 1 where user_id in
         <foreach item="userId" collection="array" open="(" separator="," close=")">
             #{userId}
         </foreach>
-    </delete>
+    </update>
 
     <select id="selectExamineState" resultType="String">
         select examine_state from ${sourceTable} WHERE user_id = #{userId}

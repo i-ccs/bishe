@@ -32,7 +32,7 @@
 						create_time: "create_time",
 						content: "content",
 						praise_len: "praise_len",
-						hits: "hits",
+						views: "views",
 					};
 				},
 			},

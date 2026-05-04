@@ -103,7 +103,7 @@
   color: var(--one) !important;
 }
 
-#app .page_order .card_order .goods_list .item_goods .middle_info .title, #app .page_order .card_goods_list .list_order .goods_list .item_goods .middle_info .description, .page_user .user_right_box .list_collect .item_collect .collect_box .right_block .top_comment .title, .diy_list .diy_list_container .diy_list_box .diy_view_list .diy_list_box_wrap .diy_list_item_box .diy_row .diy_text, .diy_list .diy_list_box_wrap .diy_list_item_content .diy_row .diy_text, .diy_list .goods .diy_list_item_content .diy_row .diy_text, .diy_list .diy_list_box_wrap .diy_list_item_content .diy_row .diy_title, .diy_list .goods .diy_list_item_content .diy_row .diy_title, .page_message .card_message .list_message .item_message .left_block .user_info .nick_name, .page_message .card_message .list_message .item_message .col-md-3 .user_info .nick_name, .page_article .div_article .title, .page_notice .notice_list .notice_block .notice_title, .page_forum .container .row .card_forum_list .list_forum .item_forum .right_block .bottom .time, .page_forum .container .row .card_forum_list .list_forum .item_forum .right_block .top, #app .page_order .card_goods_list .list_order .goods_list .item_goods .middle_info .title, .page_cart .warp .container .card .cart_block .list_cart .item_cart .cart_body .right_info .title, .page_goods .card_aside .list .goods .goods_nav .good_bottom .title, .page_goods .page_goods_list_hot .list .goods .goods_nav .good_bottom .title, .page_goods .page_goods_list_wrap .page_goods_list_base .card_goods_list .list_goods .goods .doc a .title, .page_root .product .list_goods .goods .doc a .title,
+#app .page_order .card_order .goods_list .item_goods .middle_info .title, #app .page_order .card_goods_list .list_order .goods_list .item_goods .middle_info .description, .page_user .user_right_box .list_collect .item_collect .collect_box .right_block .top_comment .title, .diy_list .diy_list_container .diy_list_box .diy_view_list .diy_list_box_wrap .diy_list_item_box .diy_row .diy_text, .diy_list .diy_list_box_wrap .diy_list_item_content .diy_row .diy_text, .diy_list .goods .diy_list_item_content .diy_row .diy_text, .diy_list .diy_list_box_wrap .diy_list_item_content .diy_row .diy_title, .diy_list .goods .diy_list_item_content .diy_row .diy_title, .page_message .card_message .list_message .item_message .left_block .user_info .nick_name, .page_message .card_message .list_message .item_message .col-md-3 .user_info .nick_name, .page_article .div_article .title, .page_announcement .announcement_list .announcement_block .announcement_title, .page_forum .container .row .card_forum_list .list_forum .item_forum .right_block .bottom .time, .page_forum .container .row .card_forum_list .list_forum .item_forum .right_block .top, #app .page_order .card_goods_list .list_order .goods_list .item_goods .middle_info .title, .page_cart .warp .container .card .cart_block .list_cart .item_cart .cart_body .right_info .title, .page_goods .card_aside .list .goods .goods_nav .good_bottom .title, .page_goods .page_goods_list_hot .list .goods .goods_nav .good_bottom .title, .page_goods .page_goods_list_wrap .page_goods_list_base .card_goods_list .list_goods .goods .doc a .title, .page_root .product .list_goods .goods .doc a .title,
  .page_root .product .list_goods .lis_cont .title, .comment_box .list_comment .item_comment_box .right_block .top_comment .nick_name {
   overflow: hidden;
   white-space: nowrap;
@@ -111,7 +111,7 @@
 }
 
 #app .page_pay .coupon_box, #app .page_order .card_order, .page_user .card_password, .page_user .card_info .div_info .content_msg, .page_user .card_info, .page_user .user_bg.col-md-9 .card_default .user_block, .page_user .card_address .list_address .address_card .bar_btn, .page_user .card_address, .page_user .user_right_box .list_collect .item_collect::after, .page_user .user_right_box, .page_user .card_addres .table_wrap, .page_goods.goods_det .card_bottom_goods, #app .diy_details .review, #app .diy_details .diy_details_box .rich_text, #app .diy_details .diy_details_box .row_top_wrap .row_1 .diy_img, .page_article .comments-wrap .review,
- .page_notice.notice-detail .notice_list .notice_content, #app .page_forum .warp .container .forum-detail-comment, #app .page_forum .warp .container .row .card .forum_detail .div_forum, .page_header .nav_list ul, #app .page_search .card_result_search {
+ .page_announcement.announcement-detail .announcement_list .announcement_content, #app .page_forum .warp .container .forum-detail-comment, #app .page_forum .warp .container .row .card .forum_detail .div_forum, .page_header .nav_list ul, #app .page_search .card_result_search {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -129,12 +129,12 @@
 .banner .sw_no .swiper_img .carousel-control-prev:hover .carousel-control-prev-icon, .banner .sw_no .swiper_img .carousel-control-next:hover .carousel-control-next-icon,
 .banner .sw_no .swiper_img .carousel-control-next:hover .carousel-control-prev-icon, .article_recommend .more_box .more:hover::after,
 .diy_recommend .more_box .more:hover::after,
-.notice_list_title .more_box .more:hover::after,
+.announcement_list_title .more_box .more:hover::after,
 .article_list_title .more_box .more:hover::after,
 .good_list_title .more_box .more:hover::after,
 .diy_list_title .more_box .more:hover::after, .article_recommend .more_box .more:hover:before,
 .diy_recommend .more_box .more:hover:before,
-.notice_list_title .more_box .more:hover:before,
+.announcement_list_title .more_box .more:hover:before,
 .article_list_title .more_box .more:hover:before,
 .good_list_title .more_box .more:hover:before,
 .diy_list_title .more_box .more:hover:before {
@@ -254,7 +254,7 @@ table {
   color: #666;
 }
 
-#app :is(.page_notice, .page_forum, .exam_list, .subject_list, .page_message, #cart_index, #order_list, .collect_list, .diy_edit, .diy_list, #user_address) .warp {
+#app :is(.page_announcement, .page_forum, .exam_list, .subject_list, .page_message, #cart_index, #order_list, .collect_list, .diy_edit, .diy_list, #user_address) .warp {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -3636,10 +3636,10 @@ select option {
 }
 
 #app .address_edit .form_address .header, .page_user .card_addres > div:nth-child(1) > span, .page_user .container-fluid .el-row:nth-child(1) div, .page_goods .card_aside h5, .page_goods .page_goods_list_hot .card_list_hot .hot_title, #app .diy_details .diy_details_box .details_title, .page_article .list_hot .hot_title, .page_article .card_article_hot .hot_title,
- .page_notice.notice-detail .notice_list .notice_title h5, #app .page_search .card_result_search > .title, #app .page_search .card_result_search .iou .title, .page_message .card_message h4, .article_recommend .title,
+ .page_announcement.announcement-detail .announcement_list .announcement_title h5, #app .page_search .card_result_search > .title, #app .page_search .card_result_search .iou .title, .page_message .card_message h4, .article_recommend .title,
 
 .diy_recommend .title,
-.notice_list_title .title,
+.announcement_list_title .title,
 .article_list_title .title,
 .good_list_title .title,
 .diy_list_title .title {
@@ -3662,9 +3662,9 @@ select option {
   background-size: 100% 28%;
   background-position:left bottom ;
 }
-#app .address_edit .form_address .header:after, .page_user .card_addres > div:nth-child(1) > span:after, .page_user .container-fluid .el-row:nth-child(1) div:after, .page_goods .card_aside h5:after, .page_goods .page_goods_list_hot .card_list_hot .hot_title:after, #app .diy_details .diy_details_box .details_title:after, .page_article .list_hot .hot_title:after, .page_article .card_article_hot .hot_title:after, .page_notice.notice-detail .notice_list .notice_title h5:after, #app .page_search .card_result_search > .title:after, #app .page_search .card_result_search .iou .title:after, .page_message .card_message h4:after, .article_recommend .title:after,
+#app .address_edit .form_address .header:after, .page_user .card_addres > div:nth-child(1) > span:after, .page_user .container-fluid .el-row:nth-child(1) div:after, .page_goods .card_aside h5:after, .page_goods .page_goods_list_hot .card_list_hot .hot_title:after, #app .diy_details .diy_details_box .details_title:after, .page_article .list_hot .hot_title:after, .page_article .card_article_hot .hot_title:after, .page_announcement.announcement-detail .announcement_list .announcement_title h5:after, #app .page_search .card_result_search > .title:after, #app .page_search .card_result_search .iou .title:after, .page_message .card_message h4:after, .article_recommend .title:after,
 .diy_recommend .title:after,
-.notice_list_title .title:after,
+.announcement_list_title .title:after,
 .article_list_title .title:after,
 .good_list_title .title:after,
 .diy_list_title .title:after {
@@ -3711,7 +3711,7 @@ select option {
 
 .article_recommend,
 .diy_recommend,
-.notice_list_title,
+.announcement_list_title,
 .article_list_title,
 .good_list_title,
 .diy_list_title {
@@ -3724,7 +3724,7 @@ select option {
 }
 .article_recommend .title span,
 .diy_recommend .title span,
-.notice_list_title .title span,
+.announcement_list_title .title span,
 .article_list_title .title span,
 .good_list_title .title span,
 .diy_list_title .title span {
@@ -3734,7 +3734,7 @@ select option {
 }
 .article_recommend .more_box,
 .diy_recommend .more_box,
-.notice_list_title .more_box,
+.announcement_list_title .more_box,
 .article_list_title .more_box,
 .good_list_title .more_box,
 .diy_list_title .more_box {
@@ -3752,7 +3752,7 @@ select option {
 }
 .article_recommend .more_box .more,
 .diy_recommend .more_box .more,
-.notice_list_title .more_box .more,
+.announcement_list_title .more_box .more,
 .article_list_title .more_box .more,
 .good_list_title .more_box .more,
 .diy_list_title .more_box .more {
@@ -3771,7 +3771,7 @@ select option {
 }
 .article_recommend .more_box .more:before,
 .diy_recommend .more_box .more:before,
-.notice_list_title .more_box .more:before,
+.announcement_list_title .more_box .more:before,
 .article_list_title .more_box .more:before,
 .good_list_title .more_box .more:before,
 .diy_list_title .more_box .more:before {
@@ -3788,7 +3788,7 @@ select option {
 }
 .article_recommend .more_box .more:after,
 .diy_recommend .more_box .more:after,
-.notice_list_title .more_box .more:after,
+.announcement_list_title .more_box .more:after,
 .article_list_title .more_box .more:after,
 .good_list_title .more_box .more:after,
 .diy_list_title .more_box .more:after {
@@ -3806,8 +3806,8 @@ select option {
 .article_recommend .more_box .more span, .article_recommend .more_box .more .mor,
 .diy_recommend .more_box .more span,
 .diy_recommend .more_box .more .mor,
-.notice_list_title .more_box .more span,
-.notice_list_title .more_box .more .mor,
+.announcement_list_title .more_box .more span,
+.announcement_list_title .more_box .more .mor,
 .article_list_title .more_box .more span,
 .article_list_title .more_box .more .mor,
 .good_list_title .more_box .more span,
@@ -3821,7 +3821,7 @@ select option {
 }
 .article_recommend .more_box .more:hover,
 .diy_recommend .more_box .more:hover,
-.notice_list_title .more_box .more:hover,
+.announcement_list_title .more_box .more:hover,
 .article_list_title .more_box .more:hover,
 .good_list_title .more_box .more:hover,
 .diy_list_title .more_box .more:hover {
@@ -3832,8 +3832,8 @@ select option {
 .article_recommend .more_box .more:hover span, .article_recommend .more_box .more:hover .mor,
 .diy_recommend .more_box .more:hover span,
 .diy_recommend .more_box .more:hover .mor,
-.notice_list_title .more_box .more:hover span,
-.notice_list_title .more_box .more:hover .mor,
+.announcement_list_title .more_box .more:hover span,
+.announcement_list_title .more_box .more:hover .mor,
 .article_list_title .more_box .more:hover span,
 .article_list_title .more_box .more:hover .mor,
 .good_list_title .more_box .more:hover span,
@@ -4503,7 +4503,7 @@ select option {
 #app > .page_cart,
 #app > .page_pay,
 #app > .page_exam,
-#app > .page_notice,
+#app > .page_announcement,
 #app > .page_article,
 #app > .diy_list,
 #app > .diy_edit,
@@ -4529,7 +4529,7 @@ select option {
 /* 最大宽度及最小宽度 */
 #app .page_cart .warp,
 #app .page_forum .warp > .container,
-#app .page_notice .warp > .container,
+#app .page_announcement .warp > .container,
 #app .page_article .warp > .container,
 #app .page_goods .warp > .container,
 #app .page_user .warp > .container,
@@ -5061,7 +5061,7 @@ select option {
   background-color: transparent;
   border-color: transparent !important;
 }
-.page_root .warp .swiper_box .sw_no .card_notice {
+.page_root .warp .swiper_box .sw_no .card_announcement {
   width: 100%;
   height: 0;
   margin: 46px auto 0px;
@@ -5072,7 +5072,7 @@ select option {
   /* position: relative; */
   display: none;
 }
-.page_root .warp .swiper_box .sw_no .card_notice:after {
+.page_root .warp .swiper_box .sw_no .card_announcement:after {
   content: "";
   width: 580px;
   height: 300px;
@@ -5083,7 +5083,7 @@ select option {
   z-index: 99999;
   border-radius: 5px;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .notice_title {
+.page_root .warp .swiper_box .sw_no .card_announcement .announcement_title {
   position: relative;
   top: -287px;
   right: -393px;
@@ -5098,7 +5098,7 @@ select option {
   visibility: hidden;
   display: none;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .notice_title:after {
+.page_root .warp .swiper_box .sw_no .card_announcement .announcement_title:after {
   position: absolute;
   content: "";
   height: 11px;
@@ -5107,7 +5107,7 @@ select option {
   background-color: #fe4096;
   opacity: 0.3;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .notice_title a {
+.page_root .warp .swiper_box .sw_no .card_announcement .announcement_title a {
   visibility: visible;
   color: #333 !important;
   font-size: 18px;
@@ -5125,23 +5125,23 @@ select option {
   transition: 0.3s;
   display: none;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .notice_title a:hover {
+.page_root .warp .swiper_box .sw_no .card_announcement .announcement_title a:hover {
   color: #ffb400 !important;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .carousel-inner {
+.page_root .warp .swiper_box .sw_no .card_announcement .carousel-inner {
   position: absolute;
   /* top: -150px; */
 }
-.page_root .warp .swiper_box .sw_no .card_notice .carousel {
+.page_root .warp .swiper_box .sw_no .card_announcement .carousel {
   width: 200px;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .carousel .carousel-item {
+.page_root .warp .swiper_box .sw_no .card_announcement .carousel .carousel-item {
   border: 5px double darksalmon;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .carousel .carousel-item:hover {
+.page_root .warp .swiper_box .sw_no .card_announcement .carousel .carousel-item:hover {
   border: 5px solid darksalmon !important;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .carousel .carousel-item .swiper_notice .title {
+.page_root .warp .swiper_box .sw_no .card_announcement .carousel .carousel-item .swiper_announcement .title {
   /* transform: rotate(270deg); */
   text-align: center;
   font-size: 30px;
@@ -5155,7 +5155,7 @@ select option {
   margin-left: 0;
   padding: 0px !important;
 }
-.page_root .warp .swiper_box .sw_no .card_notice .carousel .carousel-item .swiper_notice .content {
+.page_root .warp .swiper_box .sw_no .card_announcement .carousel .carousel-item .swiper_announcement .content {
   text-indent: 1.2em;
   display: -webkit-box;
   overflow: hidden;
@@ -6150,10 +6150,10 @@ select option {
 }
 
 /* *****************************************************考试结束***************************************************** */
-.page_notice .car_notice {
+.page_announcement .car_announcement {
   margin-bottom: 50px;
 }
-.page_notice .notice_list {
+.page_announcement .announcement_list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   -moz-column-gap: 10px;
@@ -6162,12 +6162,12 @@ select option {
   margin: 0 50px;
   counter-reset: item;
 }
-.page_notice .notice_list .notice_list_title {
+.page_announcement .announcement_list .announcement_list_title {
   display: block;
   grid-column: span 4;
   padding-top: 30px;
 }
-.page_notice .notice_list .notice_block {
+.page_announcement .announcement_list .announcement_block {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -6176,7 +6176,7 @@ select option {
   background: #eee;
   border-radius: 50%;
 }
-.page_notice .notice_list .notice_block::before {
+.page_announcement .announcement_list .announcement_block::before {
   counter-increment: item;
   content: counter(item);
   position: absolute;
@@ -6197,45 +6197,45 @@ select option {
   border-radius: 50%;
   transition: 0.5s;
 }
-.page_notice .notice_list .notice_block .notice_title {
+.page_announcement .announcement_list .announcement_block .announcement_title {
   padding: 10px 15px 5px;
   color: #032B2B;
   font-size: 20px;
   font-weight: bold;
   transition: color 0.2s;
 }
-.page_notice .notice_list .notice_block .notice_create_time {
+.page_announcement .announcement_list .announcement_block .announcement_create_time {
   padding: 0 15px 10px;
   font-size: 14px;
   line-height: 20px;
   color: #8a929b;
   transition: color 0.2s;
 }
-.page_notice .notice_list .notice_block:hover::before {
+.page_announcement .announcement_list .announcement_block:hover::before {
   right: 0;
   top: 5px;
 }
-.page_notice .notice_list .notice_block:hover .notice_title {
+.page_announcement .announcement_list .announcement_block:hover .announcement_title {
   color: var(--one);
 }
-.page_notice .overflow-auto {
+.page_announcement .overflow-auto {
   top: 0;
 }
-.page_notice.notice-detail .notice_list {
+.page_announcement.announcement-detail .announcement_list {
   position: relative;
   display: flex;
   flex-direction: column !important;
 }
-.page_notice.notice-detail .notice_list > span {
+.page_announcement.announcement-detail .announcement_list > span {
   display: none;
 }
-.page_notice.notice-detail .notice_list .notice_title {
+.page_announcement.announcement-detail .announcement_list .announcement_title {
   position: relative;
   text-align: center;
   margin-top: 0;
   padding: 20px 10px 10px;
 }
-.page_notice.notice-detail .notice_list .notice_creat_time {
+.page_announcement.announcement-detail .announcement_list .announcement_creat_time {
   position: absolute;
   top: 118px;
   left: 0;
@@ -6250,7 +6250,7 @@ select option {
   border-radius: 0 0 4px 4px;
   border-bottom: 1px solid #e6e6e6;
 }
-.page_notice.notice-detail .notice_list .notice_creat_time:before {
+.page_announcement.announcement-detail .announcement_list .announcement_creat_time:before {
   content: "";
   display: block;
   width: 18px;
@@ -6261,7 +6261,7 @@ select option {
   background-size: contain;
   opacity: 0.5;
 }
-.page_notice.notice-detail .notice_list .notice_content {
+.page_announcement.announcement-detail .announcement_list .announcement_content {
   margin-top: 10px;
   padding: 60px 50px 60px;
   font-size: 14px;
@@ -6271,7 +6271,7 @@ select option {
   background: #fff;
   border-radius: 4px;
 }
-.page_notice.notice-detail .notice_list .notice_content p {
+.page_announcement.announcement-detail .announcement_list .announcement_content p {
   margin: 0;
   font-size: 16px;
   line-height: 26px;
@@ -10859,12 +10859,12 @@ select option {
 }
 
 #app .address_edit .form_address .header:after, .page_user .card_addres > div:nth-child(1) > span:after, .page_user .container-fluid .el-row:nth-child(1) div:after, .page_goods .card_aside h5:after, .page_goods .page_goods_list_hot .card_list_hot .hot_title:after, #app .diy_details .diy_details_box .details_title:after, .page_article .list_hot .hot_title:after, .page_article .card_article_hot .hot_title:after, 
-.page_notice.notice-detail .notice_list .notice_title h5:after, #app .page_search .card_result_search > .title:after, #app .page_search .card_result_search .iou .title:after, .page_message .card_message h4:after, .article_recommend .title:after, .diy_recommend .title:after, .notice_list_title .title:after, .article_list_title .title:after, .good_list_title .title:after, .diy_list_title .title:after{
+.page_announcement.announcement-detail .announcement_list .announcement_title h5:after, #app .page_search .card_result_search > .title:after, #app .page_search .card_result_search .iou .title:after, .page_message .card_message h4:after, .article_recommend .title:after, .diy_recommend .title:after, .announcement_list_title .title:after, .article_list_title .title:after, .good_list_title .title:after, .diy_list_title .title:after{
   display: none;
 }
 
 /* “更多前面的爱心” */
-.article_recommend .more_box .more:after, .diy_recommend .more_box .more:after, .notice_list_title .more_box .more:after, .article_list_title .more_box .more:after, .good_list_title .more_box .more:after, .diy_list_title .more_box .more:after{
+.article_recommend .more_box .more:after, .diy_recommend .more_box .more:after, .announcement_list_title .more_box .more:after, .article_list_title .more_box .more:after, .good_list_title .more_box .more:after, .diy_list_title .more_box .more:after{
   display: none;
 }
 
@@ -10889,7 +10889,7 @@ select option {
 
 /* “更多前面的箭头” */
 
-.article_recommend .more_box .more:before, .diy_recommend .more_box .more:before, .notice_list_title .more_box .more:before, .article_list_title .more_box .more:before, .good_list_title .more_box .more:before, .diy_list_title .more_box .more:before{
+.article_recommend .more_box .more:before, .diy_recommend .more_box .more:before, .announcement_list_title .more_box .more:before, .article_list_title .more_box .more:before, .good_list_title .more_box .more:before, .diy_list_title .more_box .more:before{
   display: none;
 }
 
@@ -11145,16 +11145,16 @@ select option {
 
 
 /* 系统公告~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.page_notice .notice_list .notice_block{
+.page_announcement .announcement_list .announcement_block{
   border-radius: 0px;
   background-color: var(--three);
 }
 
-.page_notice .notice_list .notice_block::before{
+.page_announcement .announcement_list .announcement_block::before{
   display: none;
 }
 
-.page_notice .notice_list .notice_block .notice_create_time{
+.page_announcement .announcement_list .announcement_block .announcement_create_time{
   color: #fff;
 }
 

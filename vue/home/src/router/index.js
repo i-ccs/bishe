@@ -91,14 +91,14 @@ const routes = [
 
 	// 公告路由
 	{
-		path: '/notice/list',
-		name: 'notice_list',
-		component: () => import('../views/notice/list.vue')
+		path: '/announcement/list',
+		name: 'announcement_list',
+		component: () => import('../views/announcement/list.vue')
 	},
 	{
-		path: '/notice/details',
-		name: 'notice_details',
-		component: () => import('../views/notice/details.vue')
+		path: '/announcement/details',
+		name: 'announcement_details',
+		component: () => import('../views/announcement/details.vue')
 	},
 	// 注册用户表格路由
 	{

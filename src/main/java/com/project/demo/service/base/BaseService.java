@@ -383,12 +383,20 @@ public class BaseService<E> {
                 log.info("拼接sql 失败：{}", e.getMessage());
             }
         }
+        // 添加逻辑删除过滤
+        try {
+            eClass.getDeclaredField("isDelete");
+            wrapper.eq("is_delete", 0);
+        } catch (NoSuchFieldException e) {
+            // 没有isDelete字段，跳过
+        }
     }
 
     public String toWhereSql(Map<String, String> query, Boolean like, String sqlwhere) {
+        StringBuilder sql = new StringBuilder();
         if (query.size() > 0) {
             try {
-                StringBuilder sql = new StringBuilder(" WHERE ");
+                sql.append(" WHERE ");
                 for (Map.Entry<String, String> entry : query.entrySet()) {
                     if (entry.getKey().contains(FindConfig.MIN_)) {
                         String min = humpToLine(entry.getKey()).replace("_min", "");
@@ -414,19 +422,32 @@ public class BaseService<E> {
                     sql.append(sqlwhere).append(" and ");
                 }
                 sql.delete(sql.length() - 4, sql.length());
-                sql.append(" ");
-                return sql.toString();
             } catch (UnsupportedEncodingException e) {
                 log.info("拼接sql 失败：{}", e.getMessage());
             }
         } else {
             if (sqlwhere != null && !sqlwhere.trim().equals("")) {
-                StringBuilder sql = new StringBuilder(" WHERE ");
-                sql.append(sqlwhere);
-                return sql.toString();
+                sql.append(" WHERE ").append(sqlwhere);
             }
         }
-        return "";
+
+        // 添加逻辑删除过滤
+        try {
+            eClass.getDeclaredField("isDelete");
+            if (sql.length() == 0) {
+                sql.append(" WHERE is_delete = 0 ");
+            } else {
+                sql.append(" AND is_delete = 0 ");
+            }
+        } catch (NoSuchFieldException e) {
+            // 没有isDelete字段，跳过
+            if (sql.length() > 0) {
+                sql.append(" ");
+            }
+        }
+
+        log.info("生成的最终SQL: {}", sql.toString());
+        return sql.toString();
     }
 
     public Map<String, Object> readBody(BufferedReader reader) {

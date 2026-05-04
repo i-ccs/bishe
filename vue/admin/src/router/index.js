@@ -78,18 +78,18 @@ const routes = [
 
     // 轮播图路由
     {
-        path: '/slides/table',
-        name: 'slides_table',
-        component: () => import('../views/slides/table.vue'),
+        path: '/banner/table',
+        name: 'banner_table',
+        component: () => import('../views/banner/table.vue'),
         meta: {
             index: 0,
             title: '轮播图列表'
         }
     },
     {
-        path: '/slides/view',
-        name: 'slides_view',
-        component: () => import('../views/slides/view.vue'),
+        path: '/banner/view',
+        name: 'banner_view',
+        component: () => import('../views/banner/view.vue'),
         meta: {
             index: 0,
             title: '轮播图详情'
@@ -117,18 +117,18 @@ const routes = [
 
     // 文章分类路由
     {
-        path: '/article_type/table',
-        name: 'article_type_table',
-        component: () => import('../views/article_type/table.vue'),
+        path: '/category/table',
+        name: 'category_table',
+        component: () => import('../views/category/table.vue'),
         meta: {
             index: 0,
             title: '行业资讯分类列表'
         }
     },
     {
-        path: '/article_type/view',
-        name: 'article_type_view',
-        component: () => import('../views/article_type/view.vue'),
+        path: '/category/view',
+        name: 'category_view',
+        component: () => import('../views/category/view.vue'),
         meta: {
             index: 0,
             title: '行业资讯分类详情'
@@ -139,18 +139,18 @@ const routes = [
 
     // 公告路由
     {
-        path: '/notice/table',
-        name: 'notice_table',
-        component: () => import('../views/notice/table.vue'),
+        path: '/announcement/table',
+        name: 'announcement_table',
+        component: () => import('../views/announcement/table.vue'),
         meta: {
             index: 0,
             title: '公告信息列表'
         }
     },
     {
-        path: '/notice/view',
-        name: 'notice_view',
-        component: () => import('../views/notice/view.vue'),
+        path: '/announcement/view',
+        name: 'announcement_view',
+        component: () => import('../views/announcement/view.vue'),
         meta: {
             index: 0,
             title: '公告信息详情'

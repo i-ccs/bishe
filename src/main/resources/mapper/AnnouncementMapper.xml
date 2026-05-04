@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.demo.dao.AnnouncementMapper">
+
+    <resultMap type="com.project.demo.entity.Announcement" id="AnnouncementResult">
+        <result property="announcementId"    column="announcement_id"    />
+        <result property="title"    column="title"    />
+        <result property="content"    column="content"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectAnnouncementVo">
+        select announcement_id, title, content, create_time, update_time from announcement
+    </sql>
+
+    <select id="selectAnnouncementList" parameterType="com.project.demo.entity.Announcement" resultMap="AnnouncementResult">
+        <include refid="selectAnnouncementVo"/>
+        <where>
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+        </where>
+    </select>
+
+    <select id="selectAnnouncementById" parameterType="Integer" resultMap="AnnouncementResult">
+        <include refid="selectAnnouncementVo"/>
+        where announcement_id = #{announcementId}
+    </select>
+
+    <insert id="insertAnnouncement" parameterType="com.project.demo.entity.Announcement" useGeneratedKeys="true" keyProperty="announcementId">
+        insert into announcement
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null  and title != ''">title,</if>
+            <if test="content != null  and content != ''">content,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateTime != null ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null  and title != ''">#{title},</if>
+            <if test="content != null  and content != ''">#{content},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAnnouncement" parameterType="com.project.demo.entity.Announcement">
+        update announcement
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null  and title != ''">title = #{title},</if>
+            <if test="content != null  and content != ''">content = #{content},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+        </trim>
+        where announcement_id = #{announcementId}
+    </update>
+
+    <delete id="deleteAnnouncementById" parameterType="Integer">
+        delete from announcement where announcement_id = #{announcementId}
+    </delete>
+
+    <delete id="deleteAnnouncementByIds" parameterType="String">
+        delete from announcement where announcement_id in
+        <foreach item="announcementId" collection="array" open="(" separator="," close=")">
+            #{announcementId}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,9 +1,6 @@
 package com.project.demo.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
@@ -100,6 +97,13 @@ public class User implements Serializable {
      */
     @TableField(value = "open_id")
     private String open_id;
+
+    /**
+     * 是否删除：0未删除，1已删除
+     */
+    @TableLogic
+    @TableField(value = "is_delete")
+    private Integer isDelete;
 
     /**
      * 创建时间：

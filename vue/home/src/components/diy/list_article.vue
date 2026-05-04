@@ -21,7 +21,7 @@
 						</span>
 						<span class="see">
 							<b-icon icon="eye"/>
-							{{ o[vm.hits] }}
+							{{ o[vm.views] }}
 						</span>
 					</div>
 					<div class="time">{{ $toTime(o[vm.create_time],"yyyy-MM-dd hh:mm:ss") }}</div>
@@ -52,7 +52,7 @@
 						create_time: "create_time",
 						content: "content",
 						praise_len: "praise_len",
-						hits: "hits",
+						views: "views",
 					};
 				},
 			},

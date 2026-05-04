@@ -95,7 +95,7 @@
 							<div class="chart" id="chart_supply_category"></div>
 						</el-col>
 						<el-col :span="8">
-							<div class="chart" id="chart_hits_source"></div>
+							<div class="chart" id="chart_views_source"></div>
 						</el-col>
 					</el-row>
 				</el-card>
@@ -164,7 +164,7 @@
 				this.get_combined_business_data();
 				this.get_user_gender_data();
 				this.get_supply_category_data();
-				this.get_hits_source_data();
+				this.get_views_source_data();
 			},
 			async get_combined_business_data() {
 				const sales_res = await this.$get("~/api/sales_information/list_group?groupby=product_category");
@@ -254,20 +254,20 @@
 					}
 				});
 			},
-			get_hits_source_data() {
-				this.$get("~/api/hits/list_group?groupby=source_table", null, (json) => {
+			get_views_source_data() {
+				this.$get("~/api/views/list_group?groupby=source_table", null, (json) => {
 					if (json.result) {
 						var data = json.result.list.map(o => {
 							var name = o[1];
 							if(name === 'commodity_information') name = '商品信息';
 							else if(name === 'article') name = '文章';
-							else if(name === 'notice') name = '公告';
+							else if(name === 'announcement') name = '公告';
 							return {
 								value: o[0],
 								name: name
 							}
 						});
-						this.render_pie_chart("chart_hits_source", "访问分布", data);
+						this.render_pie_chart("chart_views_source", "访问分布", data);
 					}
 				});
 			},

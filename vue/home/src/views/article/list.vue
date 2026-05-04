@@ -30,7 +30,7 @@
                                     <div class="bar_filter">
                                         <b-dropdown :text="title" variant="outline-dark" left>
                                             <b-dropdown-item
-                                                    v-for="(o, i) in list_article_type"
+                                                    v-for="(o, i) in list_category"
                                                     :key="i"
                                                     @click="filter_article(o)"
                                             >
@@ -42,7 +42,7 @@
                                     <!-- 排序 -->
                                     <div
                                             class="bar_sort"
-                                            :class="{ active: query.orderby == '`hits` desc' }"
+                                            :class="{ active: query.orderby == '`views` desc' }"
                                     >
                                         <b-dropdown text="排序" variant="outline-dark" left>
                                             <b-dropdown-item
@@ -110,16 +110,16 @@
                 },
                 list_hot: [],
                 count_pages: 1,
-                list_article_type: [],
+                list_category: [],
                 title: "",
                 sort_list: [
                     {
                         name: "热度从高到低",
-                        value: "hits desc",
+                        value: "views desc",
                     },
                     {
                         name: "热度从低到高",
-                        value: "hits asc",
+                        value: "views asc",
                     },
                     {
                         name: "创建时间从高到低",
@@ -174,7 +174,7 @@
                     {
                         page: 1,
                         size: 8,
-                        orderby: "hits desc",
+                        orderby: "views desc",
                     },
                     (res) => {
                         if (res.result) {
@@ -186,9 +186,9 @@
             /**
              * 获取文章类型
              */
-            get_article_type() {
+            get_category() {
                 this.$get(
-                    "~/api/article_type/get_list",
+                    "~/api/category/get_list",
                     {
                         page: 1,
                         size: 0,
@@ -196,8 +196,8 @@
                     (res) => {
                         if (res.result) {
                             console.log(res.result)
-                            this.list_article_type.push("全部");
-                            res.result.list.map((o) => this.list_article_type.push(o.name));
+                            this.list_category.push("全部");
+                            res.result.list.map((o) => this.list_category.push(o.name));
                         }
                     }
                 );
@@ -228,7 +228,7 @@
         mounted() {
             this.title = "筛选";
             this.get_hot_article();
-            this.get_article_type();
+            this.get_category();
         },
     };
 </script>

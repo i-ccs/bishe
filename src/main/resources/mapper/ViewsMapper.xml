@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.demo.dao.ViewsMapper">
+
+    <resultMap type="com.project.demo.entity.Views" id="ViewsResult">
+        <result property="viewsId"    column="views_id"    />
+        <result property="userId"    column="user_id"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="sourceTable"    column="source_table"    />
+        <result property="sourceField"    column="source_field"    />
+        <result property="sourceId"    column="source_id"    />
+    </resultMap>
+
+    <sql id="selectViewsVo">
+        select views_id, user_id, create_time, update_time, source_table, source_field, source_id from views
+    </sql>
+
+    <select id="selectViewsList" parameterType="com.project.demo.entity.Views" resultMap="ViewsResult">
+        <include refid="selectViewsVo"/>
+        <where>
+            <if test="userId != null "> and user_id = #{userId}</if>
+            <if test="sourceTable != null  and sourceTable != ''"> and source_table = #{sourceTable}</if>
+            <if test="sourceField != null  and sourceField != ''"> and source_field = #{sourceField}</if>
+            <if test="sourceId != null "> and source_id = #{sourceId}</if>
+        </where>
+    </select>
+
+    <select id="selectViewsById" parameterType="Integer" resultMap="ViewsResult">
+        <include refid="selectViewsVo"/>
+        where views_id = #{viewsId}
+    </select>
+
+    <insert id="insertViews" parameterType="com.project.demo.entity.Views" useGeneratedKeys="true" keyProperty="viewsId">
+        insert into views
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null ">user_id,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateTime != null ">update_time,</if>
+            <if test="sourceTable != null  and sourceTable != ''">source_table,</if>
+            <if test="sourceField != null  and sourceField != ''">source_field,</if>
+            <if test="sourceId != null ">source_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null ">#{userId},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+            <if test="sourceTable != null  and sourceTable != ''">#{sourceTable},</if>
+            <if test="sourceField != null  and sourceField != ''">#{sourceField},</if>
+            <if test="sourceId != null ">#{sourceId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateViews" parameterType="com.project.demo.entity.Views">
+        update views
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null ">user_id = #{userId},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="sourceTable != null  and sourceTable != ''">source_table = #{sourceTable},</if>
+            <if test="sourceField != null  and sourceField != ''">source_field = #{sourceField},</if>
+            <if test="sourceId != null ">source_id = #{sourceId},</if>
+        </trim>
+        where views_id = #{viewsId}
+    </update>
+
+    <delete id="deleteViewsById" parameterType="Integer">
+        delete from views where views_id = #{viewsId}
+    </delete>
+
+    <delete id="deleteViewsByIds" parameterType="String">
+        delete from views where views_id in
+        <foreach item="viewsId" collection="array" open="(" separator="," close=")">
+            #{viewsId}
+        </foreach>
+    </delete>
+
+</mapper>

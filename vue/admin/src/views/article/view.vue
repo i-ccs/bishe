@@ -86,7 +86,7 @@
 					article_id: 0,
 					title: "",
 					type: "",
-					hits: 0,
+					views: 0,
 					source: "",
 					url: "",
 					tag: "",
@@ -102,7 +102,7 @@
 				this.uploadFile(param.file, "img");
 			},
 			async get_artcle_type() {
-				var json = await this.$get("~/api/article_type/get_list?");
+				var json = await this.$get("~/api/category/get_list?");
 				if (json.result) {
 					this.list_artcle_type = json.result.list;
 				} else if (json.error) {

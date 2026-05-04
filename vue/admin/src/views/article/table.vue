@@ -12,7 +12,7 @@
 						<el-form-item label="文章分类">
 							<el-select v-model="query.type" style="width: 100%">
 								<el-option value="">全部类别</el-option>
-								<el-option v-for="(o,i) in list_article_type" :value="o.name" :key="i" :label="o.name"></el-option>
+								<el-option v-for="(o,i) in list_category" :value="o.name" :key="i" :label="o.name"></el-option>
 							</el-select>
 						</el-form-item>
 					</el-col>
@@ -89,20 +89,20 @@
 				field:"article_id",
 				query: { size: 10, page: 1, title: "", tag: "", type: "", orderby: `create_time desc` },
 				list: [],
-				list_article_type: []
+				list_category: []
 			}
 		},
 		methods: {
-			async get_article_type() {
-				var json = await this.$get("~/api/article_type/get_list?");
-				if(json.result){ this.list_article_type = json.result.list; }
+			async get_category() {
+				var json = await this.$get("~/api/category/get_list?");
+				if(json.result){ this.list_category = json.result.list; }
 			},
 			reset() {
 				this.query = { size: 10, page: 1, title: "", tag: "", type: "", orderby: `create_time desc` };
 				this.get_list();
 			}
 		},
-		created(){ this.get_article_type(); }
+		created(){ this.get_category(); }
 	}
 </script>
 

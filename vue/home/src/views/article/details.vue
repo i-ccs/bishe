@@ -128,7 +128,7 @@
                     {
                         page: 1,
                         size: 10,
-                        orderby: "hits desc",
+                        orderby: "views desc",
                     },
                     (res) => {
                         if (res.result) {
@@ -232,18 +232,18 @@
              */
             get_obj_after(json) {
               let obj = json.result.obj;
-              this.add_hits(obj)
+              this.add_views(obj)
               this.get_comment(obj);
               this.form_comment.source_id = obj.article_id;
             },
             /**
              * 添加访问量
              */
-            add_hits(obj) {
+            add_views(obj) {
               this.$post('~/api/article/set?article_id=' + obj.article_id, {
-                hits: parseInt(obj.hits) + 1
+                views: parseInt(obj.views) + 1
               }, res => {
-                obj.hits =parseInt(obj.hits)+ 1
+                obj.views =parseInt(obj.views)+ 1
                 console.log(res);
               })
             }

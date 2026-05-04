@@ -53,16 +53,16 @@
 					</el-col>
 				</el-row>
 
-				<!-- Bottom Row: Notice -->
+				<!-- Bottom Row: Announcement -->
 				<el-row class="mt-4">
 					<el-col :span="24">
-						<div class="card_notice premium-notice-card wide-notice">
-							<div class="notice_header">
-								<span class="notice_title_text">最新公告</span>
-								<router-link to="notice/list" class="notice_more">更多 <i class="el-icon-arrow-right"></i></router-link>
+						<div class="card_announcement premium-announcement-card wide-announcement">
+							<div class="announcement_header">
+								<span class="announcement_title_text">最新公告</span>
+								<router-link to="announcement/list" class="announcement_more">更多 <i class="el-icon-arrow-right"></i></router-link>
 							</div>
-							<div class="notice_body">
-								<swiper_notice :list="list_notice"/>
+							<div class="announcement_body">
+								<swiper_announcement :list="list_announcement"/>
 							</div>
 						</div>
 					</el-col>
@@ -78,7 +78,7 @@
 						import bar_title from "@/components/diy/bar_title.vue";
 	import list_article from "@/components/diy/list_article.vue";
 	import swiper_img from "@/components/diy/swiper_img.vue";
-	import swiper_notice from "@/components/diy/swiper_notice.vue";
+	import swiper_announcement from "@/components/diy/swiper_announcement.vue";
 
 	export default {
 		mixins: [mixin],
@@ -87,7 +87,7 @@
 								bar_title,
 			list_article,
 			swiper_img,
-			swiper_notice,
+			swiper_announcement,
 		},
 		data() {
 			return {
@@ -104,7 +104,7 @@
 					"img",
 					"title",
 					"praise_len",
-					"hits",
+					"views",
 					"type",
 					"create_time",
 				],
@@ -112,7 +112,7 @@
 					{key: "img", label: "图片", type: "图片"},
 					{key: "title", label: "标题", type: "文本"},
 					{key: "praise_len", label: "点赞数", type: "文本"},
-					{key: "hits", label: "点击量", type: "文本"},
+					{key: "views", label: "点击量", type: "文本"},
 					{key: "type", label: "分类", type: "文本"},
 					{key: "create_time", label: "发布时间", type: "文本"},
 				],
@@ -120,7 +120,7 @@
 						list_commodity_information: [],
 									list_slide: [],
 				list_menu: [],
-				list_notice: [],
+				list_announcement: [],
 			};
 		},
 		created(){
@@ -202,8 +202,8 @@
 			},
 
 			// 获取轮播图
-			get_slides() {
-			    this.$get("~/api/slides/get_list?", {}, (json) => {
+			get_banner() {
+			    this.$get("~/api/banner/get_list?", {}, (json) => {
 			        if (json.result) {
 			            this.list_slide = json.result.list;
 			        }
@@ -244,17 +244,17 @@
 			    );
 			},
 			// 获取公告列表
-			get_notice() {
+			get_announcement() {
 			    this.$get(
-			        "~/api/notice/get_list?",
+			        "~/api/announcement/get_list?",
 			        {
 			            page: 1,
 			            size: 3,
 			        },
 			        (json) => {
 			            if (json.result) {
-			                var list_notice = json.result.list;
-			                this.list_notice = list_notice;
+			                var list_announcement = json.result.list;
+			                this.list_announcement = list_announcement;
 			            }
 			        }
 			    );
@@ -269,9 +269,9 @@
 		mounted() {
 					this.get_commodity_information();
 								this.get_menu();
-			this.get_slides();
+			this.get_banner();
 			this.get_article();
-			this.get_notice();
+			this.get_announcement();
 		},
 		computed: {
 				    list_table_inventory_information() {
@@ -326,7 +326,7 @@
 	box-shadow: var(--portal-shadow);
 }
 
-.premium-notice-card {
+.premium-announcement-card {
 	background: #fff;
 	border-radius: var(--portal-radius);
 	box-shadow: var(--portal-shadow);
@@ -336,23 +336,23 @@
 	border: 1px solid #f1f5f9;
 }
 
-.wide-notice {
+.wide-announcement {
 	width: 100% !important;
 	height: 350px !important;
 }
 
-.wide-notice .notice_header {
+.wide-announcement .announcement_header {
 	width: 100%;
 	border-bottom: 1px solid #f1f5f9;
 	border-right: none;
 }
 
-.wide-notice .notice_body {
+.wide-announcement .announcement_body {
 	display: flex;
 	align-items: center;
 }
 
-.notice_header {
+.announcement_header {
 	padding: 15px 20px;
 	border-bottom: 1px solid #f1f5f9;
 	display: flex;
@@ -361,18 +361,18 @@
 	background: #f8fafc;
 }
 
-.notice_title_text {
+.announcement_title_text {
 	font-weight: 700;
 	color: var(--portal-text-main);
 	font-size: 16px;
 }
 
-.notice_more {
+.announcement_more {
 	font-size: 13px;
 	color: var(--portal-text-muted);
 }
 
-.notice_body {
+.announcement_body {
 	flex: 1;
 	padding: 15px;
 	overflow: hidden;
@@ -489,7 +489,7 @@
 	border-radius: 2px;
 }
 
-.premium-notice-card {
+.premium-announcement-card {
 	background: #f8fafc;
 	border-radius: var(--portal-radius);
 	border: 1px solid #f1f5f9;
@@ -497,12 +497,12 @@
 	transition: all 0.3s ease;
 }
 
-.premium-notice-card:hover {
+.premium-announcement-card:hover {
 	border-color: var(--portal-theme-light);
 	box-shadow: var(--portal-shadow);
 }
 
-.notice_header {
+.announcement_header {
 	padding: 18px 25px;
 	background: #fff;
 	border-bottom: 1px solid #f1f5f9;
@@ -511,7 +511,7 @@
 	align-items: center;
 }
 
-.notice_body {
+.announcement_body {
 	padding: 10px 20px;
 }
 
@@ -539,7 +539,7 @@
 	.premium-hero {
 		flex-direction: column;
 	}
-	.premium-swiper, .premium-notice-card {
+	.premium-swiper, .premium-announcement-card {
 		width: 100%;
 		height: auto;
 		min-height: 250px;

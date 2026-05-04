@@ -54,8 +54,8 @@ public class CommodityInformation implements Serializable {
     private String productDetails;
 
     // 点击数
-    @TableField(value = "hits")
-    private Integer hits;
+    @TableField(value = "views")
+    private Integer views;
     // 点赞数
     @TableField(value = "praise_len")
     private Integer praiseLen;

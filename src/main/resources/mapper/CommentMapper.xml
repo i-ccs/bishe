@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectCommentVo">
-        select comment_id, user_id, reply_to_id, content, nick_name, avatar, create_time, update_time, source_table, source_field, source_id from comment
+        select comment_id, user_id, reply_to_id, content, nick_name, avatar, create_time, update_time, source_table, source_field, source_id, is_delete from comment
     </sql>
 
     <select id="selectCommentList" parameterType="com.project.demo.entity.Comment" resultMap="CommentResult">
@@ -33,12 +33,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="sourceTable != null  and sourceTable != ''"> and source_table = #{sourceTable}</if>
             <if test="sourceField != null  and sourceField != ''"> and source_field = #{sourceField}</if>
             <if test="sourceId != null "> and source_id = #{sourceId}</if>
+            and is_delete = 0
         </where>
     </select>
 
     <select id="selectCommentById" parameterType="Long" resultMap="CommentResult">
         <include refid="selectCommentVo"/>
-        where comment_id = #{commentId}
+        where comment_id = #{commentId} and is_delete = 0
     </select>
 
     <insert id="insertComment" parameterType="com.project.demo.entity.Comment" useGeneratedKeys="true" keyProperty="commentId">
@@ -86,15 +87,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where comment_id = #{commentId}
     </update>
 
-    <delete id="deleteCommentById" parameterType="Long">
-        delete from comment where comment_id = #{commentId}
-    </delete>
+    <update id="deleteCommentById" parameterType="Long">
+        update comment set is_delete = 1 where comment_id = #{commentId}
+    </update>
 
-    <delete id="deleteCommentByIds" parameterType="String">
-        delete from comment where comment_id in
+    <update id="deleteCommentByIds" parameterType="String">
+        update comment set is_delete = 1 where comment_id in
         <foreach item="commentId" collection="array" open="(" separator="," close=")">
             #{commentId}
         </foreach>
-    </delete>
+    </update>
 
 </mapper>

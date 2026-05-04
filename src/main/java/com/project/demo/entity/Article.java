@@ -25,7 +25,7 @@ public class Article implements Serializable {
     @TableId(value = "article_id", type = IdType.AUTO)
     private Integer articleId;
 
-    @TableId(value = "title")
+    @TableField(value = "title")
     private String title;
 
     /**
@@ -37,8 +37,8 @@ public class Article implements Serializable {
     /**
      * 点击数：[0,1000000000]访问这篇文章的人次
      */
-    @TableField(value = "hits")
-    private Integer hits;
+    @TableField(value = "views")
+    private Integer views;
 
     /**
      * 点赞数

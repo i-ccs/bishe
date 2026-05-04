@@ -111,7 +111,7 @@
 								</div>
 																						<div class="view praise_wrap">
 									<span class="diy_title">点击数：</span>	<span class="diy_field diy_text">
-									{{ hitsLen }}
+									{{ viewsLen }}
 									</span>
 								</div>
 																				</div>
@@ -160,7 +160,7 @@
 		data() {
 			return {
 				praiseLen: this.obj["praise_len"],
-				hitsLen: this.obj["hits"],
+				viewsLen: this.obj["views"],
 				imgList: [
 						{
 							title: "商品图片",
@@ -466,7 +466,7 @@
 				deep: true,
 				handler(newVal){
 					this.praiseLen = this.obj["praise_len"]
-					this.hitsLen = this.obj["hits"]
+					this.viewsLen = this.obj["views"]
 																			}
 			},
 		},

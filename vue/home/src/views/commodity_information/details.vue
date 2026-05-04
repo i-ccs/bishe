@@ -127,11 +127,11 @@
 			/**
 			 * 添加访问量
 			 */
-			add_hits(obj) {
-				obj["hits"] = obj["hits"] + 1;
-				var hits = obj["hits"];
+			add_views(obj) {
+				obj["views"] = obj["views"] + 1;
+				var views = obj["views"];
 				this.$post('~/api/commodity_information/set?commodity_information_id=' + obj["commodity_information_id"], {
-					hits
+					views
 				}, (res) => {
 					if(res.result){
 						console.log("添加访问量状态：" ,res.result);
@@ -141,7 +141,7 @@
 							source_id: this.obj.commodity_information_id,
 							user_id: this.$store.state.user.user_id,
 						};
-						this.$post("~/api/hits/add?", body, (res) => {
+						this.$post("~/api/views/add?", body, (res) => {
 							console.log(res);
 						});
 					}
@@ -157,7 +157,7 @@
 																									var obj = json.result.obj;
 					this.obj = obj
 					// 增加点击数
-					this.add_hits(obj);
+					this.add_views(obj);
 					// 获取点赞数
 					this.get_praise(obj);
 					// 初始化收藏状态
