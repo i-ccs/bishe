@@ -26,7 +26,7 @@
 							<el-row :gutter="40">
 								<!-- Left: Featured Products (3/5) -->
 								<el-col :lg="14" :md="14" :sm="24">
-									<div class="content-column products-column" v-if="$check_action('/commodity_information/list', 'get')">
+									<div class="content-column products-column">
 										<div class="section-header mini">
 											<div class="title">商品信息推荐</div>
 											<router-link to="/commodity_information/list" class="more-link">更多 <i class="el-icon-arrow-right"></i></router-link>

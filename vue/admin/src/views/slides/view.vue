@@ -38,7 +38,7 @@
 				</el-row>
 
 				<div class="premium-actions">
-					<template v-if="(form['slides_id'] && $check_action('/slides/view','set')) || (!form['slides_id'] && $check_action('/slides/view','add'))">
+					<template v-if="user_group == '管理员' || (form['slides_id'] && $check_action('/slides/view','set')) || (!form['slides_id'] && $check_action('/slides/view','add'))">
 						<el-button type="primary" class="premium-btn-submit" @click="submit()" icon="el-icon-check">提交保存</el-button>
 						<el-button class="premium-btn-cancel" @click="cancel()" icon="el-icon-close">取消</el-button>
 					</template>

@@ -75,6 +75,9 @@ export default {
 <style scoped>
 #carousel {
 	height: 100%;
+	position: relative;
+	padding: 0 60px; /* 为侧边按钮留出空间 */
+	background: transparent !important;
 }
 
 .swiper-imgs {
@@ -84,6 +87,7 @@ export default {
 	height: 100%; 
 	min-height: 300px;
 	transition: transform 0.5s ease;
+	border-radius: 12px; /* 圆角效果 */
 }
 
 /* Custom Indicators */
@@ -106,39 +110,58 @@ export default {
 	background-color: #fff;
 }
 
-/* Custom Controls */
+/* Custom Controls - 移动到外部 */
 #carousel >>> .carousel-control-prev,
 #carousel >>> .carousel-control-next {
-	width: 40px;
-	height: 40px;
-	background: rgba(0, 0, 0, 0.2);
+	width: 44px;
+	height: 44px;
+	background: #fff;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 	border-radius: 50%;
 	top: 50%;
 	transform: translateY(-50%);
-	margin: 0 20px;
-	opacity: 0;
+	opacity: 0.8;
 	transition: all 0.3s ease;
+}
+
+#carousel >>> .carousel-control-prev {
+	left: 5px;
+}
+
+#carousel >>> .carousel-control-next {
+	right: 5px;
+}
+
+#carousel >>> .carousel-control-prev-icon,
+#carousel >>> .carousel-control-next-icon {
+	width: 24px;
+	height: 24px;
+	filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(186deg) brightness(91%) contrast(90%); /* 蓝色图标 */
 }
 
 #carousel:hover >>> .carousel-control-prev,
 #carousel:hover >>> .carousel-control-next {
 	opacity: 1;
+	background: #fff;
 }
 
 #carousel >>> .carousel-control-prev:hover,
 #carousel >>> .carousel-control-next:hover {
-	background: rgba(0, 0, 0, 0.4);
+	background: #1a6fa8;
 }
 
-#carousel >>> .carousel-control-prev-icon,
-#carousel >>> .carousel-control-next-icon {
-	width: 20px;
-	height: 20px;
+#carousel >>> .carousel-control-prev:hover .carousel-control-prev-icon,
+#carousel >>> .carousel-control-next:hover .carousel-control-next-icon {
+	filter: invert(100%); /* 悬停时图标变白 */
 }
 
 @media (max-width: 996px) {
+	#carousel {
+		padding: 0; /* 移动端不留空间 */
+	}
 	.swiper-imgs {
 		height: 250px;
+		border-radius: 0;
 	}
 }
 </style>
