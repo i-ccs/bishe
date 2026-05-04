@@ -53,20 +53,6 @@
 					</el-col>
 				</el-row>
 
-				<!-- Bottom Row: Announcement -->
-				<el-row class="mt-4">
-					<el-col :span="24">
-						<div class="card_announcement premium-announcement-card wide-announcement">
-							<div class="announcement_header">
-								<span class="announcement_title_text">最新公告</span>
-								<router-link to="announcement/list" class="announcement_more">更多 <i class="el-icon-arrow-right"></i></router-link>
-							</div>
-							<div class="announcement_body">
-								<swiper_announcement :list="list_announcement"/>
-							</div>
-						</div>
-					</el-col>
-				</el-row>
 			</div>
 		</div>
 	</div>
@@ -78,7 +64,6 @@
 						import bar_title from "@/components/diy/bar_title.vue";
 	import list_article from "@/components/diy/list_article.vue";
 	import swiper_img from "@/components/diy/swiper_img.vue";
-	import swiper_announcement from "@/components/diy/swiper_announcement.vue";
 
 	export default {
 		mixins: [mixin],
@@ -86,8 +71,7 @@
 					list_commodity_information,
 								bar_title,
 			list_article,
-			swiper_img,
-			swiper_announcement,
+			swiper_img
 		},
 		data() {
 			return {
@@ -120,7 +104,6 @@
 						list_commodity_information: [],
 									list_slide: [],
 				list_menu: [],
-				list_announcement: [],
 			};
 		},
 		created(){
@@ -243,22 +226,7 @@
 			        }
 			    );
 			},
-			// 获取公告列表
-			get_announcement() {
-			    this.$get(
-			        "~/api/announcement/get_list?",
-			        {
-			            page: 1,
-			            size: 3,
-			        },
-			        (json) => {
-			            if (json.result) {
-			                var list_announcement = json.result.list;
-			                this.list_announcement = list_announcement;
-			            }
-			        }
-			    );
-			},
+
 			to_details(key,o,id) {
 				if(!id){
 					id = key + "_id";
@@ -271,7 +239,6 @@
 								this.get_menu();
 			this.get_banner();
 			this.get_article();
-			this.get_announcement();
 		},
 		computed: {
 				    list_table_inventory_information() {

@@ -4200,3 +4200,833 @@ Caused by: java.lang.ClassNotFoundException: Cannot find class: com.project.demo
 2026-05-05 00:41:21.134 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [views] - 查询操作，sql: select COUNT(*) AS count, source_table from `views` group by source_table 
 2026-05-05 00:41:21.141 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/list_group , [请求类型] - GET
 2026-05-05 00:41:21.173 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/list_group , [请求类型] - GET
+2026-05-05 00:45:25.639 [SpringContextShutdownHook] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2026-05-05 00:45:25.643 [SpringContextShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-05 00:45:25.646 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-16} closing ...
+2026-05-05 00:45:25.647 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-16} closed
+2026-05-05 00:51:58.396 [restartedMain] INFO  com.project.demo.Application - Starting Application on debian with PID 7221 (/home/yuan/Desktop/bishe-main/target/classes started by yuan in /home/yuan/Desktop/bishe-main)
+2026-05-05 00:51:58.409 [restartedMain] INFO  com.project.demo.Application - No active profile set, falling back to default profiles: default
+2026-05-05 00:51:58.498 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-05 00:51:58.499 [restartedMain] INFO  org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-05 00:51:59.421 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-05-05 00:51:59.422 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-05 00:51:59.476 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30ms. Found 0 JPA repository interfaces.
+2026-05-05 00:51:59.743 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-05-05 00:51:59.746 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-05 00:51:59.783 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12ms. Found 0 Redis repository interfaces.
+2026-05-05 00:52:01.181 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 5000 (http)
+2026-05-05 00:52:01.196 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-5000"]
+2026-05-05 00:52:01.197 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-05-05 00:52:01.211 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.31]
+2026-05-05 00:52:01.280 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring embedded WebApplicationContext
+2026-05-05 00:52:01.280 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2781 ms
+2026-05-05 00:52:01.425 [restartedMain] INFO  com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-05-05 00:52:01.657 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-05-05 00:52:02.074 [restartedMain] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-05 00:52:02.241 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.12.Final
+2026-05-05 00:52:02.544 [restartedMain] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2026-05-05 00:52:02.716 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2026-05-05 00:52:03.008 [restartedMain] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-05-05 00:52:03.017 [restartedMain] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-05 00:52:04.889 [restartedMain] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-05 00:52:05.043 [restartedMain] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2026-05-05 00:52:05.507 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-05-05 00:52:05.547 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-5000"]
+2026-05-05 00:52:05.574 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 5000 (http) with context path '/api'
+2026-05-05 00:52:05.577 [restartedMain] INFO  com.project.demo.Application - Started Application in 7.936 seconds (JVM running for 9.363)
+2026-05-05 00:53:01.498 [http-nio-5000-exec-7] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/api] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-05 00:53:01.498 [http-nio-5000-exec-7] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-05-05 00:53:01.509 [http-nio-5000-exec-7] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2026-05-05 00:53:01.541 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/count , [请求类型] - OPTIONS
+2026-05-05 00:53:01.542 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/count , [请求类型] - OPTIONS
+2026-05-05 00:53:01.546 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/count , [请求类型] - OPTIONS
+2026-05-05 00:53:01.546 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - OPTIONS
+2026-05-05 00:53:01.546 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:53:01.546 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/count , [请求类型] - OPTIONS
+2026-05-05 00:53:01.678 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/count , [请求类型] - OPTIONS
+2026-05-05 00:53:01.694 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/count , [请求类型] - OPTIONS
+2026-05-05 00:53:01.702 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:53:01.702 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/list_group , [请求类型] - OPTIONS
+2026-05-05 00:53:01.704 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/list_group , [请求类型] - OPTIONS
+2026-05-05 00:53:01.707 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/list_group , [请求类型] - OPTIONS
+2026-05-05 00:53:01.716 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/count , [请求类型] - GET
+2026-05-05 00:53:01.708 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/list_group , [请求类型] - OPTIONS
+2026-05-05 00:53:01.719 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:53:01.727 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/count , [请求类型] - GET
+2026-05-05 00:53:01.728 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/count , [请求类型] - GET
+2026-05-05 00:53:01.728 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/count , [请求类型] - GET
+2026-05-05 00:53:01.787 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:01.788 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:01.788 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [inventory_information] - 统计操作，sql: SELECT COUNT(*) FROM `inventory_information` WHERE is_delete = 0 
+2026-05-05 00:53:01.790 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:01.801 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:01.801 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [registered_user] - 统计操作，sql: SELECT COUNT(*) FROM `registered_user` WHERE is_delete = 0 
+2026-05-05 00:53:01.800 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:01.804 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:01.805 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [sales_information] - 统计操作，sql: SELECT COUNT(*) FROM `sales_information` WHERE is_delete = 0 
+2026-05-05 00:53:01.799 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:01.792 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客'  
+2026-05-05 00:53:01.806 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:01.806 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '游客'  
+2026-05-05 00:53:01.807 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [user] - 统计操作，sql: SELECT COUNT(*) FROM `user` WHERE is_delete = 0 
+2026-05-05 00:53:01.811 [http-nio-5000-exec-4] INFO  com.project.demo.controller.UserController - [获取的token] dee499163a224957a7664bb1425fbf14
+2026-05-05 00:53:01.995 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客'  
+2026-05-05 00:53:01.995 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '游客'  
+2026-05-05 00:53:02.040 [http-nio-5000-exec-4] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2026-05-05 00:53:02.043 [http-nio-5000-exec-4] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2026-05-05 00:53:02.080 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/count , [请求类型] - GET
+2026-05-05 00:53:02.084 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/count , [请求类型] - GET
+2026-05-05 00:53:02.081 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/list_group , [请求类型] - GET
+2026-05-05 00:53:02.086 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/list_group , [请求类型] - GET
+2026-05-05 00:53:02.099 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.099 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [supply_information] - 查询操作，sql: select COUNT(*) AS count, commodity_category from `supply_information`  WHERE is_delete = 0 group by commodity_category 
+2026-05-05 00:53:02.099 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:02.101 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.101 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [supply_information] - 统计操作，sql: SELECT COUNT(*) FROM `supply_information` WHERE is_delete = 0 
+2026-05-05 00:53:02.105 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:02.105 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.106 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [purchasing_information] - 统计操作，sql: SELECT COUNT(*) FROM `purchasing_information` WHERE is_delete = 0 
+2026-05-05 00:53:02.118 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/list_group , [请求类型] - GET
+2026-05-05 00:53:02.121 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/list_group , [请求类型] - GET
+2026-05-05 00:53:02.124 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.126 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [registered_user] - 查询操作，sql: select COUNT(*) AS count, user_gender from `registered_user`  WHERE is_delete = 0 group by user_gender 
+2026-05-05 00:53:02.144 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:53:02.144 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [views] - 查询操作，sql: select COUNT(*) AS count, source_table from `views` group by source_table 
+2026-05-05 00:53:02.152 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/list_group , [请求类型] - OPTIONS
+2026-05-05 00:53:02.165 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/list_group , [请求类型] - GET
+2026-05-05 00:53:02.288 [http-nio-5000-exec-4] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:53:02.288 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:53:02.288 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:53:02.424 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/list_group , [请求类型] - OPTIONS
+2026-05-05 00:53:02.431 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/list_group , [请求类型] - GET
+2026-05-05 00:53:02.432 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:53:02.440 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:53:02.442 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:53:02.442 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:53:02.478 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:53:02.478 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:53:02.505 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/count , [请求类型] - GET
+2026-05-05 00:53:02.508 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:02.513 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.513 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [registered_user] - 统计操作，sql: SELECT COUNT(*) FROM `registered_user` WHERE is_delete = 0 
+2026-05-05 00:53:02.520 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/count , [请求类型] - GET
+2026-05-05 00:53:02.521 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:02.521 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.521 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [sales_information] - 统计操作，sql: SELECT COUNT(*) FROM `sales_information` WHERE is_delete = 0 
+2026-05-05 00:53:02.513 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/count , [请求类型] - GET
+2026-05-05 00:53:02.525 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:02.525 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.525 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [user] - 统计操作，sql: SELECT COUNT(*) FROM `user` WHERE is_delete = 0 
+2026-05-05 00:53:02.532 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/count , [请求类型] - GET
+2026-05-05 00:53:02.534 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:02.533 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/count , [请求类型] - GET
+2026-05-05 00:53:02.540 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.565 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/count , [请求类型] - GET
+2026-05-05 00:53:02.570 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [purchasing_information] - 统计操作，sql: SELECT COUNT(*) FROM `purchasing_information` WHERE is_delete = 0 
+2026-05-05 00:53:02.571 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:02.575 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.576 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [supply_information] - 统计操作，sql: SELECT COUNT(*) FROM `supply_information` WHERE is_delete = 0 
+2026-05-05 00:53:02.575 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:53:02.584 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.577 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/list_group , [请求类型] - GET
+2026-05-05 00:53:02.575 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/list_group , [请求类型] - GET
+2026-05-05 00:53:02.584 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [inventory_information] - 统计操作，sql: SELECT COUNT(*) FROM `inventory_information` WHERE is_delete = 0 
+2026-05-05 00:53:02.585 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.585 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [registered_user] - 查询操作，sql: select COUNT(*) AS count, user_gender from `registered_user`  WHERE is_delete = 0 group by user_gender 
+2026-05-05 00:53:02.608 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/list_group , [请求类型] - GET
+2026-05-05 00:53:02.609 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:53:02.609 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [views] - 查询操作，sql: select COUNT(*) AS count, source_table from `views` group by source_table 
+2026-05-05 00:53:02.616 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/list_group , [请求类型] - GET
+2026-05-05 00:53:02.616 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:53:02.616 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [supply_information] - 查询操作，sql: select COUNT(*) AS count, commodity_category from `supply_information`  WHERE is_delete = 0 group by commodity_category 
+2026-05-05 00:53:02.646 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp , [请求类型] - GET
+2026-05-05 00:53:02.793 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:53:02.794 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:53:02.794 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:53:02.806 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/list_group , [请求类型] - GET
+2026-05-05 00:53:02.827 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:53:02.829 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:53:02.859 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/list_group , [请求类型] - GET
+2026-05-05 00:55:25.430 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:25.434 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:25.435 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客' and `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:25.435 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '游客' and `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:25.469 [http-nio-5000-exec-2] WARN  com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/xiaozhi?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true, version : 1.2.8, lastPacketReceivedIdleMillis : 142576
+2026-05-05 00:55:25.470 [http-nio-5000-exec-2] WARN  com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/xiaozhi?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true, version : 1.2.8, lastPacketReceivedIdleMillis : 142652
+2026-05-05 00:55:25.472 [http-nio-5000-exec-2] WARN  com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/xiaozhi?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true, version : 1.2.8, lastPacketReceivedIdleMillis : 142944
+2026-05-05 00:55:25.473 [http-nio-5000-exec-2] WARN  com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/xiaozhi?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true, version : 1.2.8, lastPacketReceivedIdleMillis : 143523
+2026-05-05 00:55:25.474 [http-nio-5000-exec-2] WARN  com.alibaba.druid.pool.DruidAbstractDataSource - discard long time none received connection. , jdbcUrl : jdbc:mysql://127.0.0.1:3306/xiaozhi?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true, version : 1.2.8, lastPacketReceivedIdleMillis : 143525
+2026-05-05 00:55:25.475 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:25.477 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客' and `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:25.477 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '游客' and `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:25.483 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:25.484 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客'  
+2026-05-05 00:55:25.484 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '游客'  
+2026-05-05 00:55:25.490 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客'  
+2026-05-05 00:55:25.490 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '游客'  
+2026-05-05 00:55:25.491 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:25.500 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:25.501 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:25.501 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/banner/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:25.520 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/get_list , [请求类型] - GET
+2026-05-05 00:55:25.522 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:25.520 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:25.522 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE is_delete = 0 
+2026-05-05 00:55:25.523 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:55:25.522 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:25.522 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/banner/get_list , [请求类型] - GET
+2026-05-05 00:55:25.523 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:25.525 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:25.526 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:25.526 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [user] - 统计操作，sql: SELECT COUNT(*) FROM `user` WHERE is_delete = 0 
+2026-05-05 00:55:25.530 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:25.530 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:25.541 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:55:25.545 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:25.546 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [banner] - 查询操作，sql: select * from `banner`
+2026-05-05 00:55:25.547 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:25.550 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:55:25.554 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:25.554 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [banner] - 统计操作，sql: SELECT COUNT(*) FROM `banner`
+2026-05-05 00:55:25.556 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:25.556 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:55:25.556 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:25.556 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` limit 0 , 6
+2026-05-05 00:55:25.566 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:25.566 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:55:25.806 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777796551.png , [请求类型] - GET
+2026-05-05 00:55:25.806 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777879821.png , [请求类型] - GET
+2026-05-05 00:55:25.821 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp , [请求类型] - GET
+2026-05-05 00:55:25.827 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/O1CN01EBbQPP1q2CWxm7wtb_!!4611686018427385277-0-item_pic.jpg_460x460q90.jpg_.webp , [请求类型] - GET
+2026-05-05 00:55:28.060 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:28.061 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客'  
+2026-05-05 00:55:28.061 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '游客'  
+2026-05-05 00:55:28.065 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客'  
+2026-05-05 00:55:28.065 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '游客'  
+2026-05-05 00:55:33.208 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/login , [请求类型] - OPTIONS
+2026-05-05 00:55:33.212 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/login , [请求类型] - POST
+2026-05-05 00:55:33.243 [http-nio-5000-exec-3] INFO  com.project.demo.controller.UserController - [执行登录接口]
+2026-05-05 00:55:33.254 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_name` = 'admin'  AND is_delete = 0 
+2026-05-05 00:55:33.254 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_name` = 'admin'  AND is_delete = 0 
+2026-05-05 00:55:33.261 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `name` = '管理员'  
+2026-05-05 00:55:33.261 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [user_group] - 查询操作，sql: select * from `user_group` WHERE `name` = '管理员'  
+2026-05-05 00:55:33.281 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:33.287 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:33.287 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:33.288 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:33.298 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:33.298 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:33.837 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:33.841 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:33.842 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员' and `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:33.842 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员' and `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:33.846 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员' and `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:33.847 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - OPTIONS
+2026-05-05 00:55:33.847 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员' and `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:33.854 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:33.854 [http-nio-5000-exec-4] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:33.856 [http-nio-5000-exec-4] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:33.857 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:33.857 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:33.861 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/get_list , [请求类型] - GET
+2026-05-05 00:55:33.861 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:33.861 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE is_delete = 0 
+2026-05-05 00:55:33.865 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:33.865 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:55:33.865 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/banner/get_list , [请求类型] - GET
+2026-05-05 00:55:33.867 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:33.868 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:55:33.868 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:33.868 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:33.866 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:33.868 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [user] - 统计操作，sql: SELECT COUNT(*) FROM `user` WHERE is_delete = 0 
+2026-05-05 00:55:33.868 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:33.868 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [banner] - 查询操作，sql: select * from `banner`
+2026-05-05 00:55:33.879 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:33.879 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:55:33.879 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:55:33.880 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:33.880 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` limit 0 , 6
+2026-05-05 00:55:33.886 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:33.886 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:33.887 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:33.887 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [banner] - 统计操作，sql: SELECT COUNT(*) FROM `banner`
+2026-05-05 00:55:33.886 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:33.888 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:55:33.921 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp , [请求类型] - GET
+2026-05-05 00:55:33.921 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:33.922 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:33.923 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:33.934 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:33.934 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:33.948 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/O1CN01EBbQPP1q2CWxm7wtb_!!4611686018427385277-0-item_pic.jpg_460x460q90.jpg_.webp , [请求类型] - GET
+2026-05-05 00:55:33.980 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777796551.png , [请求类型] - GET
+2026-05-05 00:55:33.984 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777879821.png , [请求类型] - GET
+2026-05-05 00:55:36.511 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:36.512 [http-nio-5000-exec-7] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:36.514 [http-nio-5000-exec-7] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:36.514 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:36.515 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:36.520 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:36.521 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:36.523 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:36.524 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:36.524 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:36.528 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:36.529 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:36.531 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:36.531 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:36.531 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:36.645 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:36.646 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.646 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.649 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_obj , [请求类型] - OPTIONS
+2026-05-05 00:55:36.657 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.657 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.659 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_obj , [请求类型] - GET
+2026-05-05 00:55:36.661 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `commodity_information_id` = '23'  AND is_delete = 0 
+2026-05-05 00:55:36.662 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE `commodity_information_id` = '23'  AND is_delete = 0 
+2026-05-05 00:55:36.671 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:36.673 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.673 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.691 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.692 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.699 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:36.700 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.700 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.709 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/set , [请求类型] - OPTIONS
+2026-05-05 00:55:36.711 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - OPTIONS
+2026-05-05 00:55:36.724 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - OPTIONS
+2026-05-05 00:55:36.725 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - OPTIONS
+2026-05-05 00:55:36.726 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/comment/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:36.728 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.728 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:36.740 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/set , [请求类型] - POST
+2026-05-05 00:55:36.745 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - GET
+2026-05-05 00:55:36.749 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - GET
+2026-05-05 00:55:36.751 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - GET
+2026-05-05 00:55:36.753 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/comment/get_list , [请求类型] - GET
+2026-05-05 00:55:36.759 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:36.759 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:36.760 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:36.760 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:36.760 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [praise] - 统计操作，sql: SELECT COUNT(*) FROM `praise` WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:36.760 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [praise] - 统计操作，sql: SELECT COUNT(*) FROM `praise` WHERE `source_field` = 'commodity_information_id' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:36.767 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:36.767 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:36.767 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [collect] - 统计操作，sql: SELECT COUNT(*) FROM `collect` WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:36.769 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `source_id` = '23' and `source_table` = 'commodity_information' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:55:36.772 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [comment] - 查询操作，sql: select * from `comment` WHERE `source_field` = 'commodity_information_id' and `source_id` = '23' and `source_table` = 'commodity_information' and `reply_to_id` = '0'  AND is_delete = 0 order by create_time desc  limit 0 , 5
+2026-05-05 00:55:36.801 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `source_id` = '23' and `source_table` = 'commodity_information' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:55:36.802 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [comment] - 统计操作，sql: SELECT COUNT(*) FROM `comment` WHERE `source_field` = 'commodity_information_id' and `source_id` = '23' and `source_table` = 'commodity_information' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:55:36.833 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [CommodityInformation(commodityInformationId=null, productCode=null, productName=null, productCategory=null, productBrand=null, commoditySpecifications=null, productInventory=null, productImages=null, commodityPrice=null, productIntroduction=null, productDetails=null, views=3, praiseLen=null, collectLen=null, commentLen=null, salesInformationLimitTimes=null, purchasingInformationLimitTimes=null, inventoryInformationLimitTimes=null, isDelete=null, updateTime=null, createTime=null)] - 更新操作：{}
+2026-05-05 00:55:36.848 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/add , [请求类型] - OPTIONS
+2026-05-05 00:55:36.852 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/add , [请求类型] - POST
+2026-05-05 00:55:36.865 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [Views(viewsId=47, userId=1, createTime=null, updateTime=null, sourceTable=commodity_information, sourceField=commodity_information_id, sourceId=23)] - 插入操作：{}
+2026-05-05 00:55:37.518 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - GET
+2026-05-05 00:55:37.519 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:37.519 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:37.519 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [praise] - 统计操作，sql: SELECT COUNT(*) FROM `praise` WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:37.520 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - OPTIONS
+2026-05-05 00:55:37.527 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - GET
+2026-05-05 00:55:37.528 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:37.528 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:37.528 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [collect] - 统计操作，sql: SELECT COUNT(*) FROM `collect` WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '23' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:40.385 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:40.386 [http-nio-5000-exec-1] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:40.388 [http-nio-5000-exec-1] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:40.388 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:40.388 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:40.394 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:55:40.395 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:40.395 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:55:40.397 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:40.397 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:40.398 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:40.399 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:40.399 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:55:40.400 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/banner/get_list , [请求类型] - GET
+2026-05-05 00:55:40.400 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:40.400 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [banner] - 查询操作，sql: select * from `banner`
+2026-05-05 00:55:40.401 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:55:40.402 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:40.402 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` limit 0 , 6
+2026-05-05 00:55:40.402 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:40.403 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:55:40.405 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:40.406 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [banner] - 统计操作，sql: SELECT COUNT(*) FROM `banner`
+2026-05-05 00:55:40.406 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:55:40.407 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:55:40.409 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:40.409 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:40.409 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:40.424 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:40.424 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:44.447 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777884065.png , [请求类型] - GET
+2026-05-05 00:55:50.363 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:50.364 [http-nio-5000-exec-7] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:50.365 [http-nio-5000-exec-7] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:50.365 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:50.365 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:50.390 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:50.391 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:50.391 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:50.392 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:50.396 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:55:50.397 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:50.397 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:55:50.397 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:50.397 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:50.401 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:50.401 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:55:52.082 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:52.083 [http-nio-5000-exec-3] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:52.085 [http-nio-5000-exec-3] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:52.085 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:52.085 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:52.091 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:52.092 [http-nio-5000-exec-5] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:52.093 [http-nio-5000-exec-5] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:52.094 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:52.094 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:52.099 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:52.103 [http-nio-5000-exec-6] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:52.105 [http-nio-5000-exec-6] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:52.105 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:52.105 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:52.118 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:52.118 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.118 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.122 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_obj , [请求类型] - OPTIONS
+2026-05-05 00:55:52.125 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.125 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.131 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:52.131 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_obj , [请求类型] - GET
+2026-05-05 00:55:52.131 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.133 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.131 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `commodity_information_id` = '21'  AND is_delete = 0 
+2026-05-05 00:55:52.134 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE `commodity_information_id` = '21'  AND is_delete = 0 
+2026-05-05 00:55:52.140 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.140 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.145 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:52.145 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.145 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.151 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.152 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:52.173 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/set , [请求类型] - OPTIONS
+2026-05-05 00:55:52.175 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - OPTIONS
+2026-05-05 00:55:52.179 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - OPTIONS
+2026-05-05 00:55:52.181 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - OPTIONS
+2026-05-05 00:55:52.183 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/set , [请求类型] - POST
+2026-05-05 00:55:52.186 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/comment/get_list , [请求类型] - OPTIONS
+2026-05-05 00:55:52.190 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - GET
+2026-05-05 00:55:52.191 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:52.191 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:52.192 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [praise] - 统计操作，sql: SELECT COUNT(*) FROM `praise` WHERE `source_field` = 'commodity_information_id' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:52.193 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [CommodityInformation(commodityInformationId=null, productCode=null, productName=null, productCategory=null, productBrand=null, commoditySpecifications=null, productInventory=null, productImages=null, commodityPrice=null, productIntroduction=null, productDetails=null, views=32, praiseLen=null, collectLen=null, commentLen=null, salesInformationLimitTimes=null, purchasingInformationLimitTimes=null, inventoryInformationLimitTimes=null, isDelete=null, updateTime=null, createTime=null)] - 更新操作：{}
+2026-05-05 00:55:52.196 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - GET
+2026-05-05 00:55:52.197 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:52.197 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:52.202 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [praise] - 统计操作，sql: SELECT COUNT(*) FROM `praise` WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:52.201 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/comment/get_list , [请求类型] - GET
+2026-05-05 00:55:52.203 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `source_id` = '21' and `source_table` = 'commodity_information' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:55:52.200 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - GET
+2026-05-05 00:55:52.205 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [comment] - 查询操作，sql: select * from `comment` WHERE `source_field` = 'commodity_information_id' and `source_id` = '21' and `source_table` = 'commodity_information' and `reply_to_id` = '0'  AND is_delete = 0 order by create_time desc  limit 0 , 5
+2026-05-05 00:55:52.205 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:52.205 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:52.207 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [collect] - 统计操作，sql: SELECT COUNT(*) FROM `collect` WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:52.208 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `source_id` = '21' and `source_table` = 'commodity_information' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:55:52.209 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [comment] - 统计操作，sql: SELECT COUNT(*) FROM `comment` WHERE `source_field` = 'commodity_information_id' and `source_id` = '21' and `source_table` = 'commodity_information' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:55:52.218 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/add , [请求类型] - POST
+2026-05-05 00:55:52.222 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [Views(viewsId=48, userId=1, createTime=null, updateTime=null, sourceTable=commodity_information, sourceField=commodity_information_id, sourceId=21)] - 插入操作：{}
+2026-05-05 00:55:53.084 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - GET
+2026-05-05 00:55:53.085 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:53.085 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:53.085 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [praise] - 统计操作，sql: SELECT COUNT(*) FROM `praise` WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:53.085 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - OPTIONS
+2026-05-05 00:55:53.090 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - GET
+2026-05-05 00:55:53.090 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:55:53.090 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:53.091 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [collect] - 统计操作，sql: SELECT COUNT(*) FROM `collect` WHERE `source_field` = 'commodity_information_id' and `user_id` = '1' and `source_id` = '21' and `source_table` = 'commodity_information'  
+2026-05-05 00:55:53.619 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/add , [请求类型] - OPTIONS
+2026-05-05 00:55:53.623 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/add , [请求类型] - POST
+2026-05-05 00:55:53.630 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [Praise(praiseId=5, userId=1, createTime=null, updateTime=null, sourceTable=commodity_information, sourceField=commodity_information_id, sourceId=21, status=null)] - 插入操作：{}
+2026-05-05 00:55:53.671 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/set , [请求类型] - POST
+2026-05-05 00:55:53.675 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [CommodityInformation(commodityInformationId=null, productCode=null, productName=null, productCategory=null, productBrand=null, commoditySpecifications=null, productInventory=null, productImages=null, commodityPrice=null, productIntroduction=null, productDetails=null, views=null, praiseLen=2, collectLen=null, commentLen=null, salesInformationLimitTimes=null, purchasingInformationLimitTimes=null, inventoryInformationLimitTimes=null, isDelete=null, updateTime=null, createTime=null)] - 更新操作：{}
+2026-05-05 00:55:54.643 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/del , [请求类型] - OPTIONS
+2026-05-05 00:55:54.649 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/del , [请求类型] - GET
+2026-05-05 00:55:54.679 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [null] - 删除操作：{}
+2026-05-05 00:55:54.687 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/set , [请求类型] - POST
+2026-05-05 00:55:54.691 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [CommodityInformation(commodityInformationId=null, productCode=null, productName=null, productCategory=null, productBrand=null, commoditySpecifications=null, productInventory=null, productImages=null, commodityPrice=null, productIntroduction=null, productDetails=null, views=null, praiseLen=1, collectLen=null, commentLen=null, salesInformationLimitTimes=null, purchasingInformationLimitTimes=null, inventoryInformationLimitTimes=null, isDelete=null, updateTime=null, createTime=null)] - 更新操作：{}
+2026-05-05 00:55:55.313 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/add , [请求类型] - POST
+2026-05-05 00:55:55.317 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [Praise(praiseId=6, userId=1, createTime=null, updateTime=null, sourceTable=commodity_information, sourceField=commodity_information_id, sourceId=21, status=null)] - 插入操作：{}
+2026-05-05 00:55:55.356 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/set , [请求类型] - POST
+2026-05-05 00:55:55.360 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [CommodityInformation(commodityInformationId=null, productCode=null, productName=null, productCategory=null, productBrand=null, commoditySpecifications=null, productInventory=null, productImages=null, commodityPrice=null, productIntroduction=null, productDetails=null, views=null, praiseLen=2, collectLen=null, commentLen=null, salesInformationLimitTimes=null, purchasingInformationLimitTimes=null, inventoryInformationLimitTimes=null, isDelete=null, updateTime=null, createTime=null)] - 更新操作：{}
+2026-05-05 00:55:56.978 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/add , [请求类型] - OPTIONS
+2026-05-05 00:55:56.982 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/add , [请求类型] - POST
+2026-05-05 00:55:56.989 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [Collect(collectId=4, userId=1, sourceTable=commodity_information, sourceField=commodity_information_id, sourceId=21, title=shangpi1, img=/api/upload/O1CN01EBbQPP1q2CWxm7wtb_!!4611686018427385277-0-item_pic.jpg_460x460q90.jpg_.webp, createTime=null, updateTime=null)] - 插入操作：{}
+2026-05-05 00:55:59.484 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:55:59.484 [http-nio-5000-exec-5] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:55:59.486 [http-nio-5000-exec-5] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:55:59.486 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:59.486 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:55:59.500 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:55:59.501 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:59.501 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:55:59.501 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:55:59.502 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:59.502 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:55:59.503 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:55:59.504 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:55:59.505 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:55:59.506 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:01.534 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:56:01.534 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:56:01.536 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:56:01.536 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:01.536 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:01.545 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:56:01.546 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:01.546 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` limit 0 , 6
+2026-05-05 00:56:01.547 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/banner/get_list , [请求类型] - GET
+2026-05-05 00:56:01.547 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:01.548 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:01.547 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:56:01.548 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [banner] - 查询操作，sql: select * from `banner`
+2026-05-05 00:56:01.548 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:01.548 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:56:01.550 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:01.551 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [banner] - 统计操作，sql: SELECT COUNT(*) FROM `banner`
+2026-05-05 00:56:01.550 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:01.551 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:01.554 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:01.554 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:56:01.556 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:01.556 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:56:01.557 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:01.557 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:01.558 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:01.558 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:01.558 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:01.564 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:01.564 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:01.615 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777796551.png , [请求类型] - GET
+2026-05-05 00:56:01.631 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777879821.png , [请求类型] - GET
+2026-05-05 00:56:04.470 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:56:04.470 [http-nio-5000-exec-4] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:56:04.471 [http-nio-5000-exec-4] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:56:04.471 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:04.472 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:04.476 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:56:04.476 [http-nio-5000-exec-8] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:56:04.480 [http-nio-5000-exec-8] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:56:04.481 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:04.481 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:04.485 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:56:04.486 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:56:04.487 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:56:04.488 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:04.488 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:04.498 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:04.502 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:56:04.502 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:04.502 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article`order by views desc  limit 0 , 10
+2026-05-05 00:56:04.506 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:04.506 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.507 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.509 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_obj , [请求类型] - OPTIONS
+2026-05-05 00:56:04.513 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.513 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.516 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_obj , [请求类型] - GET
+2026-05-05 00:56:04.517 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `article_id` = '8'  
+2026-05-05 00:56:04.517 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` WHERE `article_id` = '8'  
+2026-05-05 00:56:04.534 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:04.534 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:04.534 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.534 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:56:04.534 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.540 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.540 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.546 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:04.546 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.547 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.550 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/set , [请求类型] - OPTIONS
+2026-05-05 00:56:04.551 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.552 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:04.553 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/comment/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:04.561 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/set , [请求类型] - POST
+2026-05-05 00:56:04.563 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/comment/get_list , [请求类型] - GET
+2026-05-05 00:56:04.563 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'article_id' and `source_id` = '8' and `source_table` = 'article' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:56:04.564 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [comment] - 查询操作，sql: select * from `comment` WHERE `source_field` = 'article_id' and `source_id` = '8' and `source_table` = 'article' and `reply_to_id` = '0'  AND is_delete = 0 order by create_time desc  limit 0 , 5
+2026-05-05 00:56:04.568 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'article_id' and `source_id` = '8' and `source_table` = 'article' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:56:04.568 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [comment] - 统计操作，sql: SELECT COUNT(*) FROM `comment` WHERE `source_field` = 'article_id' and `source_id` = '8' and `source_table` = 'article' and `reply_to_id` = '0'  AND is_delete = 0 
+2026-05-05 00:56:04.571 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [Article(articleId=null, title=null, type=null, views=4, praiseLen=null, createTime=null, updateTime=null, source=null, url=null, tag=null, content=null, img=null, description=null)] - 更新操作：{}
+2026-05-05 00:56:05.484 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - OPTIONS
+2026-05-05 00:56:05.485 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - OPTIONS
+2026-05-05 00:56:05.488 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/collect/count , [请求类型] - GET
+2026-05-05 00:56:05.489 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:05.489 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'article_id' and `user_id` = '1' and `source_id` = '8' and `source_table` = 'article'  
+2026-05-05 00:56:05.489 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [collect] - 统计操作，sql: SELECT COUNT(*) FROM `collect` WHERE `source_field` = 'article_id' and `user_id` = '1' and `source_id` = '8' and `source_table` = 'article'  
+2026-05-05 00:56:05.491 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/count , [请求类型] - GET
+2026-05-05 00:56:05.492 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:05.492 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `source_field` = 'article_id' and `user_id` = '1' and `source_id` = '8' and `source_table` = 'article'  
+2026-05-05 00:56:05.492 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [praise] - 统计操作，sql: SELECT COUNT(*) FROM `praise` WHERE `source_field` = 'article_id' and `user_id` = '1' and `source_id` = '8' and `source_table` = 'article'  
+2026-05-05 00:56:12.509 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/praise/add , [请求类型] - POST
+2026-05-05 00:56:12.514 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [Praise(praiseId=7, userId=1, createTime=null, updateTime=null, sourceTable=article, sourceField=article_id, sourceId=8, status=null)] - 插入操作：{}
+2026-05-05 00:56:12.553 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/set , [请求类型] - POST
+2026-05-05 00:56:12.557 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [Article(articleId=null, title=null, type=null, views=null, praiseLen=2, createTime=null, updateTime=null, source=null, url=null, tag=null, content=null, img=null, description=null)] - 更新操作：{}
+2026-05-05 00:56:24.725 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:56:24.726 [http-nio-5000-exec-8] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:56:24.727 [http-nio-5000-exec-8] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:56:24.727 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:24.727 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:24.734 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:24.735 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:24.735 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:24.734 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:56:24.736 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:56:24.736 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:24.736 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:56:24.737 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:24.737 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` limit 0 , 6
+2026-05-05 00:56:24.736 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/banner/get_list , [请求类型] - GET
+2026-05-05 00:56:24.737 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:24.737 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [banner] - 查询操作，sql: select * from `banner`
+2026-05-05 00:56:24.739 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:24.743 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [banner] - 统计操作，sql: SELECT COUNT(*) FROM `banner`
+2026-05-05 00:56:24.741 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:24.743 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:56:24.743 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:24.743 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:24.739 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:24.743 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:56:24.746 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:24.747 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:24.747 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:24.752 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:24.752 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:24.783 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777796551.png , [请求类型] - GET
+2026-05-05 00:56:24.785 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777879821.png , [请求类型] - GET
+2026-05-05 00:56:27.993 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:56:27.994 [http-nio-5000-exec-3] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:56:27.995 [http-nio-5000-exec-3] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:56:27.995 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:27.995 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:28.005 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:28.007 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/category/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:28.011 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:56:28.011 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/category/get_list , [请求类型] - GET
+2026-05-05 00:56:28.012 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:28.012 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article`order by views desc  limit 0 , 8
+2026-05-05 00:56:28.014 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:28.014 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:56:28.021 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:28.021 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [category] - 查询操作，sql: select * from `category` limit 0 , 10
+2026-05-05 00:56:28.024 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:28.024 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [category] - 统计操作，sql: SELECT COUNT(*) FROM `category`
+2026-05-05 00:56:28.040 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:28.041 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:28.041 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:28.043 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:28.045 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:28.046 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:28.052 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:56:28.052 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:28.052 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` limit 0 , 12
+2026-05-05 00:56:28.055 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:28.055 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:56:31.430 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:56:31.431 [http-nio-5000-exec-1] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:56:31.432 [http-nio-5000-exec-1] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:56:31.432 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:31.432 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:31.436 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:31.436 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:31.436 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:31.437 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:56:31.438 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:31.438 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/banner/get_list , [请求类型] - GET
+2026-05-05 00:56:31.438 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:56:31.439 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:31.440 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [banner] - 查询操作，sql: select * from `banner`
+2026-05-05 00:56:31.440 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:31.440 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:56:31.440 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:56:31.443 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:31.443 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:31.443 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [banner] - 统计操作，sql: SELECT COUNT(*) FROM `banner`
+2026-05-05 00:56:31.443 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:56:31.443 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:31.443 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` limit 0 , 6
+2026-05-05 00:56:31.449 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:31.449 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:56:31.454 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:31.455 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:31.455 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:31.461 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:31.461 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:35.468 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777884065.png , [请求类型] - GET
+2026-05-05 00:56:40.234 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:40.235 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - OPTIONS
+2026-05-05 00:56:40.240 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:40.240 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:56:40.241 [http-nio-5000-exec-3] INFO  com.project.demo.controller.UserController - [获取的token] dee499163a224957a7664bb1425fbf14
+2026-05-05 00:56:40.241 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客'  
+2026-05-05 00:56:40.241 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '游客'  
+2026-05-05 00:56:40.242 [http-nio-5000-exec-3] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:56:40.243 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:40.243 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:56:40.244 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '游客'  
+2026-05-05 00:56:40.244 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '游客'  
+2026-05-05 00:56:40.256 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/count , [请求类型] - OPTIONS
+2026-05-05 00:56:40.261 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/count , [请求类型] - OPTIONS
+2026-05-05 00:56:40.263 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/count , [请求类型] - OPTIONS
+2026-05-05 00:56:40.264 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/count , [请求类型] - OPTIONS
+2026-05-05 00:56:40.269 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/count , [请求类型] - OPTIONS
+2026-05-05 00:56:40.269 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/count , [请求类型] - OPTIONS
+2026-05-05 00:56:40.271 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/list_group , [请求类型] - OPTIONS
+2026-05-05 00:56:40.273 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/list_group , [请求类型] - OPTIONS
+2026-05-05 00:56:40.279 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/list_group , [请求类型] - OPTIONS
+2026-05-05 00:56:40.279 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/list_group , [请求类型] - OPTIONS
+2026-05-05 00:56:40.293 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/count , [请求类型] - GET
+2026-05-05 00:56:40.294 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.294 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.294 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [user] - 统计操作，sql: SELECT COUNT(*) FROM `user` WHERE is_delete = 0 
+2026-05-05 00:56:40.302 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/count , [请求类型] - GET
+2026-05-05 00:56:40.302 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/count , [请求类型] - GET
+2026-05-05 00:56:40.302 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.303 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/count , [请求类型] - GET
+2026-05-05 00:56:40.303 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/count , [请求类型] - GET
+2026-05-05 00:56:40.305 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.305 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [inventory_information] - 统计操作，sql: SELECT COUNT(*) FROM `inventory_information` WHERE is_delete = 0 
+2026-05-05 00:56:40.305 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.305 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.303 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.305 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/count , [请求类型] - GET
+2026-05-05 00:56:40.305 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/list_group , [请求类型] - GET
+2026-05-05 00:56:40.305 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.307 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.307 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.307 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [sales_information] - 统计操作，sql: SELECT COUNT(*) FROM `sales_information` WHERE is_delete = 0 
+2026-05-05 00:56:40.308 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [registered_user] - 统计操作，sql: SELECT COUNT(*) FROM `registered_user` WHERE is_delete = 0 
+2026-05-05 00:56:40.307 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.307 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [purchasing_information] - 统计操作，sql: SELECT COUNT(*) FROM `purchasing_information` WHERE is_delete = 0 
+2026-05-05 00:56:40.308 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.309 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [supply_information] - 统计操作，sql: SELECT COUNT(*) FROM `supply_information` WHERE is_delete = 0 
+2026-05-05 00:56:40.315 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/list_group , [请求类型] - GET
+2026-05-05 00:56:40.316 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.316 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [registered_user] - 查询操作，sql: select COUNT(*) AS count, user_gender from `registered_user`  WHERE is_delete = 0 group by user_gender 
+2026-05-05 00:56:40.330 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/list_group , [请求类型] - GET
+2026-05-05 00:56:40.330 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.330 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/list_group , [请求类型] - GET
+2026-05-05 00:56:40.330 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [supply_information] - 查询操作，sql: select COUNT(*) AS count, commodity_category from `supply_information`  WHERE is_delete = 0 group by commodity_category 
+2026-05-05 00:56:40.331 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:40.331 [http-nio-5000-exec-3] INFO  com.project.demo.service.base.BaseService - [views] - 查询操作，sql: select COUNT(*) AS count, source_table from `views` group by source_table 
+2026-05-05 00:56:40.423 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:40.429 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:40.430 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:40.430 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:40.439 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:40.440 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:40.465 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/count , [请求类型] - GET
+2026-05-05 00:56:40.466 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.466 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.466 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [user] - 统计操作，sql: SELECT COUNT(*) FROM `user` WHERE is_delete = 0 
+2026-05-05 00:56:40.469 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/count , [请求类型] - GET
+2026-05-05 00:56:40.469 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.469 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/count , [请求类型] - GET
+2026-05-05 00:56:40.469 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/count , [请求类型] - GET
+2026-05-05 00:56:40.470 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.470 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [sales_information] - 统计操作，sql: SELECT COUNT(*) FROM `sales_information` WHERE is_delete = 0 
+2026-05-05 00:56:40.470 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.471 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.471 [http-nio-5000-exec-9] INFO  com.project.demo.service.base.BaseService - [inventory_information] - 统计操作，sql: SELECT COUNT(*) FROM `inventory_information` WHERE is_delete = 0 
+2026-05-05 00:56:40.470 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/count , [请求类型] - GET
+2026-05-05 00:56:40.470 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.475 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.474 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/count , [请求类型] - GET
+2026-05-05 00:56:40.479 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.479 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [purchasing_information] - 统计操作，sql: SELECT COUNT(*) FROM `purchasing_information` WHERE is_delete = 0 
+2026-05-05 00:56:40.475 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.480 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 拼接统计函数前
+2026-05-05 00:56:40.480 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [registered_user] - 统计操作，sql: SELECT COUNT(*) FROM `registered_user` WHERE is_delete = 0 
+2026-05-05 00:56:40.480 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.482 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/sales_information/list_group , [请求类型] - GET
+2026-05-05 00:56:40.483 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [supply_information] - 统计操作，sql: SELECT COUNT(*) FROM `supply_information` WHERE is_delete = 0 
+2026-05-05 00:56:40.492 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/registered_user/list_group , [请求类型] - GET
+2026-05-05 00:56:40.493 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.493 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [registered_user] - 查询操作，sql: select COUNT(*) AS count, user_gender from `registered_user`  WHERE is_delete = 0 group by user_gender 
+2026-05-05 00:56:40.505 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/list_group , [请求类型] - OPTIONS
+2026-05-05 00:56:40.505 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/views/list_group , [请求类型] - GET
+2026-05-05 00:56:40.505 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/supply_information/list_group , [请求类型] - GET
+2026-05-05 00:56:40.507 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:40.507 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [views] - 查询操作，sql: select COUNT(*) AS count, source_table from `views` group by source_table 
+2026-05-05 00:56:40.508 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:56:40.508 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [supply_information] - 查询操作，sql: select COUNT(*) AS count, commodity_category from `supply_information`  WHERE is_delete = 0 group by commodity_category 
+2026-05-05 00:56:40.512 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp , [请求类型] - GET
+2026-05-05 00:56:40.518 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/list_group , [请求类型] - GET
+2026-05-05 00:56:40.603 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:56:40.604 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:40.604 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:40.608 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:56:40.608 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:56:40.640 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/inventory_information/list_group , [请求类型] - GET
+2026-05-05 00:56:40.692 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/list_group , [请求类型] - OPTIONS
+2026-05-05 00:56:40.699 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/list_group , [请求类型] - GET
+2026-05-05 00:56:40.708 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/purchasing_information/list_group , [请求类型] - GET
+2026-05-05 00:56:44.281 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:44.284 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/category/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:44.291 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:56:44.292 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:44.292 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article`order by create_time desc  limit 0 , 10
+2026-05-05 00:56:44.294 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/category/get_list , [请求类型] - GET
+2026-05-05 00:56:44.294 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:44.295 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:44.296 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [category] - 查询操作，sql: select * from `category`
+2026-05-05 00:56:44.296 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:56:44.299 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:44.299 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [category] - 统计操作，sql: SELECT COUNT(*) FROM `category`
+2026-05-05 00:56:44.402 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777879821.png , [请求类型] - GET
+2026-05-05 00:56:44.403 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/upload/1777796551.png , [请求类型] - GET
+2026-05-05 00:56:45.198 [http-nio-5000-exec-9] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/category/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:45.208 [http-nio-5000-exec-2] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/category/get_list , [请求类型] - GET
+2026-05-05 00:56:45.208 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:45.208 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [category] - 查询操作，sql: select * from `category` limit 0 , 10
+2026-05-05 00:56:45.211 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:45.211 [http-nio-5000-exec-2] INFO  com.project.demo.service.base.BaseService - [category] - 统计操作，sql: SELECT COUNT(*) FROM `category`
+2026-05-05 00:56:47.919 [http-nio-5000-exec-3] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/announcement/get_list , [请求类型] - OPTIONS
+2026-05-05 00:56:47.936 [http-nio-5000-exec-1] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/announcement/get_list , [请求类型] - GET
+2026-05-05 00:56:47.943 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:47.943 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [announcement] - 查询操作，sql: select * from `announcement`order by create_time desc  limit 0 , 10
+2026-05-05 00:56:47.947 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:56:47.947 [http-nio-5000-exec-1] INFO  com.project.demo.service.base.BaseService - [announcement] - 统计操作，sql: SELECT COUNT(*) FROM `announcement`
+2026-05-05 00:57:00.105 [http-nio-5000-exec-10] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/user/state , [请求类型] - GET
+2026-05-05 00:57:00.105 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [获取的token] e558311f1df847968eab49ea4c9bb117
+2026-05-05 00:57:00.108 [http-nio-5000-exec-10] INFO  com.project.demo.controller.UserController - [返回userId] 1
+2026-05-05 00:57:00.109 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:57:00.109 [http-nio-5000-exec-10] INFO  com.project.demo.service.base.BaseService - [user] - 查询操作，sql: select * from `user` WHERE `user_id` = '1'  AND is_delete = 0 
+2026-05-05 00:57:00.113 [http-nio-5000-exec-7] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/commodity_information/get_list , [请求类型] - GET
+2026-05-05 00:57:00.113 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:57:00.113 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 查询操作，sql: select * from `commodity_information` WHERE is_delete = 0  limit 0 , 12
+2026-05-05 00:57:00.115 [http-nio-5000-exec-8] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/banner/get_list , [请求类型] - GET
+2026-05-05 00:57:00.115 [http-nio-5000-exec-5] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:57:00.115 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:57:00.115 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE is_delete = 0 
+2026-05-05 00:57:00.115 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [banner] - 查询操作，sql: select * from `banner`
+2026-05-05 00:57:00.116 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:57:00.115 [http-nio-5000-exec-7] INFO  com.project.demo.service.base.BaseService - [commodity_information] - 统计操作，sql: SELECT COUNT(*) FROM `commodity_information` WHERE is_delete = 0 
+2026-05-05 00:57:00.116 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:57:00.117 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:57:00.117 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:57:00.117 [http-nio-5000-exec-8] INFO  com.project.demo.service.base.BaseService - [banner] - 统计操作，sql: SELECT COUNT(*) FROM `banner`
+2026-05-05 00:57:00.117 [http-nio-5000-exec-5] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `get` = '1' and `position` = 'top'  
+2026-05-05 00:57:00.127 [http-nio-5000-exec-6] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/article/get_list , [请求类型] - GET
+2026-05-05 00:57:00.127 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:57:00.128 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [article] - 查询操作，sql: select * from `article` limit 0 , 6
+2026-05-05 00:57:00.130 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL: 
+2026-05-05 00:57:00.131 [http-nio-5000-exec-6] INFO  com.project.demo.service.base.BaseService - [article] - 统计操作，sql: SELECT COUNT(*) FROM `article`
+2026-05-05 00:57:00.140 [http-nio-5000-exec-4] INFO  com.project.demo.interceptor.LoginInterceptor - [请求接口] - http://localhost:5000/api/auth/get_list , [请求类型] - GET
+2026-05-05 00:57:00.140 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:57:00.141 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [auth] - 查询操作，sql: select * from `auth` WHERE `user_group` = '管理员'  
+2026-05-05 00:57:00.146 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - 生成的最终SQL:  WHERE `user_group` = '管理员'  
+2026-05-05 00:57:00.146 [http-nio-5000-exec-4] INFO  com.project.demo.service.base.BaseService - [auth] - 统计操作，sql: SELECT COUNT(*) FROM `auth` WHERE `user_group` = '管理员'  

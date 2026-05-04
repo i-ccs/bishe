@@ -89,17 +89,7 @@ const routes = [
 
 
 
-	// 公告路由
-	{
-		path: '/announcement/list',
-		name: 'announcement_list',
-		component: () => import('../views/announcement/list.vue')
-	},
-	{
-		path: '/announcement/details',
-		name: 'announcement_details',
-		component: () => import('../views/announcement/details.vue')
-	},
+
 	// 注册用户表格路由
 	{
 		path: '/registered_user/table',

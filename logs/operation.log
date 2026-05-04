@@ -1,2 +1,16 @@
 2026-05-05 00:19:45.439 [http-nio-5000-exec-8] INFO  com.project.demo.aspect.LogAspect - [user] [update] update: {"password":"asd123","user_group":"管理员","user_id":1,"user_name":"admin","nick_name":"admin","avatar":"/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp","state":1,"email":""}
 2026-05-05 00:19:45.474 [http-nio-5000-exec-2] INFO  com.project.demo.aspect.LogAspect - [registered_user] [update] update: {"examine_state":"已通过","user_id":1,"user_name":"admin","user_gender":0,"registered_user_id":4,"is_delete":0}
+2026-05-05 00:55:36.835 [http-nio-5000-exec-6] INFO  com.project.demo.aspect.LogAspect - [commodity_information] [update] update: {"views":3}
+2026-05-05 00:55:36.866 [http-nio-5000-exec-10] INFO  com.project.demo.aspect.LogAspect - [views] [insert] insert: {"source_field":"commodity_information_id","user_id":1,"source_id":23,"source_table":"commodity_information"}
+2026-05-05 00:55:52.193 [http-nio-5000-exec-4] INFO  com.project.demo.aspect.LogAspect - [commodity_information] [update] update: {"views":32}
+2026-05-05 00:55:52.222 [http-nio-5000-exec-9] INFO  com.project.demo.aspect.LogAspect - [views] [insert] insert: {"source_field":"commodity_information_id","user_id":1,"source_id":21,"source_table":"commodity_information"}
+2026-05-05 00:55:53.631 [http-nio-5000-exec-8] INFO  com.project.demo.aspect.LogAspect - [praise] [insert] insert: {"source_field":"commodity_information_id","user_id":1,"source_id":21,"source_table":"commodity_information"}
+2026-05-05 00:55:53.675 [http-nio-5000-exec-4] INFO  com.project.demo.aspect.LogAspect - [commodity_information] [update] update: {"praise_len":2}
+2026-05-05 00:55:54.680 [http-nio-5000-exec-7] INFO  com.project.demo.aspect.LogAspect - [praise] [delete] delete: {"source_field":"commodity_information_id","user_id":"1","source_id":"21","source_table":"commodity_information"}
+2026-05-05 00:55:54.691 [http-nio-5000-exec-2] INFO  com.project.demo.aspect.LogAspect - [commodity_information] [update] update: {"praise_len":1}
+2026-05-05 00:55:55.317 [http-nio-5000-exec-9] INFO  com.project.demo.aspect.LogAspect - [praise] [insert] insert: {"source_field":"commodity_information_id","user_id":1,"source_id":21,"source_table":"commodity_information"}
+2026-05-05 00:55:55.360 [http-nio-5000-exec-6] INFO  com.project.demo.aspect.LogAspect - [commodity_information] [update] update: {"praise_len":2}
+2026-05-05 00:55:56.989 [http-nio-5000-exec-3] INFO  com.project.demo.aspect.LogAspect - [collect] [insert] insert: {"img":"/api/upload/O1CN01EBbQPP1q2CWxm7wtb_!!4611686018427385277-0-item_pic.jpg_460x460q90.jpg_.webp","source_field":"commodity_information_id","user_id":1,"source_id":21,"title":"shangpi1","source_table":"commodity_information"}
+2026-05-05 00:56:04.571 [http-nio-5000-exec-10] INFO  com.project.demo.aspect.LogAspect - [article] [update] update: {"views":4}
+2026-05-05 00:56:12.514 [http-nio-5000-exec-3] INFO  com.project.demo.aspect.LogAspect - [praise] [insert] insert: {"source_field":"article_id","user_id":1,"source_id":8,"source_table":"article"}
+2026-05-05 00:56:12.557 [http-nio-5000-exec-4] INFO  com.project.demo.aspect.LogAspect - [article] [update] update: {"praise_len":2}
