@@ -5950,7 +5950,7 @@ select option {
   color: #1a2535;
 }
 #app .page_forum .warp .container .forum-detail-comment .bar_title a:after {
-  content: "Comments";
+  content: "";
   font-size: 18px;
   font-weight: bold;
   color: #1a2535;
@@ -6431,7 +6431,7 @@ select option {
   color: #1a2535;
 }
 .page_article .comments-wrap .container .row .bar_title a:after {
-  content: "Comments";
+  content: "";
   font-size: 18px;
   font-weight: bold;
   color: #1a2535;
@@ -7448,7 +7448,7 @@ select option {
   border-bottom: 1px solid #e4eaef;
 }
 #app .diy_details .review .bar_title .title::after, #app .diy_details .review .mt .title::after {
-  content: " / Comment";
+  content: "";
 }
 #app .diy_details .pagination {
   justify-content: center;

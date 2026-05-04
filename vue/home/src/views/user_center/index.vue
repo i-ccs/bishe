@@ -122,9 +122,9 @@
 		computed: {
 			avatarUrl() {
 				const avatar = this.userInfo.avatar;
-				if (!avatar || avatar === '/img/avatar.png') return '/img/avatar.png';
+				if (!avatar || avatar === '/img/default.png') return '/img/default.png';
 				if (avatar.startsWith('http')) return avatar;
-				return avatar;
+				return this.$fullUrl(avatar) || '/img/default.png';
 			}
 		},
 		mounted() {
@@ -132,10 +132,15 @@
 		},
 		methods: {
 			async loadAll() {
-				await this.loadUserInfo();
-				await this.loadOrders();
-				await this.loadCollect();
-				this.loaded = true;
+				try {
+					await this.loadUserInfo();
+					await this.loadOrders();
+					await this.loadCollect();
+				} catch (e) {
+					console.error("加载个人中心数据失败:", e);
+				} finally {
+					this.loaded = true;
+				}
 			},
 
 			async loadUserInfo() {
@@ -143,13 +148,13 @@
 				if (storeUser && storeUser.user_id) {
 					// 先用store里的数据
 					this.userInfo = { ...storeUser };
-					// 再请求注册用户详细信息
+					// 请求用户详细信息 (使用合并后的user接口)
 					const json = await this.$get(
-						`~/api/registered_user/get?user_id=${storeUser.user_id}`,
+						`~/api/user/get_obj?user_id=${storeUser.user_id}`,
 						null, null
 					);
-					if (json && json.result && json.result.list && json.result.list.length > 0) {
-						this.userInfo = { ...storeUser, ...json.result.list[0] };
+					if (json && json.result && json.result.obj) {
+						this.userInfo = { ...storeUser, ...json.result.obj };
 					}
 				}
 			},

@@ -32,14 +32,9 @@
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
 				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
-				<el-table-column align="center" label="用户" width="180">
+				<el-table-column align="center" label="用户" width="120">
 					<template slot-scope="scope">
-						<div style="display: flex; align-items: center; gap: 10px;">
-							<el-avatar size="small" :src="$fullUrl(scope.row.avatar)">
-								<img src="/img/error.png" />
-							</el-avatar>
-							<span>{{scope.row.nickname}}</span>
-						</div>
+						<span>{{scope.row.nickname}}</span>
 					</template>
 				</el-table-column>
 				<el-table-column align="center" prop="content" label="评论内容" min-width="250" show-overflow-tooltip>

@@ -2,13 +2,6 @@
   <div class="list_comment">
     <div class="item_comment_box" v-for="(o, i) in list" :key="i">
       <div class="comment">
-        <div class="left_block">
-          <img
-            style="width: 4rem; height: 4rem"
-            :src="$fullUrl(o[vm.avatar])"
-            v-default-img="'../../../public/img/default.png'"
-          />
-        </div>
         <div class="right_block">
           <div class="top_comment">
             <div class="nickname">{{ o[vm.nickname] }}</div>
@@ -140,7 +133,7 @@ export default {
 }
 
 .right_block {
-  flex-basis: calc(100% - 76px);
+  flex-basis: 100%;
 }
 
 

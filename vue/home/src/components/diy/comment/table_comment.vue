@@ -39,15 +39,6 @@
 			<el-table-column sortable fixed label="昵称" prop="nickname" width="200">
 			</el-table-column>
 
-			<el-table-column label="头像" prop="avatar" min-width="110">
-				<template slot-scope="scope">
-					<el-avatar style="width: 80px; height: 80px" :src="$fullUrl(scope.row.avatar)">
-						<div slot="error" class="image-slot">
-							<img src="../../../../public/img/error.png" style="width: 80px; height: 80px" />
-						</div>
-					</el-avatar>
-				</template>
-			</el-table-column>
 
 			<el-table-column sortable label="评论人" prop="user_id" min-width="100">
 				<template slot-scope="scope">
