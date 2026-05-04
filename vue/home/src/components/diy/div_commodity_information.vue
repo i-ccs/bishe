@@ -4,37 +4,6 @@
 			<div class="container">
 					<div class="details_title">详情</div>
 				<div class="row row_det">
-						<div v-if="this.$store.state.user.user_id" class="btns_add col-12 col-sm-6">
-							<div v-if="$check_action('/commodity_information/details','set')">
-								<!-- 点赞按钮 -->
-								<div
-										v-if="state_praise"
-										class="praise_btn praise_change"
-										@click="change_praise()"
-								>
-									<b-icon icon="hand-thumbs-up-fill" class="icon icon_change"></b-icon
-									><span class="word_change">点赞</span>
-								</div>
-								<div v-else class="praise_btn" @click="change_praise()">
-									<b-icon icon="hand-thumbs-up" class="icon"></b-icon>
-									<span>点赞</span>
-								</div>
-							</div>
-							<div v-if="$check_action('/commodity_information/details','set')">
-								<!-- 收藏按钮 -->
-								<div v-if="state_collect"
-									 class="collect_btn collect_change"
-									 @click="change_collect()"
-								>
-									<b-icon icon="heart-fill" class="icon icon_change"></b-icon>
-									<span class="word_change">收藏</span>
-								</div>
-								<div v-else class="collect_btn" @click="change_collect()">
-									<b-icon icon="heart" class="icon"></b-icon>
-									<span>收藏</span>
-								</div>
-							</div>
-						</div>
 						<div class="row_top_wrap">
 						<!-- 图片 -->
 							<div class="row_1" v-if="imgList.length">
@@ -139,10 +108,18 @@
 					</div>
 
 			<div class="details_btn_wrap">
-																											<button class="btn btn-primary details_btn" v-if="$check_action('/sales_information/edit','add') && !sales_information_limit" @click="to_form('/sales_information/edit')" ><span> 销售</span> </button>
-																		<button class="btn btn-primary details_btn" v-if="$check_action('/purchasing_information/edit','add') && !purchasing_information_limit" @click="to_form('/purchasing_information/edit')" ><span> 采购</span> </button>
-																		<button class="btn btn-primary details_btn" v-if="$check_action('/inventory_information/edit','add') && !inventory_information_limit" @click="to_form('/inventory_information/edit')" ><span> 库存</span> </button>
-																										</div>
+				<button class="btn btn-outline-primary details_btn" @click="change_praise()">
+					<b-icon :icon="state_praise ? 'hand-thumbs-up-fill' : 'hand-thumbs-up'"></b-icon>
+					<span> {{ state_praise ? '已点赞' : '点赞' }} ({{ praiseLen }})</span>
+				</button>
+				<button class="btn btn-outline-danger details_btn" @click="change_collect()">
+					<b-icon :icon="state_collect ? 'heart-fill' : 'heart'"></b-icon>
+					<span> {{ state_collect ? '已收藏' : '收藏' }}</span>
+				</button>
+				<button class="btn btn-primary details_btn" v-if="$check_action('/sales_information/edit','add') && !sales_information_limit" @click="to_form('/sales_information/edit')" ><span> 销售</span> </button>
+				<button class="btn btn-primary details_btn" v-if="$check_action('/purchasing_information/edit','add') && !purchasing_information_limit" @click="to_form('/purchasing_information/edit')" ><span> 采购</span> </button>
+				<button class="btn btn-primary details_btn" v-if="$check_action('/inventory_information/edit','add') && !inventory_information_limit" @click="to_form('/inventory_information/edit')" ><span> 库存</span> </button>
+			</div>
 						<!-- 富文本 -->
 			<div class="rich_text" v-for="(item,index) in richList" :key="item+index" v-show="$check_field('get',item.name)">
 						<div class="view">
