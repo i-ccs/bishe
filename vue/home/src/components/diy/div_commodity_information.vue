@@ -10,7 +10,17 @@
 									<div class="diy_img" v-for="(item,index) in imgList" :key="item+index">
 									<img :src="$fullUrl(obj[item.name])" />
 								</div>
-							
+								<!-- 点赞与收藏按钮 -->
+								<div class="uc-image-actions" v-if="this.$store.state.user.user_id">
+									<div class="uc-action-item" @click="change_praise()" :class="{active: state_praise}">
+										<b-icon :icon="state_praise ? 'hand-thumbs-up-fill' : 'hand-thumbs-up'"></b-icon>
+										<span>{{ state_praise ? '已点赞' : '点赞' }} ({{ praiseLen }})</span>
+									</div>
+									<div class="uc-action-item" @click="change_collect()" :class="{active: state_collect}">
+										<b-icon :icon="state_collect ? 'heart-fill' : 'heart'"></b-icon>
+										<span>{{ state_collect ? '已收藏' : '收藏' }}</span>
+									</div>
+								</div>
 							</div>
 							<!-- 内容 -->
 							<div class="row_2" :class="{flex_row2: !imgList.length}">
@@ -108,14 +118,6 @@
 					</div>
 
 			<div class="details_btn_wrap">
-				<button class="btn btn-outline-primary details_btn" @click="change_praise()">
-					<b-icon :icon="state_praise ? 'hand-thumbs-up-fill' : 'hand-thumbs-up'"></b-icon>
-					<span> {{ state_praise ? '已点赞' : '点赞' }} ({{ praiseLen }})</span>
-				</button>
-				<button class="btn btn-outline-danger details_btn" @click="change_collect()">
-					<b-icon :icon="state_collect ? 'heart-fill' : 'heart'"></b-icon>
-					<span> {{ state_collect ? '已收藏' : '收藏' }}</span>
-				</button>
 				<button class="btn btn-primary details_btn" v-if="$check_action('/sales_information/edit','add') && !sales_information_limit" @click="to_form('/sales_information/edit')" ><span> 销售</span> </button>
 				<button class="btn btn-primary details_btn" v-if="$check_action('/purchasing_information/edit','add') && !purchasing_information_limit" @click="to_form('/purchasing_information/edit')" ><span> 采购</span> </button>
 				<button class="btn btn-primary details_btn" v-if="$check_action('/inventory_information/edit','add') && !inventory_information_limit" @click="to_form('/inventory_information/edit')" ><span> 库存</span> </button>
@@ -472,6 +474,53 @@
 </script>
 
 <style>
+.uc-image-actions {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-top: 15px;
+	padding-bottom: 10px;
+}
+
+.uc-action-item {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	cursor: pointer;
+	padding: 6px 15px;
+	border-radius: 20px;
+	font-size: 14px;
+	transition: all 0.3s;
+	background: #f8fbff;
+	border: 1px solid #eef4fa;
+	color: #64748b;
+}
+
+.uc-action-item:hover {
+	background: #fff;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+	transform: translateY(-1px);
+}
+
+.uc-action-item.active {
+	background: #1a6fa8;
+	color: #fff;
+	border-color: #1a6fa8;
+}
+
+.uc-action-item.active:hover {
+	background: #165b86;
+}
+
+.uc-action-item:nth-child(2).active {
+	background: #ef4444;
+	border-color: #ef4444;
+}
+
+.uc-action-item:nth-child(2).active:hover {
+	background: #dc2626;
+}
+
 .collect_btn,
 .praise_btn {
 	margin-right: 0.5rem;
