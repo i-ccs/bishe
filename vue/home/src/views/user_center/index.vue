@@ -13,10 +13,14 @@
 
 							<!-- 用户信息卡片 -->
 							<div class="uc-hero">
-										<div class="uc-avatar-wrap">
-									<img :src="avatarUrl" class="uc-avatar" @error="onAvatarError" />
-									<span class="uc-online-dot"></span>
-								</div>
+										<div class="uc-avatar-wrap" @click="$refs.avatarInput.click()">
+											<img :src="avatarUrl" class="uc-avatar" @error="onAvatarError" title="点击修改头像" />
+											<span class="uc-online-dot"></span>
+											<div class="uc-avatar-overlay">
+												<i class="uc-icon">📷</i>
+											</div>
+											<input type="file" ref="avatarInput" @change="changeAvatar($event.target.files)" style="display: none" accept="image/*" />
+										</div>
 								<div class="uc-hero-info">
 									<h2 class="uc-name">{{ userInfo.nickname || userInfo.username || '用户' }}</h2>
 									<div class="uc-meta-row">
@@ -218,8 +222,27 @@
 				this.$router.push({ path: '/sales_information/table', query: { pay_state: '已支付' } });
 			},
 
+			async changeAvatar(files) {
+				if (!files || files.length === 0) return;
+				const form = new FormData();
+				form.append("file", files[0]);
+				try {
+					const res = await this.$post("~/api/user/upload?", form);
+					if (res.result) {
+						const avatar = res.result.url;
+						const setRes = await this.$post("~/api/user/set?user_id=" + this.userInfo.user_id, { avatar });
+						if (setRes.result) {
+							this.userInfo.avatar = avatar;
+							this.$store.commit('user_set', Object.assign({}, this.$store.state.user.obj, { avatar }));
+							this.$toast("头像修改成功!", "success");
+						}
+					}
+				} catch (err) {
+					this.$toast("上传失败", "error");
+				}
+			},
 			onAvatarError(e) {
-				e.target.src = '/img/avatar.png';
+				e.target.src = '/img/default.png';
 			}
 		},
 		components: {
@@ -229,6 +252,52 @@
 </script>
 
 <style scoped>
+.uc-avatar-wrap {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	overflow: hidden;
+	cursor: pointer;
+	border: 3px solid rgba(255,255,255,0.3);
+	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+	transition: transform 0.3s;
+	margin: 0 auto;
+}
+
+.uc-avatar-wrap:hover {
+	transform: scale(1.05);
+}
+
+.uc-avatar {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.uc-avatar-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.4);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.uc-avatar-wrap:hover .uc-avatar-overlay {
+	opacity: 1;
+}
+
+.uc-avatar-overlay .uc-icon {
+	color: #fff;
+	font-size: 20px;
+}
+
 .container {
 	min-height: 800px;
 }
