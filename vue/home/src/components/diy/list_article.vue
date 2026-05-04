@@ -65,28 +65,62 @@
 
 	.article_warp {
 		display: flex;
-		width: calc(25% - 1rem);
+		width: calc(100% - 1rem);
 		margin: 0.5rem;
-		flex-direction: column;
-		justify-content: space-between;
+		flex-direction: row;
 		background-color: white;
 		border-radius: 0.5rem;
+		transition: all 0.3s ease;
+		padding: 10px;
 	}
 
 	.article_warp:hover {
-		border: 0.2rem solid #909399;
-		box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.15);
-	}
-
-	.article_warp:hover img {
-		filter: blur(1px);
+		background: #f8fafc;
+		transform: translateX(5px);
 	}
 
 	.article {
 		width: 100%;
 		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.media {
+		width: 80px;
+		height: 60px;
+		flex-shrink: 0;
+		margin-right: 15px;
+	}
+
+	.icon img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 4px;
+	}
+
+	.doc {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.title {
+		font-size: 0.9rem;
+		font-weight: 700;
+		margin-bottom: 5px;
+		color: var(--portal-text-main);
+	}
+
+	.interact {
+		font-size: 0.8rem;
+		color: var(--portal-text-muted);
+	}
+
+	.time {
+		font-size: 0.75rem;
+		color: #999;
+		margin-top: 5px;
 	}
 
 	.ellipsis_2 {

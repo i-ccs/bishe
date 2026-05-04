@@ -395,13 +395,12 @@
 .unified-content-card {
 	border-radius: var(--portal-radius) !important;
 	border: 1px solid #f1f5f9 !important;
-	box-shadow: var(--portal-shadow) !important;
-	height: 100%;
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05) !important;
+	background: #fff;
 }
 
 .unified-content-card >>> .el-card__body {
-	padding: 20px !important;
-	height: 100%;
+	padding: 30px !important;
 }
 
 .content-column {
@@ -412,34 +411,85 @@
 
 .products-column {
 	border-right: 1px solid #f1f5f9;
-	padding-right: 30px !important;
+	padding-right: 35px !important;
 }
 
 .news-column {
-	padding-left: 20px !important;
+	padding-left: 25px !important;
 }
 
-.premium-notice-card {
-	background: #fff;
-	border-radius: var(--portal-radius);
-	box-shadow: var(--portal-shadow);
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
-	border: 1px solid #f1f5f9;
-	width: 100%;
+.products-column >>> .diy_view_list {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	margin: 0 -0.5rem !important;
 }
 
-.vertical-notice {
-	flex: 1;
-	padding: 15px;
-	overflow: hidden;
+.products-column >>> .diy_card.goods {
+	width: calc(33.33% - 1rem) !important;
+	margin: 0.5rem !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+.products-column >>> .diy_list_img_box {
+	width: 100% !important;
+	aspect-ratio: 1/1 !important;
+	height: auto !important;
 }
 
 .section-header.mini {
-	margin-bottom: 20px;
-	padding-bottom: 10px;
-	flex-shrink: 0;
+	margin-bottom: 25px;
+	padding-bottom: 12px;
+	border-bottom: 2px solid #f8fafc;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.section-header.mini .title {
+	font-size: 1.25rem;
+	font-weight: 800;
+	color: var(--portal-text-main);
+	position: relative;
+	padding-left: 15px;
+}
+
+.section-header.mini .title::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 4px;
+	height: 18px;
+	background: var(--portal-theme);
+	border-radius: 2px;
+}
+
+.premium-notice-card {
+	background: #f8fafc;
+	border-radius: var(--portal-radius);
+	border: 1px solid #f1f5f9;
+	overflow: hidden;
+	transition: all 0.3s ease;
+}
+
+.premium-notice-card:hover {
+	border-color: var(--portal-theme-light);
+	box-shadow: var(--portal-shadow);
+}
+
+.notice_header {
+	padding: 18px 25px;
+	background: #fff;
+	border-bottom: 1px solid #f1f5f9;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.notice_body {
+	padding: 10px 20px;
 }
 
 .section-header.mini .title {

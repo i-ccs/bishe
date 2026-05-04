@@ -1,5 +1,5 @@
 <template>
-    <div class="vertical-notice-container" :style="{height: '300px'}">
+    <div class="vertical-notice-container" :style="{height: '200px'}">
       <div class="notice-list-wrapper" :class="{animate: list.length > 1}">
         <div v-for="(o, i) in list" :key="i" class="notice-item">
           <router-link class="swiper_notice" :to="'/notice/details?notice_id='+o.notice_id">
@@ -9,55 +9,27 @@
             </div>
           </router-link>
         </div>
-        <!-- Duplicate first item for seamless loop if needed, but simple scroll is better for now -->
       </div>
     </div>
 </template>
-
 
 <script>
 export default {
   props: {
     list: {
       type: Array,
-      default: function () {
-        return [];
-      },
+      default: () => [],
     },
-    // vm: {
-    //   type: Object,
-    //   default: function () {
-    //     return {
-    //       title: "title",
-    //     };
-    //   },
-    // },
-  },
-  data() {
-    return {
-      slide: 0,
-      sliding: null,
-    };
-  },
-  methods: {
-    onSlideStart(slide) {
-      this.sliding = true;
-    },
-    onSlideEnd(slide) {
-      this.sliding = false;
-    },
-  },
+  }
 };
 </script>
 
-
 <style scoped>
-
   .vertical-notice-container {
     width: 100%;
     overflow: hidden;
     position: relative;
-    background: #fff;
+    background: transparent;
   }
 
   .notice-list-wrapper {
@@ -66,7 +38,7 @@ export default {
   }
 
   .notice-list-wrapper.animate {
-    animation: verticalScroll 20s linear infinite;
+    animation: verticalScroll 25s linear infinite;
   }
 
   .notice-list-wrapper.animate:hover {
@@ -74,13 +46,13 @@ export default {
   }
 
   @keyframes verticalScroll {
-    0% { top: 0; }
-    100% { top: -100%; }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
   }
 
   .notice-item {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #f8fafc;
+    padding: 15px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.05);
   }
 
   .swiper_notice {
@@ -89,11 +61,14 @@ export default {
   }
 
   .title {
-    padding: 15px 20px;
-    margin: 0;
-    font-size: 1.1rem;
+    padding: 0 20px;
+    margin: 0 0 8px 0;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--portal-text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .notice-content-wrapper {
