@@ -27,18 +27,18 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column label="预览图" width="180">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" label="预览图" width="180">
 					<template slot-scope="scope">
 						<el-image style="width: 140px; height: 70px; border-radius: 8px;" :src="$fullUrl(scope.row.img)" :preview-src-list="[$fullUrl(scope.row.img)]">
 							<div slot="error" class="image-slot"><i class="el-icon-picture-outline" style="font-size: 30px; color: #ccc;"></i></div>
 						</el-image>
 					</template>
 				</el-table-column>
-				<el-table-column label="标题" prop="title" min-width="150" show-overflow-tooltip></el-table-column>
-				<el-table-column label="跳转链接" prop="url" min-width="200" show-overflow-tooltip></el-table-column>
+				<el-table-column align="center" label="标题" prop="title" min-width="150" show-overflow-tooltip></el-table-column>
+				<el-table-column align="center" label="跳转链接" prop="url" min-width="200" show-overflow-tooltip></el-table-column>
 
-				<el-table-column fixed="right" label="操作" width="100">
+				<el-table-column align="center" fixed="right" label="操作" width="100">
 					<template slot-scope="scope">
 						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
 					</template>

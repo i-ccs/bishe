@@ -27,16 +27,16 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column fixed label="标题" prop="title" min-width="250" show-overflow-tooltip></el-table-column>
-				<el-table-column prop="create_time" label="发布时间" min-width="160">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" fixed label="标题" prop="title" min-width="250" show-overflow-tooltip></el-table-column>
+				<el-table-column align="center" prop="create_time" label="发布时间" min-width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
 				</el-table-column>
-				<el-table-column prop="update_time" label="更新时间" min-width="160">
+				<el-table-column align="center" prop="update_time" label="更新时间" min-width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm") }}</template>
 				</el-table-column>
 
-				<el-table-column fixed="right" label="操作" width="100">
+				<el-table-column align="center" fixed="right" label="操作" width="100">
 					<template slot-scope="scope">
 						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
 					</template>

@@ -27,34 +27,34 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column label="头像" width="100">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" label="头像" width="100">
 					<template slot-scope="scope">
 						<el-avatar :src="$fullUrl(scope.row.avatar)" :size="50">
 							<img src="../../../public/img/bg.jpg" />
 						</el-avatar>
 					</template>
 				</el-table-column>
-				<el-table-column prop="nickname" label="昵称" min-width="120"></el-table-column>
-				<el-table-column prop="username" label="用户名" min-width="120"></el-table-column>
-				<el-table-column prop="user_group" label="用户组" min-width="120">
+				<el-table-column align="center" prop="nickname" label="昵称" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="username" label="用户名" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="user_group" label="用户组" min-width="120">
 					<template slot-scope="scope">
 						<el-tag size="small">{{scope.row.user_group}}</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column prop="email" label="邮箱" min-width="180"></el-table-column>
-				<el-table-column prop="state" label="账号状态" width="100">
+				<el-table-column align="center" prop="email" label="邮箱" min-width="180"></el-table-column>
+				<el-table-column align="center" prop="state" label="账号状态" width="100">
 					<template slot-scope="scope">
 						<el-tag :type="scope.row.state === 1 ? 'success' : 'danger'" size="small">
 							{{list_state.getVal("text",{"value":scope.row.state})}}
 						</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column prop="create_time" label="注册时间" min-width="160">
+				<el-table-column align="center" prop="create_time" label="注册时间" min-width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
 				</el-table-column>
 
-				<el-table-column fixed="right" label="操作" width="100">
+				<el-table-column align="center" fixed="right" label="操作" width="100">
 					<template slot-scope="scope">
 						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
 					</template>

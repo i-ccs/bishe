@@ -2164,3 +2164,20 @@ header .el-dropdown-link .el-avatar img {
   padding: 0 !important;
   font-weight: normal;
 }
+
+/* Force centering in premium tables */
+.premium-table .el-table__header th,
+.premium-table .el-table__body td {
+  text-align: center !important;
+}
+
+.premium-table .cell {
+  text-align: center !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+/* Distribution helper: make columns more compact or expansive as needed */
+.premium-table .el-table__column-filter-trigger {
+  line-height: 1;
+}

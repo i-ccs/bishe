@@ -31,8 +31,8 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column label="用户" width="180">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" label="用户" width="180">
 					<template slot-scope="scope">
 						<div style="display: flex; align-items: center; gap: 10px;">
 							<el-avatar size="small" :src="$fullUrl(scope.row.avatar)">
@@ -42,16 +42,16 @@
 						</div>
 					</template>
 				</el-table-column>
-				<el-table-column prop="content" label="评论内容" min-width="250" show-overflow-tooltip>
+				<el-table-column align="center" prop="content" label="评论内容" min-width="250" show-overflow-tooltip>
 					<template slot-scope="scope">
 						<div v-html="scope.row.content"></div>
 					</template>
 				</el-table-column>
-				<el-table-column prop="create_time" label="评论时间" min-width="160">
+				<el-table-column align="center" prop="create_time" label="评论时间" min-width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
 				</el-table-column>
 
-				<el-table-column fixed="right" label="操作" width="200">
+				<el-table-column align="center" fixed="right" label="操作" width="200">
 					<template slot-scope="scope">
 						<div class="view_a">
 							<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>

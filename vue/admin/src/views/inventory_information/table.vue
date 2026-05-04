@@ -35,23 +35,23 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="120"></el-table-column>
-				<el-table-column prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
-				<el-table-column prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="120"></el-table-column>
-				<el-table-column prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="120"></el-table-column>
-				<el-table-column prop="product_inventory" label="系统账面库存" v-if="$check_field('get','product_inventory')" min-width="120"></el-table-column>
-				<el-table-column prop="check_quantity" label="实际盘点数量" v-if="$check_field('get','check_quantity')" min-width="120">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="product_inventory" label="系统账面库存" v-if="$check_field('get','product_inventory')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="check_quantity" label="实际盘点数量" v-if="$check_field('get','check_quantity')" min-width="120">
 					<template slot-scope="scope">
 						<el-tag :type="scope.row.check_quantity == scope.row.product_inventory ? 'success' : 'warning'">{{scope.row.check_quantity}}</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column prop="check_date" label="核对日期" v-if="$check_field('get','check_date')" min-width="120">
+				<el-table-column align="center" prop="check_date" label="核对日期" v-if="$check_field('get','check_date')" min-width="120">
 					<template slot-scope="scope">{{ $toTime(scope.row["check_date"],"yyyy-MM-dd") }}</template>
 				</el-table-column>
-				<el-table-column prop="inventory" label="变动说明" v-if="$check_field('get','inventory')" min-width="150" show-overflow-tooltip></el-table-column>
+				<el-table-column align="center" prop="inventory" label="变动说明" v-if="$check_field('get','inventory')" min-width="150" show-overflow-tooltip></el-table-column>
 
-				<el-table-column fixed="right" label="操作" min-width="100">
+				<el-table-column align="center" fixed="right" label="操作" min-width="100">
 					<template slot-scope="scope">
 						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
 					</template>

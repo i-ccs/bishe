@@ -35,31 +35,31 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="120"></el-table-column>
-				<el-table-column prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
-				<el-table-column prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="120"></el-table-column>
-				<el-table-column prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="120"></el-table-column>
-				<el-table-column prop="product_inventory" label="商品库存" v-if="$check_field('get','product_inventory')" min-width="100">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="product_inventory" label="商品库存" v-if="$check_field('get','product_inventory')" min-width="100">
 					<template slot-scope="scope">
 						<el-tag :type="scope.row.product_inventory < 10 ? 'danger' : 'success'">{{scope.row.product_inventory}}</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column prop="product_images" label="商品图片" v-if="$check_field('get','product_images')" width="120">
+				<el-table-column align="center" prop="product_images" label="商品图片" v-if="$check_field('get','product_images')" width="120">
 					<template slot-scope="scope">
 						<el-image style="width: 60px; height: 60px; border-radius: 8px;" :src="$fullUrl(scope.row['product_images'])" :preview-src-list="[$fullUrl(scope.row['product_images'])]">
 							<div slot="error" class="image-slot"><i class="el-icon-picture-outline" style="font-size: 30px; color: #ccc;"></i></div>
 						</el-image>
 					</template>
 				</el-table-column>
-				<el-table-column prop="commodity_price" label="商品价格" v-if="$check_field('get','commodity_price')" min-width="100">
+				<el-table-column align="center" prop="commodity_price" label="商品价格" v-if="$check_field('get','commodity_price')" min-width="100">
 					<template slot-scope="scope"><span style="color: #f56c6c; font-weight: 600;">¥ {{scope.row.commodity_price}}</span></template>
 				</el-table-column>
-				<el-table-column prop="create_time" label="创建时间" min-width="160">
+				<el-table-column align="center" prop="create_time" label="创建时间" min-width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
 				</el-table-column>
 
-				<el-table-column fixed="right" label="操作" min-width="250" 
+				<el-table-column align="center" fixed="right" label="操作" min-width="250" 
 					v-if="$check_action('/commodity_information/table','set') || $check_action('/commodity_information/view','set') || $check_action('/commodity_information/view','get')">
 					<template slot-scope="scope">
 						<div class="view_a">

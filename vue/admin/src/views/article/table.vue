@@ -40,26 +40,26 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column label="封面" width="100">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" label="封面" width="100">
 					<template slot-scope="scope">
 						<el-image style="width: 60px; height: 60px; border-radius: 6px;" :src="$fullUrl(scope.row.img)" :preview-src-list="[$fullUrl(scope.row.img)]">
 							<div slot="error" class="image-slot"><i class="el-icon-picture-outline" style="font-size: 30px; color: #ccc;"></i></div>
 						</el-image>
 					</template>
 				</el-table-column>
-				<el-table-column fixed prop="title" label="文章标题" min-width="200" show-overflow-tooltip></el-table-column>
-				<el-table-column prop="type" label="分类" width="120">
+				<el-table-column align="center" fixed prop="title" label="文章标题" min-width="200" show-overflow-tooltip></el-table-column>
+				<el-table-column align="center" prop="type" label="分类" width="120">
 					<template slot-scope="scope">
 						<el-tag size="small" type="info">{{scope.row.type}}</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column prop="tag" label="标签" min-width="150"></el-table-column>
-				<el-table-column prop="create_time" label="发布时间" min-width="160">
+				<el-table-column align="center" prop="tag" label="标签" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="create_time" label="发布时间" min-width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
 				</el-table-column>
 
-				<el-table-column fixed="right" label="操作" width="180">
+				<el-table-column align="center" fixed="right" label="操作" width="180">
 					<template slot-scope="scope">
 						<div class="view_a">
 							<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>

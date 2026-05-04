@@ -43,25 +43,25 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column fixed prop="name" label="导航名称" min-width="120"></el-table-column>
-				<el-table-column prop="father_id" label="父级菜单" width="120">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" fixed prop="name" label="导航名称" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="father_id" label="父级菜单" width="120">
 					<template slot-scope="scope">
 						<el-tag size="small" type="info">{{getObj(list,scope.row.father_id,"nav_id").name || "一级菜单"}}</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column prop="location" label="显示位置" width="100">
+				<el-table-column align="center" prop="location" label="显示位置" width="100">
 					<template slot-scope="scope">{{getObj(list_location,scope.row.location).text}}</template>
 				</el-table-column>
-				<el-table-column prop="target" label="跳转方式" width="120">
+				<el-table-column align="center" prop="target" label="跳转方式" width="120">
 					<template slot-scope="scope">{{getObj(list_target,scope.row.target).text || "本页面"}}</template>
 				</el-table-column>
-				<el-table-column prop="url" label="链接地址" min-width="200" show-overflow-tooltip></el-table-column>
-				<el-table-column prop="create_time" label="创建时间" width="160">
+				<el-table-column align="center" prop="url" label="链接地址" min-width="200" show-overflow-tooltip></el-table-column>
+				<el-table-column align="center" prop="create_time" label="创建时间" width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
 				</el-table-column>
 
-				<el-table-column fixed="right" label="操作" width="100">
+				<el-table-column align="center" fixed="right" label="操作" width="100">
 					<template slot-scope="scope">
 						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
 					</template>

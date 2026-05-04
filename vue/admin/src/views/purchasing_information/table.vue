@@ -35,23 +35,23 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column prop="purchase_order_number" label="采购单号" v-if="$check_field('get','purchase_order_number')" min-width="150"></el-table-column>
-				<el-table-column prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
-				<el-table-column prop="supplier_name" label="供应商" v-if="$check_field('get','supplier_name')" min-width="150"></el-table-column>
-				<el-table-column prop="purchase_date" label="采购日期" v-if="$check_field('get','purchase_date')" min-width="120">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" prop="purchase_order_number" label="采购单号" v-if="$check_field('get','purchase_order_number')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="supplier_name" label="供应商" v-if="$check_field('get','supplier_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="purchase_date" label="采购日期" v-if="$check_field('get','purchase_date')" min-width="120">
 					<template slot-scope="scope">{{ $toTime(scope.row["purchase_date"],"yyyy-MM-dd") }}</template>
 				</el-table-column>
-				<el-table-column prop="purchase_quantity" label="数量" v-if="$check_field('get','purchase_quantity')" min-width="100"></el-table-column>
-				<el-table-column prop="purchase_unit_price" label="单价" v-if="$check_field('get','purchase_unit_price')" min-width="100">
+				<el-table-column align="center" prop="purchase_quantity" label="数量" v-if="$check_field('get','purchase_quantity')" min-width="100"></el-table-column>
+				<el-table-column align="center" prop="purchase_unit_price" label="单价" v-if="$check_field('get','purchase_unit_price')" min-width="100">
 					<template slot-scope="scope">¥ {{scope.row.purchase_unit_price}}</template>
 				</el-table-column>
-				<el-table-column prop="total_purchase_price" label="总金额" v-if="$check_field('get','total_purchase_price')" min-width="120">
+				<el-table-column align="center" prop="total_purchase_price" label="总金额" v-if="$check_field('get','total_purchase_price')" min-width="120">
 					<template slot-scope="scope"><span style="color: #f56c6c; font-weight: 600;">¥ {{scope.row.total_purchase_price}}</span></template>
 				</el-table-column>
-				<el-table-column prop="procurement_status" label="采购备注" v-if="$check_field('get','procurement_status')" min-width="150" show-overflow-tooltip></el-table-column>
+				<el-table-column align="center" prop="procurement_status" label="采购备注" v-if="$check_field('get','procurement_status')" min-width="150" show-overflow-tooltip></el-table-column>
 
-				<el-table-column fixed="right" label="操作" min-width="100">
+				<el-table-column align="center" fixed="right" label="操作" min-width="100">
 					<template slot-scope="scope">
 						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
 					</template>

@@ -38,24 +38,24 @@
 			</div>
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
-				<el-table-column fixed type="selection" width="55"></el-table-column>
-				<el-table-column prop="supplier_name" label="供应商名称" v-if="$check_field('get','supplier_name')" min-width="150"></el-table-column>
-				<el-table-column prop="suppliers_phone_number" label="联系电话" v-if="$check_field('get','suppliers_phone_number')" min-width="120"></el-table-column>
-				<el-table-column prop="commodity_category" label="主营类别" v-if="$check_field('get','commodity_category')" min-width="120"></el-table-column>
-				<el-table-column prop="comprehensive_evaluation" label="综合评价" v-if="$check_field('get','comprehensive_evaluation')" min-width="120">
+				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
+				<el-table-column align="center" prop="supplier_name" label="供应商名称" v-if="$check_field('get','supplier_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="suppliers_phone_number" label="联系电话" v-if="$check_field('get','suppliers_phone_number')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="commodity_category" label="主营类别" v-if="$check_field('get','commodity_category')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="comprehensive_evaluation" label="综合评价" v-if="$check_field('get','comprehensive_evaluation')" min-width="120">
 					<template slot-scope="scope">
 						<el-rate v-if="!isNaN(parseFloat(scope.row.comprehensive_evaluation))" :value="parseFloat(scope.row.comprehensive_evaluation)" disabled text-color="#ff9900"></el-rate>
 						<span v-else>{{scope.row.comprehensive_evaluation}}</span>
 					</template>
 				</el-table-column>
-				<el-table-column prop="supply_frequency" label="供应频率" v-if="$check_field('get','supply_frequency')" min-width="100"></el-table-column>
-				<el-table-column prop="cooperation_situation" label="合作状态" v-if="$check_field('get','cooperation_situation')" min-width="120">
+				<el-table-column align="center" prop="supply_frequency" label="供应频率" v-if="$check_field('get','supply_frequency')" min-width="100"></el-table-column>
+				<el-table-column align="center" prop="cooperation_situation" label="合作状态" v-if="$check_field('get','cooperation_situation')" min-width="120">
 					<template slot-scope="scope">
 						<el-tag :type="scope.row.cooperation_situation === '长期合作' ? 'success' : 'info'">{{scope.row.cooperation_situation}}</el-tag>
 					</template>
 				</el-table-column>
 
-				<el-table-column fixed="right" label="操作" min-width="100">
+				<el-table-column align="center" fixed="right" label="操作" min-width="100">
 					<template slot-scope="scope">
 						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
 					</template>
