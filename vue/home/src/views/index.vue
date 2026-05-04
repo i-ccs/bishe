@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<!-- Announcement Section -->
-		<div class="announcement-section mt-5 pb-5">
+		<div class="announcement-section mt-3 pb-5">
 			<div class="container">
 				<el-card class="premium-announcement-card wide-announcement" shadow="never">
 					<div class="announcement_header">
@@ -298,6 +298,10 @@
 </script>
 
 <style scoped>
+.home-section {
+	padding: 20px 0 !important;
+}
+
 .page_root {
 	background-color: var(--portal-bg);
 	min-height: 100vh;
