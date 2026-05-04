@@ -1,6 +1,6 @@
 <template>
   <el-menu class="side el-menu-vertical-demo" default-active="/" @open="handleOpen" @close="handleClose"
-           active-text-color="#38f" :collapse="isCollapse" :router="true"
+           active-text-color="#38f" :collapse="isCollapse" :router="true" unique-opened
            style="background: var(--bg_grey) !important; color: var(--color_base) !important;">
 
     <span class="hide-avatar" style="display: none;">
