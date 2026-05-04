@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.ParameterizedType;
 import java.net.URLDecoder;
@@ -61,12 +62,43 @@ public class BaseService<E> {
         E entity = JSON.parseObject(JSON.toJSONString(body), eClass);
         baseMapper.insert(entity);
         log.info("[{}] - 插入操作：{}", entity);
+        body.put(humpToLine(eClass.getSimpleName()) + "_id", getUserId(entity));
+    }
+
+    private Integer getUserId(E entity) {
+        try {
+            return (Integer) entity.getClass().getMethod("getUserId").invoke(entity);
+        } catch (Exception e) {
+            try {
+                return (Integer) entity.getClass().getMethod("get" + eClass.getSimpleName() + "Id").invoke(entity);
+            } catch (Exception e2) {
+                return 0;
+            }
+        }
+    }
+
+    @Transactional
+    public void insertSource(String table, Map<String, Object> map) {
+        StringBuilder sql = new StringBuilder("INSERT INTO `").append(table).append("` (");
+        StringBuilder values = new StringBuilder("VALUES (");
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            sql.append("`").append(humpToLine(entry.getKey())).append("`,");
+            values.append("'").append(entry.getValue()).append("',");
+        }
+        sql.deleteCharAt(sql.length() - 1).append(") ");
+        values.deleteCharAt(values.length() - 1).append(") ");
+        sql.append(values);
+        baseMapper.updateBaseSql(sql.toString());
+        log.info("[{}] - 外部表插入操作：{}", table, sql.toString());
     }
 
     @Transactional
     public void update(Map<String, String> query, Map<String, String> config, Map<String, Object> body) {
         QueryWrapper wrapper = new QueryWrapper<E>();
         toWhereWrapper(query, "0".equals(config.get(FindConfig.LIKE)), wrapper);
+        if (body.get("update_time") != null || true) {
+            body.put("update_time", new Timestamp(System.currentTimeMillis()));
+        }
         E entity = JSON.parseObject(JSON.toJSONString(body), eClass);
         baseMapper.update(entity, wrapper);
         log.info("[{}] - 更新操作：{}", entity);

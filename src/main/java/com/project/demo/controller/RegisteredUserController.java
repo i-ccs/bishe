@@ -40,11 +40,7 @@ public class RegisteredUserController extends BaseController<RegisteredUser, Reg
 
     @RequestMapping("/get_list")
     public Map<String, Object> getList(HttpServletRequest request) {
-        Map<String, String> query = service.readQuery(request);
-        Map<String, String> config = service.readConfig(request);
-        query.put("user_group", "注册用户");
-        config.put("like", "0");
-        return success(userService.selectToPage(query, config));
+        return success(service.selectToPage(service.readQuery(request), service.readConfig(request)));
     }
 
     @PostMapping("/add")

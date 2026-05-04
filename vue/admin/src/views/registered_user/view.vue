@@ -90,11 +90,11 @@
 							<div class="section-title">个人资料</div>
 							<el-row :gutter="20">
 								<el-col :span="12" :xs="24">
-									<el-form-item label="用户名" prop="user_name">
-										<el-input id="user_name" v-model="form['user_name']" placeholder="请输入用户名" prefix-icon="el-icon-info"
-											v-if="user_group === '管理员' || (form['user_id'] && $check_field('set','user_name')) || (!form['user_id'] && $check_field('add','user_name'))"></el-input>
+									<el-form-item label="手机号" prop="phone">
+										<el-input id="phone" v-model="form['phone']" placeholder="请输入手机号" prefix-icon="el-icon-phone"
+											v-if="user_group === '管理员' || (form['user_id'] && $check_field('set','phone')) || (!form['user_id'] && $check_field('add','phone'))"></el-input>
 										<div v-else class="readonly-field">
-											<span>{{ form['user_name'] }}</span>
+											<span>{{ form['phone'] }}</span>
 										</div>
 									</el-form-item>
 								</el-col>
@@ -152,7 +152,8 @@
 					email: '',
 					user_group: "注册用户",
 					state: 1,
-					user_gender: '男'
+					user_gender: '男',
+					phone: ''
 					},
 
 				form: {
@@ -164,7 +165,8 @@
 					email: '',
 					user_group: "注册用户",
 					state: 1,
-					user_gender: '男'
+					user_gender: '男',
+					phone: ''
 					},
 
 				disabledObj:{
@@ -199,8 +201,8 @@
 					name: "已注销"
 				}],
 				list_user_gender: [
-					{ text: '男', value: '男' },
-					{ text: '女', value: '女' }
+					{ text: '男', value: 0 },
+					{ text: '女', value: 1 }
 				],
 			}
 		},

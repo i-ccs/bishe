@@ -26,9 +26,12 @@ public class RegisteredUser implements Serializable {
     // 用户性别
     @TableField(value = "`user_gender`")
     private Integer userGender;
+    // 状态
+    @TableField(value = "`state`")
+    private Integer state;
 
     // 用户编号
-    @TableField(exist = false)
+    @TableField(value = "user_id")
     private Integer userId;
 
     // 审核状态

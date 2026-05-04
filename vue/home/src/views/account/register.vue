@@ -168,13 +168,13 @@
 			 */
 			submit_before(param){
 				var user_group = param.user_group;
-					if(user_group === "注册用户"){
-																}
-									},
+				if(user_group === "注册用户"){
+					Object.assign(param, this.form_sub);
+				}
+			},
 
 			/**
 			 * 提交前校验
-			 * @param {Object} param
 			 */
 			async submit_check(param){
 				var ret = null;
@@ -220,9 +220,8 @@
 						if(user_group === "注册用户"){
 						var form_sub = Object.assign({} ,this.form_sub);
 					
-														
-																}
-										}
+						}
+				}
 
 				var p = {"user_name": param.user_name};
 
@@ -241,16 +240,8 @@
 			 *  注册后事件
 			 */
 			submit_after(json, func) {
-				var form = Object.assign({}, this.form);
-				delete form.password;
-				console.log("查询表单form",form)
-				var table = this.user_group.getVal("source_table",{"name": form.user_group});
-				console.log("关联表:" ,table);
-				if(table){
-					this.get_submit(form ,table);
-				}else{
-					console.log("用户组没有关联表");
-				}
+				this.$toast("注册成功!","success");
+				this.$router.push("/account/login");
 			},
 
 			/**

@@ -18,7 +18,7 @@ public class RegisteredUserService extends BaseService<RegisteredUser> {
     @Override
     public String select(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("select ");
-        sql.append(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD)) ? "a.*, b.user_id"
+        sql.append(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD)) ? "a.*, b.user_id, b.nick_name, b.user_group, b.email, b.avatar"
                 : config.get(FindConfig.FIELD)).append(" ");
         sql.append("from `registered_user` a ");
         sql.append("left join `user` b on a.user_name = b.user_name ");
@@ -62,7 +62,7 @@ public class RegisteredUserService extends BaseService<RegisteredUser> {
                 for (Map.Entry<String, String> entry : query.entrySet()) {
                     String field = humpToLine(entry.getKey());
                     String alias = "a.";
-                    if (field.equals("user_id")) {
+                    if (field.equals("user_id") || field.equals("user_group") || field.equals("nick_name") || field.equals("email")) {
                         alias = "b.";
                     }
                     if (entry.getKey().contains(FindConfig.MIN_)) {
@@ -98,9 +98,9 @@ public class RegisteredUserService extends BaseService<RegisteredUser> {
         }
         
         if (sql.length() == 0) {
-            sql.append(" WHERE a.is_delete = 0 ");
+            sql.append(" WHERE a.is_delete = 0 AND b.is_delete = 0 ");
         } else {
-            sql.append(" AND a.is_delete = 0 ");
+            sql.append(" AND a.is_delete = 0 AND b.is_delete = 0 ");
         }
         return sql.toString();
     }

@@ -21,7 +21,7 @@ public class SalesInformationService extends BaseService<SalesInformation> {
         sql.append(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD)) ? "a.*, b.product_name, b.product_category, b.product_brand"
                 : config.get(FindConfig.FIELD)).append(" ");
         sql.append("from `sales_information` a ");
-        sql.append("left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+        sql.append("left join `commodity_information` b on a.product_code = b.product_code ");
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
             sql.append("group by a.").append(config.get(FindConfig.GROUP_BY)).append(" ");
@@ -48,7 +48,7 @@ public class SalesInformationService extends BaseService<SalesInformation> {
             sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         } else {
             sql.append("COUNT(*) FROM `sales_information` a ");
-            sql.append("left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+            sql.append("left join `commodity_information` b on a.product_code = b.product_code ");
             sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
         return sql.toString();
@@ -115,7 +115,7 @@ public class SalesInformationService extends BaseService<SalesInformation> {
         }
         sql.append(selectGroupBy).append(" as `").append(groupBy).append("` ");
         sql.append("from `sales_information` a ");
-        sql.append("left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+        sql.append("left join `commodity_information` b on a.product_code = b.product_code ");
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         if (groupBy != null && !"".equals(groupBy)) {
             sql.append("group by ").append(selectGroupBy).append(" ");

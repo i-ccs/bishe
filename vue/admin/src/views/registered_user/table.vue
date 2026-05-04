@@ -41,8 +41,8 @@
 				<el-table-column prop="user_name" label="用户名" min-width="120" align="center"></el-table-column>
 				<el-table-column prop="user_gender" label="用户性别" width="100" align="center">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.user_gender === '男' ? '' : 'danger'" size="mini">
-							{{ scope.row.user_gender }}
+						<el-tag :type="scope.row.user_gender == 0 ? '' : 'danger'" size="mini">
+							{{ scope.row.user_gender == 0 ? '男' : (scope.row.user_gender == 1 ? '女' : '未知') }}
 						</el-tag>
 					</template>
 				</el-table-column>
@@ -76,14 +76,14 @@
 		data() {
 			return {
 				showModal: false,
-				url_get_list: "~/api/user/get_list?like=0&sqlwhere=user_group='注册用户'",
+				url_get_list: "~/api/registered_user/get_list?like=0",
 				url_del: "~/api/user/del?",
 				field: "user_id",
 				query: { "size": 7, "page": 1, "user_name": "", "user_gender": "", "user_group": "注册用户", "orderby": `create_time desc` },
 				list: [],
 				list_user_gender: [
-					{ text: '男', value: '男' },
-					{ text: '女', value: '女' }
+					{ text: '男', value: 0 },
+					{ text: '女', value: 1 }
 				],
 				message: '',
 			}

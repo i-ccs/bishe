@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.util.*;
 
@@ -51,17 +52,40 @@ public class UserController extends BaseController<User, UserService> {
      * @return
      */
     @PostMapping("register")
-    public Map<String, Object> signUp(@RequestBody User user) {
+    public Map<String, Object> signUp(@RequestBody Map<String, Object> userMap) {
         // 查询用户
         Map<String, String> query = new HashMap<>();
-        Map<String, Object> map = JSON.parseObject(JSON.toJSONString(user));
-        query.put("user_name", user.getUserName());
+        query.put("user_name", String.valueOf(userMap.get("user_name")));
         List list = service.selectBaseList(service.select(query, new HashMap<>()));
         if (list.size() > 0) {
             return error(30000, "用户已存在");
         }
-        map.put("password", String.valueOf(map.get("password")));
-        service.insert(map);
+        userMap.put("password", String.valueOf(userMap.get("password")));
+        if (userMap.get("create_time") == null) {
+            userMap.put("create_time", new Timestamp(System.currentTimeMillis()));
+        }
+        service.insert(userMap);
+
+        // 同步到附属表
+        if (userMap.get("user_group") != null) {
+            String groupName = userMap.get("user_group").toString();
+            Map<String, String> groupQuery = new HashMap<>();
+            groupQuery.put("name", groupName);
+            List<UserGroup> groups = userGroupService.selectBaseList(userGroupService.select(groupQuery, new HashMap<>()));
+            if (groups.size() > 0) {
+                UserGroup group = groups.get(0);
+                if (group.getSourceTable() != null && !group.getSourceTable().isEmpty()) {
+                    Map<String, Object> sourceMap = new HashMap<>();
+                    sourceMap.put("user_id", userMap.get("user_id"));
+                    sourceMap.put("user_name", userMap.get("user_name"));
+                    sourceMap.put("user_gender", userMap.get("user_gender"));
+                    sourceMap.put("state", userMap.get("state") != null ? userMap.get("state") : 1);
+                    sourceMap.put("create_time", userMap.get("create_time"));
+                    // 同步用户信息
+                    service.insertSource(group.getSourceTable(), sourceMap);
+                }
+            }
+        }
         return success(1);
     }
 
@@ -307,6 +331,26 @@ public class UserController extends BaseController<User, UserService> {
         Map<String, Object> map = service.readBody(request.getReader());
         map.put("password", String.valueOf(map.get("password")));
         service.insert(map);
+
+        // 同步到附属表
+        if (map.get("user_group") != null) {
+            Map<String, String> groupQuery = new HashMap<>();
+            groupQuery.put("name", map.get("user_group").toString());
+            List<UserGroup> groups = userGroupService.selectBaseList(userGroupService.select(groupQuery, new HashMap<>()));
+            if (groups.size() > 0) {
+                UserGroup group = groups.get(0);
+                if (group.getSourceTable() != null && !group.getSourceTable().isEmpty()) {
+                    Map<String, Object> sourceMap = new HashMap<>();
+                    sourceMap.put("user_id", map.get("user_id"));
+                    sourceMap.put("user_name", map.get("user_name"));
+                    sourceMap.put("user_gender", map.get("user_gender"));
+                    sourceMap.put("state", map.get("state") != null ? map.get("state") : 1);
+                    sourceMap.put("create_time", map.get("create_time") != null ? map.get("create_time") : new Timestamp(System.currentTimeMillis()));
+                    // 同步用户信息
+                    service.insertSource(group.getSourceTable(), sourceMap);
+                }
+            }
+        }
         return success(1);
     }
 

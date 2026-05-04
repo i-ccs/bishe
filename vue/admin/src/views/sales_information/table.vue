@@ -43,33 +43,36 @@
 					type="danger" @click="delInfo()" icon="el-icon-delete" :disabled="selection.length === 0">批量删除</el-button>
 			</div>
 
-			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
+			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
 				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
-				<el-table-column align="center" prop="sales_order_number" label="销售单号" v-if="$check_field('get','sales_order_number')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="140"></el-table-column>
 				<el-table-column align="center" prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
-				<el-table-column align="center" prop="registered_user" label="下单用户" v-if="$check_field('get','registered_user')" min-width="150">
+				<el-table-column align="center" prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="100"></el-table-column>
+				<el-table-column align="center" prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="100"></el-table-column>
+				<el-table-column align="center" prop="commodity_price" label="商品价格" v-if="$check_field('get','commodity_price')" min-width="100">
+					<template slot-scope="scope">¥ {{scope.row.commodity_price}}</template>
+				</el-table-column>
+				<el-table-column align="center" prop="sales_order_number" label="销售单号" v-if="$check_field('get','sales_order_number')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="registered_user" label="下单用户" v-if="$check_field('get','registered_user')" min-width="140">
 					<template slot-scope="scope">{{ get_user_registered_user(scope.row['registered_user']) }}</template>
 				</el-table-column>
 				<el-table-column align="center" prop="order_quantity" label="数量" v-if="$check_field('get','order_quantity')" width="80"></el-table-column>
-				<el-table-column align="center" prop="total_order_price" label="实付金额" v-if="$check_field('get','total_order_price')" min-width="120">
+				<el-table-column align="center" prop="total_order_price" label="实付总额" v-if="$check_field('get','total_order_price')" min-width="120">
 					<template slot-scope="scope"><span style="color: #f56c6c; font-weight: 600;">¥ {{scope.row.total_order_price}}</span></template>
 				</el-table-column>
 				<el-table-column align="center" label="支付状态" prop="pay_state" width="100">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.pay_state === '已支付' ? 'success' : 'danger'">{{scope.row.pay_state}}</el-tag>
+						<el-tag :type="scope.row.pay_state === '已支付' ? 'success' : 'danger'" size="mini">{{scope.row.pay_state}}</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column align="center" label="支付方式" prop="pay_type" width="100"></el-table-column>
-				<el-table-column align="center" prop="create_time" label="创建时间" min-width="160">
+				<el-table-column align="center" prop="create_time" label="销售时间" min-width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
 				</el-table-column>
 
-				<el-table-column align="center" fixed="right" label="操作" min-width="150">
+				<el-table-column align="center" fixed="right" label="操作" min-width="120">
 					<template slot-scope="scope">
-						<div class="view_a">
-							<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
-							<el-button class="el-button el-button--primary el-button--mini is-plain" @click="openPayModal(scope.row)" v-if="scope.row.pay_state==='未支付' && ($check_pay('/sales_information/table'))">支付</el-button>
-						</div>
+						<router-link class="el-button el-button--primary el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
+						<el-button class="el-button el-button--success el-button--mini is-plain" @click="openPayModal(scope.row)" v-if="scope.row.pay_state==='未支付' && ($check_pay('/sales_information/table'))">支付</el-button>
 					</template>
 				</el-table-column>
 			</el-table>
