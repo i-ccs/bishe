@@ -1,232 +1,108 @@
 <template>
-	<el-main class="bg table_wrap nav">
-		<el-form label-position="right" :model="query" class="form p_4" label-width="120">
-			<el-row class="rows row1">
-
-				<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
-					<el-form-item label="导航名">
-						<el-input v-model="query.name"></el-input>
-					</el-form-item>
-				</el-col>
-
-				<el-col :xs="24" :sm="14" :lg="8" class="el_form_search_wrap">
-					<el-form-item label="位置">
-						<el-select v-model="query.location" placeholder="请选择">
-							<el-option key="" label="" value=""></el-option>
-							<el-option v-for="obj in list_location" :key="obj.value" :label="obj.text" :value="obj.value">
-							</el-option>
-						</el-select>
-					</el-form-item>
-				</el-col>
-
-				<el-col :xs="24" :sm="14" :lg="8" class="el_form_search_wrap">
-					<el-form-item label="跳转方式">
-						<el-select v-model="query.target" placeholder="请选择">
-							<el-option key="" label="" value=""></el-option>
-							<el-option v-for="obj in list_target" :key="obj.value" :label="obj.text" :value="obj.value">
-							</el-option>
-						</el-select>
-					</el-form-item>
-				</el-col>
+	<el-main class="bg table_wrap premium-table-wrap">
+		<el-card class="premium-search-card" shadow="never">
+			<el-form label-position="top" :model="query" class="premium-search-form">
+				<el-row :gutter="20">
+					<el-col :xs="24" :sm="12" :lg="6">
+						<el-form-item label="导航名称">
+							<el-input v-model="query.name" placeholder="输入名称搜索" prefix-icon="el-icon-search"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :xs="24" :sm="12" :lg="6">
+						<el-form-item label="显示位置">
+							<el-select v-model="query.location" style="width: 100%">
+								<el-option value="">全部位置</el-option>
+								<el-option v-for="obj in list_location" :key="obj.value" :label="obj.text" :value="obj.value"></el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+					<el-col :xs="24" :sm="12" :lg="6">
+						<el-form-item label="跳转方式">
+							<el-select v-model="query.target" style="width: 100%">
+								<el-option value="">全部方式</el-option>
+								<el-option v-for="obj in list_target" :key="obj.value" :label="obj.text" :value="obj.value"></el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+					<el-col :xs="24" :sm="12" :lg="6">
+						<el-form-item label=" ">
+							<div class="premium-search-btns">
+								<el-button type="primary" @click="search()" icon="el-icon-search">查询</el-button>
+								<el-button @click="reset()" icon="el-icon-refresh">重置</el-button>
+							</div>
+						</el-form-item>
+					</el-col>
 				</el-row>
-			<el-row class="rows row2">
-				<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap">
-				<el-col :xs="24" :sm="12" :lg="12" class="search_btn_1 btns">
-				
-							<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
-							<el-button @click="reset()" class="search_btn_reset">重置</el-button>
-							<el-button v-if="user_group == '管理员' || $check_action('/nav/table','del')" class="float-right search_btn_del" type="danger" @click="delInfo()">删除</el-button>
-							<!-- <router-link v-if="user_group == '管理员' || $check_action('/nav/view')" class="el-button float-right el-button--default el-button--primary search_btn_add"
-								to="./view?"><span>添加</span>
-							</router-link> -->
-							<el-button  v-if="user_group == '管理员' || $check_action('/nav/view')" class="float-right  search_btn_add" @click="$router.push('./view?')">添加</el-button>
-					
-				</el-col>
-					
-				</el-col>
+			</el-form>
+		</el-card>
 
-			</el-row>
-		</el-form>
+		<el-card class="premium-table-card" shadow="never">
+			<div class="premium-table-btns">
+				<el-button v-if="user_group == '管理员' || $check_action('/nav/view')" type="primary" icon="el-icon-plus" @click="$router.push('./view?')">新增导航</el-button>
+				<el-button v-if="user_group == '管理员' || $check_action('/nav/table','del')" type="danger" icon="el-icon-delete" @click="delInfo()" :disabled="selection.length === 0">批量删除</el-button>
+			</div>
 
-		<el-table border :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" stripe>
+			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
+				<el-table-column fixed type="selection" width="55"></el-table-column>
+				<el-table-column fixed prop="name" label="导航名称" min-width="120"></el-table-column>
+				<el-table-column prop="father_id" label="父级菜单" width="120">
+					<template slot-scope="scope">
+						<el-tag size="small" type="info">{{getObj(list,scope.row.father_id,"nav_id").name || "一级菜单"}}</el-tag>
+					</template>
+				</el-table-column>
+				<el-table-column prop="location" label="显示位置" width="100">
+					<template slot-scope="scope">{{getObj(list_location,scope.row.location).text}}</template>
+				</el-table-column>
+				<el-table-column prop="target" label="跳转方式" width="120">
+					<template slot-scope="scope">{{getObj(list_target,scope.row.target).text || "本页面"}}</template>
+				</el-table-column>
+				<el-table-column prop="url" label="链接地址" min-width="200" show-overflow-tooltip></el-table-column>
+				<el-table-column prop="create_time" label="创建时间" width="160">
+					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
+				</el-table-column>
 
-			<el-table-column fixed type="selection" tooltip-effect="dark" width="55">
-			</el-table-column>
+				<el-table-column fixed="right" label="操作" width="100">
+					<template slot-scope="scope">
+						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
+					</template>
+				</el-table-column>
+			</el-table>
 
-			<el-table-column fixed prop="name" label="导航名" sortable width="120">
-			</el-table-column>
-
-			<el-table-column prop="father_id" label="父级" sortable min-width="120">
-				<template slot-scope="scope">
-					{{getObj(list,scope.row.father_id,"nav_id").name || "无"}}
-				</template>
-			</el-table-column>
-
-			<el-table-column prop="location" label="位置" sortable min-width="120">
-				<template slot-scope="scope">
-					{{getObj(list_location,scope.row.location).text}}
-				</template>
-			</el-table-column>
-
-			<el-table-column prop="target" label="跳转方式" sortable min-width="120">
-				<template slot-scope="scope">
-					{{getObj(list_target,scope.row.target).text || (scope.row.target ? "自定义" : "本页面") }}
-				</template>
-			</el-table-column>
-
-			<el-table-column prop="url" label="地址" min-width="120">
-				<template slot-scope="scope">
-					<span>
-						{{scope.row.url}}
-					</span>
-				</template>
-			</el-table-column>
-
-			<el-table-column prop="create_time" label="创建时间" min-width="200">
-			    <template slot-scope="scope">
-			    	{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
-			    </template>
-			</el-table-column>
-
-			<el-table-column prop="update_time" label="更新时间" min-width="200">
-			    <template slot-scope="scope">
-			    	{{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
-			    </template>
-			</el-table-column>
-
-			<!-- 操作 -->
-			<el-table-column fixed="right" label="操作" width="80">
-				<template slot-scope="scope">
-					<div class="view_a">
-					<router-link class="el-button el-button--small is-plain el-button--primary"
-						:to="'./view?' + field + '=' + scope.row[field]" size="small">
-            				详情
-					</router-link>
-				</div>
-				</template>
-			</el-table-column>
-			<!-- /操作 -->
-
-		</el-table>
-
-		<!-- 分页器 -->
-		<div class="mt text_center">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.page"
-			 :page-sizes="[7, 10, 30, 100]" :page-size="query.size" layout="total, sizes, prev, pager, next, jumper" :total="count">
-			</el-pagination>
-		</div>
-		<!-- /分页器 -->
-
+			<div class="premium-pagination-wrap">
+				<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.page"
+					:page-sizes="[7, 10, 30, 100]" :page-size="query.size" layout="total, sizes, prev, pager, next, jumper" :total="count">
+				</el-pagination>
+			</div>
+		</el-card>
 	</el-main>
 </template>
 
 <script>
 	import mixin from "../../mixins/page.js";
-
 	export default {
 		mixins: [mixin],
 		data() {
 			return {
-				// 获取连接地址
 				url_get_list: "~/api/nav/get_list?like=0",
 				url_del: "~/api/nav/del?",
-
-				// 字段ID
 				field: "nav_id",
-
-				// 查询
-				query: {
-					size: 10,
-					page: 1,
-					name: "",
-					location:"",
-					target:""
-				},
-
-				// 数据
+				query: { size: 10, page: 1, name: "", location:"", target:"", orderby: `nav_id asc` },
 				list: [],
-
-				// 跳转位置
 				list_location: [
-					{
-						text: "顶部",
-						value: "top"
-					},
-					{
-						text: "侧边",
-						value: "side"
-					},
-					{
-						text: "底部",
-						value: "foot"
-					}
+					{ text: "顶部导航", value: "top" },
+					{ text: "侧边导航", value: "side" },
+					{ text: "底部导航", value: "foot" }
 				],
-
-				// 跳转方式
 				list_target: [
-					{
-						text: '新页面',
-						value: "_blank"
-					},
-					{
-						text: '本页面',
-						value: "_self"
-					},
-					{
-						text: '父窗口',
-						value: "_parent"
-					},
-					{
-						text: '全窗口',
-						value: "_top"
-					}
+					{ text: '新页面 (_blank)', value: "_blank" },
+					{ text: '本页面 (_self)', value: "_self" },
+					{ text: '父窗口 (_parent)', value: "_parent" },
+					{ text: '全窗口 (_top)', value: "_top" }
 				],
-
-			}
-		},
-		methods:{
-			table_class({row, column, rowIndex, columnIndex}){
-				return "table_class";
 			}
 		}
 	}
 </script>
 
-<style type="text/css">
-	.bg {
-		background: white;
-	}
-
-	.form.p_4 {
-		padding: 1rem;
-	}
-
-	.form .el-input {
-		width: initial;
-	}
-
-	.mt {
-		margin-top: 1rem;
-	}
-
-	.float-right {
-		float: right;
-	}
-
-	.mr-1 {
-		margin-right: 1rem;
-	}
-
-	.el-table .table_class {
-		background: rgba(150, 150, 150, 0.1);
-		text-align: center;
-	}
-
-	.text_center {
-		text-align: center;
-	}
-
-	.float-right {
-		float: right;
-	}
+<style scoped>
 </style>

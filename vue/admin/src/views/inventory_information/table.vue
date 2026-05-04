@@ -1,111 +1,73 @@
 <template>
-	<el-main class="bg table_wrap comtabel_t">
-		<el-form label-position="right" :model="query" class="form p_4" label-width="120">
-			<el-row class="rows row1">
+	<el-main class="bg table_wrap comtabel_t premium-table-wrap">
+		<el-card class="premium-search-card" shadow="never">
+			<el-form label-position="top" :model="query" class="premium-search-form" label-width="120">
+				<el-row :gutter="20">
+					<el-col :xs="24" :sm="12" :lg="6">
+						<el-form-item label="商品名称">
+							<el-input v-model="query.product_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :xs="24" :sm="12" :lg="6">
+						<el-form-item label="商品类别">
+							<el-input v-model="query.product_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :xs="24" :sm="24" :lg="6">
+						<el-form-item label=" ">
+							<div class="premium-search-btns">
+								<el-button type="primary" @click="search()" icon="el-icon-search">查询</el-button>
+								<el-button @click="reset()" icon="el-icon-refresh">重置</el-button>
+							</div>
+						</el-form-item>
+					</el-col>
+				</el-row>
+			</el-form>
+		</el-card>
 
+		<el-card class="premium-table-card" shadow="never">
+			<div class="premium-table-btns">
+				<router-link v-if="$check_action('/inventory_information/view','add')" to="./view" class="el-button el-button--primary">
+					<i class="el-icon-plus"></i> 新增核对记录
+				</router-link>
+				<el-button v-if="$check_action('/inventory_information/table','del') || $check_action('/inventory_information/view','del')" 
+					type="danger" @click="delInfo()" icon="el-icon-delete" :disabled="selection.length === 0">批量删除</el-button>
+			</div>
 
+			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
+				<el-table-column fixed type="selection" width="55"></el-table-column>
+				<el-table-column prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="120"></el-table-column>
+				<el-table-column prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
+				<el-table-column prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="120"></el-table-column>
+				<el-table-column prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="120"></el-table-column>
+				<el-table-column prop="product_inventory" label="系统账面库存" v-if="$check_field('get','product_inventory')" min-width="120"></el-table-column>
+				<el-table-column prop="check_quantity" label="实际盘点数量" v-if="$check_field('get','check_quantity')" min-width="120">
+					<template slot-scope="scope">
+						<el-tag :type="scope.row.check_quantity == scope.row.product_inventory ? 'success' : 'warning'">{{scope.row.check_quantity}}</el-tag>
+					</template>
+				</el-table-column>
+				<el-table-column prop="check_date" label="核对日期" v-if="$check_field('get','check_date')" min-width="120">
+					<template slot-scope="scope">{{ $toTime(scope.row["check_date"],"yyyy-MM-dd") }}</template>
+				</el-table-column>
+				<el-table-column prop="inventory" label="变动说明" v-if="$check_field('get','inventory')" min-width="150" show-overflow-tooltip></el-table-column>
 
-										<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
-					<el-form-item label="商品名称">
-									<el-input v-model="query.product_name"></el-input>
-								</el-form-item>
-				</el-col>
-									<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
-					<el-form-item label="商品类别">
-									<el-input v-model="query.product_category"></el-input>
-								</el-form-item>
-				</el-col>
-																			</el-row>
-	<el-row class="rows row2">
+				<el-table-column fixed="right" label="操作" min-width="100">
+					<template slot-scope="scope">
+						<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
+					</template>
+				</el-table-column>
+			</el-table>
 
-		<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap search_btns">
+			<div class="premium-pagination-wrap">
+				<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+					:current-page="query.page" :page-sizes="[7, 10, 30, 100]" :page-size="query.size"
+					layout="total, sizes, prev, pager, next, jumper" :total="count">
+				</el-pagination>
+			</div>
+		</el-card>
 
-				<el-col :xs="24" :sm="10" :lg="8" class="search_btn_1 search_btn_wrap_1 btns">
-
-										<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
-						<el-button @click="reset()" style="margin-right: 74px;" class="search_btn_reset">重置</el-button>
-																		
-
-						<el-button v-if="$check_action('/inventory_information/table','del') || $check_action('/inventory_information/view','del')" class="search_btn_del" type="danger" @click="delInfo()">删除</el-button>
-								
-				</el-col>
-		</el-col>
-	</el-row >
-
-		</el-form>
-				<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" id="dataTable">
-					<el-table-column fixed type="selection" tooltip-effect="dark" width="55">
-			</el-table-column>
-				<el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码" 				v-if="$check_field('get','product_code')" min-width="200">
-					</el-table-column>
-					<el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称" 				v-if="$check_field('get','product_name')" min-width="200">
-					</el-table-column>
-					<el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别" 				v-if="$check_field('get','product_category')" min-width="200">
-					</el-table-column>
-					<el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌" 				v-if="$check_field('get','product_brand')" min-width="200">
-					</el-table-column>
-					<el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存" 				v-if="$check_field('get','product_inventory')" min-width="200">
-					</el-table-column>
-					<el-table-column prop="check_date" @sort-change="$sortChange" label="核对日期" 				v-if="$check_field('get','check_date')" min-width="200">
-		                <template slot-scope="scope">
-                	{{ $toTime(scope.row["check_date"],"yyyy-MM-dd") }}
-                </template>
-					</el-table-column>
-					<el-table-column prop="check_quantity" @sort-change="$sortChange" label="核对数量" 				v-if="$check_field('get','check_quantity')" min-width="200">
-					</el-table-column>
-					<el-table-column prop="inventory" @sort-change="$sortChange" label="库存情况" 				v-if="$check_field('get','inventory')" min-width="200">
-					</el-table-column>
-	
-
-
-            <el-table-column sortable prop="create_time" label="创建时间" min-width="200">
-                <template slot-scope="scope">
-                	{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
-                </template>
-            </el-table-column>
-
-			<el-table-column sortable prop="update_time" label="更新时间" min-width="200">
-                <template slot-scope="scope">
-                	{{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
-                </template>
-			</el-table-column>
-
-
-
-
-
-
-
-			<el-table-column fixed="right" label="操作" min-width="200" v-if="$check_action('/inventory_information/table','set') || $check_action('/inventory_information/view','set') || $check_action('/inventory_information/view','get') 
-						" >
-
-
-				<template slot-scope="scope">
-					<div class="view_a">
-					<router-link class="e-button el-button--small is-plain el-button--success" style="margin: 5px !important;"
-					v-if="$check_action('/inventory_information/table','set') || $check_action('/inventory_information/view','set') || $check_action('/inventory_information/view','get')"
-						:to="'./view?' + field + '=' + scope.row[field]"
-						 size="small">
-						<span>详情</span>
-					</router-link>
-				</div>
-				</template>
-			</el-table-column>
-
-		</el-table>
-
-		<!-- 分页器 -->
-		<div class="mt text_center">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-				:current-page="query.page" :page-sizes="[7, 10, 30, 100]" :page-size="query.size"
-				layout="total, sizes, prev, pager, next, jumper" :total="count">
-			</el-pagination>
-		</div>
-		<!-- /分页器 -->
-								
 		<div class="modal_wrap" v-if="showModal">
 			<div class="modal_box">
-				<!-- <div class="modal_box_close" @click="closeModal">X</div> -->
 				<p class="modal_box_title">重要提醒</p>
 				<p class="modal_box_text">当前有数据达到预警值！</p>
 				<p class="modal_box_text">{{ message }}</p>
@@ -115,161 +77,35 @@
 				</div>
 			</div>
 		</div>
-
-
 	</el-main>
 </template>
+
 <script>
 	import mixin from "@/mixins/page.js";
-
 	export default {
 		mixins: [mixin],
 		data() {
 			return {
-				// 弹框
 				showModal: false,
-				// 获取数据地址
 				url_get_list: "~/api/inventory_information/get_list?like=0",
 				url_del: "~/api/inventory_information/del?",
-
-				// 字段ID
 				field: "inventory_information_id",
-
-				// 查询
 				query: {
 					"size": 7,
 					"page": 1,
-									"product_name": "",
-											"product_category": "",
-													"login_time": "",
-					"create_time": "",
+					"product_name": "",
+					"product_category": "",
 					"orderby": `create_time desc`
 				},
-
-				// 数据
 				list: [],
-																												message: '',
+				message: '',
 			}
 		},
 		methods: {
-			// 关闭弹框
-			closeModal(){
-				this.showModal = false;
-				},
-			/**
-			 * @description 获取到列表事件
-			 * @param {Object} res 响应结果
-			 */
-			get_list_after: function get_list_after(res, func, url) {
-				let _this = this
-																																															},
-
-																
-
-
-
-																		},
-				created() {
-																		}
+			closeModal(){ this.showModal = false; },
+		}
 	}
 </script>
 
-<style type="text/css">
-	.bg {
-		background: white;
-	}
-
-	.form.p_4 {
-		padding: 1rem;
-	}
-
-	.form .el-input {
-		width: initial;
-	}
-
-	.mt {
-		margin-top: 1rem;
-	}
-
-	.text_center {
-		text-align: center;
-	}
-
-	.float-right {
-		float: right;
-	}
-
-
-	.modal_wrap{
-		width: 100vw;
-		height: 100vh;
-		position: fixed;
-		top: 0;
-		left: 0;
-		background: rgba(0,0,0,0.5);
-		z-index: 9999999999;
-	}
-	.modal_wrap .modal_box{
-		width: 400px;
-		height: auto;
-		background: url("../../assets/modal_bg.jpg") no-repeat center;
-		background-size: cover;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left: -200px;
-		margin-top: -100px;
-		border-radius: 10px;
-		padding: 10px;
-		}
-	.modal_wrap .modal_box .modal_box_close{
-		font-size: 20px;
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		cursor: pointer;
-		}
-	.modal_wrap .modal_box .modal_box_title{
-	  text-align: center;
-    font-size: 18px;
-    margin: 16px auto;
-    color: #fff;
-    border-bottom: 1px solid rgba(117, 116, 116,0.5);
-    padding-bottom: 16px;
-    width: 356px;
-		}
-	.modal_wrap .modal_box .modal_box_text{
-		text-align: center;
-		font-size: 14px;
-		color: #fff;
-		margin: 5px auto;
-		width: 90%;
-		}
-	.modal_wrap .modal_box .btn_box{
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		margin-top: 42px;
-		margin-bottom: 20px;
-		}
-			.modal_wrap .modal_box .btn_box span{
-				display: inline-block;
-				width: 80px;
-				height: 30px;
-				line-height: 30px;
-				text-align: center;
-				border: 1px solid #ccc;
-				font-size: 14px;
-				cursor: pointer;
-				color: #fff;
-			}
-	.modal_wrap .modal_box .btn_box span:nth-child(2){
-		background: #409EFF;
-		color: #fff;
-		border-color: #409EFF;
-		margin-left: 15px;
-	}
-	.el-date-editor .el-range-separator{
-		width: 10% !important;
-	}
+<style scoped>
 </style>

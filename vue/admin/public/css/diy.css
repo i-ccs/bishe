@@ -2063,3 +2063,104 @@ header .el-dropdown-link .el-avatar img {
 .edit_wrap .el-input__inner {
   border-radius: 6px !important;
 }
+
+/* --- Premium Table System --- */
+.premium-table-wrap {
+  padding: 20px;
+  background: #f5f7fa !important;
+  min-height: 100vh;
+}
+
+.premium-search-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);
+  border: none !important;
+}
+
+.premium-table-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05);
+  border: none !important;
+}
+
+.premium-search-form .el-form-item {
+  margin-bottom: 15px !important;
+  margin-right: 20px !important;
+}
+
+.premium-search-form .el-form-item__label {
+  font-weight: 600;
+  color: #606266;
+  padding-bottom: 8px !important;
+  line-height: 1 !important;
+}
+
+.premium-search-btns {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.premium-table-btns {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+/* Table Header Customization */
+#app .el-table.premium-table thead th {
+  background-color: #f8f9fb !important;
+  color: #303133;
+  font-weight: 600;
+  height: 50px;
+  border-bottom: 2px solid #ebeef5 !important;
+}
+
+#app .el-table.premium-table .el-table__row {
+  transition: all 0.3s;
+}
+
+#app .el-table.premium-table .el-table__row:hover > td {
+  background-color: #f5f7fa !important;
+}
+
+/* Operation Buttons in Table */
+.premium-table .el-button--success.is-plain {
+  color: #67c23a !important;
+  border-color: #e1f3d8 !important;
+  background-color: #f0f9eb !important;
+}
+.premium-table .el-button--success.is-plain:hover {
+  background-color: #67c23a !important;
+  color: #fff !important;
+}
+
+.premium-table .el-button--primary.is-plain {
+  color: #409eff !important;
+  border-color: #d9ecff !important;
+  background-color: #ecf5ff !important;
+}
+.premium-table .el-button--primary.is-plain:hover {
+  background-color: #409eff !important;
+  color: #fff !important;
+}
+
+/* Pagination */
+.premium-pagination-wrap {
+  margin-top: 25px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.premium-pagination-wrap .el-pagination {
+  padding: 0 !important;
+  font-weight: normal;
+}

@@ -1,168 +1,106 @@
 <template>
-	<el-main class="bg table_wrap comment">
-		<el-form label-position="right" :model="query" class="form p_4" label-width="120">
-			<el-row class="rows row1">
-				<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
-					<el-form-item label="昵称">
-						<el-input v-model="query.nickname"></el-input>
-					</el-form-item>
-				</el-col>
-
-				<el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
-					<el-form-item label="内容">
-						<el-input v-model="query.content"></el-input>
-					</el-form-item>
-				</el-col>
-			</el-row>
-			<el-row class="rows row2">
-				<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap">
-					<el-col :xs="24" :sm="12" :lg="12" class="search_btn_1 btns">
-					
-							<el-button type="primary" @click="search()" class="search_btn_find">查询</el-button>
-							<el-button @click="reset()" class="search_btn_reset">重置</el-button>
-							<el-button v-if="$check_action('/comment/table','del')" class="float-right search_btn_del" type="danger" @click="delInfo()">删除</el-button>
-							<!--<router-link v-if="user_group == '管理员' || $check_action('/comment/view')" class="el-button float-right el-button&#45;&#45;default el-button&#45;&#45;primary"
-								to="./view?"><span>添加</span>
-							</router-link>-->
-						
+	<el-main class="bg table_wrap premium-table-wrap">
+		<el-card class="premium-search-card" shadow="never">
+			<el-form label-position="top" :model="query" class="premium-search-form">
+				<el-row :gutter="20">
+					<el-col :xs="24" :sm="12" :lg="6">
+						<el-form-item label="评论人昵称">
+							<el-input v-model="query.nickname" placeholder="输入昵称搜索" prefix-icon="el-icon-user"></el-input>
+						</el-form-item>
 					</el-col>
-				</el-col>
-			</el-row>
-		</el-form>
+					<el-col :xs="24" :sm="12" :lg="6">
+						<el-form-item label="评论内容">
+							<el-input v-model="query.content" placeholder="输入内容关键字" prefix-icon="el-icon-chat-dot-round"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :xs="24" :sm="24" :lg="6">
+						<el-form-item label=" ">
+							<div class="premium-search-btns">
+								<el-button type="primary" @click="search()" icon="el-icon-search">查询</el-button>
+								<el-button @click="resetSearch()" icon="el-icon-refresh">重置</el-button>
+							</div>
+						</el-form-item>
+					</el-col>
+				</el-row>
+			</el-form>
+		</el-card>
 
-		<el-table border :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" stripe>
+		<el-card class="premium-table-card" shadow="never">
+			<div class="premium-table-btns">
+				<el-button v-if="$check_action('/comment/table','del')" type="danger" icon="el-icon-delete" @click="delInfo()" :disabled="selection.length === 0">批量删除</el-button>
+			</div>
 
-			<!-- 多选按钮 -->
-			<el-table-column fixed type="selection" tooltip-effect="dark" width="55">
-			</el-table-column>
-			<!-- /多选按钮 -->
-
-			<el-table-column sortable fixed label="昵称" prop="nickname" width="200">
-			</el-table-column>
-
-			<el-table-column label="头像" prop="avatar" min-width="110">
-				<template slot-scope="scope">
-					<el-avatar style="width: 80px; height: 80px" :src="$fullUrl(scope.row.avatar)">
-						<div slot="error" class="image-slot">
-							<img src="/img/error.png" style="width: 80px; height: 80px" />
+			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
+				<el-table-column fixed type="selection" width="55"></el-table-column>
+				<el-table-column label="用户" width="180">
+					<template slot-scope="scope">
+						<div style="display: flex; align-items: center; gap: 10px;">
+							<el-avatar size="small" :src="$fullUrl(scope.row.avatar)">
+								<img src="/img/error.png" />
+							</el-avatar>
+							<span>{{scope.row.nickname}}</span>
 						</div>
-					</el-avatar>
-				</template>
-			</el-table-column>
+					</template>
+				</el-table-column>
+				<el-table-column prop="content" label="评论内容" min-width="250" show-overflow-tooltip>
+					<template slot-scope="scope">
+						<div v-html="scope.row.content"></div>
+					</template>
+				</el-table-column>
+				<el-table-column prop="create_time" label="评论时间" min-width="160">
+					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
+				</el-table-column>
 
-			<el-table-column sortable label="评论人" prop="user_id" min-width="100">
-				<template slot-scope="scope">
-					{{list_user.getVal('nickname', {"user_id":scope.row.user_id})}}
-				</template>
-			</el-table-column>
+				<el-table-column fixed="right" label="操作" width="200">
+					<template slot-scope="scope">
+						<div class="view_a">
+							<router-link class="el-button el-button--success el-button--mini is-plain" :to="'./view?' + field + '=' + scope.row[field]">详情</router-link>
+							<el-button v-if="!scope.row['reply_to_id']" class="el-button el-button--primary el-button--mini is-plain" @click="viewReplies(scope.row)">查看回复</el-button>
+						</div>
+					</template>
+				</el-table-column>
+			</el-table>
 
-			<el-table-column sortable prop="create_time" label="创建时间" min-width="200">
-			    <template slot-scope="scope">
-			        {{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
-			    </template>
-			</el-table-column>
-
-			<el-table-column sortable prop="update_time" label="更新时间" min-width="200">
-			    <template slot-scope="scope">
-			        {{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
-			    </template>
-			</el-table-column>
-
-			<!-- 操作 -->
-			<el-table-column fixed="right" label="操作" width="250">
-				<template slot-scope="scope">
-					<div class="view_a">
-					<router-link class="e-button el-button--small is-plain el-button--primary"
-						:to="'./view?' + field + '=' + scope.row[field]" size="small">
-           				<span>详情</span> 
-					</router-link>
-					<!--<router-link v-if="!scope.row['reply_to_id']" class="el-button el-button&#45;&#45;small is-plain el-button&#45;&#45;primary"
-						:to="'./view?reply_to_id=' + scope.row[field]" size="small">
-						回复
-					</router-link>-->
-					<a href="javascript:void(0)" class="e-button el-button--small is-plain el-button--primary" v-if="!scope.row['reply_to_id']" @click="reset();query.reply_to_id = scope.row[field];search()">
-						<span>查看回复</span>
-					</a>
-				</div>
-				</template>
-			</el-table-column>
-			<!-- /操作 -->
-		</el-table>
-
-		<!-- 分页器 -->
-		<div class="mt text_center">
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.page"
-			 :page-sizes="[7, 10, 30, 100]" :page-size="query.size" layout="total, sizes, prev, pager, next, jumper" :total="count">
-			</el-pagination>
-		</div>
-		<!-- /分页器 -->
-
+			<div class="premium-pagination-wrap">
+				<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.page"
+					:page-sizes="[7, 10, 30, 100]" :page-size="query.size" layout="total, sizes, prev, pager, next, jumper" :total="count">
+				</el-pagination>
+			</div>
+		</el-card>
 	</el-main>
 </template>
 
 <script>
 	import mixin from "@/mixins/page.js";
-
 	export default {
 		mixins: [mixin],
 		data() {
 			return {
-
-				// 表
-				table:"comment",
-
-				// 获取数据地址
 				url_get_list: "~/api/comment/get_list?like=0",
 				url_del: "~/api/comment/del?",
-
-				// 字段ID
 				field:"comment_id",
-
-				// 查询
-				query: {
-					size: 10,
-					page: 1,
-					content: "",
-					nickname: "",
-					source_table: "",
-					source_field: "",
-					source_id: 0
-				},
-
-				// 数据
+				query: { size: 10, page: 1, content: "", nickname: "", source_table: "", source_field: "", source_id: 0, orderby: `create_time desc` },
 				list: [],
-
-				//
 				list_user: []
 			}
 		},
 		methods: {
 			async get_list_user(){
 				var json = await this.$get("~/api/user/get_list?");
-				if(json.result){
-					this.list_user = json.result.list;
-				}
-				else if(json.error){
-					console.error(json.error);
-				}
+				if(json.result){ this.list_user = json.result.list; }
 			},
-			table_class({row, column, rowIndex, columnIndex}){
-				return "table_class";
+			resetSearch(){
+				this.query.page = 1; this.query.nickname = ""; this.query.content = "";
+				this.get_list();
 			},
-      reset(){
-			  this.query.page = 1;
-			  this.query.size = 10;
-        this.query.nickname = "";
-			  this.query.content = "";
-        this.get_list();
-      }
+			viewReplies(row){
+				this.query.reply_to_id = row[this.field];
+				this.search();
+			}
 		},
-		created(){
-			this.get_list_user();
-		}
+		created(){ this.get_list_user(); }
 	}
 </script>
 
-<style type="text/css">
-
+<style scoped>
 </style>

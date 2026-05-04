@@ -1,108 +1,74 @@
 <template>
 	<el-main class="bg edit_wrap">
-		<el-form ref="form" :model="form" status-icon label-width="80px">
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="用户组名" prop="name">
-					<el-input v-model="form.name" placeholder="请输入用户组名"></el-input>
-				</el-form-item>
-			</el-col>
+		<el-card class="premium-view-card" shadow="never">
+			<div slot="header" class="premium-header">
+				<span class="premium-title">{{ form.group_id ? '编辑用户组' : '新增用户组' }}</span>
+				<span class="premium-subtitle">配置系统权限组及其基础属性，支持设置显示优先级</span>
+			</div>
 
-			<el-col :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="显示顺序" prop="display">
-					<el-input-number v-model="form.display"></el-input-number>
-				</el-form-item>
-			</el-col>
+			<el-form ref="form" :model="form" status-icon label-width="100px" label-position="top">
+				<div class="premium-section-title">基础属性</div>
+				<el-row :gutter="30">
+					<el-col :xs="24" :sm="14" :lg="12">
+						<el-form-item label="用户组名称" prop="name">
+							<el-input v-model="form.name" placeholder="请输入唯一的用户组名称" prefix-icon="el-icon-user-solid"></el-input>
+						</el-form-item>
+					</el-col>
 
-			<el-col :xs="24" :sm="12" :lg="16" class="el_form_item_warp">
-				<el-form-item label="描述" prop="description">
-					<el-input type="textarea" autosize v-model="form.description" placeholder="请输入描述"></el-input>
-				</el-form-item>
-			</el-col>
-			
-			<el-col :xs="24" :sm="24" :lg="24" class="el_form_btn_warp">
-				<el-form-item>
-					<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_1">
-						<el-button style="width: 100%; float: left;" type="primary" @click="submit()">提交</el-button>
+					<el-col :xs="24" :sm="10" :lg="8">
+						<el-form-item label="显示优先级" prop="display">
+							<el-input-number v-model="form.display" :min="0" :max="999" style="width: 100%"></el-input-number>
+						</el-form-item>
 					</el-col>
-					<el-col :xs="24" :sm="24" :lg="12" class="el_form_btn el_form_btn_2">
-						<el-button style="width: 100%; float: right;" @click="cancel()">取消</el-button>
+				</el-row>
+
+				<el-row :gutter="20">
+					<el-col :xs="24" :sm="24" :lg="20">
+						<el-form-item label="职能描述" prop="description">
+							<el-input type="textarea" :rows="5" v-model="form.description" placeholder="请详细描述该用户组的职能与权限范围..."></el-input>
+						</el-form-item>
 					</el-col>
-				</el-form-item>
-			</el-col>
-			
-		</el-form>
+				</el-row>
+
+				<div class="premium-actions">
+					<template v-if="(form['group_id'] && $check_action('/user_group/view','set')) || (!form['group_id'] && $check_action('/user_group/view','add'))">
+						<el-button type="primary" class="premium-btn-submit" @click="submit()" icon="el-icon-check">提交保存</el-button>
+						<el-button class="premium-btn-cancel" @click="cancel()" icon="el-icon-close">取消</el-button>
+					</template>
+					<el-button v-else class="premium-btn-cancel" @click="cancel()" icon="el-icon-back">返回</el-button>
+				</div>
+			</el-form>
+		</el-card>
 	</el-main>
 </template>
 
 <script>
 	import mixin from "@/mixins/page.js";
-
 	export default {
 		mixins: [mixin],
 		data() {
 			return {
 				field: "group_id",
-
 				url_add: "~/api/user_group/add?",
 				url_set: "~/api/user_group/set?",
 				url_get_obj: "~/api/user_group/get_obj?",
 				url_upload: "~/api/user_group/upload?",
-
-				query: {
-					group_id: 0
-				},
-
+				query: { group_id: 0 },
 				form: {
 					group_id: 0,
 					name: '',
+					display: 100,
 					description:""
 				}
 			}
 		},
 		methods: {
-			/**
-			 * 上传文件
-			 * @param {Object} param
-			 */
 			uploadimg(param) {
 				this.uploadFile(param.file, "icon");
 			},
-		},
-		created() {
-
 		}
 	}
 </script>
 
-<style>
-	.bg {
-		background: white;
-	}
-
-	.avatar-uploader .el-upload {
-		border: 1px dashed #d9d9d9;
-		border-radius: 6px;
-		cursor: pointer;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.avatar-uploader .el-upload:hover {
-		border-color: #409EFF;
-	}
-
-	.avatar-uploader-icon {
-		font-size: 28px;
-		color: #8c939d;
-		width: 178px;
-		height: 178px;
-		line-height: 178px;
-		text-align: center;
-	}
-
-	.avatar {
-		width: 178px;
-		height: 178px;
-		display: block;
-	}
+<style scoped>
 </style>
