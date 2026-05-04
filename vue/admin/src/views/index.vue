@@ -138,7 +138,7 @@
 		methods: {
 			get_counts() {
 				this.$get("~/api/user/count?", null, (json) => { if (json.result || json.result === 0) this.user_count = json.result; });
-				this.$get("~/api/registered_user/count?", null, (json) => { if (json.result || json.result === 0) this.registered_user_count = json.result; });
+				this.$get("~/api/user/count?", {user_group: "注册用户"}, (json) => { if (json.result || json.result === 0) this.registered_user_count = json.result; });
 				this.$get("~/api/sales_information/count?", null, (json) => { if (json.result || json.result === 0) this.sales_count = json.result; });
 				this.$get("~/api/inventory_information/count?", null, (json) => { if (json.result || json.result === 0) this.inventory_count = json.result; });
 				this.$get("~/api/purchasing_information/count?", null, (json) => { if (json.result || json.result === 0) this.purchasing_count = json.result; });

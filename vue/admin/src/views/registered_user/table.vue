@@ -39,10 +39,10 @@
 				<el-table-column prop="user_id" label="ID" width="80" align="center"></el-table-column>
 				<el-table-column prop="nick_name" label="昵称" min-width="120" align="center"></el-table-column>
 				<el-table-column prop="user_name" label="用户名" min-width="120" align="center"></el-table-column>
-				<el-table-column prop="user_gender" label="性别" v-if="$check_field('get','user_gender')" width="80" align="center">
+				<el-table-column prop="user_gender" label="性别" width="80" align="center">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.user_gender === 0 ? '' : 'danger'" size="mini">
-							{{ scope.row.user_gender === 0 ? '男' : '女' }}
+						<el-tag :type="scope.row.user_gender === '男' ? '' : 'danger'" size="mini">
+							{{ scope.row.user_gender }}
 						</el-tag>
 					</template>
 				</el-table-column>
@@ -76,10 +76,10 @@
 		data() {
 			return {
 				showModal: false,
-				url_get_list: "~/api/registered_user/get_list?like=0",
-				url_del: "~/api/registered_user/del?",
-				field: "registered_user_id",
-				query: { "size": 7, "page": 1, "user_name": "", "user_gender": "", "orderby": `create_time desc` },
+				url_get_list: "~/api/user/get_list?like=0",
+				url_del: "~/api/user/del?",
+				field: "user_id",
+				query: { "size": 7, "page": 1, "user_name": "", "user_gender": "", "user_group": "注册用户", "orderby": `create_time desc` },
 				list: [],
 				list_user_gender: [
 					{ text: '男', value: 0 },
@@ -102,14 +102,6 @@
 				});
 			},
 			get_list_after(res){
-				for (let item of this.list){
-					this.$get("~/api/user/get_obj?", { user_id: item.user_id }, (json) => {
-						if (json.result && json.result.obj){
-							this.$set(item, 'user_name', json.result.obj.user_name);
-							this.$set(item, 'nick_name', json.result.obj.nick_name);
-						}
-					});
-				}
 			},
 		}
 	}

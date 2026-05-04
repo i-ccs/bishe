@@ -1,5 +1,5 @@
 <template>
-    <div class="vertical-announcement-container" :style="{height: '200px'}">
+    <div class="vertical-announcement-container" :style="{height: '180px'}">
       <div class="announcement-list-wrapper" :class="{animate: list.length > 1}">
         <div v-for="(o, i) in list" :key="i" class="announcement-item">
           <router-link class="swiper_announcement" :to="'/announcement/details?announcement_id='+o.announcement_id">

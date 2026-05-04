@@ -1,24 +1,19 @@
 <template>
 	<div class="page_root" id="root_demo">
-		<!-- Hero Section -->
-		<div class="warp banner">
-			<div class="container swiper_box">
-				<!-- Centered Swiper Row -->
-				<div class="row justify-content-center">
-					<div class="col-lg-4 col-md-6 col-sm-12">
+		<!-- Main Content Section -->
+		<div class="home-section pt-4">
+			<div class="container">
+				<!-- Banner Section -->
+				<el-row class="mb-4">
+					<el-col :span="24">
 						<div class="premium-swiper-container">
 							<div class="swiper_img premium-swiper">
 								<swiper_img :list="list_slide"/>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+					</el-col>
+				</el-row>
 
-		<!-- Main Content Section (News & Products) -->
-		<div class="home-section content_row">
-			<div class="container">
 				<!-- Top Row: News & Products -->
 				<el-row>
 					<el-col :span="24">
@@ -55,6 +50,20 @@
 
 			</div>
 		</div>
+		<!-- Announcement Section -->
+		<div class="announcement-section mt-5 pb-5">
+			<div class="container">
+				<el-card class="premium-announcement-card wide-announcement" shadow="never">
+					<div class="announcement_header">
+						<span class="announcement_title_text"><i class="el-icon-notification"></i> 公告栏</span>
+						<router-link to="/announcement/list" class="announcement_more">更多 <i class="el-icon-arrow-right"></i></router-link>
+					</div>
+					<div class="announcement_body">
+						<swiper_notice :list="list_announcement" />
+					</div>
+				</el-card>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -64,6 +73,7 @@
 						import bar_title from "@/components/diy/bar_title.vue";
 	import list_article from "@/components/diy/list_article.vue";
 	import swiper_img from "@/components/diy/swiper_img.vue";
+	import swiper_notice from "@/components/diy/swiper_notice.vue";
 
 	export default {
 		mixins: [mixin],
@@ -71,7 +81,8 @@
 					list_commodity_information,
 								bar_title,
 			list_article,
-			swiper_img
+			swiper_img,
+			swiper_notice
 		},
 		data() {
 			return {
@@ -102,7 +113,8 @@
 				],
 				show_list_article: true,
 						list_commodity_information: [],
-									list_slide: [],
+				list_announcement: [],
+				list_slide: [],
 				list_menu: [],
 			};
 		},
@@ -226,6 +238,17 @@
 			        }
 			    );
 			},
+			// 获取公告
+			get_announcement() {
+				this.$get("~/api/announcement/get_list?", {
+					page: 1,
+					size: 3
+				}, (json) => {
+					if (json.result) {
+						this.list_announcement = json.result.list;
+					}
+				});
+			},
 
 			to_details(key,o,id) {
 				if(!id){
@@ -235,10 +258,13 @@
 			}
 		},
 		mounted() {
-					this.get_commodity_information();
-								this.get_menu();
-			this.get_banner();
-			this.get_article();
+			this.check_auth(() => {
+				this.get_commodity_information();
+				this.get_menu();
+				this.get_banner();
+				this.get_article();
+				this.get_announcement();
+			});
 		},
 		computed: {
 				    list_table_inventory_information() {
@@ -305,7 +331,7 @@
 
 .wide-announcement {
 	width: 100% !important;
-	height: 350px !important;
+	height: 250px !important;
 }
 
 .wide-announcement .announcement_header {

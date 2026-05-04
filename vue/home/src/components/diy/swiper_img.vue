@@ -76,7 +76,7 @@ export default {
 #carousel {
 	height: 100%;
 	position: relative;
-	padding: 0 60px; /* 为侧边按钮留出空间 */
+	padding: 0;
 	background: transparent !important;
 }
 

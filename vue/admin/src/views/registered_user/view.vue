@@ -89,26 +89,22 @@
 						<div class="section-container mt-4">
 							<div class="section-title">个人资料</div>
 							<el-row :gutter="20">
-								<el-col v-if="$check_field('get','user_name') || $check_field('add','user_name') || $check_field('set','user_name')" :span="12" :xs="24">
+								<el-col :span="12" :xs="24">
 									<el-form-item label="用户名" prop="user_name">
-										<el-input id="user_name" v-model="form_sub['user_name']" placeholder="请输入用户名" prefix-icon="el-icon-info"
-											v-if="user_group === '管理员' || (form_sub['registered_user_id'] && $check_field('set','user_name')) || (!form_sub['registered_user_id'] && $check_field('add','user_name'))" :disabled="disabledObj['user_name_isDisabled']"></el-input>
-										<div v-else-if="$check_field('get','user_name')" class="readonly-field">
-											<span>{{ form_sub['user_name'] }}</span>
+										<el-input id="user_name" v-model="form['user_name']" placeholder="请输入用户名" prefix-icon="el-icon-info"
+											v-if="user_group === '管理员' || (form['user_id'] && $check_field('set','user_name')) || (!form['user_id'] && $check_field('add','user_name'))"></el-input>
+										<div v-else class="readonly-field">
+											<span>{{ form['user_name'] }}</span>
 										</div>
 									</el-form-item>
 								</el-col>
 
-								<el-col v-if="$check_field('get','user_gender') || $check_field('add','user_gender') || $check_field('set','user_gender')" :span="12" :xs="24">
+								<el-col :span="12" :xs="24">
 									<el-form-item label="用户性别" prop="user_gender">
-										<el-select id="user_gender" v-model="form_sub['user_gender']" style="width: 100%"
-											v-if="(form_sub['registered_user_id'] && $check_field('set','user_gender')) || (!form_sub['registered_user_id'] && $check_field('add','user_gender'))">
+										<el-select id="user_gender" v-model="form['user_gender']" style="width: 100%">
 											<el-option v-for="o in list_user_gender" :key="o.value" :label="o.text" :value="o.value">
 											</el-option>
 										</el-select>
-										<div v-else-if="$check_field('get','user_gender')" class="readonly-field">
-											<span>{{ list_user_gender.find(o => o.value === form_sub['user_gender'])?.text || form_sub['user_gender'] }}</span>
-										</div>
 									</el-form-item>
 								</el-col>
 							</el-row>
@@ -140,7 +136,7 @@
 				url_get_obj: "~/api/user/get_obj?",
 				url_upload: "~/api/user/upload?",
 
-				group_table: "registered_user",
+
 				is_password: true,
 
 				query: {
@@ -156,6 +152,7 @@
 					email: '',
 					user_group: "注册用户",
 					state: 1,
+					user_gender: '男'
 					},
 
 				form: {
@@ -167,6 +164,7 @@
 					email: '',
 					user_group: "注册用户",
 					state: 1,
+					user_gender: '男'
 					},
 
 				disabledObj:{
@@ -174,12 +172,7 @@
 										"user_gender_isDisabled": false,
 							},
 
-				form_sub: {
-								"user_name":  '', // 用户姓名
-										"user_gender":  '', // 用户性别
-									    "user_id": 0,
-					"registered_user_id": 0 // ID
-				},
+
 
 				list_state: [{
 					value: 0,
@@ -206,8 +199,8 @@
 					name: "已注销"
 				}],
 				list_user_gender: [
-					{ text: '男', value: 0 },
-					{ text: '女', value: 1 }
+					{ text: '男', value: '男' },
+					{ text: '女', value: '女' }
 				],
 			}
 		},
@@ -240,18 +233,6 @@
 			get_obj_after(json, func){
 				var user = json.result.obj;
 				this.is_password = user.password ? false : true;
-				var user_id = user.user_id;
-				this.$get("~/api/" + this.group_table + "/get_obj?" ,{user_id} ,(res)=>{
-					if(res.result && res.result.obj){
-						var o = res.result.obj;
-						delete o["create_time"];
-						delete o["update_time"];
-						this.form_sub = res.result.obj;
-					}else if(res.error){
-						console.log(res.error);
-						console.log("获取不到相关信息");
-					}
-				})
 			},
 
 			delImg(img, key = "img"){
@@ -298,50 +279,11 @@
 			},
 
 			submit_after(json,func){
-				var form = Object.assign({} ,this.form);
-				delete form.password;
-				this.get_register(form);
+				this.$toast("保存成功!" ,"success");
+				this.$router.go(-1);
 			},
 
-			get_register(form){
-				var form_sub = this.form_sub;
-				this.$get("~/api/user/get_obj?",form,(res)=>{
-					if(res.result && res.result.obj){
-						form_sub.user_id = res.result.obj.user_id;
-						this.submit_sub(form_sub);
-					}else if(res.error){
-						console.error(res.error);
-						this.$toast(res.error.message,"error");
-					}
-				})
-			},
 
-			submit_sub(form_sub){
-        form_sub = this.events("submit_before", Object.assign({}, form_sub)) || form_sub;
-				if(form_sub["registered_user_id"]){
-					this.$post("~/api/" + this.group_table + "/set?registered_user_id=" + form_sub["registered_user_id"],form_sub,(res)=>{
-						if(res.result){
-							this.$toast("修改成功!" ,"success");
-							this.$router.go(-1);
-						}else if(res.error){
-							console.error(res.error);
-							this.$toast(res.error.message,"error");
-						}
-					});
-				} else{
-					this.$post("~/api/" + this.group_table + "/add?",form_sub,(res)=>{
-						if(res.result){
-							this.$toast("添加成功!" ,"success");
-							this.$router.go(-1);
-						}else if(res.error){
-							var user_id = form_sub["user_id"];
-							this.$get("~/api/user/del?",{user_id});
-							console.error(res.error);
-							this.$toast(res.error.message,"error");
-						}
-					});
-				}
-			},
 
 			is_view(){
 				var bl = false;

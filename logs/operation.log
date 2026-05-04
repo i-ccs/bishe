@@ -14,3 +14,4 @@
 2026-05-05 00:56:04.571 [http-nio-5000-exec-10] INFO  com.project.demo.aspect.LogAspect - [article] [update] update: {"views":4}
 2026-05-05 00:56:12.514 [http-nio-5000-exec-3] INFO  com.project.demo.aspect.LogAspect - [praise] [insert] insert: {"source_field":"article_id","user_id":1,"source_id":8,"source_table":"article"}
 2026-05-05 00:56:12.557 [http-nio-5000-exec-4] INFO  com.project.demo.aspect.LogAspect - [article] [update] update: {"praise_len":2}
+2026-05-05 00:58:54.028 [http-nio-5000-exec-4] INFO  com.project.demo.aspect.LogAspect - [article] [update] update: {"views":1}

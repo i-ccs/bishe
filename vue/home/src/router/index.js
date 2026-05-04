@@ -84,6 +84,18 @@ const routes = [
 		name: 'comment_view',
 		component: () => import('../views/comment/view.vue')
 	},
+	// 公告列表
+	{
+		path: '/announcement/list',
+		name: '/announcement_list',
+		component: () => import('../views/announcement/list.vue')
+	},
+	// 公告详情
+	{
+		path: '/announcement/details',
+		name: '/announcement_details',
+		component: () => import('../views/announcement/details.vue')
+	},
 
 
 
