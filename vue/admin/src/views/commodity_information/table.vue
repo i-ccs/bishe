@@ -42,7 +42,9 @@
 				<el-table-column align="center" prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="120"></el-table-column>
 				<el-table-column align="center" prop="product_inventory" label="商品库存" v-if="$check_field('get','product_inventory')" min-width="100">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.product_inventory < 10 ? 'danger' : 'success'">{{scope.row.product_inventory}}</el-tag>
+						<el-tag :type="scope.row.product_inventory < 10 ? 'danger' : 'success'">
+							{{scope.row.product_inventory}} <span v-if="scope.row.product_inventory < 10"> (库存不足)</span>
+						</el-tag>
 					</template>
 				</el-table-column>
 				<el-table-column align="center" prop="product_images" label="商品图片" v-if="$check_field('get','product_images')" width="120">
@@ -79,18 +81,6 @@
 				</el-pagination>
 			</div>
 		</el-card>
-
-		<div class="modal_wrap" v-if="showModal">
-			<div class="modal_box">
-				<p class="modal_box_title">重要提醒</p>
-				<p class="modal_box_text">当前有数据达到预警值！</p>
-				<p class="modal_box_text">{{ message }}</p>
-				<div class="btn_box">
-					<span @click="closeModal">取消</span>
-					<span @click="closeModal">确定</span>
-				</div>
-			</div>
-		</div>
 	</el-main>
 </template>
 
@@ -119,7 +109,11 @@
 			closeModal(){ this.showModal = false; },
 			get_list_after: function get_list_after(res, func, url) {
 				let _this = this
+				let hasWarning = false;
 				_this.list.map((item) => {
+					if (item.product_inventory < 10) {
+						hasWarning = true;
+					}
 					let param = {
 						source_table: "commodity_information",
 						source_id: item.commodity_information_id,
@@ -147,6 +141,15 @@
 					}
 					Object.assign(item, param)
 				})
+				
+				if (hasWarning) {
+					_this.$notify({
+						title: '重要提醒',
+						message: '部分商品库存已不足10件，请及时处理！',
+						type: 'warning',
+						duration: 0
+					});
+				}
 			},
 		}
 	}

@@ -41,6 +41,11 @@
                                               <el-table-column prop="commodity_specifications" @sort-change="$sortChange" label="商品规格"                                v-if="$check_field('get','commodity_specifications')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存"                                v-if="$check_field('get','product_inventory')" min-width="200">
+                                      <template slot-scope="scope">
+                                          <el-tag :type="scope.row.product_inventory < 10 ? 'danger' : 'success'">
+                                              {{scope.row.product_inventory}} <span v-if="scope.row.product_inventory < 10"> (库存不足)</span>
+                                          </el-tag>
+                                      </template>
                                 </el-table-column>
                                               <el-table-column prop="product_images" @sort-change="$sortChange" label="商品图片"                                v-if="$check_field('get','product_images')" min-width="200">
                                       <template slot-scope="scope">
@@ -171,13 +176,17 @@
       closeModal(){
         this.showModal = false;
       },
-        		  /**
+		  /**
 		   * @description 获取到列表事件
 		   * @param {Object} res 响应结果
 		   */
 		  get_list_after: function get_list_after(res, func, url) {
 		  	let _this = this
-					  			  	_this.list.map((item) => {
+		  	let hasWarning = false;
+			_this.list.map((item) => {
+				if (item.product_inventory < 10) {
+					hasWarning = true;
+				}
 		  		let param = {
 		  			source_table: "commodity_information",
 		  			source_id: item.commodity_information_id,
@@ -240,7 +249,12 @@
 		  		}
 		  		Object.assign(item, param)
 		  	})
-		  																																					  },
+		  	
+		  	if (hasWarning) {
+		  		_this.showModal = true;
+		  		_this.message = "部分商品库存已不足10件，请及时处理！";
+		  	}
+		  },
         
         
                                                                                                                                                                                                                                                                                                                                                 
