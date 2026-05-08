@@ -83,7 +83,14 @@ public class BaseService<E> {
         StringBuilder values = new StringBuilder("VALUES (");
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             sql.append("`").append(humpToLine(entry.getKey())).append("`,");
-            values.append("'").append(entry.getValue()).append("',");
+            
+            // ⭐ 修复：处理null值，避免将null转换为字符串'null'
+            Object value = entry.getValue();
+            if (value == null || "null".equals(String.valueOf(value))) {
+                values.append("NULL,");
+            } else {
+                values.append("'").append(value).append("',");
+            }
         }
         sql.deleteCharAt(sql.length() - 1).append(") ");
         values.deleteCharAt(values.length() - 1).append(") ");

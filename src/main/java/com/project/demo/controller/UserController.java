@@ -57,10 +57,12 @@ public class UserController extends BaseController<User, UserService> {
         Map<String, String> query = new HashMap<>();
         query.put("user_name", String.valueOf(userMap.get("user_name")));
         List list = service.selectBaseList(service.select(query, new HashMap<>()));
+        // 用户存在
         if (list.size() > 0) {
             return error(30000, "用户已存在");
         }
         userMap.put("password", String.valueOf(userMap.get("password")));
+        // 用户不存在
         if (userMap.get("create_time") == null) {
             userMap.put("create_time", new Timestamp(System.currentTimeMillis()));
         }
@@ -71,7 +73,8 @@ public class UserController extends BaseController<User, UserService> {
             String groupName = userMap.get("user_group").toString();
             Map<String, String> groupQuery = new HashMap<>();
             groupQuery.put("name", groupName);
-            List<UserGroup> groups = userGroupService.selectBaseList(userGroupService.select(groupQuery, new HashMap<>()));
+            List<UserGroup> groups = userGroupService
+                    .selectBaseList(userGroupService.select(groupQuery, new HashMap<>()));
             if (groups.size() > 0) {
                 UserGroup group = groups.get(0);
                 if (group.getSourceTable() != null && !group.getSourceTable().isEmpty()) {
@@ -336,7 +339,8 @@ public class UserController extends BaseController<User, UserService> {
         if (map.get("user_group") != null) {
             Map<String, String> groupQuery = new HashMap<>();
             groupQuery.put("name", map.get("user_group").toString());
-            List<UserGroup> groups = userGroupService.selectBaseList(userGroupService.select(groupQuery, new HashMap<>()));
+            List<UserGroup> groups = userGroupService
+                    .selectBaseList(userGroupService.select(groupQuery, new HashMap<>()));
             if (groups.size() > 0) {
                 UserGroup group = groups.get(0);
                 if (group.getSourceTable() != null && !group.getSourceTable().isEmpty()) {
@@ -345,7 +349,8 @@ public class UserController extends BaseController<User, UserService> {
                     sourceMap.put("user_name", map.get("user_name"));
                     sourceMap.put("user_gender", map.get("user_gender"));
                     sourceMap.put("state", map.get("state") != null ? map.get("state") : 1);
-                    sourceMap.put("create_time", map.get("create_time") != null ? map.get("create_time") : new Timestamp(System.currentTimeMillis()));
+                    sourceMap.put("create_time", map.get("create_time") != null ? map.get("create_time")
+                            : new Timestamp(System.currentTimeMillis()));
                     // 同步用户信息
                     service.insertSource(group.getSourceTable(), sourceMap);
                 }

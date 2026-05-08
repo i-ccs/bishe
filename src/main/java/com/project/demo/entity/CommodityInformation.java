@@ -80,6 +80,11 @@ public class CommodityInformation implements Serializable {
     @TableField(value = "is_delete")
     private Integer isDelete;
 
+    // 版本号
+    @Version
+    @TableField(value = "version")
+    private Integer version;
+
     // 更新时间
     @TableField(value = "update_time")
     private Timestamp updateTime;
