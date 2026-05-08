@@ -286,6 +286,12 @@
 					return "采购日期不能为空";
 				}
 				
+				// 验证供应商名称不能为空
+				if (!param.supplier_name || param.supplier_name.trim() === '') {
+					console.log('验证失败：供应商名称为空');
+					return '供应商名称不能为空';
+				}
+				
 				// 验证采购数量必须大于0
 				if (param.purchase_quantity === null || param.purchase_quantity === undefined || param.purchase_quantity <= 0) {
 					console.log('验证失败：采购数量无效', param.purchase_quantity);

@@ -180,6 +180,12 @@
 					return "手机号格式错误";
 				}
 				
+				// 验证主营类别不能为空
+				if (!param.commodity_category || param.commodity_category.trim() === '') {
+					console.log('验证失败：主营类别为空');
+					return '主营类别不能为空';
+				}
+				
 				// 验证供应频率
 				if (!param.supply_frequency || param.supply_frequency.trim() === '') {
 					console.log('验证失败：供应频率为空');
