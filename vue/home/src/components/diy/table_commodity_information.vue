@@ -250,7 +250,7 @@
 		  		Object.assign(item, param)
 		  	})
 		  	
-		  	if (hasWarning) {
+		  	if (hasWarning && _this.user_group === '管理员') {
 		  		_this.showModal = true;
 		  		_this.message = "部分商品库存已不足10件，请及时处理！";
 		  	}

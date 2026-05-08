@@ -59,7 +59,7 @@
 						</div>
 								<!-- 数字 -->
 						<div class="diy_field diy_number">
-							<input type="number" id="form_commodity_price" v-model.number="form['commodity_price']" placeholder="请输入商品价格" v-if="(form['commodity_price'] && $check_field('set','commodity_price')) || (!form['commodity_price'] && $check_field('add','commodity_price'))" :disabled="user_group !== '管理员'" />
+							<input type="number" id="form_commodity_price" v-model.number="form['commodity_price']" placeholder="请输入商品价格" v-if="(form['commodity_price'] && $check_field('set','commodity_price')) || (!form['commodity_price'] && $check_field('add','commodity_price'))" :disabled="user_group !== '管理员'" min="0" />
 							<span v-else-if="$check_field('get','commodity_price')">{{ form['commodity_price'] }}</span>
 						</div>
 							</div>
@@ -110,7 +110,7 @@
 						</div>
 								<!-- 数字 -->
 						<div class="diy_field diy_number">
-							<input type="number" id="form_order_quantity" v-model.number="form['order_quantity']" placeholder="请输入下单数量" v-if="(form['order_quantity'] && $check_field('set','order_quantity')) || (!form['order_quantity'] && $check_field('add','order_quantity'))" :disabled="disabledObj['order_quantity_isDisabled']" />
+							<input type="number" id="form_order_quantity" v-model.number="form['order_quantity']" placeholder="请输入下单数量" v-if="(form['order_quantity'] && $check_field('set','order_quantity')) || (!form['order_quantity'] && $check_field('add','order_quantity'))" :disabled="disabledObj['order_quantity_isDisabled']" min="0" />
 							<span v-else-if="$check_field('get','order_quantity')">{{ form['order_quantity'] }}</span>
 						</div>
 							</div>
@@ -289,8 +289,14 @@
        * @return {String} 验证成功返回null, 失败返回错误提示
        */
             submit_check(param) {
-      																																																							        return null;
-      },
+				if (param.commodity_price === null || param.commodity_price === undefined || param.commodity_price < 0) {
+					return '单价不能小于0';
+				}
+				if (param.order_quantity === null || param.order_quantity === undefined || param.order_quantity <= 0) {
+					return '下单数量不能为0，请至少填写1件';
+				}
+                return null;
+            },
 			
 				
 				

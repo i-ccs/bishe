@@ -36,7 +36,7 @@
 				<el-row :gutter="20">
 					<el-col v-if="$check_field('get','product_inventory') || $check_field('add','product_inventory') || $check_field('set','product_inventory')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="系统账面库存" prop="product_inventory">
-							<el-input-number id="product_inventory" v-model.number="form['product_inventory']" style="width: 100%"
+							<el-input-number id="product_inventory" v-model.number="form['product_inventory']" style="width: 100%" :min="0"
 								v-if="(form['inventory_information_id'] && $check_field('set','product_inventory')) || (!form['inventory_information_id'] && $check_field('add','product_inventory'))" :disabled="disabledObj['product_inventory_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','product_inventory')" class="premium-readonly-field">{{form['product_inventory']}}</div>
 						</el-form-item>
@@ -52,7 +52,7 @@
 					</el-col>
 					<el-col v-if="$check_field('get','check_quantity') || $check_field('add','check_quantity') || $check_field('set','check_quantity')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="实际盘点数量" prop="check_quantity">
-							<el-input-number id="check_quantity" v-model.number="form['check_quantity']" style="width: 100%"
+							<el-input-number id="check_quantity" v-model.number="form['check_quantity']" style="width: 100%" :min="0"
 								v-if="(form['inventory_information_id'] && $check_field('set','check_quantity')) || (!form['inventory_information_id'] && $check_field('add','check_quantity'))" :disabled="disabledObj['check_quantity_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','check_quantity')" class="premium-readonly-field">{{form['check_quantity']}}</div>
 						</el-form-item>

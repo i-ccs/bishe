@@ -42,7 +42,7 @@
 					</el-col>
 					<el-col v-if="$check_field('get','commodity_price') || $check_field('add','commodity_price') || $check_field('set','commodity_price')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="销售单价" prop="commodity_price">
-							<el-input-number id="commodity_price" v-model.number="form['commodity_price']" style="width: 100%"
+							<el-input-number id="commodity_price" v-model.number="form['commodity_price']" style="width: 100%" :min="0"
 								v-if="(form['sales_information_id'] && $check_field('set','commodity_price')) || (!form['sales_information_id'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','commodity_price')" class="premium-readonly-field">{{form['commodity_price']}}</div>
 						</el-form-item>
@@ -78,7 +78,7 @@
 				<el-row :gutter="20">
 					<el-col v-if="$check_field('get','order_quantity') || $check_field('add','order_quantity') || $check_field('set','order_quantity')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="下单数量" prop="order_quantity">
-							<el-input-number id="order_quantity" v-model.number="form['order_quantity']" style="width: 100%"
+							<el-input-number id="order_quantity" v-model.number="form['order_quantity']" style="width: 100%" :min="0"
 								v-if="(form['sales_information_id'] && $check_field('set','order_quantity')) || (!form['sales_information_id'] && $check_field('add','order_quantity'))" :disabled="disabledObj['order_quantity_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','order_quantity')" class="premium-readonly-field">{{form['order_quantity']}}</div>
 						</el-form-item>
@@ -265,7 +265,15 @@
 				else { ret = this.events("submit_main", pm, func); }
 				return ret;
 			},
-			submit_check(param) { return null; },
+			submit_check(param) {
+				if (param.commodity_price === null || param.commodity_price === undefined || param.commodity_price < 0) {
+					return '销售单价不能小于0';
+				}
+				if (param.order_quantity === null || param.order_quantity === undefined || param.order_quantity <= 0) {
+					return '下单数量不能为0或小于0，请至少填写1件';
+				}
+				return null;
+			},
 			is_view(){
 				var bl = false;
 				if(!bl){ bl = this.$check_action('/sales_information/table','add'); }

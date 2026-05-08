@@ -39,7 +39,7 @@
 			</el-col>
 								<el-col v-if="$check_field('get','product_inventory') || $check_field('add','product_inventory') || $check_field('set','product_inventory')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="商品库存" prop="product_inventory">
-								<el-input-number id="product_inventory" v-model.number="form['product_inventory']"
+								<el-input-number id="product_inventory" v-model.number="form['product_inventory']" :min="0"
 						v-if="(form['commodity_information_id'] && $check_field('set','product_inventory')) || (!form['commodity_information_id'] && $check_field('add','product_inventory'))" :disabled="disabledObj['product_inventory_isDisabled']"></el-input-number>
 					<div v-else-if="$check_field('get','product_inventory')">{{form['product_inventory']}}</div>
 							</el-form-item>
@@ -62,7 +62,7 @@
 			</el-col>
 								<el-col v-if="$check_field('get','commodity_price') || $check_field('add','commodity_price') || $check_field('set','commodity_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="商品价格" prop="commodity_price">
-								<el-input-number id="commodity_price" v-model.number="form['commodity_price']"
+								<el-input-number id="commodity_price" v-model.number="form['commodity_price']" :min="0"
 						v-if="(form['commodity_information_id'] && $check_field('set','commodity_price')) || (!form['commodity_information_id'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']"></el-input-number>
 					<div v-else-if="$check_field('get','commodity_price')">{{form['commodity_price']}}</div>
 							</el-form-item>
@@ -283,8 +283,14 @@
 			 * @return {String} 验证成功返回null, 失败返回错误提示
 			 */
 						submit_check(param) {
-																																																																																																																								return null;
-			},
+							if (param.commodity_price === null || param.commodity_price === undefined || param.commodity_price < 0) {
+								return '价格不能小于0';
+							}
+							if (param.product_inventory === null || param.product_inventory === undefined || param.product_inventory < 0) {
+								return '库存不能小于0';
+							}
+							return null;
+						},
 
 			is_view(){
 				// var bl = this.user_group == "管理员";

@@ -53,7 +53,7 @@
 				<el-row :gutter="20">
 					<el-col v-if="$check_field('get','product_inventory') || $check_field('add','product_inventory') || $check_field('set','product_inventory')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="商品库存" prop="product_inventory">
-							<el-input-number id="product_inventory" v-model.number="form['product_inventory']" style="width: 100%"
+							<el-input-number id="product_inventory" v-model.number="form['product_inventory']" style="width: 100%" :min="0"
 								v-if="(form['commodity_information_id'] && $check_field('set','product_inventory')) || (!form['commodity_information_id'] && $check_field('add','product_inventory'))" :disabled="disabledObj['product_inventory_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','product_inventory')" class="premium-readonly-field">{{form['product_inventory']}}</div>
 						</el-form-item>
@@ -253,6 +253,12 @@
 				if (param.commodity_price === null || param.commodity_price === undefined || param.commodity_price <= 0) {
 					console.log('验证失败：商品价格无效', param.commodity_price);
 					return '商品价格必须大于0';
+				}
+				
+				// 验证商品库存 - 库存不能小于0
+				if (param.product_inventory === null || param.product_inventory === undefined || param.product_inventory < 0) {
+					console.log('验证失败：商品库存无效', param.product_inventory);
+					return '商品库存不能小于0';
 				}
 				
 				console.log('验证通过');

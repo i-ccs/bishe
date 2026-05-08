@@ -49,7 +49,7 @@
 					</el-col>
 					<el-col v-if="$check_field('get','commodity_price') || $check_field('add','commodity_price') || $check_field('set','commodity_price')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="销售单价" prop="commodity_price">
-							<el-input-number id="commodity_price" v-model.number="form['commodity_price']" style="width: 100%"
+							<el-input-number id="commodity_price" v-model.number="form['commodity_price']" style="width: 100%" :min="0"
 								v-if="(form['purchasing_information_id'] && $check_field('set','commodity_price')) || (!form['purchasing_information_id'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','commodity_price')" class="premium-readonly-field">{{form['commodity_price']}}</div>
 						</el-form-item>
@@ -88,14 +88,14 @@
 				<el-row :gutter="20">
 					<el-col v-if="$check_field('get','purchase_quantity') || $check_field('add','purchase_quantity') || $check_field('set','purchase_quantity')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="采购数量" prop="purchase_quantity">
-							<el-input-number id="purchase_quantity" v-model.number="form['purchase_quantity']" style="width: 100%"
+							<el-input-number id="purchase_quantity" v-model.number="form['purchase_quantity']" style="width: 100%" :min="0"
 								v-if="(form['purchasing_information_id'] && $check_field('set','purchase_quantity')) || (!form['purchasing_information_id'] && $check_field('add','purchase_quantity'))" :disabled="disabledObj['purchase_quantity_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','purchase_quantity')" class="premium-readonly-field">{{form['purchase_quantity']}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="$check_field('get','purchase_unit_price') || $check_field('add','purchase_unit_price') || $check_field('set','purchase_unit_price')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="采购单价" prop="purchase_unit_price">
-							<el-input-number id="purchase_unit_price" v-model.number="form['purchase_unit_price']" style="width: 100%"
+							<el-input-number id="purchase_unit_price" v-model.number="form['purchase_unit_price']" style="width: 100%" :min="0"
 								v-if="(form['purchasing_information_id'] && $check_field('set','purchase_unit_price')) || (!form['purchasing_information_id'] && $check_field('add','purchase_unit_price'))" :disabled="disabledObj['purchase_unit_price_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','purchase_unit_price')" class="premium-readonly-field">{{form['purchase_unit_price']}}</div>
 						</el-form-item>

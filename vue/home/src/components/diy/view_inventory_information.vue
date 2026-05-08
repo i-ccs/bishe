@@ -32,7 +32,7 @@
 			</el-col>
 								<el-col v-if="$check_field('get','product_inventory') || $check_field('add','product_inventory') || $check_field('set','product_inventory')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="商品库存" prop="product_inventory">
-								<el-input-number id="product_inventory" v-model.number="form['product_inventory']"
+								<el-input-number id="product_inventory" v-model.number="form['product_inventory']" :min="0"
 						v-if="(form['inventory_information_id'] && $check_field('set','product_inventory')) || (!form['inventory_information_id'] && $check_field('add','product_inventory'))" :disabled="disabledObj['product_inventory_isDisabled']"></el-input-number>
 					<div v-else-if="$check_field('get','product_inventory')">{{form['product_inventory']}}</div>
 							</el-form-item>
@@ -47,7 +47,7 @@
 			</el-col>
 								<el-col v-if="$check_field('get','check_quantity') || $check_field('add','check_quantity') || $check_field('set','check_quantity')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="核对数量" prop="check_quantity">
-								<el-input-number id="check_quantity" v-model.number="form['check_quantity']"
+								<el-input-number id="check_quantity" v-model.number="form['check_quantity']" :min="0"
 						v-if="(form['inventory_information_id'] && $check_field('set','check_quantity')) || (!form['inventory_information_id'] && $check_field('add','check_quantity'))" :disabled="disabledObj['check_quantity_isDisabled']"></el-input-number>
 					<div v-else-if="$check_field('get','check_quantity')">{{form['check_quantity']}}</div>
 							</el-form-item>
@@ -233,7 +233,13 @@
 			 * @return {String} 验证成功返回null, 失败返回错误提示
 			 */
 						submit_check(param) {
-																																																																		if (!param.check_date){
+							if (param.product_inventory === null || param.product_inventory === undefined || param.product_inventory < 0) {
+								return '库存不能小于0';
+							}
+							if (param.check_quantity === null || param.check_quantity === undefined || param.check_quantity < 0) {
+								return '核对数量不能小于0';
+							}
+							if (!param.check_date){
 					return "核对日期不能为空";
 				}
 																																						return null;

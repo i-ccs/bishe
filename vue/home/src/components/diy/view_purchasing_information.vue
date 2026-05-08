@@ -39,7 +39,7 @@
 			</el-col>
 								<el-col v-if="$check_field('get','commodity_price') || $check_field('add','commodity_price') || $check_field('set','commodity_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="商品价格" prop="commodity_price">
-								<el-input-number id="commodity_price" v-model.number="form['commodity_price']"
+								<el-input-number id="commodity_price" v-model.number="form['commodity_price']" :min="0"
 						v-if="(form['purchasing_information_id'] && $check_field('set','commodity_price')) || (!form['purchasing_information_id'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']"></el-input-number>
 					<div v-else-if="$check_field('get','commodity_price')">{{form['commodity_price']}}</div>
 							</el-form-item>
@@ -71,14 +71,14 @@
 			</el-col>
 								<el-col v-if="$check_field('get','purchase_quantity') || $check_field('add','purchase_quantity') || $check_field('set','purchase_quantity')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="采购数量" prop="purchase_quantity">
-								<el-input-number id="purchase_quantity" v-model.number="form['purchase_quantity']"
+								<el-input-number id="purchase_quantity" v-model.number="form['purchase_quantity']" :min="0"
 						v-if="(form['purchasing_information_id'] && $check_field('set','purchase_quantity')) || (!form['purchasing_information_id'] && $check_field('add','purchase_quantity'))" :disabled="disabledObj['purchase_quantity_isDisabled']"></el-input-number>
 					<div v-else-if="$check_field('get','purchase_quantity')">{{form['purchase_quantity']}}</div>
 							</el-form-item>
 			</el-col>
 								<el-col v-if="$check_field('get','purchase_unit_price') || $check_field('add','purchase_unit_price') || $check_field('set','purchase_unit_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="采购单价" prop="purchase_unit_price">
-								<el-input-number id="purchase_unit_price" v-model.number="form['purchase_unit_price']"
+								<el-input-number id="purchase_unit_price" v-model.number="form['purchase_unit_price']" :min="0"
 						v-if="(form['purchasing_information_id'] && $check_field('set','purchase_unit_price')) || (!form['purchasing_information_id'] && $check_field('add','purchase_unit_price'))" :disabled="disabledObj['purchase_unit_price_isDisabled']"></el-input-number>
 					<div v-else-if="$check_field('get','purchase_unit_price')">{{form['purchase_unit_price']}}</div>
 							</el-form-item>
@@ -342,11 +342,20 @@
 			 * @return {String} 验证成功返回null, 失败返回错误提示
 			 */
 						submit_check(param) {
-																																																																																																			if (!param.purchase_date){
-					return "采购日期不能为空";
-				}
-																																																												return null;
-			},
+							if (param.commodity_price === null || param.commodity_price === undefined || param.commodity_price < 0) {
+								return '单价不能小于0';
+							}
+							if (param.purchase_quantity === null || param.purchase_quantity === undefined || param.purchase_quantity < 0) {
+								return '数量不能小于0';
+							}
+							if (param.purchase_unit_price === null || param.purchase_unit_price === undefined || param.purchase_unit_price < 0) {
+								return '采购单价不能小于0';
+							}
+							if (!param.purchase_date){
+								return "采购日期不能为空";
+							}
+							return null;
+						},
 
 			is_view(){
 				// var bl = this.user_group == "管理员";
