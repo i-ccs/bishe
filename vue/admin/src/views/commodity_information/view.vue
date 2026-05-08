@@ -6,7 +6,7 @@
 				<span class="premium-subtitle">管理商品的基本信息、库存及详细介绍</span>
 			</div>
 
-			<el-form ref="form" :model="form" status-icon label-width="120px" label-position="top">
+			<el-form ref="form" :model="form" :rules="rules" status-icon label-width="120px" label-position="top">
 				<div class="premium-section-title">基本信息</div>
 				<el-row :gutter="20">
 					<el-col v-if="$check_field('get','product_code') || $check_field('add','product_code') || $check_field('set','product_code')" :xs="24" :sm="12" :lg="8">
@@ -217,7 +217,46 @@
 			},
 			
 			submit_check(param) {
-					return null;
+				console.log('开始验证商品数据:', param);
+				
+				// 验证商品名称
+				if (!param.product_name || param.product_name.trim() === '') {
+					console.log('验证失败：商品名称为空');
+					return '商品名称不能为空';
+				}
+				
+				// 验证商品类别
+				if (!param.product_category || param.product_category.trim() === '') {
+					console.log('验证失败：商品类别为空');
+					return '商品类别不能为空';
+				}
+				
+				// 验证商品品牌
+				if (!param.product_brand || param.product_brand.trim() === '') {
+					console.log('验证失败：商品品牌为空');
+					return '商品品牌不能为空';
+				}
+				
+				// 验证商品规格
+				if (!param.commodity_specifications || param.commodity_specifications.trim() === '') {
+					console.log('验证失败：商品规格为空');
+					return '商品规格不能为空';
+				}
+				
+				// 验证商品图片
+				if (!param.product_images || param.product_images.trim() === '') {
+					console.log('验证失败：商品图片为空');
+					return '商品图片不能为空';
+				}
+				
+				// 验证商品价格 - 修复：先检查是否为null/undefined，再检查是否<=0
+				if (param.commodity_price === null || param.commodity_price === undefined || param.commodity_price <= 0) {
+					console.log('验证失败：商品价格无效', param.commodity_price);
+					return '商品价格不能为0';
+				}
+				
+				console.log('验证通过');
+				return null;
 			},
 
 			is_view(){
