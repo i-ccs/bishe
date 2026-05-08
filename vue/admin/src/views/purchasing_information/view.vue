@@ -11,23 +11,22 @@
 				<el-row :gutter="20">
 					<el-col v-if="$check_field('get','product_code') || $check_field('add','product_code') || $check_field('set','product_code')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="商品编码" prop="product_code">
-							<el-input id="product_code" v-model="form['product_code']" placeholder="请输入商品编码" prefix-icon="el-icon-collection-tag"
-								v-if="(form['purchasing_information_id'] && $check_field('set','product_code')) || (!form['purchasing_information_id'] && $check_field('add','product_code'))" :disabled="disabledObj['product_code_isDisabled']"></el-input>
+							<el-select id="product_code" v-model="form['product_code']" placeholder="请选择商品编码" style="width:100%"
+								v-if="(form['purchasing_information_id'] && $check_field('set','product_code')) || (!form['purchasing_information_id'] && $check_field('add','product_code'))"
+								@change="on_product_code_change" :disabled="disabledObj['product_code_isDisabled']" filterable>
+								<el-option v-for="item in list_commodity" :key="item.product_code" :label="item.product_code" :value="item.product_code"></el-option>
+							</el-select>
 							<div v-else-if="$check_field('get','product_code')" class="premium-readonly-field">{{form['product_code']}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="$check_field('get','product_name') || $check_field('add','product_name') || $check_field('set','product_name')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="商品名称" prop="product_name">
-							<el-input id="product_name" v-model="form['product_name']" placeholder="请输入商品名称" prefix-icon="el-icon-goods"
-								v-if="(form['purchasing_information_id'] && $check_field('set','product_name')) || (!form['purchasing_information_id'] && $check_field('add','product_name'))" :disabled="disabledObj['product_name_isDisabled']"></el-input>
-							<div v-else-if="$check_field('get','product_name')" class="premium-readonly-field">{{form['product_name']}}</div>
+							<div class="premium-readonly-field">{{form['product_name'] || '请先选择商品编码'}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="$check_field('get','product_category') || $check_field('add','product_category') || $check_field('set','product_category')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="商品类别" prop="product_category">
-							<el-input id="product_category" v-model="form['product_category']" placeholder="请输入商品类别" prefix-icon="el-icon-folder"
-								v-if="(form['purchasing_information_id'] && $check_field('set','product_category')) || (!form['purchasing_information_id'] && $check_field('add','product_category'))" :disabled="disabledObj['product_category_isDisabled']"></el-input>
-							<div v-else-if="$check_field('get','product_category')" class="premium-readonly-field">{{form['product_category']}}</div>
+							<div class="premium-readonly-field">{{form['product_category'] || '请先选择商品编码'}}</div>
 						</el-form-item>
 					</el-col>
 				</el-row>
@@ -35,23 +34,17 @@
 				<el-row :gutter="20">
 					<el-col v-if="$check_field('get','product_brand') || $check_field('add','product_brand') || $check_field('set','product_brand')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="商品品牌" prop="product_brand">
-							<el-input id="product_brand" v-model="form['product_brand']" placeholder="请输入商品品牌" prefix-icon="el-icon-price-tag"
-								v-if="(form['purchasing_information_id'] && $check_field('set','product_brand')) || (!form['purchasing_information_id'] && $check_field('add','product_brand'))" :disabled="disabledObj['product_brand_isDisabled']"></el-input>
-							<div v-else-if="$check_field('get','product_brand')" class="premium-readonly-field">{{form['product_brand']}}</div>
+							<div class="premium-readonly-field">{{form['product_brand'] || '请先选择商品编码'}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="$check_field('get','commodity_specifications') || $check_field('add','commodity_specifications') || $check_field('set','commodity_specifications')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="商品规格" prop="commodity_specifications">
-							<el-input id="commodity_specifications" v-model="form['commodity_specifications']" placeholder="请输入商品规格" prefix-icon="el-icon-info"
-								v-if="(form['purchasing_information_id'] && $check_field('set','commodity_specifications')) || (!form['purchasing_information_id'] && $check_field('add','commodity_specifications'))" :disabled="disabledObj['commodity_specifications_isDisabled']"></el-input>
-							<div v-else-if="$check_field('get','commodity_specifications')" class="premium-readonly-field">{{form['commodity_specifications']}}</div>
+							<div class="premium-readonly-field">{{form['commodity_specifications'] || '请先选择商品编码'}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="$check_field('get','commodity_price') || $check_field('add','commodity_price') || $check_field('set','commodity_price')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="销售单价" prop="commodity_price">
-							<el-input-number id="commodity_price" v-model.number="form['commodity_price']" style="width: 100%" :min="0"
-								v-if="(form['purchasing_information_id'] && $check_field('set','commodity_price')) || (!form['purchasing_information_id'] && $check_field('add','commodity_price'))" :disabled="disabledObj['commodity_price_isDisabled']"></el-input-number>
-							<div v-else-if="$check_field('get','commodity_price')" class="premium-readonly-field">{{form['commodity_price']}}</div>
+							<div class="premium-readonly-field">{{form['commodity_price'] !== 0 ? form['commodity_price'] : '请先选择商品编码'}}</div>
 						</el-form-item>
 					</el-col>
 				</el-row>
@@ -179,6 +172,7 @@
 					"procurement_status_isDisabled": false,
 				},
 				list_supplier_name: [""],
+				list_commodity: [], // 商品列表
 				purchase_date_disableOptions: {
 					disabledDate(time) {
 						return time.getTime() < Date.now() - 8.64e7;
@@ -194,6 +188,25 @@
 				}
 				else if(json.error){
 					console.error(json.error);
+				}
+			},
+			async get_list_commodity() {
+				var json = await this.$get("~/api/commodity_information/get_list?size=1000");
+				if(json.result && json.result.list){
+					this.list_commodity = json.result.list;
+				}
+				else if(json.error){
+					console.error(json.error);
+				}
+			},
+			on_product_code_change(code) {
+				var item = this.list_commodity.find(c => c.product_code === code);
+				if (item) {
+					this.form.product_name = item.product_name;
+					this.form.product_category = item.product_category;
+					this.form.product_brand = item.product_brand;
+					this.form.commodity_specifications = item.commodity_specifications;
+					this.form.commodity_price = item.commodity_price;
 				}
 			},
 								
@@ -280,6 +293,11 @@
 			submit_check(param) {
 				console.log('开始验证采购数据:', param);
 				
+				// 验证商品编码
+				if (!param.product_code || param.product_code.trim() === '') {
+					return '商品编码不能为空，请从下拉列表中选择';
+				}
+				
 				// 验证采购日期
 				if (!param.purchase_date){
 					console.log('验证失败：采购日期为空');
@@ -343,6 +361,7 @@
 		},
 		created() {
 			this.get_list_supplier_name();
+			this.get_list_commodity();
 		},
 	}
 </script>
