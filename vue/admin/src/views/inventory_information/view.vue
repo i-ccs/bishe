@@ -162,7 +162,27 @@
 				return ret;
 			},
 			submit_check(param) {
-				if (!param.check_date){ return "核对日期不能为空"; }
+				console.log('开始验证库存数据:', param);
+				
+				// 验证核对日期
+				if (!param.check_date){ 
+					console.log('验证失败：核对日期为空');
+					return "核对日期不能为空"; 
+				}
+				
+				// 验证系统账面库存不能小于0
+				if (param.product_inventory === null || param.product_inventory === undefined || param.product_inventory < 0) {
+					console.log('验证失败：系统账面库存无效', param.product_inventory);
+					return '系统账面库存不能小于0';
+				}
+				
+				// 验证实际盘点数量不能小于0
+				if (param.check_quantity === null || param.check_quantity === undefined || param.check_quantity < 0) {
+					console.log('验证失败：实际盘点数量无效', param.check_quantity);
+					return '实际盘点数量不能小于0';
+				}
+				
+				console.log('验证通过');
 				return null;
 			},
 			is_view(){
