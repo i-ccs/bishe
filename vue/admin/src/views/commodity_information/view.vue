@@ -249,10 +249,10 @@
 					return '商品图片不能为空';
 				}
 				
-				// 验证商品价格 - 修复：先检查是否为null/undefined，再检查是否<=0
+				// 验证商品价格 - 价格必须大于0
 				if (param.commodity_price === null || param.commodity_price === undefined || param.commodity_price <= 0) {
 					console.log('验证失败：商品价格无效', param.commodity_price);
-					return '商品价格不能为0';
+					return '商品价格必须大于0';
 				}
 				
 				console.log('验证通过');
