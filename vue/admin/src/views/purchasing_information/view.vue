@@ -278,9 +278,36 @@
 			},
 			
 			submit_check(param) {
+				console.log('开始验证采购数据:', param);
+				
+				// 验证采购日期
 				if (!param.purchase_date){
+					console.log('验证失败：采购日期为空');
 					return "采购日期不能为空";
 				}
+				
+				// 验证采购数量必须大于0
+				if (param.purchase_quantity === null || param.purchase_quantity === undefined || param.purchase_quantity <= 0) {
+					console.log('验证失败：采购数量无效', param.purchase_quantity);
+					return '采购数量必须大于0';
+				}
+				
+				// 验证采购单价必须大于0
+				if (param.purchase_unit_price === null || param.purchase_unit_price === undefined || param.purchase_unit_price <= 0) {
+					console.log('验证失败：采购单价无效', param.purchase_unit_price);
+					return '采购单价必须大于0';
+				}
+				
+				// 验证采购单价必须小于商品销售价格
+				if (param.commodity_price && param.purchase_unit_price >= param.commodity_price) {
+					console.log('验证失败：采购单价高于或等于销售价', {
+						purchase_unit_price: param.purchase_unit_price,
+						commodity_price: param.commodity_price
+					});
+					return `采购单价(${param.purchase_unit_price})必须小于商品销售价(${param.commodity_price})`;
+				}
+				
+				console.log('验证通过');
 				return null;
 			},
 

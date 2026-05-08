@@ -159,10 +159,34 @@
 				return ret;
 			},
 			submit_check(param) {
+				console.log('开始验证供应商数据:', param);
+				
+				// 验证供应商名称
+				if (!param.supplier_name || param.supplier_name.trim() === '') {
+					console.log('验证失败：供应商名称为空');
+					return '供应商名称不能为空';
+				}
+				
+				// 验证联系电话
+				if (!param.suppliers_phone_number || param.suppliers_phone_number.trim() === '') {
+					console.log('验证失败：联系电话为空');
+					return '联系电话不能为空';
+				}
+				
+				// 验证手机号格式
 				let suppliers_phone_number_phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
 				if(param.suppliers_phone_number && !suppliers_phone_number_phone_regular.test(param.suppliers_phone_number)){
-					return "手机号格式错误"
+					console.log('验证失败：手机号格式错误');
+					return "手机号格式错误";
 				}
+				
+				// 验证供应频率
+				if (!param.supply_frequency || param.supply_frequency.trim() === '') {
+					console.log('验证失败：供应频率为空');
+					return '供应频率不能为空';
+				}
+				
+				console.log('验证通过');
 				return null;
 			},
 			is_view(){
