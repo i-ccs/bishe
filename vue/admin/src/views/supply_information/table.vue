@@ -49,11 +49,7 @@
 					</template>
 				</el-table-column>
 				<el-table-column align="center" prop="supply_frequency" label="供应频率" v-if="$check_field('get','supply_frequency')" min-width="100"></el-table-column>
-				<el-table-column align="center" prop="cooperation_situation" label="合作状态" v-if="$check_field('get','cooperation_situation')" min-width="120">
-					<template slot-scope="scope">
-						<el-tag :type="scope.row.cooperation_situation === '长期合作' ? 'success' : 'info'">{{scope.row.cooperation_situation}}</el-tag>
-					</template>
-				</el-table-column>
+				<!-- 合作状态列已移除 -->
 
 				<el-table-column align="center" fixed="right" label="操作" min-width="100">
 					<template slot-scope="scope">
