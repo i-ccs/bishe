@@ -14,8 +14,8 @@
         </Console>
 
         <!-- 系统运行日志 (按天滚动) -->
-        <RollingFile name="RollingFile" fileName="${LOG_PATH}/sys_info.log"
-                     filePattern="${LOG_PATH}/sys_info-%d{yyyy-MM-dd}.log">
+        <RollingFile name="RollingFile" fileName="${LOG_PATH}/sys_info-${date:yyyy-MM-dd}.log"
+                 filePattern="${LOG_PATH}/sys_info-%d{yyyy-MM-dd}.log">
             <PatternLayout pattern="${PATTERN}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>
@@ -23,8 +23,8 @@
         </RollingFile>
 
         <!-- 操作记录日志 (专门用于记录业务操作，对应 LogAspect) -->
-        <RollingFile name="OperationLog" fileName="${LOG_PATH}/operation.log"
-                     filePattern="${LOG_PATH}/operation-%d{yyyy-MM-dd}.log">
+        <RollingFile name="OperationLog" fileName="${LOG_PATH}/operation-${date:yyyy-MM-dd}.log"
+                 filePattern="${LOG_PATH}/operation-%d{yyyy-MM-dd}.log">
             <PatternLayout pattern="${PATTERN}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>
@@ -32,8 +32,8 @@
         </RollingFile>
 
         <!-- 错误日志 (仅记录 ERROR 及以上级别) -->
-        <RollingFile name="ErrorLog" fileName="${LOG_PATH}/error.log"
-                     filePattern="${LOG_PATH}/error-%d{yyyy-MM-dd}.log">
+        <RollingFile name="ErrorLog" fileName="${LOG_PATH}/error-${date:yyyy-MM-dd}.log"
+                 filePattern="${LOG_PATH}/error-%d{yyyy-MM-dd}.log">
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
             <Policies>

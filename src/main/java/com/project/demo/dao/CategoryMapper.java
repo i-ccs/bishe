@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.Category;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 文章频道：用于汇总浏览文章，在不同频道下展示不同文章。Mapper接口
  *
  */
-@Mapper
-public interface CategoryMapper extends BaseMapper<Category>
-{
+public interface CategoryMapper extends BaseMapper<Category> {
     /**
      * 查询文章频道：用于汇总浏览文章，在不同频道下展示不同文章。
      *

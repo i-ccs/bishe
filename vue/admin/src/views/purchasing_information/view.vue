@@ -290,9 +290,7 @@
 				return ret;
 			},
 			
-			submit_check(param) {
-				console.log('开始验证采购数据:', param);
-				
+			submit_check(param) {				
 				// 验证商品编码
 				if (!param.product_code || param.product_code.trim() === '') {
 					return '商品编码不能为空，请从下拉列表中选择';
@@ -331,7 +329,6 @@
 					return `采购单价(${param.purchase_unit_price})必须小于商品销售价(${param.commodity_price})`;
 				}
 				
-				console.log('验证通过');
 				return null;
 			},
 

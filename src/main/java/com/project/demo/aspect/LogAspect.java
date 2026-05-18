@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -41,13 +41,13 @@ public class LogAspect {
         String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
         String tableName = joinPoint.getTarget().getClass().getSimpleName().replace("Service", "");
-        
+
         // 转换表名为下划线格式 (模拟 BaseService 中的 humpToLine)
         tableName = humpToLine(tableName);
 
         String username = "未知用户";
         String userGroup = "未知组";
-        
+
         // 记录内容
         Object content = null;
         if ("insert".equals(methodName) && args.length > 0) {
@@ -57,7 +57,7 @@ public class LogAspect {
         } else if ("delete".equals(methodName) && args.length > 0) {
             content = args[0]; // query
         }
-        
+
         String logStr = String.format("[%s] [%s] %s: %s",
                 tableName, methodName, methodName, JSON.toJSONString(content));
 
@@ -65,12 +65,14 @@ public class LogAspect {
     }
 
     private String humpToLine(String str) {
-        if (str == null) return null;
+        if (str == null)
+            return null;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             if (Character.isUpperCase(c)) {
-                if (i > 0) sb.append("_");
+                if (i > 0)
+                    sb.append("_");
                 sb.append(Character.toLowerCase(c));
             } else {
                 sb.append(c);

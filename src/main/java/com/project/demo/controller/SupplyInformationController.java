@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import javax.persistence.Query;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.persistence.Query;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.*;
-
 
 /**
  * 供应信息：(SupplyInformation)表控制层
@@ -34,15 +33,12 @@ public class SupplyInformationController extends BaseController<SupplyInformatio
         setService(service);
     }
 
-
-
     @PostMapping("/add")
     @Transactional
     public Map<String, Object> add(HttpServletRequest request) throws IOException {
-        Map<String,Object> paramMap = service.readBody(request.getReader());
+        Map<String, Object> paramMap = service.readBody(request.getReader());
         this.addMap(paramMap);
         return success(1);
     }
-
 
 }

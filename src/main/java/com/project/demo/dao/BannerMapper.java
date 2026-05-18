@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.Banner;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 轮播图：Mapper接口
  *
  */
-@Mapper
-public interface BannerMapper extends BaseMapper<Banner>
-{
+public interface BannerMapper extends BaseMapper<Banner> {
     /**
      * 查询轮播图：
      *

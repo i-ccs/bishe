@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.Announcement;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 公告：Mapper接口
  *
  */
-@Mapper
-public interface AnnouncementMapper extends BaseMapper<Announcement>
-{
+public interface AnnouncementMapper extends BaseMapper<Announcement> {
     /**
      * 查询公告：
      *

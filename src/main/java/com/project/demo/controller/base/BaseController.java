@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import javax.persistence.Query;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.persistence.Query;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -29,7 +29,6 @@ public class BaseController<E, S extends BaseService<E>> {
     @Setter
     protected S service;
 
-
     @PostMapping("/add")
     @Transactional
     public Map<String, Object> add(HttpServletRequest request) throws IOException {
@@ -38,18 +37,17 @@ public class BaseController<E, S extends BaseService<E>> {
     }
 
     @Transactional
-    public Map<String, Object> addMap(Map<String,Object> map){
+    public Map<String, Object> addMap(Map<String, Object> map) {
         service.insert(map);
         return success(1);
     }
 
     @PostMapping("/set")
-	@Transactional
+    @Transactional
     public Map<String, Object> set(HttpServletRequest request) throws IOException {
         service.update(service.readQuery(request), service.readConfig(request), service.readBody(request.getReader()));
         return success(1);
     }
-
 
     @RequestMapping(value = "/del")
     @Transactional
@@ -60,16 +58,16 @@ public class BaseController<E, S extends BaseService<E>> {
 
     @RequestMapping("/get_obj")
     public Map<String, Object> obj(HttpServletRequest request) {
-        List resultList = service.selectBaseList(service.select(service.readQuery(request), service.readConfig(request)));
+        List resultList = service
+                .selectBaseList(service.select(service.readQuery(request), service.readConfig(request)));
         if (resultList.size() > 0) {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("obj",resultList.get(0));
+            jsonObject.put("obj", resultList.get(0));
             return success(jsonObject);
         } else {
             return success(null);
         }
     }
-
 
     @RequestMapping("/get_list")
     public Map<String, Object> getList(HttpServletRequest request) {
@@ -79,9 +77,9 @@ public class BaseController<E, S extends BaseService<E>> {
 
     @RequestMapping("/list_group")
     public Map<String, Object> listGroup(HttpServletRequest request) {
-        Map<String,Object> map = service.selectToList(service.readQuery(request), service.readConfig(request));
-        Map<String,Object> result = new HashMap<>();
-        result.put("result",map);
+        Map<String, Object> map = service.selectToList(service.readQuery(request), service.readConfig(request));
+        Map<String, Object> result = new HashMap<>();
+        result.put("result", map);
         return result;
     }
 
@@ -91,24 +89,26 @@ public class BaseController<E, S extends BaseService<E>> {
         return success(map);
     }
 
-    @RequestMapping(value = {"/count_group", "/count"})
+    @RequestMapping(value = { "/count_group", "/count" })
     public Map<String, Object> count(HttpServletRequest request) {
-        Integer value= service.selectSqlToInteger(service.groupCount(service.readQuery(request), service.readConfig(request)));
+        Integer value = service
+                .selectSqlToInteger(service.groupCount(service.readQuery(request), service.readConfig(request)));
         return success(value);
     }
 
-    @RequestMapping(value = {"/sum_group", "/sum"})
+    @RequestMapping(value = { "/sum_group", "/sum" })
     public Map<String, Object> sum(HttpServletRequest request) {
-        Integer value = service.selectSqlToInteger(service.sum(service.readQuery(request), service.readConfig(request)));
+        Integer value = service
+                .selectSqlToInteger(service.sum(service.readQuery(request), service.readConfig(request)));
         return success(value);
     }
 
-    @RequestMapping(value = {"/avg_group", "/avg"})
-	public Map<String, Object> avg(HttpServletRequest request) {
-        Integer value = service.selectSqlToInteger(service.avg(service.readQuery(request), service.readConfig(request)));
+    @RequestMapping(value = { "/avg_group", "/avg" })
+    public Map<String, Object> avg(HttpServletRequest request) {
+        Integer value = service
+                .selectSqlToInteger(service.avg(service.readQuery(request), service.readConfig(request)));
         return success(value);
     }
-
 
     @PostMapping("/upload")
     public Map<String, Object> upload(@RequestParam("file") MultipartFile file) {
@@ -117,7 +117,7 @@ public class BaseController<E, S extends BaseService<E>> {
             return error(30000, "没有选择文件");
         }
         try {
-            //判断有没路径，没有则创建
+            // 判断有没路径，没有则创建
             String filePath = System.getProperty("user.dir") + "/src/main/resources/static/";
             File targetDir = new File(filePath);
             if (!targetDir.exists() && !targetDir.isDirectory()) {
@@ -127,8 +127,9 @@ public class BaseController<E, S extends BaseService<E>> {
                     log.error("创建目录失败");
                 }
             }
-//            String path = ResourceUtils.getURL("classpath:").getPath() + "static/upload/";
-//            String filePath = path.replace('/', '\\').substring(1, path.length());
+            // String path = ResourceUtils.getURL("classpath:").getPath() +
+            // "static/upload/";
+            // String filePath = path.replace('/', '\\').substring(1, path.length());
             String fileName = file.getOriginalFilename();
             File dest = new File(filePath + fileName);
             log.info("文件路径:{}", dest.getPath());
@@ -151,9 +152,9 @@ public class BaseController<E, S extends BaseService<E>> {
         }
         if (o instanceof List) {
             if (((List) o).size() == 1) {
-               o =  ((List) o).get(0);
+                o = ((List) o).get(0);
                 map.put("result", o);
-            }else {
+            } else {
                 String jsonString = JSONObject.toJSONString(o, SerializerFeature.WriteMapNullValue);
                 JSONArray objects = service.covertArray(JSONObject.parseArray(jsonString));
                 map.put("result", objects);
@@ -171,10 +172,12 @@ public class BaseController<E, S extends BaseService<E>> {
 
     public Map<String, Object> error(Integer code, String message) {
         Map<String, Object> map = new HashMap<>();
-        map.put("error", new HashMap<String, Object>(4) {{
-            put("code", code);
-            put("message", message);
-        }});
+        map.put("error", new HashMap<String, Object>(4) {
+            {
+                put("code", code);
+                put("message", message);
+            }
+        });
         return map;
     }
 }

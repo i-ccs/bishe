@@ -2,13 +2,11 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.PurchasingInformation;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 采购信息：(PurchasingInformation)Mapper接口
  *
  */
-@Mapper
-public interface PurchasingInformationMapper extends BaseMapper<PurchasingInformation>{
+public interface PurchasingInformationMapper extends BaseMapper<PurchasingInformation> {
 
 }

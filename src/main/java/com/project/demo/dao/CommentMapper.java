@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.Comment;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 评论：Mapper接口
  *
  */
-@Mapper
-public interface CommentMapper extends BaseMapper<Comment>
-{
+public interface CommentMapper extends BaseMapper<Comment> {
     /**
      * 查询评论：
      *

@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.Article;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 文章：用于内容管理系统的文章Mapper接口
  *
  */
-@Mapper
-public interface ArticleMapper extends BaseMapper<Article>
-{
+public interface ArticleMapper extends BaseMapper<Article> {
     /**
      * 查询文章：用于内容管理系统的文章
      *

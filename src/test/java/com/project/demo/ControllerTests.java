@@ -26,9 +26,9 @@ class ControllerTests {
         mockMvc.perform(get("/api/user/get_obj?username=nonexistent_user_99999")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.result").isEmpty());
+                .andExpect(jsonPath("$.error").exists());
     }
-    
+
     @Test
     void testExceptionFormat() throws Exception {
         // 这里可以测试异常返回格式

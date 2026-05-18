@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.Auth;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 定制授权Mapper接口
  *
  */
-@Mapper
-public interface AuthMapper extends BaseMapper<Auth>
-{
+public interface AuthMapper extends BaseMapper<Auth> {
     /**
      * 查询定制授权
      *

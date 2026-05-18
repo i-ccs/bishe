@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.Praise;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 点赞：Mapper接口
  *
  */
-@Mapper
-public interface PraiseMapper extends BaseMapper<Praise>
-{
+public interface PraiseMapper extends BaseMapper<Praise> {
     /**
      * 查询点赞：
      *

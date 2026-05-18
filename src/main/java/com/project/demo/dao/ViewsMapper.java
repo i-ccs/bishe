@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.Views;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 【请填写功能名称】Mapper接口
  *
  */
-@Mapper
-public interface ViewsMapper extends BaseMapper<Views>
-{
+public interface ViewsMapper extends BaseMapper<Views> {
     /**
      * 查询【请填写功能名称】
      *

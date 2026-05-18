@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -27,7 +27,6 @@ public class BaseService<E> {
 
     @Autowired
     private BaseMapper<E> baseMapper;
-
 
     Class<E> eClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
@@ -83,7 +82,7 @@ public class BaseService<E> {
         StringBuilder values = new StringBuilder("VALUES (");
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             sql.append("`").append(humpToLine(entry.getKey())).append("`,");
-            
+
             // ⭐ 修复：处理null值，避免将null转换为字符串'null'
             Object value = entry.getValue();
             if (value == null || "null".equals(String.valueOf(value))) {

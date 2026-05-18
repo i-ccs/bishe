@@ -2,7 +2,6 @@ package com.project.demo.dao;
 
 import com.project.demo.dao.base.BaseMapper;
 import com.project.demo.entity.UserGroup;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,9 +9,7 @@ import java.util.List;
  * 用户组：用于用户前端身份和鉴权Mapper接口
  *
  */
-@Mapper
-public interface UserGroupMapper extends BaseMapper<UserGroup>
-{
+public interface UserGroupMapper extends BaseMapper<UserGroup> {
     /**
      * 查询用户组：用于用户前端身份和鉴权
      *
