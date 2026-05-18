@@ -6,7 +6,7 @@
 				<div class="premium-welcome">
 					<div class="welcome-text">
 						<h2>{{ greeting }}，{{ $store.state.user.nick_name || $store.state.user.user_name }}</h2>
-						<p>欢迎回到小智电商供应链管理系统。今天是 {{ currentDate }}，祝您生活愉快！</p>
+						<p>欢迎回到供应链端电商管理系统。今天是 {{ currentDate }}，祝您生活愉快！</p>
 					</div>
 					<div class="welcome-img">
 						<i class="el-icon-sunny" v-if="greeting === '早上好'"></i>

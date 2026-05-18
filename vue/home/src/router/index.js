@@ -263,9 +263,9 @@ const router = new VueRouter({
 })
 
 router.afterEach((to, from, next) => {
-	let title = "小智电商供应链管理系统-home";
+	let title = "供应链端电商管理系统-home";
 	document.title = title;
-	document.logo = "小智电商供应链管理系统"
+	document.logo = "供应链端电商管理系统"
 })
 
 router.beforeEach((to, from, next) => {

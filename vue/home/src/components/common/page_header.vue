@@ -9,7 +9,7 @@
 
                 <div class="conton-top">
                   <router-link to="/">
-                  <div class="logo">小智电商供应链管理系统</div>
+                  <div class="logo">供应链端电商管理系统</div>
                   </router-link>
 
                   <div ref="search" class="search-box">

@@ -4,7 +4,7 @@
             <el-row>
                 <el-col>
                     <el-form :model="form" :rules="rules" ref="form" label-width="60px" class="form">
-                        <h1>小智电商供应链管理系统</h1>
+                        <h1>供应链端电商管理系统</h1>
  
                         <el-form-item label="账号" prop="account">
                             <el-input type="text" v-model="form.account" placeholder="请输入账号">
