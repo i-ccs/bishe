@@ -9,11 +9,7 @@
                                                       <el-input v-model="query.product_name"></el-input>
                                                 </el-form-item>
                     </el-col>
-                                                                      <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
-                      <el-form-item label="商品类别">
-                                                      <el-input v-model="query.product_category"></el-input>
-                                                </el-form-item>
-                    </el-col>
+
                                                                                                                                                                                                                                                                                                 </el-row>
       <el-row class="rows row2">
       	<el-col :xs="24" :sm="24" :lg="24" class="search_btn_wrap search_btns">
@@ -34,19 +30,12 @@
                                 </el-table-column>
                                               <el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','product_name')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','product_category')" min-width="200">
-                                </el-table-column>
+
                                               <el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','product_brand')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="commodity_specifications" @sort-change="$sortChange" label="商品规格"                                v-if="$check_field('get','commodity_specifications')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存"                                v-if="$check_field('get','product_inventory')" min-width="200">
-                                      <template slot-scope="scope">
-                                          <el-tag :type="scope.row.product_inventory < 10 ? 'danger' : 'success'">
-                                              {{scope.row.product_inventory}} <span v-if="scope.row.product_inventory < 10"> (库存不足)</span>
-                                          </el-tag>
-                                      </template>
-                                </el-table-column>
+
                                               <el-table-column prop="product_images" @sort-change="$sortChange" label="商品图片"                                v-if="$check_field('get','product_images')" min-width="200">
                                       <template slot-scope="scope">
                       <el-image style="width: 100px; height: 100px" :src="$fullUrl(scope.row['product_images'])"
@@ -148,9 +137,9 @@
         query: {
           "size": 7,
           "page": 1,
-                                                                                                  "product_name": "",
-                                                                                                          "product_category": "",
-                                                                                                                                                                                                                                                                                              "login_time": "",
+          "product_name": "",
+          "product_inventory_min": 11,
+          "login_time": "",
           "create_time": "",
           "orderby": `create_time desc`
         },
