@@ -285,7 +285,7 @@ export default {
 						} else if (url.indexOf("~/") === 0) {
 							url_new = url.replace('~/', host);
 						} else if (url.indexOf("/") === 0) {
-							url_new = url.replace('/', host);
+							url_new = host + url.substring(1);
 						} else if (url.indexOf("~") === 0) {
 							url_new = url.replace('~', '');
 						} else {

@@ -356,6 +356,16 @@
 				return bl;
 			},
 
+			submit_after(json, func) {
+				this.$toast('提交成功！', 'success');
+				if (this.form.source_table === 'commodity_information') {
+					this.$router.push('/commodity_information/table');
+				} else {
+					let path = this.$route.fullPath;
+					this.$router.push(path.replace('/view', '/table'));
+				}
+			},
+
 			uploadimg(param) {
 				this.uploadFile(param.file, "avatar");
 			},
