@@ -12,7 +12,7 @@
 					<el-col v-if="$check_field('get','product_code') || $check_field('add','product_code') || $check_field('set','product_code')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="商品编码" prop="product_code">
 							<el-select id="product_code" v-model="form['product_code']" placeholder="请选择商品编码" style="width:100%"
-								v-if="(form['purchasing_information_id'] && $check_field('set','product_code')) || (!form['purchasing_information_id'] && $check_field('add','product_code'))"
+								v-if="!isExisting && ((!form['purchasing_information_id'] && $check_field('add','product_code')))"
 								@change="on_product_code_change" :disabled="disabledObj['product_code_isDisabled']" filterable>
 								<el-option v-for="item in list_commodity" :key="item.product_code" :label="item.product_code" :value="item.product_code"></el-option>
 							</el-select>
@@ -54,14 +54,14 @@
 					<el-col v-if="$check_field('get','purchase_order_number') || $check_field('add','purchase_order_number') || $check_field('set','purchase_order_number')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="采购单号" prop="purchase_order_number">
 							<el-input id="purchase_order_number" v-model="form['purchase_order_number']" placeholder="请输入采购单号" prefix-icon="el-icon-document"
-								v-if="(form['purchasing_information_id'] && $check_field('set','purchase_order_number')) || (!form['purchasing_information_id'] && $check_field('add','purchase_order_number'))" :disabled="true"></el-input>
+								v-if="!isExisting && (!form['purchasing_information_id'] && $check_field('add','purchase_order_number'))" :disabled="true"></el-input>
 							<div v-else-if="$check_field('get','purchase_order_number')" class="premium-readonly-field">{{form['purchase_order_number']}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="$check_field('get','supplier_name') || $check_field('add','supplier_name') || $check_field('set','supplier_name')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="供应商名称" prop="supplier_name">
 							<el-select id="supplier_name" v-model="form['supplier_name']" style="width: 100%"
-								v-if="(form['purchasing_information_id'] && $check_field('set','supplier_name')) || (!form['purchasing_information_id'] && $check_field('add','supplier_name'))">
+								v-if="!isExisting && (!form['purchasing_information_id'] && $check_field('add','supplier_name'))">
 								<el-option v-for="o in list_supplier_name" :key="o['supplier_name']" :label="o['supplier_name']" :value="o['supplier_name']"></el-option>
 							</el-select>
 							<div v-else-if="$check_field('get','supplier_name')" class="premium-readonly-field">{{form['supplier_name']}}</div>
@@ -70,7 +70,7 @@
 					<el-col v-if="$check_field('get','purchase_date') || $check_field('add','purchase_date') || $check_field('set','purchase_date')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="采购日期" prop="purchase_date">
 							<el-date-picker :disabled="disabledObj['purchase_date_isDisabled']" style="width: 100%"
-								v-if="(form['purchasing_information_id'] && $check_field('set','purchase_date')) || (!form['purchasing_information_id'] && $check_field('add','purchase_date'))" id="purchase_date"
+								v-if="!isExisting && (!form['purchasing_information_id'] && $check_field('add','purchase_date'))" id="purchase_date"
 								v-model="form['purchase_date']" type="date" placeholder="选择日期" :picker-options="purchase_date_disableOptions" value-format="yyyy-MM-dd">
 							</el-date-picker>
 							<div v-else-if="$check_field('get','purchase_date')" class="premium-readonly-field">{{form['purchase_date']}}</div>
@@ -82,14 +82,14 @@
 					<el-col v-if="$check_field('get','purchase_quantity') || $check_field('add','purchase_quantity') || $check_field('set','purchase_quantity')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="采购数量" prop="purchase_quantity">
 							<el-input-number id="purchase_quantity" v-model.number="form['purchase_quantity']" style="width: 100%" :min="0"
-								v-if="(form['purchasing_information_id'] && $check_field('set','purchase_quantity')) || (!form['purchasing_information_id'] && $check_field('add','purchase_quantity'))" :disabled="disabledObj['purchase_quantity_isDisabled']"></el-input-number>
+								v-if="!isExisting && (!form['purchasing_information_id'] && $check_field('add','purchase_quantity'))" :disabled="disabledObj['purchase_quantity_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','purchase_quantity')" class="premium-readonly-field">{{form['purchase_quantity']}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="$check_field('get','purchase_unit_price') || $check_field('add','purchase_unit_price') || $check_field('set','purchase_unit_price')" :xs="24" :sm="12" :lg="8">
 						<el-form-item label="采购单价" prop="purchase_unit_price">
 							<el-input-number id="purchase_unit_price" v-model.number="form['purchase_unit_price']" style="width: 100%" :min="0"
-								v-if="(form['purchasing_information_id'] && $check_field('set','purchase_unit_price')) || (!form['purchasing_information_id'] && $check_field('add','purchase_unit_price'))" :disabled="disabledObj['purchase_unit_price_isDisabled']"></el-input-number>
+								v-if="!isExisting && (!form['purchasing_information_id'] && $check_field('add','purchase_unit_price'))" :disabled="disabledObj['purchase_unit_price_isDisabled']"></el-input-number>
 							<div v-else-if="$check_field('get','purchase_unit_price')" class="premium-readonly-field">{{form['purchase_unit_price']}}</div>
 						</el-form-item>
 					</el-col>
@@ -106,14 +106,14 @@
 					<el-col v-if="$check_field('get','procurement_status') || $check_field('add','procurement_status') || $check_field('set','procurement_status')" :xs="24" :sm="24" :lg="24">
 						<el-form-item label="采购情况说明" prop="procurement_status">
 							<el-input type="textarea" :rows="4" id="procurement_status" v-model="form['procurement_status']" placeholder="请输入具体采购情况或备注"
-								v-if="(form['purchasing_information_id'] && $check_field('set','procurement_status')) || (!form['purchasing_information_id'] && $check_field('add','procurement_status'))" :disabled="disabledObj['procurement_status_isDisabled']"></el-input>
+								v-if="!isExisting && (!form['purchasing_information_id'] && $check_field('add','procurement_status'))" :disabled="disabledObj['procurement_status_isDisabled']"></el-input>
 							<div v-else-if="$check_field('get','procurement_status')" class="premium-readonly-field" style="min-height: 80px;">{{form['procurement_status']}}</div>
 						</el-form-item>
 					</el-col>
 				</el-row>
 
 				<div class="premium-actions">
-					<template v-if="$check_action('/purchasing_information/view','set') || $check_action('/purchasing_information/view','add')">
+					<template v-if="!isExisting && $check_action('/purchasing_information/view','add')">
 						<el-button type="primary" class="premium-btn-submit" @click="submit()" icon="el-icon-check">提交保存</el-button>
 						<el-button class="premium-btn-cancel" @click="cancel()" icon="el-icon-close">取消</el-button>
 					</template>
@@ -207,6 +207,10 @@
 					this.form.product_brand = item.product_brand;
 					this.form.commodity_specifications = item.commodity_specifications;
 					this.form.commodity_price = item.commodity_price;
+					// 关联商品表信息
+					this.form.source_table = 'commodity_information';
+					this.form.source_id = item.commodity_information_id;
+					this.form.source_user_id = this.$store.state.user.user_id;
 				}
 			},
 								
@@ -355,6 +359,11 @@
 			uploadimg(param) {
 				this.uploadFile(param.file, "avatar");
 			},
+		},
+		computed: {
+			isExisting() {
+				return !!this.form['purchasing_information_id'] && this.form['purchasing_information_id'] !== 0;
+			}
 		},
 		created() {
 			this.get_list_supplier_name();
