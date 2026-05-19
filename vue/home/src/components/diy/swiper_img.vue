@@ -15,7 +15,10 @@
       :key="i"
     >
       <template #img>
-        <a v-if="o[vm.url]" target="_blank" :href="o[vm.url]">
+        <router-link v-if="o[vm.url] && o[vm.url].startsWith('/')" :to="o[vm.url]">
+          <div class="swiper-imgs" :style="{backgroundImage: 'url(' + $fullUrl(o[vm.img]) + ')'}"></div>
+        </router-link>
+        <a v-else-if="o[vm.url]" target="_blank" :href="o[vm.url]">
           <div class="swiper-imgs" :style="{backgroundImage: 'url(' + $fullUrl(o[vm.img]) + ')'}"></div>
         </a>
         <div v-else class="swiper-imgs" :style="{backgroundImage: 'url(' + $fullUrl(o[vm.img]) + ')'}"></div>

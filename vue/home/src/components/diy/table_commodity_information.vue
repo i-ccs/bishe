@@ -59,22 +59,11 @@
 				                </el-table-column>
                                               <el-table-column prop="commodity_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','commodity_price')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_introduction" @sort-change="$sortChange" label="商品介绍"                                v-if="$check_field('get','product_introduction')" min-width="200">
-                                </el-table-column>
+
                                                     				        
         
                 
-      <el-table-column sortable prop="create_time" label="创建时间" min-width="200">
-        <template slot-scope="scope">
-          {{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm:ss") }}
-        </template>
-      </el-table-column>
 
-      <el-table-column sortable prop="update_time" label="更新时间" min-width="200">
-        <template slot-scope="scope">
-          {{ $toTime(scope.row["update_time"],"yyyy-MM-dd hh:mm:ss") }}
-        </template>
-      </el-table-column>
 
         
         
