@@ -5,8 +5,9 @@ server:
 spring:
   mvc:
     static-path-pattern: /upload/**
-  resources:
-    static-locations: file:src/main/resources/static
+  web:
+    resources:
+      static-locations: file:src/main/resources/static/
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/xiaozhi?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true
     username: test
@@ -22,17 +23,18 @@ spring:
     multipart:
       max-file-size: 500MB
       max-request-size: 500MB
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    password:
-    database: 2
-    lettuce:
-      pool:
-        max-idle: 30
-        min-idle: 10
-        max-active: 30
-        max-wait: 10000
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: asd123
+      database: 2
+      lettuce:
+        pool:
+          max-idle: 30
+          min-idle: 10
+          max-active: 30
+          max-wait: 10000
   mail:
     host: smtp.qq.com
     port: 465
