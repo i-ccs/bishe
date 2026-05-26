@@ -55,8 +55,7 @@
                       {{ get_user_registered_user(scope.row['registered_user']) }}
                     </template>
                                 </el-table-column>
-                                              <el-table-column prop="user_name" @sort-change="$sortChange" label="用户姓名"                                v-if="$check_field('get','user_name')" min-width="200">
-                                </el-table-column>
+
                                               <el-table-column prop="order_quantity" @sort-change="$sortChange" label="下单数量"                                v-if="$check_field('get','order_quantity')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="total_order_price" @sort-change="$sortChange" label="订单总价"                                v-if="$check_field('get','total_order_price')" min-width="200">

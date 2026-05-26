@@ -158,12 +158,7 @@
 									type: "UID",
 									is_img_list: "0"
 								},
-								{
-									title: "用户姓名",
-									name: "user_name",
-									type: "文本",
-									is_img_list: "0"
-								},
+
 								{
 									title: "下单数量",
 									name: "order_quantity",

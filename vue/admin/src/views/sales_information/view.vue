@@ -61,11 +61,7 @@
 							<div v-else class="premium-readonly-field">{{ get_user_registered_user(form['registered_user']) }}</div>
 						</el-form-item>
 					</el-col>
-					<el-col v-if="$check_field('get','user_name') || $check_field('add','user_name') || $check_field('set','user_name')" :xs="24" :sm="12" :lg="8">
-						<el-form-item label="用户姓名" prop="user_name">
-							<div class="premium-readonly-field">{{form['user_name'] || '—'}}</div>
-						</el-form-item>
-					</el-col>
+
 				</el-row>
 
 				<el-row :gutter="20">

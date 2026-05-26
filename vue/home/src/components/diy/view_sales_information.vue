@@ -65,13 +65,7 @@
 						</el-select>
 																</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','user_name') || $check_field('add','user_name') || $check_field('set','user_name')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="用户姓名" prop="user_name">
-												<el-input id="user_name" v-model="form['user_name']" placeholder="请输入用户姓名"
-							  v-if="(form['sales_information_id'] && $check_field('set','user_name')) || (!form['sales_information_id'] && $check_field('add','user_name'))" :disabled="disabledObj['user_name_isDisabled']"></el-input>
-					<div v-else-if="$check_field('get','user_name')">{{form['user_name']}}</div>
-											</el-form-item>
-			</el-col>
+
 								<el-col v-if="$check_field('get','order_quantity') || $check_field('add','order_quantity') || $check_field('set','order_quantity')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="下单数量" prop="order_quantity">
 								<el-input-number id="order_quantity" v-model.number="form['order_quantity']" :min="0"

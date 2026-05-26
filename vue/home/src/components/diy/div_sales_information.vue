@@ -178,11 +178,7 @@
 							name: "registered_user",
 							type: "UID"
 						},
-						{
-							title: "用户姓名",
-							name: "user_name",
-							type: "文本"
-						},
+
 						{
 							title: "下单数量",
 							name: "order_quantity",

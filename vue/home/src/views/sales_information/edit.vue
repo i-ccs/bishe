@@ -90,18 +90,7 @@
 							<span v-else-if="$check_field('get','registered_user')">{{ get_user_info("registered_user", form['registered_user']) }}</span>
 						</div>
 					</div>
-							<div v-if="$check_field('set','user_name') || $check_field('add','user_name') || $check_field('get','user_name')" class="form-item col-12 col-md-6">
-						<div class="diy_title">
-							<span>
-								用户姓名:
-							</span>
-						</div>
-								<!-- 文本 -->
-									<div class="diy_field diy_text">
-							<input type="text" id="form_user_name" v-model="form['user_name']" placeholder="请输入用户姓名" v-if="(form['user_name'] && $check_field('set','user_name')) || (!form['user_name'] && $check_field('add','user_name'))"  :disabled="disabledObj['user_name_isDisabled']"/>
-							<span v-else-if="$check_field('get','user_name')">{{ form['user_name'] }}</span>
-						</div>
-										</div>
+
 							<div v-if="$check_field('set','order_quantity') || $check_field('add','order_quantity') || $check_field('get','order_quantity')" class="form-item col-12 col-md-6">
 						<div class="diy_title">
 							<span>
