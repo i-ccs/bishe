@@ -52,6 +52,7 @@ public class UserController extends BaseController<User, UserService> {
      * @return
      */
     @PostMapping("register")
+    @Transactional
     public Map<String, Object> signUp(@RequestBody Map<String, Object> userMap) {
         // 查询用户
         Map<String, String> query = new HashMap<>();
@@ -61,7 +62,8 @@ public class UserController extends BaseController<User, UserService> {
         if (list.size() > 0) {
             return error(30000, "用户已存在");
         }
-        userMap.put("password", String.valueOf(userMap.get("password")));
+        // 对密码进行MD5加密
+        userMap.put("password", service.encryption(String.valueOf(userMap.get("password"))));
         // 用户不存在
         if (userMap.get("create_time") == null) {
             userMap.put("create_time", new Timestamp(System.currentTimeMillis()));
@@ -99,6 +101,7 @@ public class UserController extends BaseController<User, UserService> {
      * @return
      */
     @PostMapping("forget_password")
+    @Transactional
     public Map<String, Object> forgetPassword(@RequestBody User form, HttpServletRequest request) {
         JSONObject ret = new JSONObject();
         String user_name = form.getUserName();
@@ -123,9 +126,9 @@ public class UserController extends BaseController<User, UserService> {
             User o = (User) list.get(0);
             JSONObject query2 = new JSONObject();
             JSONObject form2 = new JSONObject();
-            // 修改用户密码
+            // 修改用户密码，对密码进行MD5加密
             query2.put("user_id", o.getUserId());
-            form2.put("password", password);
+            form2.put("password", service.encryption(password));
             service.update(query, service.readConfig(request), form2);
             return success(1);
         }
@@ -231,6 +234,7 @@ public class UserController extends BaseController<User, UserService> {
      * @return
      */
     @PostMapping("change_password")
+    @Transactional
     public Map<String, Object> change_password(@RequestBody Map<String, String> data, HttpServletRequest request) {
         // 根据Token获取UserId
         String token = request.getHeader("x-auth-token");
@@ -242,9 +246,9 @@ public class UserController extends BaseController<User, UserService> {
         query.put("password", o_password);
         int count = service.selectBaseCount(service.count(query, service.readConfig(request)));
         if (count > 0) {
-            // 修改密码
+            // 修改密码，对新密码进行MD5加密
             Map<String, Object> form = new HashMap<>();
-            form.put("password", data.get("password"));
+            form.put("password", service.encryption(data.get("password")));
             service.update(query, service.readConfig(request), form);
             return success(1);
         }
