@@ -24,5 +24,3 @@ public class UserGroupController extends BaseController<UserGroup, UserGroupServ
     }
 
 }
-
-

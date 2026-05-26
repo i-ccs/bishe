@@ -59,5 +59,12 @@ public interface UserMapper extends BaseMapper<User> {
      */
     int deleteUserByIds(Integer[] userIds);
 
+    /**
+     * 查询指定表中用户的审核状态
+     *
+     * @param sourceTable 源表名称
+     * @param userId      用户ID
+     * @return 审核状态
+     */
     String selectExamineState(@Param("sourceTable") String sourceTable, @Param("userId") Integer userId);
 }

@@ -1577,7 +1577,16 @@ export default {
 		 * @return Array
 		 */
 		async filterSensitiveWords(content){
-			return []
+			var list = ["垃圾", "暴力", "色情", "敏感词", "毒品", "赌博", "反动", "傻逼"];
+			var text = content ? content.replace(/<[^>]+>/g, '') : '';
+			var sensitiveWords = [];
+			for (var i = 0; i < list.length; i++) {
+				var word = list[i];
+				if (text.indexOf(word) !== -1) {
+					sensitiveWords.push(word);
+				}
+			}
+			return sensitiveWords;
 		}
 	},
 	computed: {

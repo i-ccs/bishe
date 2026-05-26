@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 基础控制器类
+ * 提供通用的CRUD操作和工具方法
  */
 @Slf4j
 public class BaseController<E, S extends BaseService<E>> {
@@ -29,6 +31,13 @@ public class BaseController<E, S extends BaseService<E>> {
     @Setter
     protected S service;
 
+    /**
+     * 添加记录
+     * 
+     * @param request HTTP请求对象
+     * @return 操作结果
+     * @throws IOException IO异常
+     */
     @PostMapping("/add")
     @Transactional
     public Map<String, Object> add(HttpServletRequest request) throws IOException {
@@ -36,12 +45,25 @@ public class BaseController<E, S extends BaseService<E>> {
         return success(1);
     }
 
+    /**
+     * 通过Map添加记录
+     * 
+     * @param map 数据Map
+     * @return 操作结果
+     */
     @Transactional
     public Map<String, Object> addMap(Map<String, Object> map) {
         service.insert(map);
         return success(1);
     }
 
+    /**
+     * 更新记录
+     * 
+     * @param request HTTP请求对象
+     * @return 操作结果
+     * @throws IOException IO异常
+     */
     @PostMapping("/set")
     @Transactional
     public Map<String, Object> set(HttpServletRequest request) throws IOException {
@@ -49,6 +71,12 @@ public class BaseController<E, S extends BaseService<E>> {
         return success(1);
     }
 
+    /**
+     * 删除记录
+     * 
+     * @param request HTTP请求对象
+     * @return 操作结果
+     */
     @RequestMapping(value = "/del")
     @Transactional
     public Map<String, Object> del(HttpServletRequest request) {
@@ -56,6 +84,12 @@ public class BaseController<E, S extends BaseService<E>> {
         return success(1);
     }
 
+    /**
+     * 获取单个对象
+     * 
+     * @param request HTTP请求对象
+     * @return 查询结果对象
+     */
     @RequestMapping("/get_obj")
     public Map<String, Object> obj(HttpServletRequest request) {
         List resultList = service
@@ -69,12 +103,24 @@ public class BaseController<E, S extends BaseService<E>> {
         }
     }
 
+    /**
+     * 获取列表（分页）
+     * 
+     * @param request HTTP请求对象
+     * @return 分页列表数据
+     */
     @RequestMapping("/get_list")
     public Map<String, Object> getList(HttpServletRequest request) {
         Map<String, Object> map = service.selectToPage(service.readQuery(request), service.readConfig(request));
         return success(map);
     }
 
+    /**
+     * 分组列表查询
+     * 
+     * @param request HTTP请求对象
+     * @return 分组列表数据
+     */
     @RequestMapping("/list_group")
     public Map<String, Object> listGroup(HttpServletRequest request) {
         Map<String, Object> map = service.selectToList(service.readQuery(request), service.readConfig(request));
@@ -83,12 +129,24 @@ public class BaseController<E, S extends BaseService<E>> {
         return result;
     }
 
+    /**
+     * 柱状图分组统计
+     * 
+     * @param request HTTP请求对象
+     * @return 柱状图统计数据
+     */
     @RequestMapping("/bar_group")
     public Map<String, Object> barGroup(HttpServletRequest request) {
         Map<String, Object> map = service.selectBarGroup(service.readQuery(request), service.readConfig(request));
         return success(map);
     }
 
+    /**
+     * 分组计数或总数统计
+     * 
+     * @param request HTTP请求对象
+     * @return 统计数量
+     */
     @RequestMapping(value = { "/count_group", "/count" })
     public Map<String, Object> count(HttpServletRequest request) {
         Integer value = service
@@ -96,6 +154,12 @@ public class BaseController<E, S extends BaseService<E>> {
         return success(value);
     }
 
+    /**
+     * 分组求和或总和统计
+     * 
+     * @param request HTTP请求对象
+     * @return 求和结果
+     */
     @RequestMapping(value = { "/sum_group", "/sum" })
     public Map<String, Object> sum(HttpServletRequest request) {
         Integer value = service
@@ -103,6 +167,12 @@ public class BaseController<E, S extends BaseService<E>> {
         return success(value);
     }
 
+    /**
+     * 分组平均值或平均值统计
+     * 
+     * @param request HTTP请求对象
+     * @return 平均值结果
+     */
     @RequestMapping(value = { "/avg_group", "/avg" })
     public Map<String, Object> avg(HttpServletRequest request) {
         Integer value = service
@@ -110,6 +180,12 @@ public class BaseController<E, S extends BaseService<E>> {
         return success(value);
     }
 
+    /**
+     * 文件上传
+     * 
+     * @param file 上传的文件
+     * @return 上传结果，包含文件访问URL
+     */
     @PostMapping("/upload")
     public Map<String, Object> upload(@RequestParam("file") MultipartFile file) {
         log.info("进入方法");
@@ -117,7 +193,6 @@ public class BaseController<E, S extends BaseService<E>> {
             return error(30000, "没有选择文件");
         }
         try {
-            // 判断有没路径，没有则创建
             String filePath = System.getProperty("user.dir") + "/src/main/resources/static/";
             File targetDir = new File(filePath);
             if (!targetDir.exists() && !targetDir.isDirectory()) {
@@ -127,9 +202,6 @@ public class BaseController<E, S extends BaseService<E>> {
                     log.error("创建目录失败");
                 }
             }
-            // String path = ResourceUtils.getURL("classpath:").getPath() +
-            // "static/upload/";
-            // String filePath = path.replace('/', '\\').substring(1, path.length());
             String fileName = file.getOriginalFilename();
             File dest = new File(filePath + fileName);
             log.info("文件路径:{}", dest.getPath());
@@ -144,6 +216,12 @@ public class BaseController<E, S extends BaseService<E>> {
         return error(30000, "上传失败");
     }
 
+    /**
+     * 成功响应
+     * 
+     * @param o 响应数据
+     * @return 成功响应Map
+     */
     public Map<String, Object> success(Object o) {
         Map<String, Object> map = new HashMap<>();
         if (o == null) {
@@ -170,6 +248,13 @@ public class BaseController<E, S extends BaseService<E>> {
         return map;
     }
 
+    /**
+     * 错误响应
+     * 
+     * @param code    错误码
+     * @param message 错误消息
+     * @return 错误响应Map
+     */
     public Map<String, Object> error(Integer code, String message) {
         Map<String, Object> map = new HashMap<>();
         map.put("error", new HashMap<String, Object>(4) {
