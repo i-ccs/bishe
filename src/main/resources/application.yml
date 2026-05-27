@@ -1,69 +1,98 @@
+# ============================================================
+# 服务器配置
+# ============================================================
 server:
-  port: 5000
+  port: 5000  # 应用服务器运行端口号
   servlet:
-    context-path: /api
+    context-path: /api  # 应用上下文路径，所有请求都需要加 /api 前缀
 spring:
+  # ============================================================
+  # Spring MVC 配置 - 静态资源映射
+  # ============================================================
   mvc:
-    static-path-pattern: /upload/**
+    static-path-pattern: /upload/**  # 静态资源URL匹配模式
   web:
     resources:
-      static-locations: file:src/main/resources/static/
+      static-locations: file:src/main/resources/static/  # 静态文件物理路径
+  
+  # ============================================================
+  # 数据源配置 - MySQL 数据库连接
+  # ============================================================
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/xiaozhi?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true
-    username: test
-    password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/xiaozhi?serverTimezone=GMT%2B8&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true  # 数据库连接URL（本地MySQL，xiaozhi数据库）
+    username: test  # 数据库用户名
+    password: 123456  # 数据库密码
+    driver-class-name: com.mysql.cj.jdbc.Driver  # MySQL JDBC驱动
+    type: com.alibaba.druid.pool.DruidDataSource  # 使用Druid作为数据库连接池
+  
+  # ============================================================
+  # Jackson 配置 - JSON 序列化/反序列化
+  # ============================================================
   jackson:
-    property-naming-strategy: SNAKE_CASE
-    default-property-inclusion: ALWAYS
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
+    property-naming-strategy: SNAKE_CASE  # 对象属性转JSON时使用蛇形命名法（camelCase转snake_case）
+    default-property-inclusion: ALWAYS  # JSON返回时包含所有属性（包括null值）
+    time-zone: GMT+8  # 时区设置为中国时区
+    date-format: yyyy-MM-dd HH:mm:ss  # 日期格式化为 年-月-日 时:分:秒
+  
+  # ============================================================
+  # 文件上传配置
+  # ============================================================
   servlet:
     multipart:
-      max-file-size: 500MB
-      max-request-size: 500MB
+      max-file-size: 500MB  # 单个文件最大上传大小
+      max-request-size: 500MB  # 单次请求最大大小
+  
+  # ============================================================
+  # Redis 缓存配置
+  # ============================================================
   data:
     redis:
-      host: 127.0.0.1
-      port: 6379
-      password: asd123
-      database: 2
-      lettuce:
+      host: 127.0.0.1  # Redis服务器地址（本地）
+      port: 6379  # Redis服务器端口
+      password: asd123  # Redis访问密码
+      database: 2  # 使用Redis数据库编号为2
+      lettuce:  # Lettuce 是Redis的Java客户端
         pool:
-          max-idle: 30
-          min-idle: 10
-          max-active: 30
-          max-wait: 10000
+          max-idle: 30  # 连接池最大空闲连接数
+          min-idle: 10  # 连接池最小空闲连接数
+          max-active: 30  # 连接池最大活跃连接数
+          max-wait: 10000  # 获取连接的最大等待时间（毫秒）
+  
+  # ============================================================
+  # 邮件服务配置 - 用于发送通知邮件
+  # ============================================================
   mail:
-    host: smtp.qq.com
-    port: 465
-    username: 5565@qq.com
-    password: lqydnbsebcj   # QQ邮箱授权码，非登录密码
-    default-encoding: UTF-8
+    host: smtp.qq.com  # QQ邮箱SMTP服务器地址
+    port: 465  # SMTP服务器端口（465为SSL加密端口）
+    username: 5565@qq.com  # 发送邮件的QQ邮箱账号
+    password: lqydnbsebcj  # QQ邮箱授权码（不是登录密码，需在QQ邮箱设置中生成）
+    default-encoding: UTF-8  # 邮件编码格式
     properties:
       mail:
         smtp:
-          auth: true
+          auth: true  # 启用SMTP身份验证
           ssl:
-            enable: true          # 465端口用SSL
+            enable: true  # 启用SSL加密连接
           socketFactory:
-            port: 465
-            class: javax.net.ssl.SSLSocketFactory
+            port: 465  # SSL连接端口
+            class: javax.net.ssl.SSLSocketFactory  # SSL套接字工厂类
 
+# ============================================================
+# MyBatis-Plus 配置 - ORM框架配置
+# ============================================================
 mybatis-plus:
-  mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: com.project.demo.entity
+  mapper-locations: classpath*:mapper/*.xml  # 指定 Mapper XML 文件位置（src/main/resources/mapper 目录下）
+  type-aliases-package: com.project.demo.entity  # 为Entity类批量注册别名，可在XML中直接使用类名而不需要全限定名
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    use-column-label: true
-    map-underscore-to-camel-case: false
-    lazy-loading-enabled: true
-    aggressive-lazy-loading: false
-    use-generated-keys: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # MyBatis日志实现，输出SQL执行信息到标准输出
+    use-column-label: true  # 是否使用列标签而不是列名（用于处理别名）
+    map-underscore-to-camel-case: false  # 关闭自动转换蛇形命名到驼峰命名（因为本项目JSON返回时已手动转换）
+    lazy-loading-enabled: true  # 启用延迟加载（需要关联查询时才加载关联数据）
+    aggressive-lazy-loading: false  # 关闭积极加载（避免一旦访问任何属性就加载所有延迟加载属性）
+    use-generated-keys: true  # 启用生成的主键回写（insert后自动获取数据库生成的ID）
   global-config:
     db-config:
-      logic-delete-field: isDelete
-      logic-delete-value: 1
-      logic-not-delete-value: 0
+      logic-delete-field: isDelete  # 逻辑删除标记字段名（对应Entity中的字段）
+      logic-delete-value: 1  # 逻辑删除值（标记为删除时的值）
+      logic-not-delete-value: 0  # 逻辑未删除值（正常数据的值）
 

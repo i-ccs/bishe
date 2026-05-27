@@ -136,33 +136,33 @@
 				},
 
 				form: {
-								"product_code": this.$get_stamp(), // 商品编码
-										"product_name":  '', // 商品名称
-										"product_category":  '', // 商品类别
-										"product_brand":  '', // 商品品牌
-										"commodity_specifications":  '', // 商品规格
-										"product_inventory":  0, // 商品库存
-										"product_images":  '', // 商品图片
-										"commodity_price":  0, // 商品价格
-										"product_introduction":  '', // 商品介绍
-										"product_details":  '', // 商品详情
-											"commodity_information_id": 0, // ID
-													"sales_information_limit_times": 0, // 销售限制次数
+							"product_code": this.$get_stamp(), // 商品编码
+							"product_name":  '', // 商品名称
+							"product_category":  '', // 商品类别
+							"product_brand":  '', // 商品品牌
+							"commodity_specifications":  '', // 商品规格
+							"product_inventory":  0, // 商品库存
+							"product_images":  '', // 商品图片
+							"commodity_price":  0, // 商品价格
+							"product_introduction":  '', // 商品介绍
+							"product_details":  '', // 商品详情
+							"commodity_information_id": 0, // ID
+							"sales_information_limit_times": 0, // 销售限制次数
 							"purchasing_information_limit_times": 0, // 采购限制次数
 							"inventory_information_limit_times": 0, // 库存限制次数
 												},
 				disabledObj:{
 								"product_code_isDisabled": false,
-										"product_name_isDisabled": false,
-										"product_category_isDisabled": false,
-										"product_brand_isDisabled": false,
-										"commodity_specifications_isDisabled": false,
-					          			"product_inventory_isDisabled": false,
-										"product_images_isDisabled": false,
-					          			"commodity_price_isDisabled": false,
-										"product_introduction_isDisabled": false,
-										"product_details_isDisabled": false,
-										},
+								"product_name_isDisabled": false,
+								"product_category_isDisabled": false,
+								"product_brand_isDisabled": false,
+								"commodity_specifications_isDisabled": false,
+								"product_inventory_isDisabled": false,
+								"product_images_isDisabled": false,
+								"commodity_price_isDisabled": false,
+								"product_introduction_isDisabled": false,
+								"product_details_isDisabled": false,
+								},
 				}
 		},
 		methods: {
