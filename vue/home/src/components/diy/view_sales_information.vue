@@ -63,17 +63,17 @@
 									   :value="o['user_id']">
 							</el-option>
 						</el-select>
-																</el-form-item>
+					</el-form-item>
 			</el-col>
 
-								<el-col v-if="$check_field('get','order_quantity') || $check_field('add','order_quantity') || $check_field('set','order_quantity')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+			<el-col v-if="$check_field('get','order_quantity') || $check_field('add','order_quantity') || $check_field('set','order_quantity')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="下单数量" prop="order_quantity">
-								<el-input-number id="order_quantity" v-model.number="form['order_quantity']" :min="0"
+						<el-input-number id="order_quantity" v-model.number="form['order_quantity']" :min="0"
 						v-if="(form['sales_information_id'] && $check_field('set','order_quantity')) || (!form['sales_information_id'] && $check_field('add','order_quantity'))" :disabled="disabledObj['order_quantity_isDisabled']"></el-input-number>
 					<div v-else-if="$check_field('get','order_quantity')">{{form['order_quantity']}}</div>
-							</el-form-item>
+				</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','total_order_price') || $check_field('add','total_order_price') || $check_field('set','total_order_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+			<el-col v-if="$check_field('get','total_order_price') || $check_field('add','total_order_price') || $check_field('set','total_order_price')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="订单总价" prop="total_order_price">
 								{{toFixed(form['commodity_price'] * form['order_quantity'])}}
 							</el-form-item>
