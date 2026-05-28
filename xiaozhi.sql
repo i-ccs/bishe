@@ -314,7 +314,7 @@ DROP TABLE IF EXISTS `commodity_information`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `commodity_information` (
-  `comm_infor_id` int NOT NULL AUTO_INCREMENT COMMENT '商品信息ID',
+  `comm_infor_id` int NOT NULL AUTO_INCREMENT COMMENT '主键，商品标识',
   `prod_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '商品编码',
   `prod_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '商品名称',
   `prod_category` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '商品类别',
@@ -425,7 +425,7 @@ DROP TABLE IF EXISTS `purchasing_information`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `purchasing_information` (
-  `purch_inf_id` int NOT NULL AUTO_INCREMENT COMMENT '采购标识',
+  `purch_inf_id` int NOT NULL AUTO_INCREMENT COMMENT '主键，采购标识',
   `prod_code` varchar(64) NOT NULL COMMENT '商品编码',
   `comm_price` double(8,2) NOT NULL DEFAULT '0.00' COMMENT '商品价格',
   `purch_order_number` varchar(64) NOT NULL COMMENT '采购单号',
