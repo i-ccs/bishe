@@ -27,7 +27,7 @@
 						<el-form-item label="用户头像">
 							<el-upload class="avatar-uploader" drag accept="image/gif, image/jpeg, image/png, image/jpg"
 								action="" :http-request="uploadAvatar" :show-file-list="false">
-								<img v-if="form.avatar" :src="$fullUrl(form.avatar)" class="avatar">
+								<img v-if="form.avatar" :src="$fullUrl(form.avatar)" class="avatar" @error="e => { e.target.src = require('@/assets/images/user.png'); }">
 								<div v-else class="upload-placeholder">
 									<i class="el-icon-plus avatar-uploader-icon"></i>
 								</div>

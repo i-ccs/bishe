@@ -24,7 +24,7 @@
 											<div class="change_avatar_box" @click="$refs.avatarInput.click()">
 												<div class="uc-avatar-wrap">
 													<b-img class="user_avator"
-														:src="obj.avatar ? $fullUrl(obj.avatar) : '/img/default.png'" alt="" />
+														:src="obj.avatar ? $fullUrl(obj.avatar) : '/img/default.png'" @error="e => e.target.src='/img/default.png'" alt="" />
 													<div class="uc-avatar-overlay">
 														<i class="uc-icon">📷</i>
 													</div>

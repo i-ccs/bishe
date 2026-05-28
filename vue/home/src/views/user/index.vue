@@ -17,7 +17,8 @@
                 <div class="img_block">
                   <img
                     style="width: 6rem; height: 6rem"
-                    :src="user.avatar ? $fullUrl(user.avatar) : '../../../public/img/default.png'"
+                    :src="user.avatar ? $fullUrl(user.avatar) : '/img/default.png'"
+                    @error="e => e.target.src='/img/default.png'"
                   />
                 </div>
                 <div class="nick_name">

@@ -39,7 +39,7 @@
                     <div ref="own" class="own" @click="my()">
                       <div class="user_pr">
                         <div class="img_box" >
-                          <img class="user_img" style="width: 40px;" :src="$fullUrl(user_avatar)" alt="">
+                          <img class="user_img" style="width: 40px;" :src="user_avatar ? $fullUrl(user_avatar) : '/img/default.png'" @error="e => e.target.src='/img/default.png'" alt="">
                         </div>
                         <div class="own_text" >{{ user_nick_name }}    <span class="caret" v-bind:style="{transform: 'rotate('+ angle2 +'deg)'}"/> </div>
                       </div>
