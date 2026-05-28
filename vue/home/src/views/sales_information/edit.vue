@@ -3,7 +3,7 @@
 		<div class='warp'>
 			<div class='container'>
 				<div class='row diy_edit_content_box'>
-						<div v-if="$check_field('set','product_code') || $check_field('add','product_code') || $check_field('get','product_code')" class="form-item col-12 col-md-6">
+						<div v-if="$check_field('set','prod_code') || $check_field('add','prod_code') || $check_field('get','prod_code')" class="form-item col-12 col-md-6">
 						<div class="diy_title">
 							<span>
 								商品编码:
@@ -11,11 +11,11 @@
 						</div>
 								<!-- 文本 -->
 									<div class="diy_field diy_text">
-							<input type="text" id="form_product_code" v-model="form['product_code']" placeholder="请输入商品编码" v-if="(form['product_code'] && $check_field('set','product_code')) || (!form['product_code'] && $check_field('add','product_code'))"  :disabled="disabledObj['product_code_isDisabled']"/>
-							<span v-else-if="$check_field('get','product_code')">{{ form['product_code'] }}</span>
+							<input type="text" id="form_prod_code" v-model="form['prod_code']" placeholder="请输入商品编码" v-if="(form['prod_code'] && $check_field('set','prod_code')) || (!form['prod_code'] && $check_field('add','prod_code'))"  :disabled="disabledObj['prod_code_isDisabled']"/>
+							<span v-else-if="$check_field('get','prod_code')">{{ form['prod_code'] }}</span>
 						</div>
 										</div>
-							<div v-if="$check_field('set','product_name') || $check_field('add','product_name') || $check_field('get','product_name')" class="form-item col-12 col-md-6">
+							<div v-if="$check_field('set','prod_name') || $check_field('add','prod_name') || $check_field('get','prod_name')" class="form-item col-12 col-md-6">
 						<div class="diy_title">
 							<span>
 								商品名称:
@@ -23,11 +23,11 @@
 						</div>
 								<!-- 文本 -->
 									<div class="diy_field diy_text">
-							<input type="text" id="form_product_name" v-model="form['product_name']" placeholder="请输入商品名称" v-if="(form['product_name'] && $check_field('set','product_name')) || (!form['product_name'] && $check_field('add','product_name'))"  :disabled="disabledObj['product_name_isDisabled']"/>
-							<span v-else-if="$check_field('get','product_name')">{{ form['product_name'] }}</span>
+							<input type="text" id="form_prod_name" v-model="form['prod_name']" placeholder="请输入商品名称" v-if="(form['prod_name'] && $check_field('set','prod_name')) || (!form['prod_name'] && $check_field('add','prod_name'))"  :disabled="disabledObj['prod_name_isDisabled']"/>
+							<span v-else-if="$check_field('get','prod_name')">{{ form['prod_name'] }}</span>
 						</div>
 										</div>
-							<div v-if="$check_field('set','product_category') || $check_field('add','product_category') || $check_field('get','product_category')" class="form-item col-12 col-md-6">
+							<div v-if="$check_field('set','prod_category') || $check_field('add','prod_category') || $check_field('get','prod_category')" class="form-item col-12 col-md-6">
 						<div class="diy_title">
 							<span>
 								商品类别:
@@ -35,11 +35,11 @@
 						</div>
 								<!-- 文本 -->
 									<div class="diy_field diy_text">
-							<input type="text" id="form_product_category" v-model="form['product_category']" placeholder="请输入商品类别" v-if="(form['product_category'] && $check_field('set','product_category')) || (!form['product_category'] && $check_field('add','product_category'))"  :disabled="disabledObj['product_category_isDisabled']"/>
-							<span v-else-if="$check_field('get','product_category')">{{ form['product_category'] }}</span>
+							<input type="text" id="form_prod_category" v-model="form['prod_category']" placeholder="请输入商品类别" v-if="(form['prod_category'] && $check_field('set','prod_category')) || (!form['prod_category'] && $check_field('add','prod_category'))"  :disabled="disabledObj['prod_category_isDisabled']"/>
+							<span v-else-if="$check_field('get','prod_category')">{{ form['prod_category'] }}</span>
 						</div>
 										</div>
-							<div v-if="$check_field('set','product_brand') || $check_field('add','product_brand') || $check_field('get','product_brand')" class="form-item col-12 col-md-6">
+							<div v-if="$check_field('set','prod_brand') || $check_field('add','prod_brand') || $check_field('get','prod_brand')" class="form-item col-12 col-md-6">
 						<div class="diy_title">
 							<span>
 								商品品牌:
@@ -47,11 +47,11 @@
 						</div>
 								<!-- 文本 -->
 									<div class="diy_field diy_text">
-							<input type="text" id="form_product_brand" v-model="form['product_brand']" placeholder="请输入商品品牌" v-if="(form['product_brand'] && $check_field('set','product_brand')) || (!form['product_brand'] && $check_field('add','product_brand'))"  :disabled="disabledObj['product_brand_isDisabled']"/>
-							<span v-else-if="$check_field('get','product_brand')">{{ form['product_brand'] }}</span>
+							<input type="text" id="form_prod_brand" v-model="form['prod_brand']" placeholder="请输入商品品牌" v-if="(form['prod_brand'] && $check_field('set','prod_brand')) || (!form['prod_brand'] && $check_field('add','prod_brand'))"  :disabled="disabledObj['prod_brand_isDisabled']"/>
+							<span v-else-if="$check_field('get','prod_brand')">{{ form['prod_brand'] }}</span>
 						</div>
 										</div>
-							<div v-if="$check_field('set','commodity_price') || $check_field('add','commodity_price') || $check_field('get','commodity_price')" class="form-item col-12 col-md-6">
+							<div v-if="$check_field('set','comm_price') || $check_field('add','comm_price') || $check_field('get','comm_price')" class="form-item col-12 col-md-6">
 						<div class="diy_title">
 							<span>
 								商品价格:
@@ -59,8 +59,8 @@
 						</div>
 								<!-- 数字 -->
 						<div class="diy_field diy_number">
-							<input type="number" id="form_commodity_price" v-model.number="form['commodity_price']" placeholder="请输入商品价格" v-if="(form['commodity_price'] && $check_field('set','commodity_price')) || (!form['commodity_price'] && $check_field('add','commodity_price'))" :disabled="user_group !== '管理员'" min="0" />
-							<span v-else-if="$check_field('get','commodity_price')">{{ form['commodity_price'] }}</span>
+							<input type="number" id="form_comm_price" v-model.number="form['comm_price']" placeholder="请输入商品价格" v-if="(form['comm_price'] && $check_field('set','comm_price')) || (!form['comm_price'] && $check_field('add','comm_price'))" :disabled="user_group !== '管理员'" min="0" />
+							<span v-else-if="$check_field('get','comm_price')">{{ form['comm_price'] }}</span>
 						</div>
 							</div>
 							<div v-if="$check_field('set','sales_order_number') || $check_field('add','sales_order_number') || $check_field('get','sales_order_number')" class="form-item col-12 col-md-6">
@@ -84,7 +84,7 @@
 						<div class="diy_field diy_down">
 							<select id="form_registered_user" :disabled="user_group !== '管理员'" v-model="form['registered_user']" v-if="(form['registered_user'] && $check_field('set','registered_user')) || (!form['registered_user'] && $check_field('add','registered_user'))" >
 								<option v-for="o in list_user_registered_user" :value="o['user_id']">
-									{{o['nick_name'] + '-' + o['user_name']}}
+									{{o['nick_name'] + '-' + o['user_na']}}
 								</option>
 							</select>
 							<span v-else-if="$check_field('get','registered_user')">{{ get_user_info("registered_user", form['registered_user']) }}</span>
@@ -110,11 +110,11 @@
 							</span>
 						</div>
 								<!-- 计算 -->
-						<div class="diy_field diy_compute">
-							<span v-if="$check_field('get','total_order_price')">{{ toFixed(form['commodity_price'] * form['order_quantity']) }}</span>
+							<div class="diy_field diy_compute">
+							<span v-if="$check_field('get','total_order_price')">{{ toFixed(form['comm_price'] * form['order_quantity']) }}</span>
 						</div>
 							</div>
-							<div v-if="$check_field('set','note_information') || $check_field('add','note_information') || $check_field('get','note_information')" class="form-item col-12 col-md-6">
+							<div v-if="$check_field('set','note_infor') || $check_field('add','note_infor') || $check_field('get','note_infor')" class="form-item col-12 col-md-6">
 						<div class="diy_title">
 							<span>
 								备注信息:
@@ -122,8 +122,8 @@
 						</div>
 								<!-- 多文本 -->
 						<div class="diy_field diy_desc">
-							<textarea id="form_note_information" v-model="form['note_information']" v-if="(form['note_information'] && $check_field('set','note_information')) || (!form['note_information'] && $check_field('add','note_information'))" :disabled="disabledObj['note_information_isDisabled']" />
-							<span v-else-if="$check_field('get','note_information')">{{ form['note_information'] }}</span>
+							<textarea id="form_note_infor" v-model="form['note_infor']" v-if="(form['note_infor'] && $check_field('set','note_infor')) || (!form['note_infor'] && $check_field('add','note_infor'))" :disabled="disabledObj['note_infor_isDisabled']" />
+							<span v-else-if="$check_field('get','note_infor')">{{ form['note_infor'] }}</span>
 						</div>
 							</div>
 	
@@ -163,66 +163,66 @@
 
 				// 查询条件
 				query: {
-						"product_code": "",
-							"product_name": "",
-							"product_category": "",
-							"product_brand": "",
-							"commodity_price": 0,
+						"prod_code": "",
+							"prod_name": "",
+							"prod_category": "",
+							"prod_brand": "",
+							"comm_price": 0,
 							"sales_order_number": "",
 							"registered_user": 0,
-							"user_name": "",
+							"user_na": "",
 							"order_quantity": 0,
 							"total_order_price": 0,
-							"note_information": "",
-						"sales_information_id": 0,
+							"note_infor": "",
+						"sales_infor_id": 0,
 				},
 
 				obj: {
-						"product_code":  '', // 商品编码
-							"product_name":  '', // 商品名称
-							"product_category":  '', // 商品类别
-							"product_brand":  '', // 商品品牌
-							"commodity_price":  0, // 商品价格
+						"prod_code":  '', // 商品编码
+							"prod_name":  '', // 商品名称
+							"prod_category":  '', // 商品类别
+							"prod_brand":  '', // 商品品牌
+							"comm_price":  0, // 商品价格
 							"sales_order_number": this.$get_stamp(), // 销售单号
 							"registered_user": 0, // 注册用户
-							"user_name":  '', // 用户姓名
+							"user_na":  '', // 用户姓名
 							"order_quantity":  0, // 下单数量
 							"total_order_price": 0, // 订单总价
-							"note_information":  '', // 备注信息
-						"sales_information_id": 0,
+							"note_infor":  '', // 备注信息
+						"sales_infor_id": 0,
 				},
 
 				// 表单字段
 				form: {
-						"product_code":  '', // 商品编码
-							"product_name":  '', // 商品名称
-							"product_category":  '', // 商品类别
-							"product_brand":  '', // 商品品牌
-							"commodity_price":  0, // 商品价格
-							"sales_order_number": this.$get_stamp(), // 销售单号
-							"registered_user": 0, // 注册用户
-							"user_name":  '', // 用户姓名
-							"order_quantity":  0, // 下单数量
-							"total_order_price": 0, // 订单总价
-							"note_information":  '', // 备注信息
-						"sales_information_id": 0,
+					"prod_code":  '', // 商品编码
+					    "prod_name":  '', // 商品名称
+					    "prod_category":  '', // 商品类别
+					    "prod_brand":  '', // 商品品牌
+					    "comm_price":  0, // 商品价格
+					    "sales_order_number": this.$get_stamp(), // 销售单号
+					    "registered_user": 0, // 注册用户
+					    "user_na":  '', // 用户姓名
+					    "order_quantity":  0, // 下单数量
+					    "total_order_price": 0, // 订单总价
+					    "note_infor":  '', // 备注信息
+					"sales_infor_id": 0,
 				},
 				disabledObj:{
-						"product_code_isDisabled": false,
-							"product_name_isDisabled": false,
-							"product_category_isDisabled": false,
-							"product_brand_isDisabled": false,
-									"sales_order_number_isDisabled": false,
-							"registered_user_isDisabled": false,
-							"user_name_isDisabled": false,
-											"note_information_isDisabled": false,
-					},
+					"prod_code_isDisabled": false,
+					    "prod_name_isDisabled": false,
+					    "prod_category_isDisabled": false,
+					    "prod_brand_isDisabled": false,
+						    "sales_order_number_isDisabled": false,
+					    "registered_user_isDisabled": false,
+					    "user_na_isDisabled": false,
+							    "note_infor_isDisabled": false,
+				    },
 
 																								// 用户列表
 				list_user_registered_user: [],
 														
 				// ID字段
-				field: "sales_information_id",
+				field: "sales_infor_id",
 
 			}
 		},
@@ -278,7 +278,7 @@
        * @return {String} 验证成功返回null, 失败返回错误提示
        */
             submit_check(param) {
-				if (param.commodity_price === null || param.commodity_price === undefined || param.commodity_price < 0) {
+				if (param.comm_price === null || param.comm_price === undefined || param.comm_price < 0) {
 					return '单价不能小于0';
 				}
 				if (param.order_quantity === null || param.order_quantity === undefined || param.order_quantity <= 0) {
@@ -308,10 +308,10 @@
 				var _this = this;
 				var json = await this.$get("~/api/user_group/get_obj?name=注册用户");
 				if(json.result && json.result.obj){
-					var source_table = json.result.obj.source_table;
+					var sour_table = json.result.obj.sour_table;
 					var user_id = _this.$store.state.user.user_id;
 					if (user_id){
-						var url = "~/api/"+source_table+"/get_obj?"
+						var url = "~/api/"+sour_table+"/get_obj?"
 						this.$get(url, {"user_id":_this.$store.state.user.user_id}, function(res) {
 							if (res.result && res.result.obj) {
 								var arr = []
@@ -350,7 +350,7 @@
 				
 				
 									set_total_order_price(){
-				this.form.total_order_price = parseFloat(this.form.commodity_price) * parseFloat(this.form.order_quantity)
+				this.form.total_order_price = parseFloat(this.form.comm_price) * parseFloat(this.form.order_quantity)
         let r = /^\+?[1-9][0-9]*$/; // 正整数
         if(!r.test(this.form.total_order_price) ){
           this.form.total_order_price = this.form.total_order_price.toFixed(2);
@@ -370,7 +370,7 @@
 				  }
           				var ret = "";
 				if(obj){
-				  ret = obj.nick_name+"-"+obj.user_name;
+				  ret = obj.nick_name+"-"+obj.user_na;
 				}
 				return ret;
 			},
@@ -454,14 +454,14 @@
                   break;
                 }
               }
-			  if(arr[i] === "source_table"){
-			  	this.form['source_table'] = form[arr[i]]
+			  if(arr[i] === "sour_table"){
+			  	this.form['sour_table'] = form[arr[i]]
 			  }
-			  if(arr[i] === "source_id"){
-			  	this.form['source_id'] = form[arr[i]]
+			  if(arr[i] === "sour_id"){
+			  	this.form['sour_id'] = form[arr[i]]
 			  }
-			  if(arr[i] === "source_user_id"){
-			  	this.form['source_user_id'] = form[arr[i]]
+			  if(arr[i] === "sour_user_id"){
+			  	this.form['sour_user_id'] = form[arr[i]]
 			  }
             }
           }

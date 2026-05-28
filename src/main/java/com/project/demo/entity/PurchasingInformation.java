@@ -17,12 +17,12 @@ import java.sql.Timestamp;
 public class PurchasingInformation implements Serializable {
 
     // PurchasingInformation编号
-    @TableId(value = "purchasing_information_id", type = IdType.AUTO)
-    private Integer purchasingInformationId;
+    @TableId(value = "purch_inf_id", type = IdType.AUTO)
+    private Integer purchInfId;
 
     // 商品编码
-    @TableField(value = "`product_code`")
-    private String productCode;
+    @TableField(value = "`prod_code`")
+    private String prodCode;
     // 商品名称
     @TableField(exist = false)
     private String productName;
@@ -36,41 +36,41 @@ public class PurchasingInformation implements Serializable {
     @TableField(exist = false)
     private String commoditySpecifications;
     // 商品价格
-    @TableField(value = "`commodity_price`")
-    private Double commodityPrice;
+    @TableField(value = "`comm_price`")
+    private Double commPrice;
     // 采购单号
-    @TableField(value = "`purchase_order_number`")
-    private String purchaseOrderNumber;
+    @TableField(value = "`purch_order_number`")
+    private String purchOrderNumber;
     // 供应商名称
     @TableField(value = "`supplier_name`")
     private String supplierName;
     // 采购日期
-    @TableField(value = "`purchase_date`")
-    private String purchaseDate;
+    @TableField(value = "`purch_date`")
+    private String purchDate;
     // 采购数量
-    @TableField(value = "`purchase_quantity`")
-    private Double purchaseQuantity;
+    @TableField(value = "`purch_quantity`")
+    private Double purchQuantity;
     // 采购单价
-    @TableField(value = "`purchase_unit_price`")
-    private Double purchaseUnitPrice;
+    @TableField(value = "`purch_unit_price`")
+    private Double purchUnitPrice;
     // 采购总价
-    @TableField(value = "`total_purchase_price`")
-    private Double totalPurchasePrice;
+    @TableField(value = "`total_purch_price`")
+    private Double totalPurchPrice;
     // 采购情况
-    @TableField(value = "`procurement_status`")
-    private String procurementStatus;
+    @TableField(value = "`procur_status`")
+    private String procurStatus;
 
     // 来源表
-    @TableField(value = "source_table")
-    private String sourceTable;
+    @TableField(value = "sour_table")
+    private String sourTable;
 
     // 来源ID
-    @TableField(value = "source_id")
-    private Integer sourceId;
+    @TableField(value = "sour_id")
+    private Integer sourId;
 
     // 来源用户ID
-    @TableField(value = "source_user_id")
-    private Integer sourceUserId;
+    @TableField(value = "sour_user_id")
+    private Integer sourUserId;
 
     // 是否删除
     @TableLogic

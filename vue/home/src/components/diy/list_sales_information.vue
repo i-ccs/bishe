@@ -3,7 +3,7 @@
 		<!-- 列表 -->
 		<div class="diy_view_list list list-x">
 					<router-link class="diy_card goods diy_list_box_wrap" v-for="(o, i) in list" :key="i"
-				:to="'/sales_information/details?sales_information_id=' + o['sales_information_id']">
+				:to="'/sales_information/details?sales_infor_id=' + o['sales_infor_id']">
 										<!-- 图片 -->
 				<div class="diy_list_img_box" v-if="imgList.length" >
 					<div class="diy_row" v-for="(item,index) in imgList" :key="item+index" v-show="$check_field('get',item.name,'/sales_information/details') && +item.is_img_list">
@@ -23,7 +23,7 @@
 								<span>{{item.title}}:</span>
 							</div>
 							<div class="diy_field diy_text">
-								<span v-if="item.type == 'UID'" v-text="get_user_name(item.name,o[item.name])"></span>
+								<span v-if="item.type == 'UID'" v-text="get_user_na(item.name,o[item.name])"></span>
 								<span v-else-if="item.type == '日期' || item.type == '日后'" v-text="$toTime(o[item.name],'yyyy-MM-dd')"></span>
 								<span v-else-if="item.type == '时间'" v-text="$toTime(o[item.name],'hh:mm:ss')"></span>
 								<span v-else-if="item.type == '日长'" v-text="$toTime(o[item.name],'yyyy-MM-dd hh:mm:ss')"></span>
@@ -51,7 +51,7 @@
                 <div class="slider" ref="slider">
 				                <div  v-for="(o, i) in list" :key="i" class="slide" >
 				                    
-                    <router-link :to="'/sales_information/details?sales_information_id=' + o['sales_information_id']" class="lis_cont">
+                    <router-link :to="'/sales_information/details?sales_infor_id=' + o['sales_infor_id']" class="lis_cont">
 						                        <div class="diy_list_img_box" v-if="imgList.length" >
     					        <div class="diy_row" v-for="(item, index) in imgList" :key="item + index" v-show="$check_field('get',item.name,'/sales_information/details') && +item.is_img_list">
     						<div class="diy_title diy_list_img_title">
@@ -71,7 +71,7 @@
 								<span>{{item.title}}:</span>
 							</div>
 							<div class="diy_field diy_text">
-								<span v-if="item.type == 'UID'" v-text="get_user_name(item.name,o[item.name])"></span>
+								<span v-if="item.type == 'UID'" v-text="get_user_na(item.name,o[item.name])"></span>
 								<span v-else-if="item.type == '日期' || item.type == '日后'" v-text="$toTime(o[item.name],'yyyy-MM-dd')"></span>
 								<span v-else-if="item.type == '时间'" v-text="$toTime(o[item.name],'hh:mm:ss')"></span>
 								<span v-else-if="item.type == '日长'" v-text="$toTime(o[item.name],'yyyy-MM-dd hh:mm:ss')"></span>
@@ -118,31 +118,31 @@
 						itemList: [
 								{
 									title: "商品编码",
-									name: "product_code",
+									name: "prod_code",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品名称",
-									name: "product_name",
+									name: "prod_name",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品类别",
-									name: "product_category",
+									name: "prod_category",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品品牌",
-									name: "product_brand",
+									name: "prod_brand",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品价格",
-									name: "commodity_price",
+									name: "comm_price",
 									type: "数字",
 									is_img_list: "0"
 								},
@@ -175,7 +175,7 @@
 						richList: [
 								{
 									title: "备注信息",
-									name: "note_information",
+									name: "note_infor",
 									type: "多文本"
 								},
 						],
@@ -279,21 +279,21 @@
 
 			},
 			to_detail(v){
-				this.$router.push("/sales_information/details?sales_information_id="+v.sales_information_id)
+				this.$router.push("/sales_information/details?sales_infor_id="+v.sales_infor_id)
 			},
-			get_user_name(name,id){
+			get_user_na(name,id){
 				var obj = null;
 											if (name == 'registered_user'){
 					obj = this.list_user_registered_user.getObj({"user_id":id});
 				}
 									var ret = "";
 				if(obj){
-					ret = obj.nick_name+"-"+obj.user_name;
+					ret = obj.nick_name+"-"+obj.user_na;
 					// if(obj.nick_name){
 					// 	ret = obj.nick_name;
 					// }
 					// else{
-					// 	ret = obj.user_name;
+					// 	ret = obj.user_na;
 					// }
 				}
 				return ret;

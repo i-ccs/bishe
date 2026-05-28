@@ -30,17 +30,17 @@ public class SalesInformationController extends BaseController<SalesInformation,
     public Map<String, Object> add(HttpServletRequest request) throws IOException {
         Map<String, Object> paramMap = service.readBody(request.getReader());
         this.addMap(paramMap);
-        String sql = "SELECT MAX(sales_information_id) AS max FROM " + "`sales_information`";
+        String sql = "SELECT MAX(sales_infor_id) AS max FROM " + "`sales_information`";
         Integer max = service.selectBaseCount(sql);
-        sql = ("SELECT count(*) count FROM `commodity_information` INNER JOIN `sales_information` ON commodity_information.prod_code=sales_information.product_code WHERE commodity_information.prod_inven < sales_information.order_quantity AND sales_information.sales_information_id="
+        sql = ("SELECT count(*) count FROM `commodity_information` INNER JOIN `sales_information` ON commodity_information.prod_code=sales_information.prod_code WHERE commodity_information.prod_inven < sales_information.order_quantity AND sales_information.sales_infor_id="
                 + max).replaceAll("&#60;", "<");
         Integer count = service.selectBaseCount(sql);
         if (count > 0) {
-            sql = "update `sales_information` set is_delete = 1 WHERE sales_information_id =" + max;
+            sql = "update `sales_information` set is_delete = 1 WHERE sales_infor_id =" + max;
             service.updateBaseSql(sql);
             return error(30000, "商品库存不足");
         }
-        sql = "UPDATE `commodity_information` INNER JOIN `sales_information` ON commodity_information.prod_code=sales_information.product_code SET commodity_information.prod_inven= commodity_information.prod_inven - sales_information.order_quantity WHERE sales_information.sales_information_id="
+        sql = "UPDATE `commodity_information` INNER JOIN `sales_information` ON commodity_information.prod_code=sales_information.prod_code SET commodity_information.prod_inven= commodity_information.prod_inven - sales_information.order_quantity WHERE sales_information.sales_infor_id="
                 + max;
         service.updateBaseSql(sql);
         return success(1);

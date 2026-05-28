@@ -145,7 +145,7 @@
 				itemList: [
 						{
 							title: "供应商名称",
-							name: "supplier_name",
+							name: "supplier_na",
 							type: "文本"
 						},
 						{
@@ -155,17 +155,17 @@
 						},
 						{
 							title: "商品类别",
-							name: "commodity_category",
+							name: "comm_category",
 							type: "下寻"
 						},
 						{
 							title: "综合评价",
-							name: "comprehensive_evaluation",
+							name: "compreh_eva",
 							type: "文本"
 						},
 						{
 							title: "供应频率",
-							name: "supply_frequency",
+							name: "supply_freq",
 							type: "文本"
 						},
 				],
@@ -182,7 +182,7 @@
 						},
 						{
 							title: "合作情况",
-							name: "cooperation_situation",
+							name: "cooperation_situ",
 							type: "多文本"
 						},
 				],

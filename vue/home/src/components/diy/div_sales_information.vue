@@ -145,27 +145,27 @@
 				itemList: [
 						{
 							title: "商品编码",
-							name: "product_code",
+							name: "prod_code",
 							type: "文本"
 						},
 						{
 							title: "商品名称",
-							name: "product_name",
+							name: "prod_name",
 							type: "文本"
 						},
 						{
 							title: "商品类别",
-							name: "product_category",
+							name: "prod_category",
 							type: "文本"
 						},
 						{
 							title: "商品品牌",
-							name: "product_brand",
+							name: "prod_brand",
 							type: "文本"
 						},
 						{
 							title: "商品价格",
-							name: "commodity_price",
+							name: "comm_price",
 							type: "数字"
 						},
 						{
@@ -193,7 +193,7 @@
 				richList: [
 						{
 							title: "备注信息",
-							name: "note_information",
+							name: "note_infor",
 							type: "多文本"
 						},
 				],
@@ -221,12 +221,12 @@
 				}
 									var ret = "";
 				if(obj){
-					ret = obj.nick_name+"-"+obj.user_name;
+					ret = obj.nick_name+"-"+obj.user_na;
 					// if(obj.nick_name){
 					// 	ret = obj.nick_name;
 					// }
 					// else{
-					// 	ret = obj.user_name;
+					// 	ret = obj.user_na;
 					// }
 				}
 				return ret;

@@ -6,7 +6,7 @@
           
                                                                                               <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="商品名称">
-                                                      <el-input v-model="query.product_name"></el-input>
+                                                      <el-input v-model="query.prod_name"></el-input>
                                                 </el-form-item>
                     </el-col>
 
@@ -26,27 +26,27 @@
 	    <el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" id="dataTable">
 	                <el-table-column fixed type="selection" tooltip-effect="dark" width="55">
             </el-table-column>
-                                                  <el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码"                                v-if="$check_field('get','product_code')" min-width="200">
+                                                  <el-table-column prop="prod_code" @sort-change="$sortChange" label="商品编码"                                v-if="$check_field('get','prod_code')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','product_name')" min-width="200">
-                                </el-table-column>
-
-                                              <el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','product_brand')" min-width="200">
-                                </el-table-column>
-                                              <el-table-column prop="commodity_specifications" @sort-change="$sortChange" label="商品规格"                                v-if="$check_field('get','commodity_specifications')" min-width="200">
+                                              <el-table-column prop="prod_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','prod_name')" min-width="200">
                                 </el-table-column>
 
-                                              <el-table-column prop="product_images" @sort-change="$sortChange" label="商品图片"                                v-if="$check_field('get','product_images')" min-width="200">
+                                              <el-table-column prop="prod_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','prod_brand')" min-width="200">
+                                </el-table-column>
+                                              <el-table-column prop="comm_spec" @sort-change="$sortChange" label="商品规格"                                v-if="$check_field('get','comm_spec')" min-width="200">
+                                </el-table-column>
+
+                                              <el-table-column prop="prod_ima" @sort-change="$sortChange" label="商品图片"                                v-if="$check_field('get','prod_ima')" min-width="200">
                                       <template slot-scope="scope">
-                      <el-image style="width: 100px; height: 100px" :src="$fullUrl(scope.row['product_images'])"
-                                :preview-src-list="[$fullUrl(scope.row['product_images'])]">
+                          <el-image style="width: 100px; height: 100px" :src="$fullUrl(scope.row['prod_ima'])"
+                                    :preview-src-list="[$fullUrl(scope.row['prod_ima'])]">
                         <div slot="error" class="image-slot">
                           <img src="../../../public/img/error.png" style="width: 90px; height: 90px" />
                         </div>
                       </el-image>
                     </template>
 				                </el-table-column>
-                                              <el-table-column prop="commodity_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','commodity_price')" min-width="200">
+                                              <el-table-column prop="comm_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','comm_price')" min-width="200">
                                 </el-table-column>
 
                                                     				        
@@ -85,7 +85,7 @@
                       <span>库存</span>
                     </el-button>
 					                                                                                            <router-link v-if="$check_comment('/commodity_information/table')" class="el-button el-button--small is-plain el-button--primary"
-                             :to="'../comment/table?size=10&page=1&source_table=commodity_information&source_field=' + field + '&source_id=' + scope.row[field]" size="small">
+                             :to="'../comment/table?size=10&page=1&sou_table=commodity_information&source_field=' + field + '&sou_id=' + scope.row[field]" size="small">
                   查看评论
                 </router-link>
                                   		  		        </template>
@@ -132,13 +132,13 @@
         url_del: "~/api/commodity_information/del?",
 
         // 字段ID
-        field: "commodity_information_id",
+        field: "comm_infor_id",
         // 查询
         query: {
           "size": 7,
           "page": 1,
-          "product_name": "",
-          "product_inventory_min": 11,
+          "prod_name": "",
+          "prod_inven_min": 11,
           "login_time": "",
           "create_time": "",
           "orderby": `create_time desc`
@@ -162,13 +162,13 @@
 		  	let _this = this
 		  	let hasWarning = false;
 			_this.list.map((item) => {
-				if (item.product_inventory < 10) {
+        if (item.prod_inven < 10) {
 					hasWarning = true;
 				}
 		  		let param = {
-		  			source_table: "commodity_information",
-		  			source_id: item.commodity_information_id,
-		  			source_user_id: _this.user.user_id
+		  			sou_table: "commodity_information",
+            sou_id: item.comm_infor_id,
+		  			sou_user_id: _this.user.user_id
 		  		};
 		  		if(item.sales_information_limit_times > 0){
 		  			_this.$get("~/api/sales_information/count?",param,(result)=>{
@@ -187,14 +187,14 @@
 		  	})
 		  			  	_this.list.map((item) => {
 		  		let param = {
-		  			source_table: "commodity_information",
-		  			source_id: item.commodity_information_id,
-		  			source_user_id: _this.user.user_id
+		  			sou_table: "commodity_information",
+            sou_id: item.comm_infor_id,
+		  			sou_user_id: _this.user.user_id
 		  		};
-		  		if(item.purchasing_information_limit_times > 0){
+		  		if(item.purchasing_informtion_limit_times > 0){
 		  			_this.$get("~/api/purchasing_information/count?",param,(result)=>{
 		  				if(result){
-		  					if(result.result >= item.purchasing_information_limit_times){
+		  					if(result.result >= item.purchasing_informtion_limit_times){
 		  						_this.$set(item,'purchasing_information_limit',true);
 		  					}else{
 		  						_this.$set(item,'purchasing_information_limit',false);
@@ -208,9 +208,9 @@
 		  	})
 		  			  	_this.list.map((item) => {
 		  		let param = {
-		  			source_table: "commodity_information",
-		  			source_id: item.commodity_information_id,
-		  			source_user_id: _this.user.user_id
+		  			sou_table: "commodity_information",
+            sou_id: item.comm_infor_id,
+		  			sou_user_id: _this.user.user_id
 		  		};
 		  		if(item.inventory_information_limit_times > 0){
 		  			_this.$get("~/api/inventory_information/count?",param,(result)=>{

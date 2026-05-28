@@ -45,7 +45,7 @@ public class SalesInformationService extends BaseService<SalesInformation> {
                 : config.get(FindConfig.FIELD)).append(" ");
         // 构建FROM和JOIN子句，关联销售信息表和商品信息表
         sql.append("from `sales_information` a ");
-        sql.append("left join `commodity_information` b on a.product_code = b.prod_code ");
+        sql.append("left join `commodity_information` b on a.prod_code = b.prod_code ");
         // 添加WHERE条件
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         // 添加GROUP BY子句用于分组（如果指定）
@@ -88,13 +88,13 @@ public class SalesInformationService extends BaseService<SalesInformation> {
         if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
             sql.append("COUNT(a.").append(config.get(FindConfig.GROUP_BY)).append(") FROM `sales_information` a ");
             sql.append(
-                    "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                    "left join `commodity_information` b on a.sour_table = 'commodity_information' and a.sour_id = b.comm_infor_id ");
             sql.append(
                     toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         } else {
             // 否则进行整体计数
             sql.append("COUNT(*) FROM `sales_information` a ");
-            sql.append("left join `commodity_information` b on a.product_code = b.product_code ");
+            sql.append("left join `commodity_information` b on a.prod_code = b.prod_code ");
             sql.append(
                     toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
@@ -219,7 +219,7 @@ public class SalesInformationService extends BaseService<SalesInformation> {
         // 构建SELECT子句
         sql.append(selectGroupBy).append(" as `").append(groupBy).append("` ");
         sql.append("from `sales_information` a ");
-        sql.append("left join `commodity_information` b on a.product_code = b.prod_code ");
+        sql.append("left join `commodity_information` b on a.prod_code = b.prod_code ");
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         // 添加GROUP BY子句
         if (groupBy != null && !"".equals(groupBy)) {

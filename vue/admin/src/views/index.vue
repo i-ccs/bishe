@@ -5,7 +5,7 @@
 				<!-- Welcome Banner -->
 				<div class="premium-welcome">
 					<div class="welcome-text">
-						<h2>{{ greeting }}，{{ $store.state.user.nick_name || $store.state.user.user_name }}</h2>
+						<h2>{{ greeting }}，{{ $store.state.user.nick_name || $store.state.user.user_na }}</h2>
 						<p>欢迎回到供应链端电商管理系统。今天是 {{ currentDate }}，祝您生活愉快！</p>
 					</div>
 					<div class="welcome-img">
@@ -252,7 +252,7 @@
 				});
 			},
 			get_supply_category_data() {
-				this.$get("~/api/supply_information/list_group?groupby=commodity_category", null, (json) => {
+				this.$get("~/api/supply_information/list_group?groupby=comm_category", null, (json) => {
 					if (json.result) {
 						var data = json.result.list.map(o => {
 							return {
@@ -265,7 +265,7 @@
 				});
 			},
 			get_views_source_data() {
-				this.$get("~/api/views/list_group?groupby=source_table", null, (json) => {
+				this.$get("~/api/views/list_group?groupby=sou_table", null, (json) => {
 					if (json.result) {
 						var data = json.result.list.map(o => {
 							var name = o[1];

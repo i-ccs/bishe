@@ -31,9 +31,9 @@ public class PurchasingInformationController
     public Map<String, Object> add(HttpServletRequest request) throws IOException {
         Map<String, Object> paramMap = service.readBody(request.getReader());
         this.addMap(paramMap);
-        String sql = "SELECT MAX(purchasing_information_id) AS max FROM " + "`purchasing_information`";
+        String sql = "SELECT MAX(purch_inf_id) AS max FROM " + "`purchasing_information`";
         Integer max = service.selectBaseCount(sql);
-        sql = "UPDATE `commodity_information` INNER JOIN `purchasing_information` ON commodity_information.prod_code=purchasing_information.product_code SET commodity_information.prod_inven= commodity_information.prod_inven + purchasing_information.purchase_quantity WHERE purchasing_information.purchasing_information_id="
+        sql = "UPDATE `commodity_information` INNER JOIN `purchasing_information` ON commodity_information.prod_code=purchasing_information.prod_code SET commodity_information.prod_inven= commodity_information.prod_inven + purchasing_information.purch_quantity WHERE purchasing_information.purch_inf_id="
                 + max;
         service.updateBaseSql(sql);
         return success(1);

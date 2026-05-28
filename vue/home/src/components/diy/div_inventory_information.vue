@@ -145,27 +145,27 @@
 				itemList: [
 						{
 							title: "商品编码",
-							name: "product_code",
+							name: "prod_code",
 							type: "文本"
 						},
 						{
 							title: "商品名称",
-							name: "product_name",
+							name: "prod_name",
 							type: "文本"
 						},
 						{
 							title: "商品类别",
-							name: "product_category",
+							name: "prod_category",
 							type: "文本"
 						},
 						{
 							title: "商品品牌",
-							name: "product_brand",
+							name: "prod_brand",
 							type: "文本"
 						},
 						{
 							title: "商品库存",
-							name: "product_inventory",
+							name: "prod_invent",
 							type: "数字"
 						},
 						{
@@ -175,7 +175,7 @@
 						},
 						{
 							title: "核对数量",
-							name: "check_quantity",
+							name: "check_quant",
 							type: "数字"
 						},
 				],

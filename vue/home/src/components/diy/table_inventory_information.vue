@@ -6,12 +6,12 @@
           
                                                                                               <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="商品名称">
-                                                      <el-input v-model="query.product_name"></el-input>
+                                                      <el-input v-model="query.prod_name"></el-input>
                                                 </el-form-item>
                     </el-col>
                                                                       <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="商品类别">
-                                                      <el-input v-model="query.product_category"></el-input>
+                                                      <el-input v-model="query.prod_category"></el-input>
                                                 </el-form-item>
                     </el-col>
                                                                                                                                                                                                                                 </el-row>
@@ -29,22 +29,22 @@
 	    <el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" id="dataTable">
 	                <el-table-column fixed type="selection" tooltip-effect="dark" width="55">
             </el-table-column>
-                                                  <el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码"                                v-if="$check_field('get','product_code')" min-width="200">
+                                                  <el-table-column prop="prod_code" @sort-change="$sortChange" label="商品编码"                                v-if="$check_field('get','prod_code')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','product_name')" min-width="200">
+                                              <el-table-column prop="prod_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','prod_name')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','product_category')" min-width="200">
+                                              <el-table-column prop="prod_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','prod_category')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','product_brand')" min-width="200">
+                                              <el-table-column prop="prod_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','prod_brand')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_inventory" @sort-change="$sortChange" label="商品库存"                                v-if="$check_field('get','product_inventory')" min-width="200">
+                                              <el-table-column prop="prod_invent" @sort-change="$sortChange" label="商品库存"                                v-if="$check_field('get','prod_invent')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="check_date" @sort-change="$sortChange" label="核对日期"                                v-if="$check_field('get','check_date')" min-width="200">
                                       <template slot-scope="scope">
                       {{ $toTime(scope.row["check_date"],"yyyy-MM-dd") }}
                     </template>
                                 </el-table-column>
-                                              <el-table-column prop="check_quantity" @sort-change="$sortChange" label="核对数量"                                v-if="$check_field('get','check_quantity')" min-width="200">
+                                              <el-table-column prop="check_quant" @sort-change="$sortChange" label="核对数量"                                v-if="$check_field('get','check_quant')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="inventory" @sort-change="$sortChange" label="库存情况"                                v-if="$check_field('get','inventory')" min-width="200">
                                 </el-table-column>
@@ -124,13 +124,13 @@
         url_del: "~/api/inventory_information/del?",
 
         // 字段ID
-        field: "inventory_information_id",
+        field: "invent_info_id",
         // 查询
         query: {
           "size": 7,
           "page": 1,
-                                                                                                  "product_name": "",
-                                                                                                          "product_category": "",
+                                                                                                  "prod_name": "",
+                                                                                                          "prod_category": "",
                                                                                                                                                                                                                                       "login_time": "",
           "create_time": "",
           "orderby": `create_time desc`

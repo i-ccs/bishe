@@ -46,7 +46,7 @@ public class PurchasingInformationService extends BaseService<PurchasingInformat
         // 构建FROM和JOIN子句，关联采购信息表和商品信息表
         sql.append("from `purchasing_information` a ");
         sql.append(
-                "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                "left join `commodity_information` b on a.sour_table = 'commodity_information' and a.sour_id = b.comm_infor_id ");
         // 添加WHERE条件
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         // 添加GROUP BY子句用于分组（如果指定）
@@ -89,14 +89,14 @@ public class PurchasingInformationService extends BaseService<PurchasingInformat
         if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
             sql.append("COUNT(a.").append(config.get(FindConfig.GROUP_BY)).append(") FROM `purchasing_information` a ");
             sql.append(
-                    "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                    "left join `commodity_information` b on a.sour_table = 'commodity_information' and a.sour_id = b.comm_infor_id ");
             sql.append(
                     toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         } else {
             // 否则进行整体计数
             sql.append("COUNT(*) FROM `purchasing_information` a ");
             sql.append(
-                    "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                    "left join `commodity_information` b on a.sour_table = 'commodity_information' and a.sour_id = b.comm_infor_id ");
             sql.append(
                     toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
@@ -227,7 +227,7 @@ public class PurchasingInformationService extends BaseService<PurchasingInformat
         sql.append(selectGroupBy).append(" as `").append(groupBy).append("` ");
         sql.append("from `purchasing_information` a ");
         sql.append(
-                "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                "left join `commodity_information` b on a.sour_table = 'commodity_information' and a.sour_id = b.comm_infor_id ");
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         // 添加GROUP BY子句
         if (groupBy != null && !"".equals(groupBy)) {

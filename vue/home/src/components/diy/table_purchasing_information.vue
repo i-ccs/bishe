@@ -6,12 +6,12 @@
           
                                                                                               <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="商品名称">
-                                                      <el-input v-model="query.product_name"></el-input>
+                                                      <el-input v-model="query.prod_name"></el-input>
                                                 </el-form-item>
                     </el-col>
                                                                       <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="商品类别">
-                                                      <el-input v-model="query.product_category"></el-input>
+                                                      <el-input v-model="query.prod_category"></el-input>
                                                 </el-form-item>
                     </el-col>
                                                                                                                                                                                                                                                                                                                                                                                                 </el-row>
@@ -29,34 +29,34 @@
 	    <el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" id="dataTable">
 	                <el-table-column fixed type="selection" tooltip-effect="dark" width="55">
             </el-table-column>
-                                                  <el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码"                                v-if="$check_field('get','product_code')" min-width="200">
+                                                  <el-table-column prop="prod_code" @sort-change="$sortChange" label="商品编码"                                v-if="$check_field('get','prod_code')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','product_name')" min-width="200">
+                                              <el-table-column prop="prod_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','prod_name')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','product_category')" min-width="200">
+                                              <el-table-column prop="prod_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','prod_category')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','product_brand')" min-width="200">
+                                              <el-table-column prop="prod_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','prod_brand')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="commodity_specifications" @sort-change="$sortChange" label="商品规格"                                v-if="$check_field('get','commodity_specifications')" min-width="200">
+                                              <el-table-column prop="comm_spec" @sort-change="$sortChange" label="商品规格"                                v-if="$check_field('get','comm_spec')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="commodity_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','commodity_price')" min-width="200">
+                                              <el-table-column prop="comm_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','comm_price')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="purchase_order_number" @sort-change="$sortChange" label="采购单号"                                v-if="$check_field('get','purchase_order_number')" min-width="200">
+                                              <el-table-column prop="purch_order_number" @sort-change="$sortChange" label="采购单号"                                v-if="$check_field('get','purch_order_number')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称"                                v-if="$check_field('get','supplier_name')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="purchase_date" @sort-change="$sortChange" label="采购日期"                                v-if="$check_field('get','purchase_date')" min-width="200">
+                                              <el-table-column prop="purch_date" @sort-change="$sortChange" label="采购日期"                                v-if="$check_field('get','purch_date')" min-width="200">
                                       <template slot-scope="scope">
-                      {{ $toTime(scope.row["purchase_date"],"yyyy-MM-dd") }}
+                      {{ $toTime(scope.row["purch_date"],"yyyy-MM-dd") }}
                     </template>
                                 </el-table-column>
-                                              <el-table-column prop="purchase_quantity" @sort-change="$sortChange" label="采购数量"                                v-if="$check_field('get','purchase_quantity')" min-width="200">
+                                              <el-table-column prop="purch_quantity" @sort-change="$sortChange" label="采购数量"                                v-if="$check_field('get','purch_quantity')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="purchase_unit_price" @sort-change="$sortChange" label="采购单价"                                v-if="$check_field('get','purchase_unit_price')" min-width="200">
+                                              <el-table-column prop="purch_unit_price" @sort-change="$sortChange" label="采购单价"                                v-if="$check_field('get','purch_unit_price')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="total_purchase_price" @sort-change="$sortChange" label="采购总价"                                v-if="$check_field('get','total_purchase_price')" min-width="200">
+                                              <el-table-column prop="total_purch_price" @sort-change="$sortChange" label="采购总价"                                v-if="$check_field('get','total_purch_price')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="procurement_status" @sort-change="$sortChange" label="采购情况"                                v-if="$check_field('get','procurement_status')" min-width="200">
+                                              <el-table-column prop="procur_status" @sort-change="$sortChange" label="采购情况"                                v-if="$check_field('get','procur_status')" min-width="200">
                                 </el-table-column>
                     				        
         
@@ -134,13 +134,13 @@
         url_del: "~/api/purchasing_information/del?",
 
         // 字段ID
-        field: "purchasing_information_id",
+        field: "purch_inf_id",
         // 查询
         query: {
           "size": 7,
           "page": 1,
-                                                                                                  "product_name": "",
-                                                                                                          "product_category": "",
+                                                                                                  "prod_name": "",
+                                                                                                          "prod_category": "",
                                                                                                                                                                                                                                                                                                                                                                                   "login_time": "",
           "create_time": "",
           "orderby": `create_time desc`

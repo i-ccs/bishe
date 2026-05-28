@@ -5,14 +5,14 @@
 				<el-row :gutter="20">
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="供应商名称">
-							<el-input v-model="query.supplier_name" placeholder="请输入供应商名称" prefix-icon="el-icon-search"></el-input>
+							<el-input v-model="query.supplier_na" placeholder="请输入供应商名称" prefix-icon="el-icon-search"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品类别">
-							<el-select v-model="query.commodity_category" style="width: 100%">
+							<el-select v-model="query.comm_category" style="width: 100%">
 								<el-option value="">全部类别</el-option>
-								<el-option v-for="o in list_commodity_category" :key="o.product_category" :label="o.product_category" :value="o.product_category"></el-option>
+								<el-option v-for="o in list_comm_category" :key="o.prod_category" :label="o.prod_category" :value="o.prod_category"></el-option>
 							</el-select>
 						</el-form-item>
 					</el-col>
@@ -39,16 +39,16 @@
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
 				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
-				<el-table-column align="center" prop="supplier_name" label="供应商名称" v-if="$check_field('get','supplier_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="supplier_na" label="供应商名称" v-if="$check_field('get','supplier_na')" min-width="150"></el-table-column>
 				<el-table-column align="center" prop="suppliers_phone_number" label="联系电话" v-if="$check_field('get','suppliers_phone_number')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="commodity_category" label="主营类别" v-if="$check_field('get','commodity_category')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="comprehensive_evaluation" label="综合评价" v-if="$check_field('get','comprehensive_evaluation')" min-width="120">
+				<el-table-column align="center" prop="comm_category" label="主营类别" v-if="$check_field('get','comm_category')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="compreh_eva" label="综合评价" v-if="$check_field('get','compreh_eva')" min-width="120">
 					<template slot-scope="scope">
-						<el-rate v-if="!isNaN(parseFloat(scope.row.comprehensive_evaluation))" :value="parseFloat(scope.row.comprehensive_evaluation)" disabled text-color="#ff9900"></el-rate>
-						<span v-else>{{scope.row.comprehensive_evaluation}}</span>
+						<el-rate v-if="!isNaN(parseFloat(scope.row.compreh_eva))" :value="parseFloat(scope.row.compreh_eva)" disabled text-color="#ff9900"></el-rate>
+						<span v-else>{{scope.row.compreh_eva}}</span>
 					</template>
 				</el-table-column>
-				<el-table-column align="center" prop="supply_frequency" label="供应频率" v-if="$check_field('get','supply_frequency')" min-width="100"></el-table-column>
+				<el-table-column align="center" prop="supply_freq" label="供应频率" v-if="$check_field('get','supply_freq')" min-width="100"></el-table-column>
 				<!-- 合作状态列已移除 -->
 
 				<el-table-column align="center" fixed="right" label="操作" min-width="100">
@@ -77,21 +77,21 @@
 				showModal: false,
 				url_get_list: "~/api/supply_information/get_list?like=0",
 				url_del: "~/api/supply_information/del?",
-				field: "supply_information_id",
-				query: { "size": 7, "page": 1, "supplier_name": "", "commodity_category": "", "orderby": `create_time desc` },
+				field: "supply_infor_id",
+				query: { "size": 7, "page": 1, "supplier_na": "", "comm_category": "", "orderby": `create_time desc` },
 				list: [],
-				list_commodity_category: [],
+				list_comm_category: [],
 				message: '',
 			}
 		},
 		methods: {
 			closeModal(){ this.showModal = false; },
-			async get_list_commodity_category() {
+			async get_list_comm_category() {
 				var json = await this.$get("~/api/commodity_information/get_list?");
-				if(json.result){ this.list_commodity_category = json.result.list; }
+				if(json.result){ this.list_comm_category = json.result.list; }
 			},
 		},
-		created() { this.get_list_commodity_category(); }
+		created() { this.get_list_comm_category(); }
 	}
 </script>
 

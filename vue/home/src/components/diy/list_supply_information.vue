@@ -3,7 +3,7 @@
 		<!-- 列表 -->
 		<div class="diy_view_list list list-x">
 					<router-link class="diy_card goods diy_list_box_wrap" v-for="(o, i) in list" :key="i"
-				:to="'/supply_information/details?supply_information_id=' + o['supply_information_id']">
+				:to="'/supply_information/details?supply_infor_id=' + o['supply_infor_id']">
 										<!-- 图片 -->
 				<div class="diy_list_img_box" v-if="imgList.length" >
 					<div class="diy_row" v-for="(item,index) in imgList" :key="item+index" v-show="$check_field('get',item.name,'/supply_information/details') && +item.is_img_list">
@@ -51,7 +51,7 @@
                 <div class="slider" ref="slider">
 				                <div  v-for="(o, i) in list" :key="i" class="slide" >
 				                    
-                    <router-link :to="'/supply_information/details?supply_information_id=' + o['supply_information_id']" class="lis_cont">
+                    <router-link :to="'/supply_information/details?supply_infor_id=' + o['supply_infor_id']" class="lis_cont">
 						                        <div class="diy_list_img_box" v-if="imgList.length" >
     					        <div class="diy_row" v-for="(item, index) in imgList" :key="item + index" v-show="$check_field('get',item.name,'/supply_information/details') && +item.is_img_list">
     						<div class="diy_title diy_list_img_title">
@@ -118,7 +118,7 @@
 						itemList: [
 								{
 									title: "供应商名称",
-									name: "supplier_name",
+									name: "supplier_na",
 									type: "文本",
 									is_img_list: "0"
 								},
@@ -130,19 +130,19 @@
 								},
 								{
 									title: "商品类别",
-									name: "commodity_category",
+									name: "comm_category",
 									type: "下寻",
 									is_img_list: "0"
 								},
 								{
 									title: "综合评价",
-									name: "comprehensive_evaluation",
+									name: "compreh_eva",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "供应频率",
-									name: "supply_frequency",
+									name: "supply_freq",
 									type: "文本",
 									is_img_list: "0"
 								},
@@ -160,7 +160,7 @@
 								},
 								{
 									title: "合作情况",
-									name: "cooperation_situation",
+									name: "cooperation_situ",
 									type: "多文本"
 								},
 						],
@@ -262,7 +262,7 @@
 
 			},
 			to_detail(v){
-				this.$router.push("/supply_information/details?supply_information_id="+v.supply_information_id)
+				this.$router.push("/supply_information/details?supply_infor_id="+v.supply_infor_id)
 			},
 			get_user_name(name,id){
 				var obj = null;

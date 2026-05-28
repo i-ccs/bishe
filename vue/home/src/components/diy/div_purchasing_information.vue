@@ -145,37 +145,37 @@
 				itemList: [
 						{
 							title: "商品编码",
-							name: "product_code",
+							name: "prod_code",
 							type: "文本"
 						},
 						{
 							title: "商品名称",
-							name: "product_name",
+							name: "prod_name",
 							type: "文本"
 						},
 						{
 							title: "商品类别",
-							name: "product_category",
+							name: "prod_category",
 							type: "文本"
 						},
 						{
 							title: "商品品牌",
-							name: "product_brand",
+							name: "prod_brand",
 							type: "文本"
 						},
 						{
 							title: "商品规格",
-							name: "commodity_specifications",
+							name: "comm_spec",
 							type: "文本"
 						},
 						{
 							title: "商品价格",
-							name: "commodity_price",
+							name: "comm_price",
 							type: "数字"
 						},
 						{
 							title: "采购单号",
-							name: "purchase_order_number",
+							name: "purch_order_number",
 							type: "文本"
 						},
 						{
@@ -185,29 +185,29 @@
 						},
 						{
 							title: "采购日期",
-							name: "purchase_date",
+							name: "purch_date",
 							type: "日后"
 						},
 						{
 							title: "采购数量",
-							name: "purchase_quantity",
+							name: "purch_quantity",
 							type: "数字"
 						},
 						{
 							title: "采购单价",
-							name: "purchase_unit_price",
+							name: "purch_unit_price",
 							type: "数字"
 						},
 						{
 							title: "采购总价",
-							name: "total_purchase_price",
+							name: "total_purch_price",
 							type: "数字"
 						},
 				],
 				richList: [
 						{
 							title: "采购情况",
-							name: "procurement_status",
+							name: "procur_status",
 							type: "多文本"
 						},
 				],

@@ -88,24 +88,24 @@
 			return{
 				url_get_obj: "~/api/commodity_information/get_obj?",
 
-				field: "commodity_information_id",
+				field: "comm_infor_id",
 
 				obj: {
 					"praise_len": 0,
 				},
 
 				query: {
-						"product_code": "",
-							"product_name": "",
-							"product_category": "",
-							"product_brand": "",
-							"commodity_specifications": "",
-							"product_inventory": 0,
-							"product_images": "",
-							"commodity_price": 0,
-							"product_introduction": "",
+						"prod_code": "",
+							"prod_name": "",
+							"prod_category": "",
+							"prod_brand": "",
+							"comm_spec": "",
+							"prod_inven": 0,
+							"prod_ima": "",
+							"comm_price": 0,
+							"prod_intro": "",
 							"product_details": "",
-						"commodity_information_id":0,
+						"comm_infor_id":0,
 				},
 				// 点赞
 				praise: 0,
@@ -116,7 +116,7 @@
 				list_comment: [],
 				form_comment: {
 					source_table: "commodity_information",
-					source_field: "commodity_information_id",
+					source_field: "comm_infor_id",
 					source_id: 0,
 					reply_to_id: 0,
 				},
@@ -130,15 +130,15 @@
 			add_views(obj) {
 				obj["views"] = obj["views"] + 1;
 				var views = obj["views"];
-				this.$post('~/api/commodity_information/set?commodity_information_id=' + obj["commodity_information_id"], {
+				this.$post('~/api/commodity_information/set?comm_infor_id=' + obj["comm_infor_id"], {
 					views
 				}, (res) => {
 					if(res.result){
 						console.log("添加访问量状态：" ,res.result);
 						var body = {
 							source_table: "commodity_information",
-							source_field: "commodity_information_id",
-							source_id: this.obj.commodity_information_id,
+							source_field: "comm_infor_id",
+							source_id: this.obj.comm_infor_id,
 							user_id: this.$store.state.user.user_id,
 						};
 						this.$post("~/api/views/add?", body, (res) => {
@@ -163,7 +163,7 @@
 					// 初始化收藏状态
 					this.get_collect(obj);
 					this.get_comment(obj);
-					this.form_comment.source_id = this.obj.commodity_information_id;
+					this.form_comment.source_id = this.obj.comm_infor_id;
 														}
 			},
 													/**
@@ -175,8 +175,8 @@
 
 				var query = {
 					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: obj["commodity_information_id"],
+					source_field: "comm_infor_id",
+					source_id: obj["comm_infor_id"],
 					user_id
 				};
 
@@ -207,8 +207,8 @@
 
 				var query = {
 					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: this.obj["commodity_information_id"],
+					source_field: "comm_infor_id",
+					source_id: this.obj["comm_infor_id"],
 					user_id
 				};
 
@@ -218,7 +218,7 @@
 					this.$get('~/api/collect/del?', query, (res) => {
 						if(res.result){
 							var collect = _this.obj.collect-1
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/commodity_information/set?comm_infor_id=' + _this.obj["comm_infor_id"], {
 								collect
 							}, (res) => {
 								if(res.result){
@@ -237,12 +237,12 @@
 					});
 				} else {
 					this.state_collect = true;
-													query.title = this.obj.product_name
-																																		query.img = this.obj.product_images
+													query.title = this.obj.prod_name
+																																		query.img = this.obj.prod_ima
 																							this.$post('~/api/collect/add?', query, (res) => {
 						if (res.result) {
 							var collect = _this.obj.collect+1
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/commodity_information/set?comm_infor_id=' + _this.obj["comm_infor_id"], {
 								collect
 							}, (res) => {
 								if(res.result){
@@ -270,8 +270,8 @@
 
 				this.$get("~/api/praise/count?", {
 					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: obj["commodity_information_id"]
+					source_field: "comm_infor_id",
+					source_id: obj["comm_infor_id"]
 				}, (res) => {
 					if (res.result || res.result === 0) {
 						this.praise = res.result;
@@ -285,8 +285,8 @@
 
 				this.$get("~/api/praise/count?", {
 					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: obj["commodity_information_id"],
+					source_field: "comm_infor_id",
+					source_id: obj["comm_infor_id"],
 					user_id
 				}, (res) => {
 					if (res.result || res.result === 0) {
@@ -308,8 +308,8 @@
 
 				var query = {
 					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: this.obj["commodity_information_id"],
+					source_field: "comm_infor_id",
+					source_id: this.obj["comm_infor_id"],
 					user_id
 				};
 
@@ -321,7 +321,7 @@
 					this.$get('~/api/praise/del?', query, (res) => {
 						if(res.result){
 							var praise_len = _this.obj.praise_len-1
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/commodity_information/set?comm_infor_id=' + _this.obj["comm_infor_id"], {
 								praise_len
 							}, (res) => {
 								if(res.result){
@@ -343,7 +343,7 @@
 					this.$post('~/api/praise/add?', query, (res) => {
 						if (res.result) {
 							var praise_len = _this.obj.praise_len+1
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/commodity_information/set?comm_infor_id=' + _this.obj["comm_infor_id"], {
 								praise_len
 							}, (res) => {
 								if(res.result){
@@ -396,8 +396,8 @@
 						"~/api/comment/get_list?",
 						{
 							source_table: "commodity_information",
-							source_field: "commodity_information_id",
-							source_id: this.obj["commodity_information_id"],
+							source_field: "comm_infor_id",
+							source_id: this.obj["comm_infor_id"],
 							page,
 							size,
 							reply_to_id: "0",
@@ -429,8 +429,8 @@
 								"~/api/comment/get_list?",
 								{
 									source_table: "commodity_information",
-									source_field: "commodity_information_id",
-									source_id: this.obj["commodity_information_id"],
+									source_field: "comm_infor_id",
+									source_id: this.obj["comm_infor_id"],
 									orderby: "create_time desc",
 									reply_to_id: obj.comment_id,
 								},

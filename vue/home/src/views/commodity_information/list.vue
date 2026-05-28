@@ -15,8 +15,8 @@
 						<!-- 搜索栏 -->
 						<div class="view Search">
 							<span class="diy_list_search_title">关键字搜索：</span>
-																																												<b-form-input size="sm" class="mr-sm-2" placeholder="商品名称搜索" v-model="query['product_name']" />
-																																														<b-form-input size="sm" class="mr-sm-2" placeholder="商品类别搜索" v-model="query['product_category']" />
+																																												<b-form-input size="sm" class="mr-sm-2" placeholder="商品名称搜索" v-model="query['prod_name']" />
+																																																	<b-form-input size="sm" class="mr-sm-2" placeholder="商品类别搜索" v-model="query['prod_category']" />
 																																																																																																																													<b-button size="sm" @click="search()" >
 								<b-icon icon="search"/>
 							</b-button>
@@ -93,8 +93,8 @@
 					keyword: "",
 					page: 1,
 					size: 12,
-									"product_name": "", // 商品名称
-											"product_category": "", // 商品类别
+									"prod_name": "", // 商品名称
+															"prod_category": "", // 商品类别
 														},
 				// 排序内容
 				list_sort: [{
@@ -147,8 +147,8 @@
 			 * 重置
 			 */
 			reset() {
-								this.query.product_name = ""
-										this.query.product_category = ""
+								this.query.prod_name = ""
+											this.query.prod_category = ""
 														this.search();
 			},
 

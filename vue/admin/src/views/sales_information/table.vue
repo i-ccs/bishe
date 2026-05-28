@@ -5,12 +5,12 @@
 				<el-row :gutter="20">
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品名称">
-							<el-input v-model="query.product_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
+							<el-input v-model="query.prod_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品类别">
-							<el-input v-model="query.product_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
+							<el-input v-model="query.prod_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
@@ -45,12 +45,12 @@
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" stripe>
 				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
-				<el-table-column align="center" prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="140"></el-table-column>
-				<el-table-column align="center" prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
-				<el-table-column align="center" prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="100"></el-table-column>
-				<el-table-column align="center" prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="100"></el-table-column>
-				<el-table-column align="center" prop="commodity_price" label="商品价格" v-if="$check_field('get','commodity_price')" min-width="100">
-					<template slot-scope="scope">¥ {{scope.row.commodity_price}}</template>
+				<el-table-column align="center" prop="prod_code" label="商品编码" v-if="$check_field('get','prod_code')" min-width="140"></el-table-column>
+				<el-table-column align="center" prop="prod_name" label="商品名称" v-if="$check_field('get','prod_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="prod_category" label="商品类别" v-if="$check_field('get','prod_category')" min-width="100"></el-table-column>
+				<el-table-column align="center" prop="prod_brand" label="商品品牌" v-if="$check_field('get','prod_brand')" min-width="100"></el-table-column>
+				<el-table-column align="center" prop="comm_price" label="商品价格" v-if="$check_field('get','comm_price')" min-width="100">
+					<template slot-scope="scope">¥ {{scope.row.comm_price}}</template>
 				</el-table-column>
 				<el-table-column align="center" prop="sales_order_number" label="销售单号" v-if="$check_field('get','sales_order_number')" min-width="150"></el-table-column>
 				<el-table-column align="center" prop="registered_user" label="下单用户" v-if="$check_field('get','registered_user')" min-width="140">
@@ -126,12 +126,12 @@
 				showModal: false,
 				url_get_list: "~/api/sales_information/get_list?like=0",
 				url_del: "~/api/sales_information/del?",
-				field: "sales_information_id",
+				field: "sales_infor_id",
 				query: {
 					"size": 7,
 					"page": 1,
-					"product_name": "",
-					"product_category": "",
+					"prod_name": "",
+					"prod_category": "",
 					"pay_state":"",
 					"orderby": `create_time desc`
 				},
@@ -163,10 +163,10 @@
 			},
 			get_user_registered_user(id){
 				var obj = this.list_user_registered_user.getObj({"user_id":id});
-				return obj ? (obj.nick_name + " (" + obj.user_name + ")") : id;
+				return obj ? (obj.nick_name + " (" + obj.user_na + ")") : id;
 			},
 			openPayModal(v){
-				this.pay_obj.id = v.sales_information_id
+				this.pay_obj.id = v.sales_infor_id
 				this.payModalVisible = true
 			},
 			submitPay(){
@@ -176,7 +176,7 @@
 						return _this.$toast("请完善支付信息", 'danger');
 					}
 				}
-				let url = this.$toUrl(this.query, "~/api/sales_information/set?sales_information_id="+this.pay_obj.id);
+				let url = this.$toUrl(this.query, "~/api/sales_information/set?sales_infor_id="+this.pay_obj.id);
 				let param = {"pay_state":"已支付","pay_type":this.pay_obj.payActiveName}
 				this.$post(url, param, function(json, status) {
 					if (json.result) {

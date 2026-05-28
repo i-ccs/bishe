@@ -5,12 +5,12 @@
 				<el-row :gutter="20">
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品名称">
-							<el-input v-model="query.product_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
+								<el-input v-model="query.prod_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品类别">
-							<el-input v-model="query.product_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
+								<el-input v-model="query.prod_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="24" :lg="6">
@@ -36,26 +36,26 @@
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
 				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
-				<el-table-column align="center" prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
-				<el-table-column align="center" prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="product_inventory" label="商品库存" v-if="$check_field('get','product_inventory')" min-width="100">
+				<el-table-column align="center" prop="prod_code" label="商品编码" v-if="$check_field('get','prod_code')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="prod_name" label="商品名称" v-if="$check_field('get','prod_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="prod_category" label="商品类别" v-if="$check_field('get','prod_category')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="prod_brand" label="商品品牌" v-if="$check_field('get','prod_brand')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="prod_inven" label="商品库存" v-if="$check_field('get','prod_inven')" min-width="100">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.product_inventory < 10 ? 'danger' : 'success'">
-							{{scope.row.product_inventory}} <span v-if="scope.row.product_inventory < 10"> (库存不足)</span>
+						<el-tag :type="scope.row.prod_inven < 10 ? 'danger' : 'success'">
+							{{scope.row.prod_inven}} <span v-if="scope.row.prod_inven < 10"> (库存不足)</span>
 						</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column align="center" prop="product_images" label="商品图片" v-if="$check_field('get','product_images')" width="120">
+				<el-table-column align="center" prop="prod_ima" label="商品图片" v-if="$check_field('get','prod_ima')" width="120">
 					<template slot-scope="scope">
-						<el-image style="width: 60px; height: 60px; border-radius: 8px;" :src="$fullUrl(scope.row['product_images'])" :preview-src-list="[$fullUrl(scope.row['product_images'])]">
+						<el-image style="width: 60px; height: 60px; border-radius: 8px;" :src="$fullUrl(scope.row['prod_ima'])" :preview-src-list="[$fullUrl(scope.row['prod_ima'])]">
 							<div slot="error" class="image-slot"><i class="el-icon-picture-outline" style="font-size: 30px; color: #ccc;"></i></div>
 						</el-image>
 					</template>
 				</el-table-column>
-				<el-table-column align="center" prop="commodity_price" label="商品价格" v-if="$check_field('get','commodity_price')" min-width="100">
-					<template slot-scope="scope"><span style="color: #f56c6c; font-weight: 600;">¥ {{scope.row.commodity_price}}</span></template>
+				<el-table-column align="center" prop="comm_price" label="商品价格" v-if="$check_field('get','comm_price')" min-width="100">
+					<template slot-scope="scope"><span style="color: #f56c6c; font-weight: 600;">¥ {{scope.row.comm_price}}</span></template>
 				</el-table-column>
 				<el-table-column align="center" prop="create_time" label="创建时间" min-width="160">
 					<template slot-scope="scope">{{ $toTime(scope.row["create_time"],"yyyy-MM-dd hh:mm") }}</template>
@@ -93,12 +93,12 @@
 				showModal: false,
 				url_get_list: "~/api/commodity_information/get_list?like=0",
 				url_del: "~/api/commodity_information/del?",
-				field: "commodity_information_id",
+				field: "comm_infor_id",
 				query: {
 					"size": 7,
 					"page": 1,
-					"product_name": "",
-					"product_category": "",
+					"prod_name": "",
+					"prod_category": "",
 					"orderby": `create_time desc`
 				},
 				list: [],
@@ -111,13 +111,13 @@
 				let _this = this
 				let hasWarning = false;
 				_this.list.map((item) => {
-					if (item.product_inventory < 10) {
+					if (item.prod_inven < 10) {
 						hasWarning = true;
 					}
 					let param = {
-						source_table: "commodity_information",
-						source_id: item.commodity_information_id,
-						source_user_id: _this.user.user_id
+						sou_table: "commodity_information",
+						sou_id: item.comm_infor_id,
+						sou_user_id: _this.user.user_id
 					};
 					// 销售限制逻辑
 					if(item.sales_information_limit_times > 0){
@@ -128,9 +128,9 @@
 						})
 					}
 					// 采购限制逻辑
-					if(item.purchasing_information_limit_times > 0){
+					if(item.purchasing_informtion_limit_times > 0){
 						_this.$get("~/api/purchasing_information/count?",param,(result)=>{
-							if(result){ _this.$set(item,'purchasing_information_limit', result.result >= item.purchasing_information_limit_times); }
+							if(result){ _this.$set(item,'purchasing_information_limit', result.result >= item.purchasing_informtion_limit_times); }
 						})
 					}
 					// 库存限制逻辑

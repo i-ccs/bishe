@@ -3,7 +3,7 @@
 		<!-- 列表 -->
 		<div class="diy_view_list list list-x">
 					<router-link class="diy_card goods diy_list_box_wrap" v-for="(o, i) in list" :key="i"
-				:to="'/inventory_information/details?inventory_information_id=' + o['inventory_information_id']">
+				:to="'/inventory_information/details?invent_info_id=' + o['invent_info_id']">
 										<!-- 图片 -->
 				<div class="diy_list_img_box" v-if="imgList.length" >
 					<div class="diy_row" v-for="(item,index) in imgList" :key="item+index" v-show="$check_field('get',item.name,'/inventory_information/details') && +item.is_img_list">
@@ -51,7 +51,7 @@
                 <div class="slider" ref="slider">
 				                <div  v-for="(o, i) in list" :key="i" class="slide" >
 				                    
-                    <router-link :to="'/inventory_information/details?inventory_information_id=' + o['inventory_information_id']" class="lis_cont">
+                    <router-link :to="'/inventory_information/details?invent_info_id=' + o['invent_info_id']" class="lis_cont">
 						                        <div class="diy_list_img_box" v-if="imgList.length" >
     					        <div class="diy_row" v-for="(item, index) in imgList" :key="item + index" v-show="$check_field('get',item.name,'/inventory_information/details') && +item.is_img_list">
     						<div class="diy_title diy_list_img_title">
@@ -118,31 +118,31 @@
 						itemList: [
 								{
 									title: "商品编码",
-									name: "product_code",
+									name: "prod_code",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品名称",
-									name: "product_name",
+									name: "prod_name",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品类别",
-									name: "product_category",
+									name: "prod_category",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品品牌",
-									name: "product_brand",
+									name: "prod_brand",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品库存",
-									name: "product_inventory",
+									name: "prod_inventory",
 									type: "数字",
 									is_img_list: "0"
 								},
@@ -154,7 +154,7 @@
 								},
 								{
 									title: "核对数量",
-									name: "check_quantity",
+									name: "check_quant",
 									type: "数字",
 									is_img_list: "0"
 								},
@@ -264,7 +264,7 @@
 
 			},
 			to_detail(v){
-				this.$router.push("/inventory_information/details?inventory_information_id="+v.inventory_information_id)
+				this.$router.push("/inventory_information/details?invent_info_id="+v.invent_info_id)
 			},
 			get_user_name(name,id){
 				var obj = null;

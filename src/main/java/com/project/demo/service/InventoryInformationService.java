@@ -43,10 +43,10 @@ public class InventoryInformationService extends BaseService<InventoryInformatio
         sql.append(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD))
                 ? "a.*, b.prod_name as product_name, b.prod_category as product_category, b.prod_brand as product_brand"
                 : config.get(FindConfig.FIELD)).append(" ");
-        // 构建FROM和JOIN子句，关联库存信息表和商品信息表
+        // 构建FROM and JOIN子句，关联库存信息表和商品信息表
         sql.append("from `inventory_information` a ");
         sql.append(
-                "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                "left join `commodity_information` b on a.sou_table = 'commodity_information' and a.sou_id = b.comm_infor_id ");
         // 添加WHERE条件
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         // 添加GROUP BY子句（如果指定）
@@ -89,14 +89,14 @@ public class InventoryInformationService extends BaseService<InventoryInformatio
         if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
             sql.append("COUNT(a.").append(config.get(FindConfig.GROUP_BY)).append(") FROM `inventory_information` a ");
             sql.append(
-                    "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                    "left join `commodity_information` b on a.sou_table = 'commodity_information' and a.sou_id = b.comm_infor_id ");
             sql.append(
                     toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         } else {
             // 否则进行整体计数
             sql.append("COUNT(*) FROM `inventory_information` a ");
             sql.append(
-                    "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                    "left join `commodity_information` b on a.sou_table = 'commodity_information' and a.sou_id = b.comm_infor_id ");
             sql.append(
                     toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         }
@@ -222,7 +222,7 @@ public class InventoryInformationService extends BaseService<InventoryInformatio
         sql.append(selectGroupBy).append(" as `").append(groupBy).append("` ");
         sql.append("from `inventory_information` a ");
         sql.append(
-                "left join `commodity_information` b on a.source_table = 'commodity_information' and a.source_id = b.commodity_information_id ");
+                "left join `commodity_information` b on a.sou_table = 'commodity_information' and a.sou_id = b.comm_infor_id ");
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         // 添加GROUP BY子句
         if (groupBy != null && !"".equals(groupBy)) {

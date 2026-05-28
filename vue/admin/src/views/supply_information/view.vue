@@ -9,11 +9,11 @@
 			<el-form ref="form" :model="form" status-icon label-width="120px" label-position="top">
 				<div class="premium-section-title">供应商档案</div>
 				<el-row :gutter="20">
-					<el-col v-if="can_show_field('supplier_name')" :xs="24" :sm="12" :lg="8">
-						<el-form-item label="供应商名称" prop="supplier_name">
-							<el-input id="supplier_name" v-model="form['supplier_name']" placeholder="请输入单位全称" prefix-icon="el-icon-office-building"
-								v-if="can_edit_field('supplier_name')" :disabled="disabledObj['supplier_name_isDisabled']"></el-input>
-							<div v-else class="premium-readonly-field">{{form['supplier_name']}}</div>
+					<el-col v-if="can_show_field('supplier_na')" :xs="24" :sm="12" :lg="8">
+						<el-form-item label="供应商名称" prop="supplier_na">
+							<el-input id="supplier_na" v-model="form['supplier_na']" placeholder="请输入单位全称" prefix-icon="el-icon-office-building"
+								v-if="can_edit_field('supplier_na')" :disabled="disabledObj['supplier_na_isDisabled']"></el-input>
+							<div v-else class="premium-readonly-field">{{form['supplier_na']}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="can_show_field('suppliers_phone_number')" :xs="24" :sm="12" :lg="8">
@@ -23,29 +23,29 @@
 							<div v-else class="premium-readonly-field">{{form['suppliers_phone_number']}}</div>
 						</el-form-item>
 					</el-col>
-					<el-col v-if="can_show_field('commodity_category')" :xs="24" :sm="12" :lg="8">
-						<el-form-item label="主营类别" prop="commodity_category">
-							<el-select id="commodity_category" v-model="form['commodity_category']" style="width: 100%" v-if="can_edit_field('commodity_category')">
-								<el-option v-for="o in list_commodity_category" :key="o['product_category']" :label="o['product_category']" :value="o['product_category']"></el-option>
+					<el-col v-if="can_show_field('comm_category')" :xs="24" :sm="12" :lg="8">
+						<el-form-item label="主营类别" prop="comm_category">
+							<el-select id="comm_category" v-model="form['comm_category']" style="width: 100%" v-if="can_edit_field('comm_category')">
+								<el-option v-for="o in list_comm_category" :key="o['prod_category']" :label="o['prod_category']" :value="o['prod_category']"></el-option>
 							</el-select>
-							<div v-else class="premium-readonly-field">{{form['commodity_category']}}</div>
+							<div v-else class="premium-readonly-field">{{form['comm_category']}}</div>
 						</el-form-item>
 					</el-col>
 				</el-row>
 
 				<el-row :gutter="20">
-					<el-col v-if="can_show_field('supply_frequency')" :xs="24" :sm="12" :lg="8">
-						<el-form-item label="供应频率" prop="supply_frequency">
-							<el-input id="supply_frequency" v-model="form['supply_frequency']" placeholder="例：每周2次 / 按需" prefix-icon="el-icon-refresh"
-								v-if="can_edit_field('supply_frequency')" :disabled="disabledObj['supply_frequency_isDisabled']"></el-input>
-							<div v-else class="premium-readonly-field">{{form['supply_frequency']}}</div>
+					<el-col v-if="can_show_field('supply_freq')" :xs="24" :sm="12" :lg="8">
+						<el-form-item label="供应频率" prop="supply_freq">
+							<el-input id="supply_freq" v-model="form['supply_freq']" placeholder="例：每周2次 / 按需" prefix-icon="el-icon-refresh"
+								v-if="can_edit_field('supply_freq')" :disabled="disabledObj['supply_freq_isDisabled']"></el-input>
+							<div v-else class="premium-readonly-field">{{form['supply_freq']}}</div>
 						</el-form-item>
 					</el-col>
-					<el-col v-if="can_show_field('comprehensive_evaluation')" :xs="24" :sm="12" :lg="8">
-						<el-form-item label="综合评价" prop="comprehensive_evaluation">
-							<el-input id="comprehensive_evaluation" v-model="form['comprehensive_evaluation']" placeholder="请输入简短评价" prefix-icon="el-icon-star-off"
-								v-if="can_edit_field('comprehensive_evaluation')" :disabled="disabledObj['comprehensive_evaluation_isDisabled']"></el-input>
-							<div v-else class="premium-readonly-field">{{form['comprehensive_evaluation']}}</div>
+					<el-col v-if="can_show_field('compreh_eva')" :xs="24" :sm="12" :lg="8">
+						<el-form-item label="综合评价" prop="compreh_eva">
+							<el-input id="compreh_eva" v-model="form['compreh_eva']" placeholder="请输入简短评价" prefix-icon="el-icon-star-off"
+								v-if="can_edit_field('compreh_eva')" :disabled="disabledObj['compreh_eva_isDisabled']"></el-input>
+							<div v-else class="premium-readonly-field">{{form['compreh_eva']}}</div>
 						</el-form-item>
 					</el-col>
 				</el-row>
@@ -66,11 +66,11 @@
 							<div v-else class="premium-readonly-field" style="min-height: 60px;">{{form['product_quality']}}</div>
 						</el-form-item>
 					</el-col>
-					<el-col v-if="can_show_field('cooperation_situation')" :xs="24" :sm="24" :lg="24">
-						<el-form-item label="历史合作备注" prop="cooperation_situation">
-							<el-input type="textarea" :rows="3" id="cooperation_situation" v-model="form['cooperation_situation']" placeholder="记录过往合作中的亮点或问题..."
-								v-if="can_edit_field('cooperation_situation')" :disabled="disabledObj['cooperation_situation_isDisabled']"></el-input>
-							<div v-else class="premium-readonly-field" style="min-height: 60px;">{{form['cooperation_situation']}}</div>
+					<el-col v-if="can_show_field('cooperation_situ')" :xs="24" :sm="24" :lg="24">
+						<el-form-item label="历史合作备注" prop="cooperation_situ">
+							<el-input type="textarea" :rows="3" id="cooperation_situ" v-model="form['cooperation_situ']" placeholder="记录过往合作中的亮点或问题..."
+								v-if="can_edit_field('cooperation_situ')" :disabled="disabledObj['cooperation_situ_isDisabled']"></el-input>
+							<div v-else class="premium-readonly-field" style="min-height: 60px;">{{form['cooperation_situ']}}</div>
 						</el-form-item>
 					</el-col>
 				</el-row>
@@ -93,34 +93,34 @@
 		mixins: [mixin],
 		data() {
 			return {
-				field: "supply_information_id",
+				field: "supply_infor_id",
 				url_add: "~/api/supply_information/add?",
 				url_set: "~/api/supply_information/set?",
 				url_get_obj: "~/api/supply_information/get_obj?",
 				url_upload: "~/api/supply_information/upload?",
-				query: { "supply_information_id": 0 },
+				query: { "supply_infor_id": 0 },
 				form: {
-					"supplier_name":  '', // 供应商名称
+					"supplier_na":  '', // 供应商名称
 					"suppliers_phone_number":  '', // 供应商电话
-					"commodity_category":  '', // 商品类别
-					"comprehensive_evaluation":  '', // 综合评价
-					"supply_frequency":  '', // 供应频率
+					"comm_category":  '', // 商品类别
+					"compreh_eva":  '', // 综合评价
+					"supply_freq":  '', // 供应频率
 					"supply_products":  '', // 供应产品
 					"product_quality":  '', // 产品质量
-					"cooperation_situation":  '', // 合作情况
-					"supply_information_id": 0, // ID
+					"cooperation_situ":  '', // 合作情况
+					"supply_infor_id": 0, // ID
 				},
 				disabledObj:{
-					"supplier_name_isDisabled": false,
+					"supplier_na_isDisabled": false,
 					"suppliers_phone_number_isDisabled": false,
-					"commodity_category_isDisabled": false,
-					"comprehensive_evaluation_isDisabled": false,
-					"supply_frequency_isDisabled": false,
+					"comm_category_isDisabled": false,
+					"compreh_eva_isDisabled": false,
+					"supply_freq_isDisabled": false,
 					"supply_products_isDisabled": false,
 					"product_quality_isDisabled": false,
-					"cooperation_situation_isDisabled": false,
+					"cooperation_situ_isDisabled": false,
 				},
-				list_commodity_category: [""],
+				list_comm_category: [""],
 			}
 		},
 		methods: {
@@ -130,15 +130,15 @@
 					|| this.$check_action('/supply_information/view','add') || this.$check_action('/supply_information/view','set') || this.$check_action('/supply_information/view','get');
 			},
 			can_edit_field(field_name){
-				if(this.form['supply_information_id']){
+				if(this.form['supply_infor_id']){
 					return this.$check_field('set', field_name) || this.$check_action('/supply_information/table','set') || this.$check_action('/supply_information/view','set');
 				}
 				return this.$check_field('add', field_name) || this.$check_action('/supply_information/table','add') || this.$check_action('/supply_information/view','add');
 			},
-			async get_list_commodity_category() {
+			async get_list_comm_category() {
 				var json = await this.$get("~/api/commodity_information/get_list?");
 				if(json.result && json.result.list){
-					this.list_commodity_category = json.result.list;
+					this.list_comm_category = json.result.list;
 				}
 				else if(json.error){
 					console.error(json.error);
@@ -162,7 +162,7 @@
 				console.log('开始验证供应商数据:', param);
 				
 				// 验证供应商名称
-				if (!param.supplier_name || param.supplier_name.trim() === '') {
+				if (!param.supplier_na || param.supplier_na.trim() === '') {
 					console.log('验证失败：供应商名称为空');
 					return '供应商名称不能为空';
 				}
@@ -181,13 +181,13 @@
 				}
 				
 				// 验证主营类别不能为空
-				if (!param.commodity_category || param.commodity_category.trim() === '') {
+				if (!param.comm_category || param.comm_category.trim() === '') {
 					console.log('验证失败：主营类别为空');
 					return '主营类别不能为空';
 				}
 				
 				// 验证供应频率
-				if (!param.supply_frequency || param.supply_frequency.trim() === '') {
+				if (!param.supply_freq || param.supply_freq.trim() === '') {
 					console.log('验证失败：供应频率为空');
 					return '供应频率不能为空';
 				}
@@ -207,7 +207,7 @@
 			uploadimg(param) { this.uploadFile(param.file, "avatar"); },
 		},
 		created() {
-			this.get_list_commodity_category();
+			this.get_list_comm_category();
 		},
 	}
 </script>

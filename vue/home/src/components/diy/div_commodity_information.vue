@@ -164,51 +164,51 @@
 				imgList: [
 						{
 							title: "商品图片",
-							name: "product_images",
+							name: "prod_ima",
 							type: "图片"
 						},
 				],
 				itemList: [
 						{
 							title: "商品编码",
-							name: "product_code",
+							name: "prod_code",
 							type: "文本"
 						},
 						{
 							title: "商品名称",
-							name: "product_name",
+							name: "prod_name",
 							type: "文本"
 						},
 						{
 							title: "商品类别",
-							name: "product_category",
+							name: "prod_category",
 							type: "文本"
 						},
 						{
 							title: "商品品牌",
-							name: "product_brand",
+							name: "prod_brand",
 							type: "文本"
 						},
 						{
 							title: "商品规格",
-							name: "commodity_specifications",
+							name: "comm_spec",
 							type: "文本"
 						},
 						{
 							title: "商品库存",
-							name: "product_inventory",
+							name: "prod_inven",
 							type: "数字"
 						},
 						{
 							title: "商品价格",
-							name: "commodity_price",
+							name: "comm_price",
 							type: "数字"
 						},
 				],
 				richList: [
 						{
 							title: "商品介绍",
-							name: "product_introduction",
+							name: "prod_intro",
 							type: "多文本"
 						},
 						{
@@ -247,8 +247,8 @@
 
 				var query = {
 					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: this.obj["commodity_information_id"],
+					source_field: "comm_infor_id",
+					source_id: this.obj["comm_infor_id"],
 					user_id
 				};
 
@@ -261,7 +261,7 @@
 						if(res.result){
               _this.praiseLen = parseInt(_this.praiseLen)-1;
               var praise_len = _this.praiseLen;
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/commodity_information/set?comm_infor_id=' + _this.obj["comm_infor_id"], {
 								praise_len
 							}, (res) => {
 								if(res.result){
@@ -285,7 +285,7 @@
 						if (res.result) {
               _this.praiseLen = parseInt(_this.praiseLen)+1;
               var praise_len = _this.praiseLen;
-							this.$post('~/api/commodity_information/set?commodity_information_id=' + _this.obj["commodity_information_id"], {
+							this.$post('~/api/commodity_information/set?comm_infor_id=' + _this.obj["comm_infor_id"], {
 								praise_len
 							}, (res) => {
 								if(res.result){
@@ -312,8 +312,8 @@
         var user_id = this.$store.state.user.user_id;
         this.$get("~/api/praise/count?", {
           source_table: "commodity_information",
-          source_field: "commodity_information_id",
-          source_id: this.obj.commodity_information_id,
+          source_field: "comm_infor_id",
+          source_id: this.obj.comm_infor_id,
           user_id
         }, (res) => {
           if (res.result || res.result === 0) {
@@ -336,8 +336,8 @@
 
 				var query = {
 					source_table: "commodity_information",
-					source_field: "commodity_information_id",
-					source_id: this.obj["commodity_information_id"],
+					source_field: "comm_infor_id",
+					source_id: this.obj["comm_infor_id"],
 					user_id
 				};
 
@@ -356,8 +356,8 @@
 					});
 				} else {
 					this.state_collect = true;
-													query.title = this.obj.product_name
-																																		query.img = this.obj.product_images
+													query.title = this.obj.prod_name
+																																		query.img = this.obj.prod_ima
 																							this.$post('~/api/collect/add?', query, (res) => {
 						if (res.result) {
 							// this.$toast("收藏成功");
@@ -372,12 +372,12 @@
 			},
       check_collect() {
         var user_id = this.$store.state.user.user_id;
-        var commodity_information_id = this.obj.commodity_information_id;
+        var comm_infor_id = this.obj.comm_infor_id;
         this.$get('~/api/collect/count?', {
           user_id,
           source_table: "commodity_information",
-          source_field: "commodity_information_id",
-          source_id: commodity_information_id
+          source_field: "comm_infor_id",
+          source_id: comm_infor_id
         }, (res) => {
           this.state_collect = res.result
         });
@@ -385,7 +385,7 @@
 			  get_sales_information_limit(){
 	  	let param = {
 	  		source_table: "commodity_information",
-	  		source_id: this.obj.commodity_information_id,
+	  		source_id: this.obj.comm_infor_id,
 	  		source_user_id: this.user.user_id
 	  	};
 	  	if(this.obj.sales_information_limit_times > 0){
@@ -408,7 +408,7 @@
 		  get_purchasing_information_limit(){
 	  	let param = {
 	  		source_table: "commodity_information",
-	  		source_id: this.obj.commodity_information_id,
+	  		source_id: this.obj.comm_infor_id,
 	  		source_user_id: this.user.user_id
 	  	};
 	  	if(this.obj.purchasing_information_limit_times > 0){
@@ -431,7 +431,7 @@
 		  get_inventory_information_limit(){
 	  	let param = {
 	  		source_table: "commodity_information",
-	  		source_id: this.obj.commodity_information_id,
+	  		source_id: this.obj.comm_infor_id,
 	  		source_user_id: this.user.user_id
 	  	};
 	  	if(this.obj.inventory_information_limit_times > 0){

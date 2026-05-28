@@ -2,64 +2,64 @@
 	<el-main class="bg edit_wrap">
 		<el-form ref="form" :model="form" status-icon label-width="120px" v-if="is_view()">
 		<el-row class="row_ce">
-							<el-col v-if="$check_field('get','supplier_name') || $check_field('add','supplier_name') || $check_field('set','supplier_name')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="供应商名称" prop="supplier_name">
-												<el-input id="supplier_name" v-model="form['supplier_name']" placeholder="请输入供应商名称"
-							  v-if="(form['supply_information_id'] && $check_field('set','supplier_name')) || (!form['supply_information_id'] && $check_field('add','supplier_name'))" :disabled="disabledObj['supplier_name_isDisabled']"></el-input>
-					<div v-else-if="$check_field('get','supplier_name')">{{form['supplier_name']}}</div>
+							<el-col v-if="$check_field('get','supplier_na') || $check_field('add','supplier_na') || $check_field('set','supplier_na')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="供应商名称" prop="supplier_na">
+												<el-input id="supplier_na" v-model="form['supplier_na']" placeholder="请输入供应商名称"
+							  v-if="(form['supply_infor_id'] && $check_field('set','supplier_na')) || (!form['supply_infor_id'] && $check_field('add','supplier_na'))" :disabled="disabledObj['supplier_na_isDisabled']"></el-input>
+					<div v-else-if="$check_field('get','supplier_na')">{{form['supplier_na']}}</div>
 											</el-form-item>
 			</el-col>
 								<el-col v-if="$check_field('get','suppliers_phone_number') || $check_field('add','suppliers_phone_number') || $check_field('set','suppliers_phone_number')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="供应商电话" prop="suppliers_phone_number">
 								<el-input id="suppliers_phone_number" v-model="form['suppliers_phone_number']" placeholder="请输入供应商电话" type="tel"
-						v-if="(form['supply_information_id'] && $check_field('set','suppliers_phone_number')) || (!form['supply_information_id'] && $check_field('add','suppliers_phone_number'))">
+						v-if="(form['supply_infor_id'] && $check_field('set','suppliers_phone_number')) || (!form['supply_infor_id'] && $check_field('add','suppliers_phone_number'))">
 					</el-input>
 					<div v-else-if="$check_field('get','suppliers_phone_number')">{{form['suppliers_phone_number']}}</div>
 							</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','commodity_category') || $check_field('add','commodity_category') || $check_field('set','commodity_category')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="商品类别" prop="commodity_category">
-								<el-select id="commodity_category" v-model="form['commodity_category']"						v-if="(form['supply_information_id'] && $check_field('set','commodity_category')) || (!form['supply_information_id'] && $check_field('add','commodity_category'))">
-						<el-option v-for="o in list_commodity_category" :key="o['product_category']" :label="o['product_category']"
-							:value="o['product_category']">
+								<el-col v-if="$check_field('get','comm_category') || $check_field('add','comm_category') || $check_field('set','comm_category')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="商品类别" prop="comm_category">
+								<el-select id="comm_category" v-model="form['comm_category']"						v-if="(form['supply_infor_id'] && $check_field('set','comm_category')) || (!form['supply_infor_id'] && $check_field('add','comm_category'))">
+						<el-option v-for="o in list_comm_category" :key="o['prod_category']" :label="o['prod_category']"
+							:value="o['prod_category']">
 						</el-option>
 					</el-select>
-					<div v-else-if="$check_field('get','commodity_category')">{{form['commodity_category']}}</div>
+					<div v-else-if="$check_field('get','comm_category')">{{form['comm_category']}}</div>
 							</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','comprehensive_evaluation') || $check_field('add','comprehensive_evaluation') || $check_field('set','comprehensive_evaluation')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="综合评价" prop="comprehensive_evaluation">
-												<el-input id="comprehensive_evaluation" v-model="form['comprehensive_evaluation']" placeholder="请输入综合评价"
-							  v-if="(form['supply_information_id'] && $check_field('set','comprehensive_evaluation')) || (!form['supply_information_id'] && $check_field('add','comprehensive_evaluation'))" :disabled="disabledObj['comprehensive_evaluation_isDisabled']"></el-input>
-					<div v-else-if="$check_field('get','comprehensive_evaluation')">{{form['comprehensive_evaluation']}}</div>
+								<el-col v-if="$check_field('get','compreh_eva') || $check_field('add','compreh_eva') || $check_field('set','compreh_eva')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="综合评价" prop="compreh_eva">
+												<el-input id="compreh_eva" v-model="form['compreh_eva']" placeholder="请输入综合评价"
+							  v-if="(form['supply_infor_id'] && $check_field('set','compreh_eva')) || (!form['supply_infor_id'] && $check_field('add','compreh_eva'))" :disabled="disabledObj['compreh_eva_isDisabled']"></el-input>
+					<div v-else-if="$check_field('get','compreh_eva')">{{form['compreh_eva']}}</div>
 											</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','supply_frequency') || $check_field('add','supply_frequency') || $check_field('set','supply_frequency')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="供应频率" prop="supply_frequency">
-												<el-input id="supply_frequency" v-model="form['supply_frequency']" placeholder="请输入供应频率"
-							  v-if="(form['supply_information_id'] && $check_field('set','supply_frequency')) || (!form['supply_information_id'] && $check_field('add','supply_frequency'))" :disabled="disabledObj['supply_frequency_isDisabled']"></el-input>
-					<div v-else-if="$check_field('get','supply_frequency')">{{form['supply_frequency']}}</div>
+								<el-col v-if="$check_field('get','supply_freq') || $check_field('add','supply_freq') || $check_field('set','supply_freq')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="供应频率" prop="supply_freq">
+												<el-input id="supply_freq" v-model="form['supply_freq']" placeholder="请输入供应频率"
+							  v-if="(form['supply_infor_id'] && $check_field('set','supply_freq')) || (!form['supply_infor_id'] && $check_field('add','supply_freq'))" :disabled="disabledObj['supply_freq_isDisabled']"></el-input>
+					<div v-else-if="$check_field('get','supply_freq')">{{form['supply_freq']}}</div>
 											</el-form-item>
 			</el-col>
 								<el-col v-if="$check_field('get','supply_products') || $check_field('add','supply_products') || $check_field('set','supply_products')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="供应产品" prop="supply_products">
 								<el-input type="textarea" id="supply_products" v-model="form['supply_products']" placeholder="请输入供应产品"
-						v-if="(form['supply_information_id'] && $check_field('set','supply_products')) || (!form['supply_information_id'] && $check_field('add','supply_products'))" :disabled="disabledObj['supply_products_isDisabled']"></el-input>
+						v-if="(form['supply_infor_id'] && $check_field('set','supply_products')) || (!form['supply_infor_id'] && $check_field('add','supply_products'))" :disabled="disabledObj['supply_products_isDisabled']"></el-input>
 					<div v-else-if="$check_field('get','supply_products')">{{form['supply_products']}}</div>
 							</el-form-item>
 			</el-col>
 								<el-col v-if="$check_field('get','product_quality') || $check_field('add','product_quality') || $check_field('set','product_quality')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
 				<el-form-item label="产品质量" prop="product_quality">
 								<el-input type="textarea" id="product_quality" v-model="form['product_quality']" placeholder="请输入产品质量"
-						v-if="(form['supply_information_id'] && $check_field('set','product_quality')) || (!form['supply_information_id'] && $check_field('add','product_quality'))" :disabled="disabledObj['product_quality_isDisabled']"></el-input>
+						v-if="(form['supply_infor_id'] && $check_field('set','product_quality')) || (!form['supply_infor_id'] && $check_field('add','product_quality'))" :disabled="disabledObj['product_quality_isDisabled']"></el-input>
 					<div v-else-if="$check_field('get','product_quality')">{{form['product_quality']}}</div>
 							</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','cooperation_situation') || $check_field('add','cooperation_situation') || $check_field('set','cooperation_situation')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="合作情况" prop="cooperation_situation">
-								<el-input type="textarea" id="cooperation_situation" v-model="form['cooperation_situation']" placeholder="请输入合作情况"
-						v-if="(form['supply_information_id'] && $check_field('set','cooperation_situation')) || (!form['supply_information_id'] && $check_field('add','cooperation_situation'))" :disabled="disabledObj['cooperation_situation_isDisabled']"></el-input>
-					<div v-else-if="$check_field('get','cooperation_situation')">{{form['cooperation_situation']}}</div>
+								<el-col v-if="$check_field('get','cooperation_situ') || $check_field('add','cooperation_situ') || $check_field('set','cooperation_situ')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="合作情况" prop="cooperation_situ">
+								<el-input type="textarea" id="cooperation_situ" v-model="form['cooperation_situ']" placeholder="请输入合作情况"
+						v-if="(form['supply_infor_id'] && $check_field('set','cooperation_situ')) || (!form['supply_infor_id'] && $check_field('add','cooperation_situ'))" :disabled="disabledObj['cooperation_situ_isDisabled']"></el-input>
+					<div v-else-if="$check_field('get','cooperation_situ')">{{form['cooperation_situ']}}</div>
 							</el-form-item>
 			</el-col>
 						
@@ -93,42 +93,42 @@
 		mixins: [mixin],
 		data() {
 			return {
-				field: "supply_information_id",
+				field: "supply_infor_id",
 				url_add: "~/api/supply_information/add?",
 				url_set: "~/api/supply_information/set?",
 				url_get_obj: "~/api/supply_information/get_obj?",
 				url_upload: "~/api/supply_information/upload?",
 
 				query: {
-					"supply_information_id": 0,
+					"supply_infor_id": 0,
 				},
 
 				form: {
-								"supplier_name":  '', // 供应商名称
+								"supplier_na":  '', // 供应商名称
 										"suppliers_phone_number":  '', // 供应商电话
-										"commodity_category":  '', // 商品类别
-										"comprehensive_evaluation":  '', // 综合评价
-										"supply_frequency":  '', // 供应频率
+										"comm_category":  '', // 商品类别
+										"compreh_eva":  '', // 综合评价
+										"supply_freq":  '', // 供应频率
 										"supply_products":  '', // 供应产品
 										"product_quality":  '', // 产品质量
-										"cooperation_situation":  '', // 合作情况
-											"supply_information_id": 0, // ID
+										"cooperation_situ":  '', // 合作情况
+											"supply_infor_id": 0, // ID
 													},
 				disabledObj:{
-								"supplier_name_isDisabled": false,
+								"supplier_na_isDisabled": false,
 										"suppliers_phone_number_isDisabled": false,
-										"commodity_category_isDisabled": false,
-										"comprehensive_evaluation_isDisabled": false,
-										"supply_frequency_isDisabled": false,
+										"comm_category_isDisabled": false,
+										"compreh_eva_isDisabled": false,
+										"supply_freq_isDisabled": false,
 										"supply_products_isDisabled": false,
 										"product_quality_isDisabled": false,
-										"cooperation_situation_isDisabled": false,
+										"cooperation_situ_isDisabled": false,
 										},
 
 	
 				
 										// 商品类别选项列表
-				list_commodity_category: [""],
+				list_comm_category: [""],
 	
 				
 				
@@ -148,10 +148,10 @@
 				/**
 			 * 获取商品类别列表
 			 */
-			async get_list_commodity_category() {
+			async get_list_comm_category() {
 				var json = await this.$get("~/api/commodity_information/get_list?");
 				if(json.result && json.result.list){
-					this.list_commodity_category = json.result.list;
+					this.list_comm_category = json.result.list;
 				}
 				else if(json.error){
 					console.error(json.error);
@@ -279,7 +279,7 @@
 
 		},
 		created() {
-								this.get_list_commodity_category();
+								this.get_list_comm_category();
 														},
 	}
 </script>

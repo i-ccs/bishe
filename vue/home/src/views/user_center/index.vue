@@ -22,7 +22,7 @@
 											<input type="file" ref="avatarInput" @change="changeAvatar($event.target.files)" style="display: none" accept="image/*" />
 										</div>
 								<div class="uc-hero-info">
-									<h2 class="uc-name">{{ userInfo.nick_name || userInfo.user_name || '用户' }}</h2>
+									<h2 class="uc-name">{{ userInfo.nick_name || userInfo.user_na || '用户' }}</h2>
 									<div class="uc-meta-row">
 										<span class="uc-badge" v-if="userInfo.user_gender !== null && userInfo.user_gender !== undefined">
 											{{ userInfo.user_gender === 0 ? '男' : '女' }}
@@ -67,14 +67,14 @@
 									<span class="uc-section-more" @click="goTo('/sales_information/table')">查看全部 →</span>
 								</div>
 								<div class="uc-order-list">
-									<div class="uc-order-item" v-for="order in recentOrders" :key="order.sales_information_id">
+									<div class="uc-order-item" v-for="order in recentOrders" :key="order.sales_infor_id">
 										<div class="uc-order-left">
-											<div class="uc-order-name">{{ order.product_name || order.product_code }}</div>
+											<div class="uc-order-name">{{ order.prod_name || order.prod_name || order.prod_code || order.prod_code }}</div>
 											<div class="uc-order-no">订单号：{{ order.sales_order_number }}</div>
 											<div class="uc-order-time">{{ formatDate(order.create_time) }}</div>
 										</div>
 										<div class="uc-order-right">
-											<div class="uc-order-price">¥ {{ order.total_order_price || order.commodity_price }}</div>
+											<div class="uc-order-price">¥ {{ order.total_order_price || order.comm_price || order.comm_price }}</div>
 											<span class="uc-pay-tag" :class="order.pay_state === '已支付' ? 'paid' : 'unpaid'">
 												{{ order.pay_state || '未支付' }}
 											</span>
@@ -167,7 +167,7 @@
 				const userId = this.$store.state.user.user_id;
 				if (!userId) return;
 				const json = await this.$get(
-					`~/api/sales_information/get?source_user_id=${userId}&size=5&page=1&orderby=create_time desc`,
+					`~/api/sales_information/get?sour_user_id=${userId}&size=5&page=1&orderby=create_time desc`,
 					null, null
 				);
 				if (json && json.result) {
@@ -176,7 +176,7 @@
 				}
 				// 统计未支付
 				const jsonUnpaid = await this.$get(
-					`~/api/sales_information/get?source_user_id=${userId}&pay_state=未支付&size=1&page=1`,
+					`~/api/sales_information/get?sour_user_id=${userId}&pay_state=未支付&size=1&page=1`,
 					null, null
 				);
 				if (jsonUnpaid && jsonUnpaid.result) {
@@ -184,7 +184,7 @@
 				}
 				// 统计已支付
 				const jsonPaid = await this.$get(
-					`~/api/sales_information/get?source_user_id=${userId}&pay_state=已支付&size=1&page=1`,
+					`~/api/sales_information/get?sour_user_id=${userId}&pay_state=已支付&size=1&page=1`,
 					null, null
 				);
 				if (jsonPaid && jsonPaid.result) {

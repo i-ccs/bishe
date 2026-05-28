@@ -68,8 +68,8 @@ public class CommodityInformation implements Serializable {
     @TableField(value = "sales_information_limit_times")
     private String salesInformationLimitTimes;
     // 采购限制次数
-    @TableField(value = "purchasing_information_limit_times")
-    private String purchasingInformationLimitTimes;
+    @TableField(value = "purchasing_informtion_limit_times")
+    private String purchasingInformtionLimitTimes;
     // 库存限制次数
     @TableField(value = "inventory_information_limit_times")
     private String inventoryInformationLimitTimes;

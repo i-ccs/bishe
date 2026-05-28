@@ -3,7 +3,7 @@
 		<!-- 列表 -->
 		<div class="diy_view_list list list-x">
 					<router-link class="diy_card goods diy_list_box_wrap" v-for="(o, i) in list" :key="i"
-				:to="'/commodity_information/details?commodity_information_id=' + o['commodity_information_id']">
+				:to="'/commodity_information/details?comm_infor_id=' + o['comm_infor_id']">
 										<!-- 图片 -->
 				<div class="diy_list_img_box" v-if="imgList.length" >
 					<div class="diy_row" v-for="(item,index) in imgList" :key="item+index" v-show="$check_field('get',item.name,'/commodity_information/details') && +item.is_img_list">
@@ -40,45 +40,45 @@
 		<div class="diy_view_table">
 			<table class="diy_table">
 				<tr class="diy_row">
-								<th class="diy_title" v-if="$check_field('get','product_name','/commodity_information/list')">
+								<th class="diy_title" v-if="$check_field('get','prod_name','/commodity_information/list')">
 					商品名称
 				</th>
-										<th class="diy_title" v-if="$check_field('get','product_category','/commodity_information/list')">
+										<th class="diy_title" v-if="$check_field('get','prod_category','/commodity_information/list')">
 					商品类别
 				</th>
-										<th class="diy_title" v-if="$check_field('get','product_brand','/commodity_information/list')">
+										<th class="diy_title" v-if="$check_field('get','prod_brand','/commodity_information/list')">
 					商品品牌
 				</th>
-										<th class="diy_title" v-if="$check_field('get','commodity_specifications','/commodity_information/list')">
+										<th class="diy_title" v-if="$check_field('get','comm_spec','/commodity_information/list')">
 					商品规格
 				</th>
-											<th class="diy_title" v-if="$check_field('get','product_images','/commodity_information/list')">
+											<th class="diy_title" v-if="$check_field('get','prod_ima','/commodity_information/list')">
 					商品图片
 				</th>
 										</tr>
 								<tr class="diy_row" v-for="(o,i) in list" :key="o+i" @click="to_detail(o)">
-													<td class="diy_field diy_text" v-if="$check_field('get','product_name','/commodity_information/list')">
+													<td class="diy_field diy_text" v-if="$check_field('get','prod_name','/commodity_information/list')">
 						<span>
-							{{ o["product_name"] }}
+															{{ o["prod_name"] }}
 						</span>
 					</td>
-											<td class="diy_field diy_text" v-if="$check_field('get','product_category','/commodity_information/list')">
+																			<td class="diy_field diy_text" v-if="$check_field('get','prod_category','/commodity_information/list')">
 						<span>
-							{{ o["product_category"] }}
+															{{ o["prod_category"] }}
 						</span>
 					</td>
-											<td class="diy_field diy_text" v-if="$check_field('get','product_brand','/commodity_information/list')">
+																			<td class="diy_field diy_text" v-if="$check_field('get','prod_brand','/commodity_information/list')">
 						<span>
-							{{ o["product_brand"] }}
+															{{ o["prod_brand"] }}
 						</span>
 					</td>
-											<td class="diy_field diy_text" v-if="$check_field('get','commodity_specifications','/commodity_information/list')">
+											<td class="diy_field diy_text" v-if="$check_field('get','comm_spec','/commodity_information/list')">
 						<span>
-							{{ o["commodity_specifications"] }}
+							{{ o["comm_spec"] }}
 						</span>
 					</td>
-												<td class="diy_field" v-if="$check_field('get','product_images','/commodity_information/list')">
-						<img class="diy_img" :src="$fullUrl(o['product_images'])" />
+												<td class="diy_field" v-if="$check_field('get','prod_ima','/commodity_information/list')">
+						<img class="diy_img" :src="$fullUrl(o['prod_ima'])" />
 					</td>
 										</tr>
 			</table>
@@ -89,7 +89,7 @@
                 <div class="slider" ref="slider">
 				                <div  v-for="(o, i) in list" :key="i" class="slide" >
 				                    
-                    <router-link :to="'/commodity_information/details?commodity_information_id=' + o['commodity_information_id']" class="lis_cont">
+                    <router-link :to="'/commodity_information/details?comm_infor_id=' + o['comm_infor_id']" class="lis_cont">
 						                        <div class="diy_list_img_box" v-if="imgList.length" >
     					        <div class="diy_row" v-for="(item, index) in imgList" :key="item + index" v-show="$check_field('get',item.name,'/commodity_information/details') && +item.is_img_list">
     						<div class="diy_title diy_list_img_title">
@@ -154,7 +154,7 @@
 						imgList: [
 						{
 							title: "商品图片",
-							name: "product_images",
+							name: "prod_ima",
 							type: "图片",
 							is_img_list: "1"
 						},
@@ -162,43 +162,43 @@
 						itemList: [
 								{
 									title: "商品编码",
-									name: "product_code",
+									name: "prod_code",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品名称",
-									name: "product_name",
+									name: "prod_name",
 									type: "文本",
 									is_img_list: "1"
 								},
 								{
 									title: "商品类别",
-									name: "product_category",
+									name: "prod_category",
 									type: "文本",
 									is_img_list: "1"
 								},
 								{
 									title: "商品品牌",
-									name: "product_brand",
+									name: "prod_brand",
 									type: "文本",
 									is_img_list: "1"
 								},
 								{
 									title: "商品规格",
-									name: "commodity_specifications",
+									name: "comm_spec",
 									type: "文本",
 									is_img_list: "1"
 								},
 								{
 									title: "商品库存",
-									name: "product_inventory",
+									name: "prod_inven",
 									type: "数字",
 									is_img_list: "0"
 								},
 								{
 									title: "商品价格",
-									name: "commodity_price",
+									name: "comm_price",
 									type: "数字",
 									is_img_list: "0"
 								},
@@ -206,12 +206,12 @@
 						richList: [
 								{
 									title: "商品介绍",
-									name: "product_introduction",
+									name: "prod_intro",
 									type: "多文本"
 								},
 								{
 									title: "商品详情",
-									name: "product_details",
+									name: "prod_intro",
 									type: "编辑"
 								},
 						],
@@ -313,7 +313,7 @@
 
 			},
 			to_detail(v){
-				this.$router.push("/commodity_information/details?commodity_information_id="+v.commodity_information_id)
+				this.$router.push("/commodity_information/details?comm_infor_id="+v.comm_infor_id)
 			},
 			get_user_name(name,id){
 				var obj = null;

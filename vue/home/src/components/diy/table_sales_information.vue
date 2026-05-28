@@ -6,12 +6,12 @@
           
                                                                                               <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="商品名称">
-                                                      <el-input v-model="query.product_name"></el-input>
+                                                      <el-input v-model="query.prod_name"></el-input>
                                                 </el-form-item>
                     </el-col>
                                                                       <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="商品类别">
-                                                      <el-input v-model="query.product_category"></el-input>
+                                                      <el-input v-model="query.prod_category"></el-input>
                                                 </el-form-item>
                     </el-col>
                                                                                                                                                                                                                                                                                                                                     <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
@@ -38,15 +38,15 @@
 	    <el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" id="dataTable">
 	                <el-table-column fixed type="selection" tooltip-effect="dark" width="55">
             </el-table-column>
-                                                  <el-table-column prop="product_code" @sort-change="$sortChange" label="商品编码"                                v-if="$check_field('get','product_code')" min-width="200">
+                                                  <el-table-column prop="prod_code" @sort-change="$sortChange" label="商品编码"                                v-if="$check_field('get','prod_code')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','product_name')" min-width="200">
+                                              <el-table-column prop="prod_name" @sort-change="$sortChange" label="商品名称"                                v-if="$check_field('get','prod_name')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','product_category')" min-width="200">
+                                              <el-table-column prop="prod_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','prod_category')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="product_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','product_brand')" min-width="200">
+                                              <el-table-column prop="prod_brand" @sort-change="$sortChange" label="商品品牌"                                v-if="$check_field('get','prod_brand')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="commodity_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','commodity_price')" min-width="200">
+                                              <el-table-column prop="comm_price" @sort-change="$sortChange" label="商品价格"                                v-if="$check_field('get','comm_price')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="sales_order_number" @sort-change="$sortChange" label="销售单号"                                v-if="$check_field('get','sales_order_number')" min-width="200">
                                 </el-table-column>
@@ -60,7 +60,7 @@
                                 </el-table-column>
                                               <el-table-column prop="total_order_price" @sort-change="$sortChange" label="订单总价"                                v-if="$check_field('get','total_order_price')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="note_information" @sort-change="$sortChange" label="备注信息"                                v-if="$check_field('get','note_information')" min-width="200">
+                                              <el-table-column prop="note_infor" @sort-change="$sortChange" label="备注信息"                                v-if="$check_field('get','note_infor')" min-width="200">
                                 </el-table-column>
                     				        
         
@@ -205,13 +205,13 @@
         url_del: "~/api/sales_information/del?",
 
         // 字段ID
-        field: "sales_information_id",
+        field: "sales_infor_id",
         // 查询
         query: {
           "size": 7,
           "page": 1,
-                                                                                                  "product_name": "",
-                                                                                                          "product_category": "",
+                                                                                                  "prod_name": "",
+                                                                                                          "prod_category": "",
                                                                                                                                                                                                                                                                                                               "pay_state":"",
                                 "login_time": "",
           "create_time": "",
@@ -282,18 +282,18 @@
                 var obj = this.list_user_registered_user.getObj({"user_id":id});
                 var ret = "";
                 if(obj){
-                  ret = obj.nick_name+"-"+obj.user_name;
+                  ret = obj.nick_name+"-"+obj.user_na;
                   // if(obj.nick_name){
                   // 	ret = obj.nick_name;
                   // }
                   // else{
-                  // 	ret = obj.user_name;
+                  // 	ret = obj.user_na;
                   // }
                 }
                 return ret;
               },
                                                                                                                                                                                   openPayModal(v){
-            this.pay_obj.id = v.sales_information_id
+            this.pay_obj.id = v.sales_infor_id
             this.payModalVisible = true
           },
           submitPay(){
@@ -308,7 +308,7 @@
 					return false
 				}
 			}
-            let url = this.$toUrl(this.query, "~/api/sales_information/set?sales_information_id="+this.pay_obj.id);
+            let url = this.$toUrl(this.query, "~/api/sales_information/set?sales_infor_id="+this.pay_obj.id);
             let param = {"pay_state":"已支付","pay_type":this.pay_obj.payActiveName}
             this.$post(url, param, function(json, status) {
               console.log("提交结果：" ,json);

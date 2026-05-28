@@ -17,12 +17,12 @@ import java.sql.Timestamp;
 public class InventoryInformation implements Serializable {
 
     // InventoryInformation编号
-    @TableId(value = "inventory_information_id", type = IdType.AUTO)
-    private Integer inventoryInformationId;
+    @TableId(value = "invent_info_id", type = IdType.AUTO)
+    private Integer inventInfoId;
 
     // 商品编码
-    @TableField(value = "`product_code`")
-    private String productCode;
+    @TableField(value = "`prod_code`")
+    private String prodCode;
     // 商品名称
     @TableField(exist = false)
     private String productName;
@@ -33,29 +33,29 @@ public class InventoryInformation implements Serializable {
     @TableField(exist = false)
     private String productBrand;
     // 商品库存
-    @TableField(value = "`product_inventory`")
-    private Double productInventory;
+    @TableField(value = "`prod_invent`")
+    private Double prodInvent;
     // 核对日期
     @TableField(value = "`check_date`")
     private String checkDate;
     // 核对数量
-    @TableField(value = "`check_quantity`")
-    private Double checkQuantity;
+    @TableField(value = "`check_quant`")
+    private Double checkQuant;
     // 库存情况
     @TableField(value = "`inventory`")
     private String inventory;
 
     // 来源表
-    @TableField(value = "source_table")
-    private String sourceTable;
+    @TableField(value = "sou_table")
+    private String souTable;
 
     // 来源ID
-    @TableField(value = "source_id")
-    private Integer sourceId;
+    @TableField(value = "sou_id")
+    private Integer souId;
 
     // 来源用户ID
-    @TableField(value = "source_user_id")
-    private Integer sourceUserIsd;
+    @TableField(value = "sou_user_id")
+    private Integer souUserId;
 
     // 是否删除
     @TableLogic

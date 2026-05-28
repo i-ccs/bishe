@@ -17,12 +17,12 @@ import java.sql.Timestamp;
 public class SalesInformation implements Serializable {
 
     // SalesInformation编号
-    @TableId(value = "sales_information_id", type = IdType.AUTO)
-    private Integer salesInformationId;
+    @TableId(value = "sales_infor_id", type = IdType.AUTO)
+    private Integer salesInforId;
 
     // 商品编码
-    @TableField(value = "`product_code`")
-    private String productCode;
+    @TableField(value = "`prod_code`")
+    private String prodCode;
     // 商品名称
     @TableField(exist = false)
     private String productName;
@@ -33,8 +33,8 @@ public class SalesInformation implements Serializable {
     @TableField(exist = false)
     private String productBrand;
     // 商品价格
-    @TableField(value = "`commodity_price`")
-    private Double commodityPrice;
+    @TableField(value = "`comm_price`")
+    private Double commPrice;
     // 销售单号
     @TableField(value = "`sales_order_number`")
     private String salesOrderNumber;
@@ -42,8 +42,8 @@ public class SalesInformation implements Serializable {
     @TableField(value = "`registered_user`")
     private Integer registeredUser;
     // 用户姓名
-    @TableField(value = "`user_name`")
-    private String userName;
+    @TableField(value = "`user_na`")
+    private String userNa;
     // 下单数量
     @TableField(value = "`order_quantity`")
     private Double orderQuantity;
@@ -51,8 +51,8 @@ public class SalesInformation implements Serializable {
     @TableField(value = "`total_order_price`")
     private Double totalOrderPrice;
     // 备注信息
-    @TableField(value = "`note_information`")
-    private String noteInformation;
+    @TableField(value = "`note_infor`")
+    private String noteInfor;
 
     // 支付状态
     @TableField(value = "pay_state")
@@ -63,16 +63,16 @@ public class SalesInformation implements Serializable {
     private String payType;
 
     // 来源表
-    @TableField(value = "source_table")
-    private String sourceTable;
+    @TableField(value = "sour_table")
+    private String sourTable;
 
     // 来源ID
-    @TableField(value = "source_id")
-    private Integer sourceId;
+    @TableField(value = "sour_id")
+    private Integer sourId;
 
     // 来源用户ID
-    @TableField(value = "source_user_id")
-    private Integer sourceUserId;
+    @TableField(value = "sour_user_id")
+    private Integer sourUserId;
 
     // 是否删除
     @TableLogic

@@ -5,12 +5,12 @@
 				<el-row :gutter="20">
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品名称">
-							<el-input v-model="query.product_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
+							<el-input v-model="query.prod_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品类别">
-							<el-input v-model="query.product_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
+							<el-input v-model="query.prod_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="24" :lg="6">
@@ -36,20 +36,20 @@
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
 				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
-				<el-table-column align="center" prop="purchase_order_number" label="采购单号" v-if="$check_field('get','purchase_order_number')" min-width="150"></el-table-column>
-				<el-table-column align="center" prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="purch_order_number" label="采购单号" v-if="$check_field('get','purch_order_number')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="prod_name" label="商品名称" v-if="$check_field('get','prod_name')" min-width="150"></el-table-column>
 				<el-table-column align="center" prop="supplier_name" label="供应商" v-if="$check_field('get','supplier_name')" min-width="150"></el-table-column>
-				<el-table-column align="center" prop="purchase_date" label="采购日期" v-if="$check_field('get','purchase_date')" min-width="120">
-					<template slot-scope="scope">{{ $toTime(scope.row["purchase_date"],"yyyy-MM-dd") }}</template>
+				<el-table-column align="center" prop="purch_date" label="采购日期" v-if="$check_field('get','purch_date')" min-width="120">
+					<template slot-scope="scope">{{ $toTime(scope.row["purch_date"],"yyyy-MM-dd") }}</template>
 				</el-table-column>
-				<el-table-column align="center" prop="purchase_quantity" label="数量" v-if="$check_field('get','purchase_quantity')" min-width="100"></el-table-column>
-				<el-table-column align="center" prop="purchase_unit_price" label="单价" v-if="$check_field('get','purchase_unit_price')" min-width="100">
-					<template slot-scope="scope">¥ {{scope.row.purchase_unit_price}}</template>
+				<el-table-column align="center" prop="purch_quantity" label="数量" v-if="$check_field('get','purch_quantity')" min-width="100"></el-table-column>
+				<el-table-column align="center" prop="purch_unit_price" label="单价" v-if="$check_field('get','purch_unit_price')" min-width="100">
+					<template slot-scope="scope">¥ {{scope.row.purch_unit_price}}</template>
 				</el-table-column>
-				<el-table-column align="center" prop="total_purchase_price" label="总金额" v-if="$check_field('get','total_purchase_price')" min-width="120">
-					<template slot-scope="scope"><span style="color: #f56c6c; font-weight: 600;">¥ {{scope.row.total_purchase_price}}</span></template>
+				<el-table-column align="center" prop="total_purch_price" label="总金额" v-if="$check_field('get','total_purch_price')" min-width="120">
+					<template slot-scope="scope"><span style="color: #f56c6c; font-weight: 600;">¥ {{scope.row.total_purch_price}}</span></template>
 				</el-table-column>
-				<el-table-column align="center" prop="procurement_status" label="采购备注" v-if="$check_field('get','procurement_status')" min-width="150" show-overflow-tooltip></el-table-column>
+				<el-table-column align="center" prop="procur_status" label="采购备注" v-if="$check_field('get','procur_status')" min-width="150" show-overflow-tooltip></el-table-column>
 
 				<el-table-column align="center" fixed="right" label="操作" min-width="100">
 					<template slot-scope="scope">
@@ -89,12 +89,12 @@
 				showModal: false,
 				url_get_list: "~/api/purchasing_information/get_list?like=0",
 				url_del: "~/api/purchasing_information/del?",
-				field: "purchasing_information_id",
+				field: "purch_inf_id",
 				query: {
 					"size": 7,
 					"page": 1,
-					"product_name": "",
-					"product_category": "",
+					"prod_name": "",
+					"prod_category": "",
 					"orderby": `create_time desc`
 				},
 				list: [],

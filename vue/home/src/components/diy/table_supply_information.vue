@@ -6,14 +6,14 @@
           
                                                               <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="供应商名称">
-                                                      <el-input v-model="query.supplier_name"></el-input>
+                                                      <el-input v-model="query.supplier_na"></el-input>
                                                 </el-form-item>
                     </el-col>
                                                                                                       <el-col :xs="24" :sm="24" :lg="8" class="el_form_search_wrap">
                       <el-form-item label="商品类别">
-                                                      <el-select v-model="query.commodity_category">
-                                                                  <el-option v-for="o in list_commodity_category" :key="o.product_category" :label="o.product_category"
-                                             :value="o.product_category">
+                                                      <el-select v-model="query.comm_category">
+                                                                  <el-option v-for="o in list_comm_category" :key="o.prod_category" :label="o.prod_category"
+                                             :value="o.prod_category">
                                   </el-option>
                                                             </el-select>
                                                 </el-form-item>
@@ -34,21 +34,21 @@
 	    <el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" id="dataTable">
 	                <el-table-column fixed type="selection" tooltip-effect="dark" width="55">
             </el-table-column>
-                                                  <el-table-column prop="supplier_name" @sort-change="$sortChange" label="供应商名称"                                v-if="$check_field('get','supplier_name')" min-width="200">
+                                                  <el-table-column prop="supplier_na" @sort-change="$sortChange" label="供应商名称"                                v-if="$check_field('get','supplier_na')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="suppliers_phone_number" @sort-change="$sortChange" label="供应商电话"                                v-if="$check_field('get','suppliers_phone_number')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="commodity_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','commodity_category')" min-width="200">
+                                              <el-table-column prop="comm_category" @sort-change="$sortChange" label="商品类别"                                v-if="$check_field('get','comm_category')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="comprehensive_evaluation" @sort-change="$sortChange" label="综合评价"                                v-if="$check_field('get','comprehensive_evaluation')" min-width="200">
+                                              <el-table-column prop="compreh_eva" @sort-change="$sortChange" label="综合评价"                                v-if="$check_field('get','compreh_eva')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="supply_frequency" @sort-change="$sortChange" label="供应频率"                                v-if="$check_field('get','supply_frequency')" min-width="200">
+                                              <el-table-column prop="supply_freq" @sort-change="$sortChange" label="供应频率"                                v-if="$check_field('get','supply_freq')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="supply_products" @sort-change="$sortChange" label="供应产品"                                v-if="$check_field('get','supply_products')" min-width="200">
                                 </el-table-column>
                                               <el-table-column prop="product_quality" @sort-change="$sortChange" label="产品质量"                                v-if="$check_field('get','product_quality')" min-width="200">
                                 </el-table-column>
-                                              <el-table-column prop="cooperation_situation" @sort-change="$sortChange" label="合作情况"                                v-if="$check_field('get','cooperation_situation')" min-width="200">
+                                              <el-table-column prop="cooperation_situ" @sort-change="$sortChange" label="合作情况"                                v-if="$check_field('get','cooperation_situ')" min-width="200">
                                 </el-table-column>
                     				        
         
@@ -126,13 +126,13 @@
         url_del: "~/api/supply_information/del?",
 
         // 字段ID
-        field: "supply_information_id",
+        field: "supply_infor_id",
         // 查询
         query: {
           "size": 7,
           "page": 1,
-                                                                      "supplier_name": "",
-                                                                                                                                      "commodity_category": "",
+                                                                      "supplier_na": "",
+                                                                                                                                      "comm_category": "",
                                                                                                                                                                                                                                       "login_time": "",
           "create_time": "",
           "orderby": `create_time desc`
@@ -141,7 +141,7 @@
                   // 数据
         list: [],
                                                                                                                                                                                                                                                                                                                                                             // 商品类别列表
-                list_commodity_category: [""],
+                list_comm_category: [""],
                                                                                                                                                                                                                                     		  		  message: '',
       }
     },
@@ -162,10 +162,10 @@
                                                                                                   /**
                * 获取商品类别列表
                */
-              async get_list_commodity_category() {
+              async get_list_comm_category() {
                 var json = await this.$get("~/api/commodity_information/get_list?");
                 if(json.result){
-                  this.list_commodity_category = json.result.list;
+                  this.list_comm_category = json.result.list;
                 }else if (json.error){
                   console.log(json.error);
                 }
@@ -181,7 +181,7 @@
     },
 	    created() {
                                                                                                           // 初始化商品类别列表
-              this.get_list_commodity_category();
+              this.get_list_comm_category();
                                                                                                                                                                                                             }
   }
 </script>

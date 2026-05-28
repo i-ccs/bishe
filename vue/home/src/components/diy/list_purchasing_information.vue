@@ -3,7 +3,7 @@
 		<!-- 列表 -->
 		<div class="diy_view_list list list-x">
 					<router-link class="diy_card goods diy_list_box_wrap" v-for="(o, i) in list" :key="i"
-				:to="'/purchasing_information/details?purchasing_information_id=' + o['purchasing_information_id']">
+				:to="'/purchasing_information/details?purch_inf_id=' + o['purch_inf_id']">
 										<!-- 图片 -->
 				<div class="diy_list_img_box" v-if="imgList.length" >
 					<div class="diy_row" v-for="(item,index) in imgList" :key="item+index" v-show="$check_field('get',item.name,'/purchasing_information/details') && +item.is_img_list">
@@ -51,7 +51,7 @@
                 <div class="slider" ref="slider">
 				                <div  v-for="(o, i) in list" :key="i" class="slide" >
 				                    
-                    <router-link :to="'/purchasing_information/details?purchasing_information_id=' + o['purchasing_information_id']" class="lis_cont">
+                    <router-link :to="'/purchasing_information/details?purch_inf_id=' + o['purch_inf_id']" class="lis_cont">
 						                        <div class="diy_list_img_box" v-if="imgList.length" >
     					        <div class="diy_row" v-for="(item, index) in imgList" :key="item + index" v-show="$check_field('get',item.name,'/purchasing_information/details') && +item.is_img_list">
     						<div class="diy_title diy_list_img_title">
@@ -118,43 +118,43 @@
 						itemList: [
 								{
 									title: "商品编码",
-									name: "product_code",
+									name: "prod_code",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品名称",
-									name: "product_name",
+									name: "prod_name",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品类别",
-									name: "product_category",
+									name: "prod_category",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品品牌",
-									name: "product_brand",
+									name: "prod_brand",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品规格",
-									name: "commodity_specifications",
+									name: "comm_specifications",
 									type: "文本",
 									is_img_list: "0"
 								},
 								{
 									title: "商品价格",
-									name: "commodity_price",
+									name: "comm_price",
 									type: "数字",
 									is_img_list: "0"
 								},
 								{
 									title: "采购单号",
-									name: "purchase_order_number",
+									name: "purch_order_number",
 									type: "文本",
 									is_img_list: "0"
 								},
@@ -166,25 +166,25 @@
 								},
 								{
 									title: "采购日期",
-									name: "purchase_date",
+									name: "purch_date",
 									type: "日后",
 									is_img_list: "0"
 								},
 								{
 									title: "采购数量",
-									name: "purchase_quantity",
+									name: "purch_quantity",
 									type: "数字",
 									is_img_list: "0"
 								},
 								{
 									title: "采购单价",
-									name: "purchase_unit_price",
+									name: "purch_unit_price",
 									type: "数字",
 									is_img_list: "0"
 								},
 								{
 									title: "采购总价",
-									name: "total_purchase_price",
+									name: "total_purch_price",
 									type: "数字",
 									is_img_list: "0"
 								},
@@ -192,7 +192,7 @@
 						richList: [
 								{
 									title: "采购情况",
-									name: "procurement_status",
+									name: "procur_status",
 									type: "多文本"
 								},
 						],
@@ -294,7 +294,7 @@
 
 			},
 			to_detail(v){
-				this.$router.push("/purchasing_information/details?purchasing_information_id="+v.purchasing_information_id)
+				this.$router.push("/purchasing_information/details?purch_inf_id="+v.purch_inf_id)
 			},
 			get_user_name(name,id){
 				var obj = null;

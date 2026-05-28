@@ -5,12 +5,12 @@
 				<el-row :gutter="20">
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品名称">
-							<el-input v-model="query.product_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
+							<el-input v-model="query.prod_name" placeholder="请输入商品名称" prefix-icon="el-icon-search"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="12" :lg="6">
 						<el-form-item label="商品类别">
-							<el-input v-model="query.product_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
+							<el-input v-model="query.prod_category" placeholder="请输入商品类别" prefix-icon="el-icon-folder"></el-input>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :sm="24" :lg="6">
@@ -36,14 +36,14 @@
 
 			<el-table :data="list" @selection-change="selectionChange" @sort-change="$sortChange" style="width: 100%" class="premium-table" id="dataTable">
 				<el-table-column align="center" fixed type="selection" width="55"></el-table-column>
-				<el-table-column align="center" prop="product_code" label="商品编码" v-if="$check_field('get','product_code')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="product_name" label="商品名称" v-if="$check_field('get','product_name')" min-width="150"></el-table-column>
-				<el-table-column align="center" prop="product_category" label="商品类别" v-if="$check_field('get','product_category')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="product_brand" label="商品品牌" v-if="$check_field('get','product_brand')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="product_inventory" label="系统账面库存" v-if="$check_field('get','product_inventory')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="check_quantity" label="实际盘点数量" v-if="$check_field('get','check_quantity')" min-width="120">
+				<el-table-column align="center" prop="prod_code" label="商品编码" v-if="$check_field('get','prod_code')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="prod_name" label="商品名称" v-if="$check_field('get','prod_name')" min-width="150"></el-table-column>
+				<el-table-column align="center" prop="prod_category" label="商品类别" v-if="$check_field('get','prod_category')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="prod_brand" label="商品品牌" v-if="$check_field('get','prod_brand')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="prod_inventory" label="系统账面库存" v-if="$check_field('get','prod_inventory')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="check_quant" label="实际盘点数量" v-if="$check_field('get','check_quant')" min-width="120">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.check_quantity == scope.row.product_inventory ? 'success' : 'warning'">{{scope.row.check_quantity}}</el-tag>
+						<el-tag :type="scope.row.check_quant == scope.row.prod_inventory ? 'success' : 'warning'">{{scope.row.check_quant}}</el-tag>
 					</template>
 				</el-table-column>
 				<el-table-column align="center" prop="check_date" label="核对日期" v-if="$check_field('get','check_date')" min-width="120">
@@ -89,12 +89,12 @@
 				showModal: false,
 				url_get_list: "~/api/inventory_information/get_list?like=0",
 				url_del: "~/api/inventory_information/del?",
-				field: "inventory_information_id",
+				field: "invent_info_id",
 				query: {
 					"size": 7,
 					"page": 1,
-					"product_name": "",
-					"product_category": "",
+					"prod_name": "",
+					"prod_category": "",
 					"orderby": `create_time desc`
 				},
 				list: [],
