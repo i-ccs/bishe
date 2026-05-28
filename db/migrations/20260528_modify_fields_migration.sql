@@ -56,9 +56,44 @@ ALTER TABLE `supply_information`
 
 -- commodity_information updates
 UPDATE `auth` SET 
-    field_add = REPLACE(field_add, 'purchasing_information_limit_times', 'purchasing_informtion_limit_times'),
-    field_set = REPLACE(field_set, 'purchasing_information_limit_times', 'purchasing_informtion_limit_times'),
-    field_get = REPLACE(field_get, 'purchasing_information_limit_times', 'purchasing_informtion_limit_times');
+    field_add = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(field_add, 
+        'commodity_information_id', 'comm_infor_id'), 
+        'product_code', 'prod_code'), 
+        'product_name', 'prod_name'), 
+        'product_category', 'prod_category'), 
+        'product_brand', 'prod_brand'), 
+        'commodity_specifications', 'comm_spec'), 
+        'product_inventory', 'prod_inven'), 
+        'product_images', 'prod_ima'), 
+        'commodity_price', 'comm_price'), 
+        'product_introduction', 'prod_intro'), 
+        'purchasing_information_limit_times', 'purchasing_informtion_limit_times'),
+    field_set = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(field_set, 
+        'commodity_information_id', 'comm_infor_id'), 
+        'product_code', 'prod_code'), 
+        'product_name', 'prod_name'), 
+        'product_category', 'prod_category'), 
+        'product_brand', 'prod_brand'), 
+        'commodity_specifications', 'comm_spec'), 
+        'product_inventory', 'prod_inven'), 
+        'product_images', 'prod_ima'), 
+        'commodity_price', 'comm_price'), 
+        'product_introduction', 'prod_intro'), 
+        'purchasing_information_limit_times', 'purchasing_informtion_limit_times'),
+    field_get = REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(field_get, 
+        'commodity_information_id', 'comm_infor_id'), 
+        'product_code', 'prod_code'), 
+        'product_name', 'prod_name'), 
+        'product_category', 'prod_category'), 
+        'product_brand', 'prod_brand'), 
+        'commodity_specifications', 'comm_spec'), 
+        'product_inventory', 'prod_inven'), 
+        'product_images', 'prod_ima'), 
+        'commodity_price', 'comm_price'), 
+        'product_introduction', 'prod_intro'), 
+        'purchasing_information_limit_times', 'purchasing_informtion_limit_times')
+WHERE table_name = 'commodity_information';
+
 
 -- inventory_information updates
 UPDATE `auth` SET 
