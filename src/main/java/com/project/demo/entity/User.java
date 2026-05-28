@@ -92,11 +92,6 @@ public class User implements Serializable {
     @TableField(value = "avatar")
     private String avatar;
 
-    /**
-     * 针对获取用户信息字段
-     */
-    @TableField(value = "open_id")
-    private String open_id;
 
     /**
      * 是否删除：0未删除，1已删除

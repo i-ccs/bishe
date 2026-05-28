@@ -550,7 +550,7 @@ CREATE TABLE `user` (
   `email` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '' COMMENT '邮箱',
   `email_state` smallint unsigned NOT NULL DEFAULT '0' COMMENT '邮箱认证：(0未认证|1审核中|2已认证)',
   `avatar` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '头像地址',
-  `open_id` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '针对获取用户信息字段',
+  -- `open_id` 已移除，原用于第三方用户标识
   `is_delete` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '是否删除：0未删除，1已删除',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`user_id`) USING BTREE
@@ -560,13 +560,13 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `is_delete`, `create_time`) VALUES (1, 1, '管理员', '2026-05-04 19:32:35', NULL, 0, 'admin', 'admin', 'asd123', '', 0, '/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp', NULL, 0, '2026-04-30 17:35:13');
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `is_delete`, `create_time`) VALUES (5, 1, '注册用户', '2026-05-05 02:08:00', NULL, 0, 'flsde', '', 'asd123', '', 0, '/api/upload/1777796551.png', NULL, 1, '2026-05-04 19:31:19');
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `is_delete`, `create_time`) VALUES (6, 1, '注册用户', '2026-05-05 02:08:00', NULL, 0, 'fergre', '', 'asd123', '', 0, '/api/upload/1777879821.png', NULL, 1, '2026-05-05 01:35:31');
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `is_delete`, `create_time`) VALUES (7, 1, '注册用户', '2026-05-05 02:03:15', '', 0, 'fewfwe', 'efe', 'asd123', '', 0, '/api/upload/1777796551.png', NULL, 0, '2026-05-05 01:50:10');
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `is_delete`, `create_time`) VALUES (8, 1, '注册用户', '2026-05-05 02:08:00', '', 0, 'wefwe', '', 'asd123', '', 0, '/api/upload/1777879821.png', NULL, 1, '2026-05-05 01:54:25');
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `is_delete`, `create_time`) VALUES (9, 1, '注册用户', '2026-05-05 01:55:56', '', 0, 'rregr', '', 'gegegeg', '', 0, '/api/upload/1777884065.png', NULL, 0, '2026-05-05 01:55:57');
-INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `open_id`, `is_delete`, `create_time`) VALUES (10, 1, '注册用户', '2026-05-05 01:58:50', '', 0, 'refed', '', 'asd123', '', 0, '/api/upload/1777388087.png', NULL, 0, '2026-05-05 01:58:50');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `is_delete`, `create_time`) VALUES (1, 1, '管理员', '2026-05-04 19:32:35', NULL, 0, 'admin', 'admin', 'asd123', '', 0, '/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp', 0, '2026-04-30 17:35:13');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `is_delete`, `create_time`) VALUES (5, 1, '注册用户', '2026-05-05 02:08:00', NULL, 0, 'flsde', '', 'asd123', '', 0, '/api/upload/1777796551.png', 1, '2026-05-04 19:31:19');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `is_delete`, `create_time`) VALUES (6, 1, '注册用户', '2026-05-05 02:08:00', NULL, 0, 'fergre', '', 'asd123', '', 0, '/api/upload/1777879821.png', 1, '2026-05-05 01:35:31');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `is_delete`, `create_time`) VALUES (7, 1, '注册用户', '2026-05-05 02:03:15', '', 0, 'fewfwe', 'efe', 'asd123', '', 0, '/api/upload/1777796551.png', 0, '2026-05-05 01:50:10');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `is_delete`, `create_time`) VALUES (8, 1, '注册用户', '2026-05-05 02:08:00', '', 0, 'wefwe', '', 'asd123', '', 0, '/api/upload/1777879821.png', 1, '2026-05-05 01:54:25');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `is_delete`, `create_time`) VALUES (9, 1, '注册用户', '2026-05-05 01:55:56', '', 0, 'rregr', '', 'gegegeg', '', 0, '/api/upload/1777884065.png', 0, '2026-05-05 01:55:57');
+INSERT INTO `user` (`user_id`, `state`, `user_group`, `login_time`, `phone`, `phone_state`, `user_name`, `nick_name`, `password`, `email`, `email_state`, `avatar`, `is_delete`, `create_time`) VALUES (10, 1, '注册用户', '2026-05-05 01:58:50', '', 0, 'refed', '', 'asd123', '', 0, '/api/upload/1777388087.png', 0, '2026-05-05 01:58:50');
 COMMIT;
 
 -- ----------------------------
