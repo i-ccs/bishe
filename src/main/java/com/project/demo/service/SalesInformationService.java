@@ -41,11 +41,11 @@ public class SalesInformationService extends BaseService<SalesInformation> {
         StringBuffer sql = new StringBuffer("select ");
         // 如果未指定查询字段，则使用默认字段（销售信息字段+商品信息关键字段）
         sql.append(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD))
-                ? "a.*, b.product_name, b.product_category, b.product_brand"
+                ? "a.*, b.prod_name as product_name, b.prod_category as product_category, b.prod_brand as product_brand"
                 : config.get(FindConfig.FIELD)).append(" ");
         // 构建FROM和JOIN子句，关联销售信息表和商品信息表
         sql.append("from `sales_information` a ");
-        sql.append("left join `commodity_information` b on a.product_code = b.product_code ");
+        sql.append("left join `commodity_information` b on a.product_code = b.prod_code ");
         // 添加WHERE条件
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         // 添加GROUP BY子句用于分组（如果指定）
@@ -123,13 +123,20 @@ public class SalesInformationService extends BaseService<SalesInformation> {
                     String field = humpToLine(entry.getKey());
                     // 判断字段所属表：商品信息相关字段属于b表，其他字段属于a表
                     String alias = "a.";
+                    String column = field;
                     if (field.equals("product_name") || field.equals("product_category")
                             || field.equals("product_brand")) {
                         alias = "b.";
+                        column = field.equals("product_name") ? "prod_name"
+                                : field.equals("product_category") ? "prod_category" : "prod_brand";
                     }
                     // 处理范围查询：最小值条件（>=）
                     if (entry.getKey().contains(FindConfig.MIN_)) {
                         String min = humpToLine(entry.getKey()).replace("_min", "");
+                        if (alias.equals("b.")) {
+                            min = min.equals("product_name") ? "prod_name"
+                                    : min.equals("product_category") ? "prod_category" : "prod_brand";
+                        }
                         sql.append(alias).append("`").append(min).append("` >= '")
                                 .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("' and ");
                         continue;
@@ -137,16 +144,20 @@ public class SalesInformationService extends BaseService<SalesInformation> {
                     // 处理范围查询：最大值条件（<=）
                     if (entry.getKey().contains(FindConfig.MAX_)) {
                         String max = humpToLine(entry.getKey()).replace("_max", "");
+                        if (alias.equals("b.")) {
+                            max = max.equals("product_name") ? "prod_name"
+                                    : max.equals("product_category") ? "prod_category" : "prod_brand";
+                        }
                         sql.append(alias).append("`").append(max).append("` <= '")
                                 .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("' and ");
                         continue;
                     }
                     // 根据配置选择模糊查询或精确查询
                     if (like) {
-                        sql.append(alias).append("`").append(field).append("` LIKE '%")
+                        sql.append(alias).append("`").append(column).append("` LIKE '%")
                                 .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("%' and ");
                     } else {
-                        sql.append(alias).append("`").append(field).append("` = '")
+                        sql.append(alias).append("`").append(column).append("` = '")
                                 .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("' and ");
                     }
                 }
@@ -196,7 +207,8 @@ public class SalesInformationService extends BaseService<SalesInformation> {
         // 根据分组字段的类型和来源添加适当的表别名
         if (groupBy.equals("product_name") || groupBy.equals("product_category") || groupBy.equals("product_brand")) {
             // 商品信息表字段，使用b表别名
-            selectGroupBy = "b." + groupBy;
+            selectGroupBy = "b." + (groupBy.equals("product_name") ? "prod_name"
+                    : groupBy.equals("product_category") ? "prod_category" : "prod_brand");
         } else if (groupBy.equals("DATE(create_time)")) {
             // 日期函数字段，指定为a表的create_time
             selectGroupBy = "DATE(a.create_time)";
@@ -207,7 +219,7 @@ public class SalesInformationService extends BaseService<SalesInformation> {
         // 构建SELECT子句
         sql.append(selectGroupBy).append(" as `").append(groupBy).append("` ");
         sql.append("from `sales_information` a ");
-        sql.append("left join `commodity_information` b on a.product_code = b.product_code ");
+        sql.append("left join `commodity_information` b on a.product_code = b.prod_code ");
         sql.append(toWhereSqlCustom(query, "0".equals(config.get(FindConfig.LIKE)), config.get(FindConfig.SQLHWERE)));
         // 添加GROUP BY子句
         if (groupBy != null && !"".equals(groupBy)) {

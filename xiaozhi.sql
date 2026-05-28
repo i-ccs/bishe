@@ -300,16 +300,16 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `commodity_information`;
 CREATE TABLE `commodity_information` (
-  `commodity_information_id` int NOT NULL AUTO_INCREMENT COMMENT '商品信息ID',
-  `product_code` varchar(64) DEFAULT NULL COMMENT '商品编码',
-  `product_name` varchar(64) DEFAULT NULL COMMENT '商品名称',
-  `product_category` varchar(64) DEFAULT NULL COMMENT '商品类别',
-  `product_brand` varchar(64) DEFAULT NULL COMMENT '商品品牌',
-  `commodity_specifications` varchar(64) DEFAULT NULL COMMENT '商品规格',
-  `product_inventory` double(8,2) DEFAULT '0.00' COMMENT '商品库存',
-  `product_images` varchar(255) DEFAULT NULL COMMENT '商品图片',
-  `commodity_price` double(8,2) DEFAULT '0.00' COMMENT '商品价格',
-  `product_introduction` text COMMENT '商品介绍',
+  `comm_infor_id` int NOT NULL AUTO_INCREMENT COMMENT '商品标识',
+  `prod_code` varchar(64) NOT NULL COMMENT '商品编码',
+  `prod_name` varchar(64) NOT NULL COMMENT '商品名称',
+  `prod_category` varchar(64) NOT NULL COMMENT '商品类别',
+  `prod_brand` varchar(64) NOT NULL COMMENT '商品品牌',
+  `comm_spec` varchar(64) NOT NULL COMMENT '商品规格',
+  `prod_inven` double(8,2) NOT NULL DEFAULT '0.00' COMMENT '商品库存',
+  `prod_ima` varchar(255) NOT NULL COMMENT '商品图片',
+  `comm_price` double(8,2) NOT NULL DEFAULT '0.00' COMMENT '商品价格',
+  `prod_intro` text COMMENT '商品介绍',
   `product_details` longtext COMMENT '商品详情',
   `views` int NOT NULL DEFAULT '0' COMMENT '点击数',
   `praise_len` int NOT NULL DEFAULT '0' COMMENT '点赞数',
@@ -322,16 +322,16 @@ CREATE TABLE `commodity_information` (
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `is_delete` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '是否删除：0未删除，1已删除',
   `version` int NOT NULL DEFAULT '0' COMMENT '版本号',
-  PRIMARY KEY (`commodity_information_id`)
+  PRIMARY KEY (`comm_infor_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商品信息';
 
 -- ----------------------------
 -- Records of commodity_information
 -- ----------------------------
 BEGIN;
-INSERT INTO `commodity_information` (`commodity_information_id`, `product_code`, `product_name`, `product_category`, `product_brand`, `commodity_specifications`, `product_inventory`, `product_images`, `commodity_price`, `product_introduction`, `product_details`, `views`, `praise_len`, `collect_len`, `comment_len`, `sales_information_limit_times`, `purchasing_information_limit_times`, `inventory_information_limit_times`, `create_time`, `update_time`, `is_delete`, `version`) VALUES (21, '1777695462707', 'shangpi1', '零食', 'ionf', '100ml', 0.00, '/api/upload/O1CN01EBbQPP1q2CWxm7wtb_!!4611686018427385277-0-item_pic.jpg_460x460q90.jpg_.webp', 4.00, '', '', 32, 2, 0, 0, 0, 0, 0, '2026-05-02 12:18:57', '2026-05-05 00:55:55', 0, 0);
-INSERT INTO `commodity_information` (`commodity_information_id`, `product_code`, `product_name`, `product_category`, `product_brand`, `commodity_specifications`, `product_inventory`, `product_images`, `commodity_price`, `product_introduction`, `product_details`, `views`, `praise_len`, `collect_len`, `comment_len`, `sales_information_limit_times`, `purchasing_information_limit_times`, `inventory_information_limit_times`, `create_time`, `update_time`, `is_delete`, `version`) VALUES (23, '1777879472353', 'jfo', '日用', 'gre', '100*100', 3.00, '/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp', 5.00, '', '', 3, 1, 0, 0, 0, 0, 0, '2026-05-04 15:25:21', '2026-05-05 00:55:36', 0, 0);
-INSERT INTO `commodity_information` (`commodity_information_id`, `product_code`, `product_name`, `product_category`, `product_brand`, `commodity_specifications`, `product_inventory`, `product_images`, `commodity_price`, `product_introduction`, `product_details`, `views`, `praise_len`, `collect_len`, `comment_len`, `sales_information_limit_times`, `purchasing_information_limit_times`, `inventory_information_limit_times`, `create_time`, `update_time`, `is_delete`, `version`) VALUES (24, '1777778101568', '得力中性笔', '办公用品', '得力', NULL, 100.00, NULL, 9.90, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, '2026-05-05 01:37:59', '2026-05-05 01:37:59', 0, 0);
+INSERT INTO `commodity_information` (`comm_infor_id`, `prod_code`, `prod_name`, `prod_category`, `prod_brand`, `comm_spec`, `prod_inven`, `prod_ima`, `comm_price`, `prod_intro`, `product_details`, `views`, `praise_len`, `collect_len`, `comment_len`, `sales_information_limit_times`, `purchasing_information_limit_times`, `inventory_information_limit_times`, `create_time`, `update_time`, `is_delete`, `version`) VALUES (21, '1777695462707', 'shangpi1', '零食', 'ionf', '100ml', 0.00, '/api/upload/O1CN01EBbQPP1q2CWxm7wtb_!!4611686018427385277-0-item_pic.jpg_460x460q90.jpg_.webp', 4.00, '', '', 32, 2, 0, 0, 0, 0, 0, '2026-05-02 12:18:57', '2026-05-05 00:55:55', 0, 0);
+INSERT INTO `commodity_information` (`comm_infor_id`, `prod_code`, `prod_name`, `prod_category`, `prod_brand`, `comm_spec`, `prod_inven`, `prod_ima`, `comm_price`, `prod_intro`, `product_details`, `views`, `praise_len`, `collect_len`, `comment_len`, `sales_information_limit_times`, `purchasing_information_limit_times`, `inventory_information_limit_times`, `create_time`, `update_time`, `is_delete`, `version`) VALUES (23, '1777879472353', 'jfo', '日用', 'gre', '100*100', 3.00, '/api/upload/O1CN01A1wr3R26fA5Ne05Sj_!!2219275407688.png_460x460q90.jpg_.webp', 5.00, '', '', 3, 1, 0, 0, 0, 0, 0, '2026-05-04 15:25:21', '2026-05-05 00:55:36', 0, 0);
+INSERT INTO `commodity_information` (`comm_infor_id`, `prod_code`, `prod_name`, `prod_category`, `prod_brand`, `comm_spec`, `prod_inven`, `prod_ima`, `comm_price`, `prod_intro`, `product_details`, `views`, `praise_len`, `collect_len`, `comment_len`, `sales_information_limit_times`, `purchasing_information_limit_times`, `inventory_information_limit_times`, `create_time`, `update_time`, `is_delete`, `version`) VALUES (24, '1777778101568', '得力中性笔', '办公用品', '得力', '', 100.00, '', 9.90, '', NULL, 0, 0, 0, 0, 0, 0, 0, '2026-05-05 01:37:59', '2026-05-05 01:37:59', 0, 0);
 COMMIT;
 
 -- ----------------------------

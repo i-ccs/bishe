@@ -41,7 +41,7 @@ public class PurchasingInformationService extends BaseService<PurchasingInformat
         StringBuffer sql = new StringBuffer("select ");
         // 如果未指定查询字段，则使用默认字段（采购信息字段+商品信息关键字段）
         sql.append(config.get(FindConfig.FIELD) == null || "".equals(config.get(FindConfig.FIELD))
-                ? "a.*, b.product_name, b.product_category, b.product_brand, b.commodity_specifications"
+                ? "a.*, b.prod_name as product_name, b.prod_category as product_category, b.prod_brand as product_brand, b.comm_spec as commodity_specifications"
                 : config.get(FindConfig.FIELD)).append(" ");
         // 构建FROM和JOIN子句，关联采购信息表和商品信息表
         sql.append("from `purchasing_information` a ");
@@ -125,13 +125,22 @@ public class PurchasingInformationService extends BaseService<PurchasingInformat
                     String field = humpToLine(entry.getKey());
                     // 判断字段所属表：商品信息相关字段属于b表，其他字段属于a表
                     String alias = "a.";
+                    String column = field;
                     if (field.equals("product_name") || field.equals("product_category")
                             || field.equals("product_brand") || field.equals("commodity_specifications")) {
                         alias = "b.";
+                        column = field.equals("product_name") ? "prod_name"
+                                : field.equals("product_category") ? "prod_category"
+                                        : field.equals("product_brand") ? "prod_brand" : "comm_spec";
                     }
                     // 处理范围查询：最小值条件（>=）
                     if (entry.getKey().contains(FindConfig.MIN_)) {
                         String min = humpToLine(entry.getKey()).replace("_min", "");
+                        if (alias.equals("b.")) {
+                            min = min.equals("product_name") ? "prod_name"
+                                    : min.equals("product_category") ? "prod_category"
+                                            : min.equals("product_brand") ? "prod_brand" : "comm_spec";
+                        }
                         sql.append(alias).append("`").append(min).append("` >= '")
                                 .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("' and ");
                         continue;
@@ -139,16 +148,21 @@ public class PurchasingInformationService extends BaseService<PurchasingInformat
                     // 处理范围查询：最大值条件（<=）
                     if (entry.getKey().contains(FindConfig.MAX_)) {
                         String max = humpToLine(entry.getKey()).replace("_max", "");
+                        if (alias.equals("b.")) {
+                            max = max.equals("product_name") ? "prod_name"
+                                    : max.equals("product_category") ? "prod_category"
+                                            : max.equals("product_brand") ? "prod_brand" : "comm_spec";
+                        }
                         sql.append(alias).append("`").append(max).append("` <= '")
                                 .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("' and ");
                         continue;
                     }
                     // 根据配置选择模糊查询或精确查询
                     if (like) {
-                        sql.append(alias).append("`").append(field).append("` LIKE '%")
+                        sql.append(alias).append("`").append(column).append("` LIKE '%")
                                 .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("%' and ");
                     } else {
-                        sql.append(alias).append("`").append(field).append("` = '")
+                        sql.append(alias).append("`").append(column).append("` = '")
                                 .append(URLDecoder.decode(entry.getValue(), "UTF-8")).append("' and ");
                     }
                 }
@@ -199,7 +213,9 @@ public class PurchasingInformationService extends BaseService<PurchasingInformat
         if (groupBy.equals("product_name") || groupBy.equals("product_category") || groupBy.equals("product_brand")
                 || groupBy.equals("commodity_specifications")) {
             // 商品信息表字段，使用b表别名
-            selectGroupBy = "b." + groupBy;
+            selectGroupBy = "b." + (groupBy.equals("product_name") ? "prod_name"
+                    : groupBy.equals("product_category") ? "prod_category"
+                            : groupBy.equals("product_brand") ? "prod_brand" : "comm_spec");
         } else if (groupBy.equals("DATE(create_time)")) {
             // 日期函数字段，指定为a表的create_time
             selectGroupBy = "DATE(a.create_time)";
