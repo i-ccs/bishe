@@ -17,34 +17,34 @@ public class CommodityInformation implements Serializable {
 
     // CommodityInformation编号
     @TableId(value = "comm_infor_id", type = IdType.AUTO)
-    private Integer commodityInformationId;
+    private Integer commInforId;
     // 商品编码
     @TableField(value = "`prod_code`")
-    private String productCode;
+    private String prodCode;
     // 商品名称
     @TableField(value = "`prod_name`")
-    private String productName;
+    private String prodName;
     // 商品类别
     @TableField(value = "`prod_category`")
-    private String productCategory;
+    private String prodCategory;
     // 商品品牌
     @TableField(value = "`prod_brand`")
-    private String productBrand;
+    private String prodBrand;
     // 商品规格
     @TableField(value = "`comm_spec`")
-    private String commoditySpecifications;
+    private String commSpec;
     // 商品库存
     @TableField(value = "`prod_inven`")
-    private Double productInventory;
+    private Double prodInven;
     // 商品图片
     @TableField(value = "`prod_ima`")
-    private String productImages;
+    private String prodIma;
     // 商品价格
     @TableField(value = "`comm_price`")
-    private Double commodityPrice;
+    private Double commPrice;
     // 商品介绍
     @TableField(value = "`prod_intro`")
-    private String productIntroduction;
+    private String prodIntro;
     // 商品详情
     @TableField(value = "`product_details`")
     private String productDetails;

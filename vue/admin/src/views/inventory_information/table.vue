@@ -40,10 +40,10 @@
 				<el-table-column align="center" prop="prod_name" label="商品名称" v-if="$check_field('get','prod_name')" min-width="150"></el-table-column>
 				<el-table-column align="center" prop="prod_category" label="商品类别" v-if="$check_field('get','prod_category')" min-width="120"></el-table-column>
 				<el-table-column align="center" prop="prod_brand" label="商品品牌" v-if="$check_field('get','prod_brand')" min-width="120"></el-table-column>
-				<el-table-column align="center" prop="prod_inventory" label="系统账面库存" v-if="$check_field('get','prod_inventory')" min-width="120"></el-table-column>
+				<el-table-column align="center" prop="prod_invent" label="系统账面库存" v-if="$check_field('get','prod_invent')" min-width="120"></el-table-column>
 				<el-table-column align="center" prop="check_quant" label="实际盘点数量" v-if="$check_field('get','check_quant')" min-width="120">
 					<template slot-scope="scope">
-						<el-tag :type="scope.row.check_quant == scope.row.prod_inventory ? 'success' : 'warning'">{{scope.row.check_quant}}</el-tag>
+						<el-tag :type="scope.row.check_quant == scope.row.prod_invent ? 'success' : 'warning'">{{scope.row.check_quant}}</el-tag>
 					</template>
 				</el-table-column>
 				<el-table-column align="center" prop="check_date" label="核对日期" v-if="$check_field('get','check_date')" min-width="120">

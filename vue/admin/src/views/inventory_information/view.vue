@@ -33,9 +33,9 @@
 
 				<div class="premium-section-title">库存核对记录</div>
 				<el-row :gutter="20">
-					<el-col v-if="$check_field('get','prod_inventory') || $check_field('add','prod_inventory') || $check_field('set','prod_inventory')" :xs="24" :sm="12" :lg="8">
-						<el-form-item label="系统账面库存" prop="prod_inventory">
-							<div class="premium-readonly-field">{{form['prod_inventory'] !== 0 ? form['prod_inventory'] : ('请先选择商品编码')}}</div>
+					<el-col v-if="$check_field('get','prod_invent') || $check_field('add','prod_invent') || $check_field('set','prod_invent')" :xs="24" :sm="12" :lg="8">
+						<el-form-item label="系统账面库存" prop="prod_invent">
+							<div class="premium-readonly-field">{{form['prod_invent'] !== 0 ? form['prod_invent'] : ('请先选择商品编码')}}</div>
 						</el-form-item>
 					</el-col>
 					<el-col v-if="$check_field('get','check_date') || $check_field('add','check_date') || $check_field('set','check_date')" :xs="24" :sm="12" :lg="8">
@@ -95,7 +95,7 @@
 					"prod_name":  '', // 商品名称
 					"prod_category":  '', // 商品类别
 					"prod_brand":  '', // 商品品牌
-					"prod_inventory":  0, // 商品库存
+					"prod_invent":  0, // 商品库存
 					"check_date":  '', // 核对日期
 					"check_quant":  0, // 核对数量
 					"inventory":  '', // 库存情况
@@ -106,7 +106,7 @@
 					"prod_name_isDisabled": false,
 					"prod_category_isDisabled": false,
 					"prod_brand_isDisabled": false,
-					"prod_inventory_isDisabled": false,
+					"prod_invent_isDisabled": false,
 					"check_date_isDisabled": false,
 					"check_quant_isDisabled": false,
 					"inventory_isDisabled": false,
@@ -134,7 +134,7 @@
 					this.form.prod_name = item.prod_name || item.prod_name;
 					this.form.prod_category = item.prod_category || item.prod_category;
 					this.form.prod_brand = item.prod_brand || item.prod_brand;
-					this.form.prod_inventory = item.prod_inventory || item.prod_invent;
+					this.form.prod_invent = item.prod_inven;
 				}
 			},
 			get_obj_before(param) {
@@ -189,8 +189,8 @@
 				}
 				
 				// 验证系统账面库存不能小于0
-				if (param.prod_inventory === null || param.prod_inventory === undefined || param.prod_inventory < 0) {
-					console.log('验证失败：系统账面库存无效', param.prod_inventory);
+				if (param.prod_invent === null || param.prod_invent === undefined || param.prod_invent < 0) {
+					console.log('验证失败：系统账面库存无效', param.prod_invent);
 					return '系统账面库存不能小于0';
 				}
 				

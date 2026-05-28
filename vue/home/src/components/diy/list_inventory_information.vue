@@ -142,7 +142,7 @@
 								},
 								{
 									title: "商品库存",
-									name: "prod_inventory",
+									name: "prod_invent",
 									type: "数字",
 									is_img_list: "0"
 								},
