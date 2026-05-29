@@ -149,26 +149,6 @@ public class BaseService<E> {
         return map;
     }
 
-    // public void barGroup(Map<String,String> query,Map<String,String>
-    // config,QueryWrapper wrapper){
-    // if (config.get(FindConfig.GROUP_BY) != null &&
-    // !"".equals(config.get(FindConfig.GROUP_BY))){
-    // wrapper.select(config.get(FindConfig.GROUP_BY));
-    // if (config.get(FindConfig.FIELD) != null &&
-    // !"".equals(config.get(FindConfig.FIELD))){
-    // String[] fieldList = config.get(FindConfig.FIELD).split(",");
-    // for (int i=0;i<fieldList.length;i++)
-    // wrapper.select("SUM("+fieldList[i]+")");
-    // }
-    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-    // wrapper.groupBy(config.get(FindConfig.GROUP_BY));
-    // }else {
-    // wrapper.select("SUM("+config.get(FindConfig.GROUP_BY)+")");
-    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-    // }
-    // log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
-    // }
-
     public String barGroup(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer(" SELECT ");
         if (config.get(FindConfig.GROUP_BY) != null && !"".equals(config.get(FindConfig.GROUP_BY))) {
@@ -190,17 +170,6 @@ public class BaseService<E> {
         return sql.toString();
     }
 
-    // public void selectGroupCount(Map<String,String> query,Map<String,String>
-    // config,QueryWrapper wrapper){
-    // wrapper.select("count(*) AS count_value",config.get(FindConfig.GROUP_BY));
-    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-    // if (config.get(FindConfig.GROUP_BY) != null &&
-    // !"".equals(config.get(FindConfig.GROUP_BY))){
-    // wrapper.groupBy(config.get(FindConfig.GROUP_BY));
-    // }
-    // log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
-    // }
-
     public String selectGroupCount(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("select COUNT(*) AS count, ");
         sql.append(config.get(FindConfig.GROUP_BY)).append(" ");
@@ -212,39 +181,6 @@ public class BaseService<E> {
         log.info("[{}] - 查询操作，sql: {}", table, sql);
         return sql.toString();
     }
-
-    // public void select(Map<String,String> query,Map<String,String>
-    // config,QueryWrapper wrapper){
-    // wrapper.select(config.get(FindConfig.FIELD) == null ||
-    // "".equals(config.get(FindConfig.FIELD)) ? "*" :
-    // config.get(FindConfig.FIELD));
-    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-    // if (config.get(FindConfig.GROUP_BY) != null &&
-    // !"".equals(config.get(FindConfig.GROUP_BY))){
-    // wrapper.groupBy(config.get(FindConfig.GROUP_BY));
-    // }
-    // if (config.get(FindConfig.ORDER_BY) != null &&
-    // !"".equals(config.get(FindConfig.ORDER_BY))){
-    // if (config.get(FindConfig.ORDER_BY).toUpperCase().contains("DESC")){
-    // wrapper.orderByDesc(config.get(FindConfig.ORDER_BY).toUpperCase().replaceAll("
-    // DESC",""));
-    // }else {
-    // wrapper.orderByAsc(config.get(FindConfig.ORDER_BY).toUpperCase().replaceAll("
-    // ASC",""));
-    // }
-    // }
-    // if (config.get(FindConfig.PAGE) != null &&
-    // !"".equals(config.get(FindConfig.PAGE))){
-    // int page = config.get(FindConfig.PAGE) != null &&
-    // !"".equals(config.get(FindConfig.PAGE)) ?
-    // Integer.parseInt(config.get(FindConfig.PAGE)) : 1;
-    // int limit = config.get(FindConfig.SIZE) != null &&
-    // !"".equals(config.get(FindConfig.SIZE)) ?
-    // Integer.parseInt(config.get(FindConfig.SIZE)) : 10;
-    // wrapper.last("limit "+(page-1)*limit+" , "+limit);
-    // }
-    // log.info("[{}] - 查询操作，sql: {}",wrapper.getSqlSelect());
-    // }
 
     public String select(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("select ");
@@ -279,21 +215,6 @@ public class BaseService<E> {
         log.info("[{}] - 删除操作：{}", wrapper.getSqlSelect());
     }
 
-    // public void count(Map<String,String> query,Map<String,String> config,
-    // QueryWrapper wrapper){
-    //// log.info("拼接统计函数前");
-    // if (config.get(FindConfig.GROUP_BY) != null &&
-    // !"".equals(config.get(FindConfig.GROUP_BY))){
-    // wrapper.select(config.get(FindConfig.GROUP_BY));
-    // wrapper.select("COUNT("+config.get(FindConfig.GROUP_BY)+")");
-    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-    // }else {
-    // wrapper.select("COUNT(*)");
-    // toWhereSql(query, "0".equals(config.get(FindConfig.LIKE)),wrapper);
-    // }
-    // log.info("[{}] - 统计操作，sql: {}",wrapper.getSqlSelect());
-    // }
-
     public String count(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("SELECT ");
         // log.info("拼接统计函数前");
@@ -309,42 +230,6 @@ public class BaseService<E> {
         log.info("[{}] - 统计操作，sql: {}", table, sql);
         return sql.toString();
     }
-
-    // public Query sum(Map<String,String> query,Map<String,String> config){
-    // StringBuffer sql = new StringBuffer(" SELECT ");
-    // if (config.get(FindConfig.GROUP_BY) != null &&
-    // !"".equals(config.get(FindConfig.GROUP_BY))){
-    // sql.append(config.get(FindConfig.GROUP_BY)).append("
-    // ,SUM(").append(config.get(FindConfig.FIELD)).append(") FROM
-    // ").append("`").append(table).append("`");
-    // sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
-    // sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-    // }else {
-    // sql.append(" SUM(").append(config.get(FindConfig.FIELD)).append(") FROM
-    // ").append("`").append(table).append("`");
-    // sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
-    // }
-    // log.info("[{}] - 查询操作，sql: {}",table,sql);
-    // return runCountSql(sql.toString());
-    // }
-    //
-    // public Query avg(Map<String,String> query,Map<String,String> config){
-    // StringBuffer sql = new StringBuffer(" SELECT ");
-    // if (config.get(FindConfig.GROUP_BY) != null &&
-    // !"".equals(config.get(FindConfig.GROUP_BY))){
-    // sql.append(config.get(FindConfig.GROUP_BY)).append("
-    // ,AVG(").append(config.get(FindConfig.FIELD)).append(") FROM
-    // ").append("`").append(table).append("`");
-    // sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
-    // sql.append(" ").append("GROUP BY ").append(config.get(FindConfig.GROUP_BY));
-    // }else {
-    // sql.append(" AVG(").append(config.get(FindConfig.FIELD)).append(") FROM
-    // ").append("`").append(table).append("`");
-    // sql.append(toWhereSql(query, "0".equals(config.get(FindConfig.LIKE))));
-    // }
-    // log.info("[{}] - 查询操作，sql: {}",table,sql);
-    // return runCountSql(sql.toString());
-    // }
 
     public String groupCount(Map<String, String> query, Map<String, String> config) {
         StringBuffer sql = new StringBuffer("SELECT ");
