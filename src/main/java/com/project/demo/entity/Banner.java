@@ -13,9 +13,6 @@ import java.sql.Timestamp;
 
 /**
  * 轮播图：(Banner)表实体类
- *
- * @author xxx
- *@since 202X-XX-XX
  */
 @TableName("banner")
 @Data

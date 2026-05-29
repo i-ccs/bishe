@@ -2,7 +2,6 @@ import $ from 'jquery';
 
 /**
  * @fileOverview JavaScript拓展函数
- * @author xxx
  * @version 1.2
  */
 

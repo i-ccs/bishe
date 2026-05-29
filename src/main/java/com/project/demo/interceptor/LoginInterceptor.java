@@ -18,9 +18,6 @@ import java.io.IOException;
  * 1. 验证用户令牌（令牌为空时排除特定路径）
  * 2. 设置跨域响应头
  * 3. 记录请求信息
- *
- * @author project
- * @version 1.0
  */
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor {

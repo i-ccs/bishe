@@ -12,9 +12,6 @@ import com.project.demo.constant.FindConfig;
  * 注册用户表服务类
  * 用于处理注册用户的数据查询、统计等业务逻辑
  * 主要功能包括：查询注册用户信息、统计记录数、分组统计等
- *
- * @author project
- * @version 1.0
  */
 @Service
 public class RegisteredUserService extends BaseService<RegisteredUser> {

@@ -5,8 +5,6 @@ package com.project.demo.constant;
  * 定义了查询、统计、分页等功能接口中使用的配置参数关键字
  * 该类中所有常量都是String类型，用于Map作为键
  * 
- * @author project
- * @version 1.0
  */
 public class FindConfig {
 

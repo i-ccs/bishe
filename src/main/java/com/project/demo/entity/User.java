@@ -9,9 +9,6 @@ import java.sql.Timestamp;
 
 /**
  * 用户账户：用于保存用户登录信息(User)表实体类
- *
- * @author xxx
- * @since 202X-XX-XX
  */
 @TableName("user")
 @Data

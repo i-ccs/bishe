@@ -13,9 +13,6 @@ import java.sql.Timestamp;
 
 /**
  * 定制授权(Auth)表实体类
- *
- * @author xxx
- *@since 202X-XX-XX
  */
 @TableName("auth")
 @Data

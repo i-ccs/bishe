@@ -1,6 +1,5 @@
 package com.project.demo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.*;
 

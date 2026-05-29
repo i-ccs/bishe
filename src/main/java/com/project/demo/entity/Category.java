@@ -13,9 +13,6 @@ import java.sql.Timestamp;
 
 /**
  * 文章频道：用于汇总浏览文章，在不同频道下展示不同文章。(Category)表实体类
- *
- * @author xxx
- *@since 202X-XX-XX
  */
 @TableName("category")
 @Data

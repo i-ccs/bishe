@@ -8,9 +8,6 @@ import java.sql.Timestamp;
 
 /**
  * 评论：(Comment)表实体类
- *
- * @author xxx
- * @since 202X-XX-XX
  */
 @TableName("comment")
 @Data
