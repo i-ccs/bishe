@@ -98,7 +98,6 @@
 					});
 					this.list_user_group = list;
 					this.user_group = lt;
-					console.log("list_user_group" ,list ,"user_group" ,lt);
 				}else if(res.error){
 					console.error(res.error);
 					this.$toast(res.error.message ,"error");
@@ -122,7 +121,6 @@
 			    var msg = await this.events("submit_check", pm);
 			    var ret;
 
-				console.log("提交前错误信息msg：" ,msg);
 			    // 判断错误
 			    if (msg) {
 			        this.$toast(msg, 'danger');
@@ -206,13 +204,10 @@
 			submit_after(json ,func){
 				var form = Object.assign({} ,this.form);
 				delete form.password;
-				console.log("查询表单form",form)
 				var table = this.user_group.getVal("source_table",{"name": form.user_group});
-				console.log("关联表:" ,table);
 				if(table){
 					this.get_register(form ,table);
 				}else{
-					console.log("用户组没有关联表");
 				}
 			},
 
@@ -224,7 +219,6 @@
 			get_register(form ,table){
 				var form_sub = this.form_sub;
 				this.$get("~/api/user/get_obj?",form,(res)=>{
-					console.log("注册表信息res",res);
 					if(res.result && res.result.obj){
 						form_sub.user_id = res.result.obj.user_id;
 						this.submit_sub(form_sub,table);
@@ -244,19 +238,16 @@
 					try{
 						var value = form_sub[key];
 						// 值判断与值校验
-						console.log("键 ,值 ,类型" ,key ,value ,value instanceof Date);
 						if(value && value instanceof Date){
 							form_sub[key] = this.$toTime(value ,"yyyy-MM-dd hh:mm:ss");
 						}
 																																																																																																					
 					}
 					catch(err){
-						console.log(key ,"转日期错误：" ,err ,"收到请无视!");
 					}
 				}
 				// 提交事件
 				this.$post("~/api/" + table + "/add?", form_sub, (res)=>{
-					console.log("提交结果res：" ,res)
 					if(res.result){
 						this.$toast("注册成功!" ,"success");
 						this.$store.commit("quit");

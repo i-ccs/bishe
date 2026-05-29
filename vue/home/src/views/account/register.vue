@@ -149,8 +149,6 @@
 			    // 提交前验证事件
 			    var msg = await this.events("submit_check", pm);
 			    var ret;
-
-				console.log("提交前错误信息msg：" ,msg);
 			    // 判断错误
 			    if (msg) {
 			        this.$toast(msg, 'danger');
@@ -190,7 +188,6 @@
 
 				var confirm_password = this.confirm_password;
 
-				console.log("表单校验user_name ,password ,email ,nick_name ,user_group" ,user_name ,password ,email ,nick_name ,user_group);
 
 				if(!user_name){
 					ret = "账号不能为空";
@@ -253,7 +250,6 @@
 			get_submit(form ,table) {
 				var form_sub = this.form_sub;
 				this.$get("~/api/user/get_obj?", form, (res) => {
-					console.log("注册表信息res",res);
 					if (res.result && res.result.obj) {
 						form_sub.user_id = res.result.obj.user_id;
 						this.submit_sub(form_sub, table);
@@ -274,17 +270,14 @@
 					try{
 						var value = form[key];
 						// 值判断与值校验
-						console.log("键 ,值 ,类型" ,key ,value ,value instanceof Date);
 						if(value && value instanceof Date){
 							form[key] = this.$toTime(value ,"yyyy-MM-dd hh:mm:ss");
 						}
 																																																																																																				}
 					catch(err){
-						console.log(key ,"转日期错误：" ,err ,"收到请无视!");
 					}
 				}
 				this.$post("~/api/" + table +"/add?", form, (res) => {
-					console.log("提交结果res：" ,res);
 					if(res.result){
 						this.$toast("注册成功!","success");
 						this.$router.push("/");

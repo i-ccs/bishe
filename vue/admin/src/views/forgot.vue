@@ -144,7 +144,6 @@
 
       submit_before(param) {
         var p = Object.assign({}, param);
-        console.log("提交前信息：", p);
         return p;
       },
       submit_after() {
@@ -166,8 +165,7 @@
         // 提交前验证事件
         var msg = await this.events("submit_check", pm);
         var ret;
-
-        console.log("提交前错误信息msg：", msg);
+ 
         // 判断错误
         if (msg) {
           this.$toast(msg, 'danger');

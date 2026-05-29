@@ -138,11 +138,6 @@
 			 * 忘记密码
 			 */
 			async forgot() {
-				console.log(this.validation_user_name);
-				console.log(this.validation_password);
-				console.log(this.validation_confirm_password);
-				console.log(this.validation_email);
-				console.log(this.validation_code);
 				var condition =
 						this.validation_user_name &&
 						this.validation_password &&
