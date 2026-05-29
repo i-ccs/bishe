@@ -93,7 +93,6 @@
 					password: "",
 					nick_name: "",
 					email: "",
-					// phone: "",
 					user_group: "",
 					avatar: ""
 				},
@@ -180,14 +179,11 @@
 			async submit_check(param){
 				var ret = null;
 
-				var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				// var phone_regular = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
-
-				// var {user_name ,password ,nick_name ,user_group ,email ,phone} = param;
 				var {user_name ,password ,nick_name ,user_group ,email} = param;
-
 				var confirm_password = this.confirm_password;
 
+
+				var email_regular = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 				if(!user_name){
 					ret = "账号不能为空";
@@ -207,20 +203,11 @@
 				else if(email && !email_regular.test(email)){
 					ret = "请输入正确的邮箱地址 例：test@test.com!";
 				}
-				// else if(phone && !phone_regular.test(phone)){
-				// 	ret = "请输入正确的手机号码 例：18955552312!";
-				// }
 				else if(password != confirm_password){
 					ret = "确认密码与密码不一致！";
 				}
 				else if(!user_group){
 					ret = "请选择用户组!";
-				}
-				if(!ret && user_group){
-						if(user_group === "注册用户"){
-						var form_sub = Object.assign({} ,this.form_sub);
-					
-						}
 				}
 
 				var p = {"user_name": param.user_name};
