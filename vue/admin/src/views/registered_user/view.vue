@@ -152,7 +152,7 @@
 					email: '',
 					user_group: "注册用户",
 					state: 1,
-					user_gender: '男',
+					user_gender: 0,
 					phone: ''
 					},
 
@@ -165,7 +165,7 @@
 					email: '',
 					user_group: "注册用户",
 					state: 1,
-					user_gender: '男',
+					user_gender: 0,
 					phone: ''
 					},
 

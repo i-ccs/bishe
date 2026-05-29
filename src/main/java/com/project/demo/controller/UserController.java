@@ -363,4 +363,78 @@ public class UserController extends BaseController<User, UserService> {
         return success(1);
     }
 
+    @PostMapping("/set")
+    @Transactional
+    public Map<String, Object> set(HttpServletRequest request) throws IOException {
+        Map<String, Object> map = service.readBody(request.getReader());
+        // 1. 只有在 map 含有主表字段时，才调用默认更新
+        boolean hasUserField = false;
+        for (String key : map.keySet()) {
+            if ("user_name".equals(key) || "nick_name".equals(key) || "password".equals(key) 
+                || "avatar".equals(key) || "email".equals(key) || "state".equals(key) || "phone".equals(key)) {
+                hasUserField = true;
+                break;
+            }
+        }
+        if (hasUserField) {
+            service.update(service.readQuery(request), service.readConfig(request), map);
+        }
+
+        // 2. 获取 user_id 并同步更新附属表中的 user_gender 和 phone
+        String userIdStr = request.getParameter("user_id");
+        if (userIdStr != null && !userIdStr.isEmpty()) {
+            Integer userId = Integer.parseInt(userIdStr);
+            // 查询此用户的 user_group
+            Map<String, String> userQuery = new HashMap<>();
+            userQuery.put("user_id", userIdStr);
+            List<User> users = service.selectBaseList(service.select(userQuery, new HashMap<>()));
+            if (users.size() > 0) {
+                User user = users.get(0);
+                Map<String, String> groupQuery = new HashMap<>();
+                groupQuery.put("name", user.getUserGroup());
+                List<UserGroup> groups = userGroupService
+                        .selectBaseList(userGroupService.select(groupQuery, new HashMap<>()));
+                if (groups.size() > 0) {
+                    UserGroup group = groups.get(0);
+                    String sourceTable = group.getSourceTable();
+                    if (sourceTable != null && !sourceTable.isEmpty()) {
+                        // 组装 UPDATE SQL
+                        StringBuilder sql = new StringBuilder("UPDATE `").append(sourceTable).append("` SET ");
+                        boolean hasUpdate = false;
+                        if (map.containsKey("user_gender")) {
+                            Object gender = map.get("user_gender");
+                            if (gender == null || "null".equals(String.valueOf(gender))) {
+                                sql.append("`user_gender` = NULL,");
+                            } else {
+                                sql.append("`user_gender` = ").append(gender).append(",");
+                            }
+                            hasUpdate = true;
+                        }
+                        if (map.containsKey("user_name")) {
+                            Object userName = map.get("user_name");
+                            if (userName != null && !"null".equals(String.valueOf(userName))) {
+                                sql.append("`user_name` = '").append(userName).append("',");
+                                hasUpdate = true;
+                            }
+                        }
+                        if (map.containsKey("state")) {
+                            Object state = map.get("state");
+                            if (state != null && !"null".equals(String.valueOf(state))) {
+                                sql.append("`state` = ").append(state).append(",");
+                                hasUpdate = true;
+                            }
+                        }
+                        if (hasUpdate) {
+                            sql.deleteCharAt(sql.length() - 1); // 删掉最后的逗号
+                            sql.append(" WHERE `user_id` = ").append(userId);
+                            service.updateBaseSql(sql.toString());
+                            log.info("[{}] - 附属表同步更新操作，sql: {}", sourceTable, sql.toString());
+                        }
+                    }
+                }
+            }
+        }
+        return success(1);
+    }
+
 }
