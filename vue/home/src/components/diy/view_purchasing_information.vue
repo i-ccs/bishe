@@ -51,14 +51,14 @@
 					<div v-else-if="$check_field('get','purch_order_number')">{{form['purch_order_number']}}</div>
 											</el-form-item>
 			</el-col>
-								<el-col v-if="$check_field('get','supplier_na') || $check_field('add','supplier_na') || $check_field('set','supplier_na')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
-				<el-form-item label="供应商名称" prop="supplier_na">
-								<el-select id="supplier_na" v-model="form['supplier_na']"						v-if="(form['purch_inf_id'] && $check_field('set','supplier_na')) || (!form['purch_inf_id'] && $check_field('add','supplier_na'))">
+								<el-col v-if="$check_field('get','supplier_name') || $check_field('add','supplier_name') || $check_field('set','supplier_name')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
+				<el-form-item label="供应商名称" prop="supplier_name">
+								<el-select id="supplier_name" v-model="form['supplier_name']"						v-if="(form['purch_inf_id'] && $check_field('set','supplier_name')) || (!form['purch_inf_id'] && $check_field('add','supplier_name'))">
 						<el-option v-for="o in list_supplier_na" :key="o['supplier_na']" :label="o['supplier_na']"
 							:value="o['supplier_na']">
 						</el-option>
 					</el-select>
-					<div v-else-if="$check_field('get','supplier_na')">{{form['supplier_na']}}</div>
+					<div v-else-if="$check_field('get','supplier_name')">{{form['supplier_name']}}</div>
 							</el-form-item>
 			</el-col>
 								<el-col v-if="$check_field('get','purch_date') || $check_field('add','purch_date') || $check_field('set','purch_date')" :xs="24" :sm="12" :lg="8" class="el_form_item_warp">
@@ -144,7 +144,7 @@
 										"comm_spec":  '', // 商品规格
 										"comm_price":  0, // 商品价格
 										"purch_order_number": this.$get_stamp(), // 采购单号
-										"supplier_na":  '', // 供应商名称
+										"supplier_name":  '', // 供应商名称
 										"purch_date":  '', // 采购日期
 										"purch_quantity":  0, // 采购数量
 										"purch_unit_price":  0, // 采购单价
@@ -159,7 +159,7 @@
 										"comm_spec_isDisabled": false,
 					          			"comm_price_isDisabled": false,
 										"purch_order_number_isDisabled": false,
-										"supplier_na_isDisabled": false,
+										"supplier_name_isDisabled": false,
 										"purch_date_isDisabled": false,
 					          			"purch_quantity_isDisabled": false,
 					          			"purch_unit_price_isDisabled": false,
