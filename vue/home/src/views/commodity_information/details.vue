@@ -138,7 +138,7 @@
 						var body = {
 							source_table: "commodity_information",
 							source_field: "comm_infor_id",
-							source_id: this.obj.comm_infor_id,
+							source_id: obj.comm_infor_id,
 							user_id: this.$store.state.user.user_id,
 						};
 						this.$post("~/api/views/add?", body, (res) => {
@@ -203,6 +203,7 @@
 			 * 改变收藏状态
 			 */
 			change_collect() {
+				var _this = this;
 				var user_id = this.user.user_id;
 
 				var query = {

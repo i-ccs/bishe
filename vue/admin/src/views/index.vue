@@ -265,7 +265,7 @@
 				});
 			},
 			get_views_source_data() {
-				this.$get("~/api/views/list_group?groupby=sou_table", null, (json) => {
+				this.$get("~/api/views/list_group?groupby=source_table", null, (json) => {
 					if (json.result) {
 						var data = json.result.list.map(o => {
 							var name = o[1];
