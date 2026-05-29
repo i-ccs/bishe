@@ -87,7 +87,7 @@
             sign_in() {
                 var f = this.form;
                 var form = {
-                        password: rsaEncrypt(f.password)
+                        password: rsaEncrypt(f.password.md5())
                     };
                 var account = f.account + '';
  

@@ -77,6 +77,12 @@
 			},
 			submit_before(param){
 				var p = Object.assign({},param);
+				if (p.password) {
+					p.password = p.password.md5();
+				}
+				if (p.o_password) {
+					p.o_password = p.o_password.md5();
+				}
 				return p;
 			},
 			submit_check(param) {

@@ -257,6 +257,9 @@
         if (msg) {
           this.$toast(msg, 'danger');
         } else {
+          if (pm.password) {
+            pm.password = pm.password.md5();
+          }
           ret = this.events("submit_main", pm, func);
         }
         return ret;

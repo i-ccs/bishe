@@ -136,6 +136,8 @@
 				var form = Object.assign({},this.form);
 
 				if(this.form.password === this.confirm_password && this.form.o_password){
+					form.password = form.password.md5();
+					form.o_password = form.o_password.md5();
 					this.$post("~/api/user/change_password?", form, (res) => {
 						if (res.result) {
 							//弹出更改成功，3秒后调到主页，退出账户

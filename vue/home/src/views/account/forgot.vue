@@ -157,6 +157,7 @@
 				var form = Object.assign({},this.form);
 				let result = await this.$get("~/api/code_token/verify_email_code", {"token": this.token, "code": form.code});
 				if (result.result) {
+					form.password = form.password.md5();
 					this.$post("~/api/user/forget_password?", form, (res) => {
 						if (res.result) {
 							this.$router.push("/account/login");

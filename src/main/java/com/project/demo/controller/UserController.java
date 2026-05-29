@@ -62,8 +62,8 @@ public class UserController extends BaseController<User, UserService> {
         if (list.size() > 0) {
             return error(30000, "用户已存在");
         }
-        // 对密码进行MD5加密
-        userMap.put("password", service.encryption(String.valueOf(userMap.get("password"))));
+        // 存储前端已加密的MD5密码
+        userMap.put("password", String.valueOf(userMap.get("password")));
         // 用户不存在
         if (userMap.get("create_time") == null) {
             userMap.put("create_time", new Timestamp(System.currentTimeMillis()));
@@ -126,9 +126,9 @@ public class UserController extends BaseController<User, UserService> {
             User o = (User) list.get(0);
             JSONObject query2 = new JSONObject();
             JSONObject form2 = new JSONObject();
-            // 修改用户密码，对密码进行MD5加密
+            // 修改用户密码，直接存储前端加密后的密文
             query2.put("user_id", o.getUserId());
-            form2.put("password", service.encryption(password));
+            form2.put("password", password);
             service.update(query, service.readConfig(request), form2);
             return success(1);
         }
@@ -246,9 +246,9 @@ public class UserController extends BaseController<User, UserService> {
         query.put("password", o_password);
         int count = service.selectBaseCount(service.count(query, service.readConfig(request)));
         if (count > 0) {
-            // 修改密码，对新密码进行MD5加密
+            // 修改密码，直接保存前端加密后的密文
             Map<String, Object> form = new HashMap<>();
-            form.put("password", service.encryption(data.get("password")));
+            form.put("password", data.get("password"));
             service.update(query, service.readConfig(request), form);
             return success(1);
         }
@@ -367,6 +367,14 @@ public class UserController extends BaseController<User, UserService> {
     @Transactional
     public Map<String, Object> set(HttpServletRequest request) throws IOException {
         Map<String, Object> map = service.readBody(request.getReader());
+        if (map.containsKey("password")) {
+            String pwd = String.valueOf(map.get("password"));
+            if (pwd != null && !pwd.trim().isEmpty() && !"null".equals(pwd)) {
+                map.put("password", pwd);
+            } else {
+                map.remove("password");
+            }
+        }
         // 1. 只有在 map 含有主表字段时，才调用默认更新
         boolean hasUserField = false;
         for (String key : map.keySet()) {

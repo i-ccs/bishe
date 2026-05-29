@@ -91,7 +91,7 @@
 					}
 						// 极验结束
 				var form = Object.assign({}, this.form);
-					form.password = rsaEncrypt(form.password)
+					form.password = rsaEncrypt(form.password.md5())
 					this.$post("~/api/user/login?", form, (res) => {
 					if (res.result && res.result.obj) {
 						var obj = res.result.obj;
